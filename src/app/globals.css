@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* ===== SoyStories B2B Landing Page Design System ===== */
+
+@theme inline {
+  /* Color Palette */
+  --color-ivory: #FDFBF7;
+  --color-ink: #2D3A3A;
+  --color-brand: #3E6044;
+  --color-brand-light: #5A8A63;
+  --color-brand-dark: #2C4532;
+  --color-cta: #C67C3E;
+  --color-cta-hover: #B06A2E;
+  --color-cta-sub: #4A5568;
+  --color-cta-sub-hover: #3A4558;
+  --color-gold: #F59E0B;
+  --color-cream: #F5F0E8;
+  --color-green-tint: #F3F7F4;
+
+  /* Font families */
+  --font-serif: "Noto Serif JP", serif;
+  --font-sans: "Noto Sans JP", sans-serif;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FDFBF7;
+  color: #2D3A3A;
+  font-family: "Noto Sans JP", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Heading styles - serif for premium Japanese feel */
+h1, h2, h3, h4 {
+  font-family: "Noto Serif JP", serif;
+}
+
+/* Selection color */
+::selection {
+  background-color: #3E6044;
+  color: #FDFBF7;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FDFBF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3E6044;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2C4532;
+}
+
+/* CTA pulse animation */
+@keyframes pulse-cta {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(198, 124, 62, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(198, 124, 62, 0);
+  }
+}
+
+.animate-pulse-cta {
+  animation: pulse-cta 2s ease-in-out infinite;
+}
+
+/* Focus styles for accessibility */
+input:focus, textarea:focus, select:focus, button:focus-visible {
+  outline: 2px solid #3E6044;
+  outline-offset: 2px;
+}
+
+/* Radio button custom styling */
+input[type="radio"] {
+  accent-color: #3E6044;
+}
