@@ -56,7 +56,7 @@ export default function SocialProofSection() {
             <div className="w-full md:w-1/2">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm">
                 <Image
-                  src="/images/gelato_spoon_moment.jpg"
+                  src="/images/soystories_icecream02187icecream 1.jpg"
                   alt="Soy storiesのジェラートをスプーンで味わう至福のひととき"
                   fill
                   className="object-cover"

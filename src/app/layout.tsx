@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "SoyStories",
     images: [
       {
-        url: "/images/hero_craft_gelato.jpg",
+        url: "/images/soystories_icecream02358icecream.jpg",
         width: 1200,
         height: 630,
         alt: "Soy stories プラントベース・クラフトジェラート",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "SoyStories | 業務用ヴィーガン米粉アイス",
     description:
       "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。飲食店のアレルギー・ヴィーガン対応に。",
-    images: ["/images/hero_craft_gelato.jpg"],
+    images: ["/images/soystories_icecream02358icecream.jpg"],
   },
   alternates: {
     canonical: "https://soystories.com",

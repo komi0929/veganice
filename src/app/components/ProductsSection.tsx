@@ -170,7 +170,7 @@ export default function ProductsSection() {
           className="relative mx-auto mb-16 aspect-[16/10] w-full max-w-4xl overflow-hidden rounded-2xl shadow-md md:aspect-[21/9]"
         >
           <Image
-            src="/images/gelato_circle_lineup.jpg"
+            src="/images/soystories_icecream.1.jpg"
             alt="Soy stories プラントベース・クラフトジェラート全フレーバー"
             fill
             className="object-cover"
@@ -230,7 +230,7 @@ export default function ProductsSection() {
             className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm lg:w-1/2"
           >
             <Image
-              src="/images/gelato_cup_tower.jpg"
+              src="/images/soystories_icecream02081icecream.jpg"
               alt="Soy stories ジェラートのパッケージ・納品仕様"
               fill
               className="object-cover"

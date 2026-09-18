@@ -38,7 +38,7 @@ export default function HeroSection() {
           className="absolute inset-0"
         >
           <Image
-            src="/images/hero_craft_gelato.jpg"
+            src="/images/soystories_icecream02358icecream.jpg"
             alt="Soy stories プラントベース・クラフトジェラート"
             fill
             priority
