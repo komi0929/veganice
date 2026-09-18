@@ -27,3 +27,9 @@ Please follow these guidelines for highest quality output:
 - Write clean, readable code with descriptive variable and function names.
 - Keep functions pure where possible.
 - Include comments for complex logic, but prefer self-documenting code.
+
+## 5. Automatic GitHub Backup (Mandatory)
+
+- Every time code changes or features are implemented and verified, commit the changes and push directly to `origin main` (`https://github.com/komi0929/veganice.git`).
+- Ensure `.env*` or sensitive credentials are never committed.
+- Keep the remote repository always synchronized with latest developments as a live backup.
