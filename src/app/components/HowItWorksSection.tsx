@@ -10,7 +10,7 @@ export default function HowItWorksSection() {
       number: "01",
       title: "サンプルでお試し",
       description:
-        "フォームからお申し込みいただくと、実際のフレーバーをお届けします。厨房で味・食感・オペレーションをご確認ください。",
+        "下のフォームからお申し込みください。実際のフレーバーをサンプルとしてお届けします。厨房で味・食感・ディッシャーの扱いやすさをお確かめください。",
       icon: <Package className="text-brand h-8 w-8" />,
     },
     {

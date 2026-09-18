@@ -9,7 +9,7 @@ const ingredientStories = [
     title: "米粉",
     subtitle: "こめこ",
     story:
-      "乳製品不使用でもなめらかなディッシャー離れを実現する、独自の米粉製法。パートナー企業と開発したこの製法が、SoyStoriesの品質の根幹です。",
+      "乳製品不使用でもなめらかなディッシャー離れを実現する、独自の米粉製法。低オーバーラン（低空気含有率）で素材の味が凝縮された、溶けにくく提供しやすいジェラートです。",
     imageSrc: "/images/ingredient_rice_flour.jpg",
   },
   {
