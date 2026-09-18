@@ -34,12 +34,21 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: "https://soystories.com",
     siteName: "SoyStories",
+    images: [
+      {
+        url: "/images/hero_craft_gelato.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Soy stories プラントベース・クラフトジェラート",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SoyStories | 業務用ヴィーガン米粉アイス",
     description:
       "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。飲食店のアレルギー・ヴィーガン対応に。",
+    images: ["/images/hero_craft_gelato.jpg"],
   },
   alternates: {
     canonical: "https://soystories.com",
@@ -63,9 +72,10 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://soystories.com/#org",
-      name: "SoyStories（ソイストーリーズ）",
+      "@id": "https://soystories.com/#organization",
+      name: "SoyStories",
       url: "https://soystories.com",
+      logo: "https://soystories.com/images/jp_logo.png",
       sameAs: [
         "https://www.instagram.com/soystories_yakuin",
         "https://www.happycow.net/reviews/soystories-fukuoka-289915",
@@ -77,7 +87,7 @@ const jsonLd = {
       "@type": "LocalBusiness",
       "@id": "https://soystories.com/#store",
       name: "SoyStories 薬院店",
-      image: "https://soystories.com/images/dummy_store_front.jpg",
+      image: "https://soystories.com/images/store_actual.png",
       url: "https://soystories.com",
       telephone: "",
       address: {

@@ -56,8 +56,8 @@ export default function SocialProofSection() {
             <div className="w-full md:w-1/2">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm">
                 <Image
-                  src="/images/dummy_customer_moment.jpg"
-                  alt="お母さんと子どもがアイスを食べている様子"
+                  src="/images/gelato_spoon_moment.jpg"
+                  alt="Soy storiesのジェラートをスプーンで味わう至福のひととき"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"

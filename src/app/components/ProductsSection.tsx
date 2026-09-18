@@ -9,34 +9,42 @@ const flavors = [
   {
     name: "とろけるショコラ",
     story: "カカオの香りが広がる濃厚な味わい",
+    image: "/images/flavors/chocolate.png",
   },
   {
     name: "至高の濃厚抹茶",
     story: "甘酒配合。深みのある抹茶",
+    image: "/images/flavors/matcha.png",
   },
   {
     name: "ベリーミックス",
     story: "数種のベリーの甘酸っぱさ",
+    image: "/images/flavors/berry_mix.png",
   },
   {
     name: "香るほうじ茶",
     story: "焙煎の香ばしさとやさしい甘み",
+    image: "/images/flavors/houjicha.png",
   },
   {
     name: "ジューシーすぎるもも",
     story: "果実感をそのまま閉じ込めて",
+    image: "/images/flavors/peach.png",
   },
   {
     name: "爽やかりんご",
     story: "すっきりとした果実の爽快感",
+    image: "/images/flavors/apple.png",
   },
   {
     name: "バニラココナッツ",
     story: "ココナッツミルクのまろやかさ",
+    image: "/images/flavors/vanilla_coconut.png",
   },
   {
     name: "ドラゴンフルーツ",
     story: "鮮やかな彩りとさっぱりした甘さ",
+    image: "/images/flavors/dragon_fruit.png",
   },
 ];
 
@@ -162,17 +170,17 @@ export default function ProductsSection() {
           className="relative mx-auto mb-16 aspect-[16/10] w-full max-w-4xl overflow-hidden rounded-2xl shadow-md md:aspect-[21/9]"
         >
           <Image
-            src="/images/ec_gelato_18set.jpg"
-            alt="SoyStories ヴィーガン米粉アイス 全8フレーバー"
+            src="/images/gelato_circle_lineup.jpg"
+            alt="Soy stories プラントベース・クラフトジェラート全フレーバー"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 1024px"
           />
         </motion.div>
 
-        {/* ── フレーバーテキストグリッド ── */}
-        <div className="mx-auto mb-28 max-w-4xl md:mb-36">
-          <div className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2 md:gap-y-10">
+        {/* ── フレーバーグリッド（画像付きカード） ── */}
+        <div className="mx-auto mb-28 max-w-5xl md:mb-36">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
             {flavors.map((flavor, index) => (
               <motion.div
                 key={flavor.name}
@@ -181,12 +189,21 @@ export default function ProductsSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-40px" }}
-                className="flex flex-col items-baseline gap-2 border-b border-gray-100 pb-4 sm:flex-row sm:gap-4"
+                className="group flex flex-col items-center rounded-2xl border border-stone-200/80 bg-white/90 p-4 text-center shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
               >
-                <h3 className="text-ink font-serif text-lg font-medium whitespace-nowrap">
+                <div className="relative mb-3 aspect-square w-28 overflow-hidden transition-transform duration-300 group-hover:scale-105 sm:w-32">
+                  <Image
+                    src={flavor.image}
+                    alt={flavor.name}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 120px, 140px"
+                  />
+                </div>
+                <h3 className="text-ink mb-1 font-serif text-base font-bold sm:text-lg">
                   {flavor.name}
                 </h3>
-                <p className="text-ink-muted text-sm leading-relaxed">{flavor.story}</p>
+                <p className="text-ink-muted text-xs leading-relaxed sm:text-sm">{flavor.story}</p>
               </motion.div>
             ))}
           </div>
@@ -213,8 +230,8 @@ export default function ProductsSection() {
             className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm lg:w-1/2"
           >
             <Image
-              src="/images/dummy_b2b_packaging.jpg"
-              alt="B2B向けの梱包と配送状態"
+              src="/images/gelato_cup_tower.jpg"
+              alt="Soy stories ジェラートのパッケージ・納品仕様"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

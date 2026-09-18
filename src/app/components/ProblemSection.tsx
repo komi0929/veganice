@@ -58,8 +58,8 @@ export default function ProblemSection() {
           >
             <div className="bg-bg relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:w-1/2">
               <Image
-                src="/images/dummy_store_front.jpg"
-                alt="SoyStoriesの薬院店舗"
+                src="/images/store_actual.png"
+                alt="SoyStoriesの実店舗（福岡・薬院）"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -111,8 +111,8 @@ export default function ProblemSection() {
           >
             <div className="bg-bg relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:w-1/2">
               <Image
-                src="/images/dummy_manufacturing.jpg"
-                alt="SoyStoriesの製造拠点"
+                src="/images/craft_moment.jpg"
+                alt="SoyStoriesの工房・仕込み風景"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -138,10 +138,10 @@ export default function ProblemSection() {
             <div className="bg-bg flex max-w-3xl flex-col items-center gap-8 rounded-2xl p-8 sm:flex-row">
               <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-sm sm:h-40 sm:w-40">
                 <Image
-                  src="/images/dummy_founder.jpg"
-                  alt="SoyStories代表 小南優作"
+                  src="/images/craft_moment.jpg"
+                  alt="SoyStoriesの現場風景"
                   fill
-                  className="object-cover"
+                  className="object-cover object-bottom"
                   sizes="160px"
                 />
               </div>
