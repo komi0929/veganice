@@ -1,95 +1,143 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-const features = [
+/* ── 素材の物語データ ── */
+const ingredientStories = [
   {
-    title: "朝搾り純豆乳",
-    description: "毎朝搾りたての国産大豆100%豆乳を使用。大豆本来の甘みとコクが活きています。",
-    icon: (
-      <svg className="w-6 h-6 text-[#3E6044]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-      </svg>
-    ),
+    title: "米粉",
+    subtitle: "こめこ",
+    story:
+      "パートナー企業と開発した米粉の製法が、乳製品を使わずになめらかな食感を実現しています。ワッフルにも、アイスにも使っている、SoyStoriesの基本素材です。",
+    imageSrc: "/images/ingredient_rice_flour.jpg",
+  },
+  {
+    title: "豆乳",
+    subtitle: "とうにゅう",
+    story:
+      "バターや生クリームの代わりに、濃厚な豆乳でコクを出しています。乳・卵・小麦を扱わない専用の製造ラインで製造しています。",
+    imageSrc: "/images/ingredient_soymilk.jpg",
   },
   {
     title: "白みそ・甘酒",
-    description: "日本の伝統発酵食材が、植物性100%とは思えない圧倒的なコクと深みを生み出します。",
-    icon: (
-      <svg className="w-6 h-6 text-[#3E6044]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-      </svg>
-    ),
-  },
-  {
-    title: "米粉ベース",
-    description: "小麦粉の代わりに米粉を使用。グルテンフリーでありながら、なめらかな食感を実現。",
-    icon: (
-      <svg className="w-6 h-6 text-[#3E6044]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-      </svg>
-    ),
+    subtitle: "しろみそ・あまざけ",
+    story:
+      "日本独自の発酵素材を、一部のフレーバーに配合。コクとうまみをプラスすることで、植物性100％とは思えない深みが生まれます。「本当にヴィーガン？」と驚かれる理由のひとつです。",
+    imageSrc: "/images/ingredient_miso_amazake.jpg",
   },
 ];
 
+/* ── アニメーション設定 ── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: i * 0.15, ease: "easeOut" as const },
+  }),
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.92 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: "easeOut" as const },
+  },
+};
+
 export default function ReasonSection() {
   return (
-    <section id="reason" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.h2 
+    <section id="reason" className="bg-bg relative overflow-hidden py-20 md:py-36">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        {/* ── ヘッダー ── */}
+        <div className="mx-auto mb-20 max-w-2xl text-center md:mb-32">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-brand mb-4 font-sans text-sm tracking-[0.2em] uppercase"
+          >
+            Ingredients
+          </motion.p>
+
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-serif text-[#2D3A3A] sm:text-4xl"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-ink font-serif text-3xl leading-snug tracking-wide sm:text-4xl lg:text-[2.75rem]"
           >
-            なぜ、世界中から絶賛されるのか
+            ひとつひとつの素材に、
+            <br />
+            物語がある
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-4 text-lg text-[#3E6044] font-medium"
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-ink-light mt-6 text-base leading-relaxed sm:text-lg"
           >
-            日本の伝統発酵技術 × 植物性100%の黄金比
+            乳・卵・小麦・白砂糖不使用。素材の力で、おいしさをつくります。
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <img 
-              src="https://placehold.co/600x500/3E6044/FDFBF7?text=製造工程イメージ" 
-              alt="製造工程イメージ" 
-              className="w-full h-auto object-cover rounded-2xl shadow-xl"
-            />
-          </motion.div>
-
-          <div className="space-y-10">
-            {features.map((feature, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="flex gap-6"
+        {/* ── 素材の物語 ── */}
+        <div className="space-y-24 md:space-y-36">
+          {ingredientStories.map((item, index) => {
+            const isEven = index % 2 === 0;
+            return (
+              <motion.article
+                key={item.title}
+                custom={index}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                className={`flex flex-col gap-10 md:gap-16 ${
+                  isEven ? "md:flex-row" : "md:flex-row-reverse"
+                } items-center`}
               >
-                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-[#3E6044]/10">
-                  {feature.icon}
+                {/* 画像エリア */}
+                <motion.div
+                  variants={scaleIn}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="relative aspect-[4/3] w-full flex-shrink-0 overflow-hidden rounded-2xl bg-gray-100 shadow-[0_4px_30px_rgba(0,0,0,0.06)] md:w-1/2"
+                >
+                  <Image
+                    src={item.imageSrc}
+                    alt={`SoyStoriesのヴィーガン米粉アイスに使用する${item.title}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </motion.div>
+
+                {/* テキスト */}
+                <div
+                  className={`flex-1 ${
+                    isEven ? "md:pl-8 lg:pl-12" : "md:pr-8 lg:pr-12"
+                  } flex flex-col justify-center`}
+                >
+                  <p className="text-ink-muted mb-3 font-sans text-xs tracking-[0.15em] uppercase">
+                    {item.subtitle}
+                  </p>
+                  <h3 className="text-ink mb-6 font-serif text-2xl tracking-wide sm:text-3xl">
+                    {item.title}
+                  </h3>
+                  <p className="text-ink-light max-w-lg text-base leading-[1.9] tracking-wide sm:text-lg">
+                    {item.story}
+                  </p>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-[#2D3A3A] mb-2">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

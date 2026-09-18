@@ -1,167 +1,171 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" as const, delay },
+  }),
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: "easeOut" as const, delay },
+  }),
+};
 
 const reviews = [
   {
-    name: "Sarah M.",
-    country: "USA 🇺🇸",
+    body: "豆乳のソフトクリームが本当に美味しい！ヴィーガンスイーツとは思えないほど濃厚で、子どもも大喜びでした。",
+    author: "Google レビュー (ご家族連れのお客様)",
     rating: 5,
-    text: '"The ice cream was super creamy and chocolaty! I couldn\'t believe it was completely plant-based. A must-visit in Fukuoka!"',
-    translation:
-      "最高にクリーミーでチョコが濃厚！100%植物性なんて信じられない。福岡必訪です！",
   },
   {
-    name: "James L.",
-    country: "New York 🇺🇸",
+    body: "小麦アレルギーがあるので、こういったお店は本当に重宝します。どれを食べても美味しくて、安心して通えるお店です。",
+    author: "Google レビュー (アレルギーをお持ちのお客様)",
     rating: 5,
-    text: '"Best strawberry ice cream I\'ve ever had and it\'s vegan! The texture is incredibly smooth."',
-    translation:
-      "今までで最高のストロベリーアイス！しかもヴィーガン！信じられない滑らかさ。",
   },
   {
-    name: "Emma W.",
-    country: "UK 🇬🇧",
+    body: "福岡でこんなに美味しいプラントベースのスイーツが食べられるなんて。県外からでも絶対に行く価値があります！",
+    author: "Google レビュー (ヴィーガン思考のお客様)",
     rating: 5,
-    text: '"The matcha flavor was absolutely divine. You can taste the quality of every ingredient."',
-    translation:
-      "抹茶味は本当に最高。すべての素材の品質が伝わってきます。",
-  },
-  {
-    name: "Lucas B.",
-    country: "Germany 🇩🇪",
-    rating: 5,
-    text: '"Finally, a vegan gelato that doesn\'t compromise on taste. The miso flavor blew my mind!"',
-    translation:
-      "味に妥協しないヴィーガンジェラートについに出会えた。味噌味に衝撃！",
-  },
-  {
-    name: "Chloé D.",
-    country: "France 🇫🇷",
-    rating: 5,
-    text: '"Incroyable! The amazake gelato is so unique and delicious. Japanese fermentation at its finest."',
-    translation:
-      "素晴らしい！甘酒ジェラートはとてもユニークで美味しい。日本の発酵技術の極み。",
-  },
-  {
-    name: "Min-ji K.",
-    country: "South Korea 🇰🇷",
-    rating: 5,
-    text: '"I visited three times during my trip. Every flavor was perfect. My favorite was the kinako one!"',
-    translation:
-      "旅行中3回も訪れました。全フレーバー完璧。きなこが一番のお気に入り！",
   },
 ];
 
-const StarRating = () => (
-  <div className="flex gap-1 text-[#F59E0B] text-lg mb-4">
-    {[1, 2, 3, 4, 5].map((star) => (
-      <span key={star}>★</span>
-    ))}
-  </div>
-);
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
 export default function SocialProofSection() {
   return (
-    <section id="social-proof" className="py-24 bg-[#FDFBF7] relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-30">
-        <div className="absolute -top-[10%] -right-[5%] w-96 h-96 rounded-full bg-[#3E6044]/5 blur-3xl" />
-        <div className="absolute top-[40%] -left-[10%] w-[30rem] h-[30rem] rounded-full bg-[#C67C3E]/5 blur-3xl" />
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center gap-3 mb-6"
-          >
-            <div className="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100 flex items-center gap-2">
-              <span className="text-xl">🐮</span>
-              <span className="font-semibold text-[#2D3A3A]">HappyCow</span>
-              <span className="text-sm text-[#4A5568]">Top Rated in Fukuoka</span>
-            </div>
-          </motion.div>
-          
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-serif text-[#2D3A3A] mb-4"
-          >
-            世界中のお客様から届く、感動のレビュー
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-[#4A5568] text-lg max-w-2xl mx-auto"
-          >
-            世界最大のヴィーガンアプリ『HappyCow』で絶賛。貴店のお客様にも同じ感動を。
-          </motion.p>
-        </div>
-
+    <section id="reviews" className="bg-bg border-t border-gray-100 py-20 md:py-28">
+      <div className="mx-auto max-w-5xl px-6">
+        {/* Top Emotional Episode */}
         <motion.div
-          variants={containerVariants}
+          variants={fadeUp}
+          custom={0}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
+          viewport={{ once: true }}
+          className="mb-24"
         >
-          {reviews.map((review, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="bg-white p-8 rounded-2xl shadow-md border border-gray-50 relative group hover:shadow-xl transition-shadow duration-300"
-            >
-              {/* Background Quote Mark */}
-              <div className="absolute top-4 right-6 text-8xl font-serif text-gray-100 opacity-50 group-hover:scale-110 group-hover:text-gray-200 transition-all duration-500 pointer-events-none">
-                "
+          <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
+            <div className="w-full md:w-1/2">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm">
+                <Image
+                  src="/images/dummy_customer_moment.jpg"
+                  alt="お母さんと子どもがアイスを食べている様子"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
-              
-              <div className="relative z-10">
-                <StarRating />
-                
-                <p className="text-xl text-[#2D3A3A] font-serif italic mb-4 leading-relaxed">
-                  {review.text}
+            </div>
+            <div className="w-full space-y-6 md:w-1/2">
+              <p className="text-ink-muted font-sans text-xs tracking-[0.2em] uppercase">Episode</p>
+              <h2 className="text-ink font-serif text-2xl leading-relaxed md:text-3xl">
+                はじめて子どもにアイスクリームを食べさせることができた——
+                <br />
+                そう言って涙されたお母さんがいました。
+              </h2>
+              <p className="text-ink-light text-base leading-[2]">
+                アレルギーのあるお子さんを持つご家族にとって、
+                「みんなと同じものを食べられる」ことは、 私たちが思う以上に大きな意味があります。
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Reviews */}
+        <motion.div
+          variants={fadeUp}
+          custom={0.1}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-24"
+        >
+          <p className="text-ink-muted mb-10 text-center font-sans text-xs tracking-[0.25em] uppercase">
+            Reviews
+          </p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {reviews.map((review, index) => (
+              <div
+                key={index}
+                className="flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+              >
+                <p className="text-ink mb-6 font-serif text-sm leading-[1.8] md:text-base">
+                  &ldquo;{review.body}&rdquo;
                 </p>
-                
-                <div className="mb-6">
-                  <p className="text-sm text-[#4A5568] leading-relaxed">
-                    {review.translation}
-                  </p>
-                </div>
-                
-                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                  <div className="w-10 h-10 rounded-full bg-[#FDFBF7] flex items-center justify-center text-[#3E6044] font-bold border border-[#3E6044]/20">
-                    {review.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#2D3A3A] text-sm">{review.name}</p>
-                    <p className="text-xs text-[#4A5568]">{review.country}</p>
-                  </div>
-                </div>
+                <p className="text-ink-muted font-sans text-xs">— {review.author}</p>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Rating stats */}
+        <motion.div
+          variants={scaleIn}
+          custom={0.2}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-16 flex flex-wrap justify-center gap-16 border-y border-gray-200 py-12 text-center md:gap-24"
+        >
+          <div>
+            <span className="text-brand block font-serif text-5xl font-bold md:text-7xl">5.0</span>
+            <span className="text-ink-muted mt-3 block font-sans text-sm tracking-wider">
+              HappyCow 評価
+            </span>
+          </div>
+          <div>
+            <span className="text-ink block font-serif text-5xl font-bold md:text-7xl">
+              200<span className="text-4xl">+</span>
+            </span>
+            <span className="text-ink-muted mt-3 block font-sans text-sm tracking-wider">
+              Google レビュー
+            </span>
+          </div>
+        </motion.div>
+
+        {/* International reach */}
+        <motion.div
+          variants={fadeUp}
+          custom={0.3}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-12 text-center"
+        >
+          <p className="text-ink-light mx-auto max-w-xl text-base leading-relaxed">
+            韓国、台湾、香港、アメリカ、ヨーロッパ——
+            <br />
+            世界中からお客様が薬院の小さなお店に足を運んでくださっています。
+          </p>
+        </motion.div>
+
+        {/* Second Episode */}
+        <motion.div
+          variants={fadeUp}
+          custom={0.4}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mx-auto max-w-2xl"
+        >
+          <div className="rounded-2xl border border-gray-100 bg-white p-8 text-center md:p-10">
+            <p className="text-ink mb-4 font-serif text-lg leading-[2] md:text-xl">
+              滞在中に2回、3回と通ってくださる海外のお客様がいます。
+            </p>
+            <p className="text-ink-muted text-sm">
+              「ここでしか食べられないから」——
+              <br />
+              その言葉が、私たちの原動力です。
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

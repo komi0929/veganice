@@ -1,90 +1,127 @@
 @import "tailwindcss";
 
-/* ===== SoyStories B2B Landing Page Design System ===== */
+/* ===== SoyStories — Clean & Modern Design System ===== */
+/* Inspired by the actual SoyStories brand: bright, clean, photogenic */
 
 @theme inline {
-  /* Color Palette */
-  --color-ivory: #FDFBF7;
-  --color-ink: #2D3A3A;
-  --color-brand: #3E6044;
-  --color-brand-light: #5A8A63;
-  --color-brand-dark: #2C4532;
-  --color-cta: #C67C3E;
-  --color-cta-hover: #B06A2E;
-  --color-cta-sub: #4A5568;
-  --color-cta-sub-hover: #3A4558;
-  --color-gold: #F59E0B;
-  --color-cream: #F5F0E8;
-  --color-green-tint: #F3F7F4;
+  /* ── Brand ── */
+  --color-brand: #3e6044;
+  --color-brand-light: #5a8a63;
+  --color-brand-dark: #2c4532;
 
-  /* Font families */
-  --font-serif: "Noto Serif JP", serif;
-  --font-sans: "Noto Sans JP", sans-serif;
+  /* ── Base (white-forward, clean) ── */
+  --color-bg: #fafaf8;
+  --color-bg-white: #ffffff;
+  --color-ink: #2d3a3a;
+  --color-ink-light: #5a6868;
+  --color-ink-muted: #8a9494;
+
+  /* ── Product-derived accent colors ── */
+  --color-matcha: #6b8e5a;
+  --color-berry: #d4708f;
+  --color-chocolate: #7b5b3a;
+  --color-vanilla: #f5e6cc;
+  --color-kinako: #c4a265;
+
+  /* ── CTA ── */
+  --color-cta: #d4708f;
+  --color-cta-hover: #c05a78;
+  --color-cta-sub: #3e6044;
+  --color-cta-sub-hover: #2c4532;
+
+  /* ── Neutrals ── */
+  --color-gray-50: #f7f7f5;
+  --color-gray-100: #efefed;
+  --color-gray-200: #e0dfdd;
+  --color-gray-300: #c8c7c5;
+  --color-gray-400: #9a9998;
+
+  /* ── Font families ── */
+  --font-serif: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+  --font-sans: "Noto Sans JP", "Hiragino Sans", sans-serif;
 }
 
-/* Base styles */
+/* ===== Base ===== */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #FDFBF7;
-  color: #2D3A3A;
-  font-family: "Noto Sans JP", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Heading styles - serif for premium Japanese feel */
-h1, h2, h3, h4 {
-  font-family: "Noto Serif JP", serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
 }
 
-/* Selection color */
 ::selection {
-  background-color: #3E6044;
-  color: #FDFBF7;
+  background-color: var(--color-brand);
+  color: #ffffff;
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #FDFBF7;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #3E6044;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #2C4532;
-}
-
-/* CTA pulse animation */
-@keyframes pulse-cta {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(198, 124, 62, 0.4);
+/* ===== Gentle CTA breathing animation ===== */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(212, 112, 143, 0.15);
   }
   50% {
-    box-shadow: 0 0 0 12px rgba(198, 124, 62, 0);
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(212, 112, 143, 0.25);
   }
 }
 
-.animate-pulse-cta {
-  animation: pulse-cta 2s ease-in-out infinite;
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
 }
 
-/* Focus styles for accessibility */
-input:focus, textarea:focus, select:focus, button:focus-visible {
-  outline: 2px solid #3E6044;
+/* ===== Soft divider ===== */
+.soft-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-gray-200) 20%,
+    var(--color-gray-200) 80%,
+    transparent 100%
+  );
+  border: none;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+/* ===== Focus (accessibility) ===== */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus-visible {
+  outline: 2px solid var(--color-brand);
   outline-offset: 2px;
 }
 
-/* Radio button custom styling */
 input[type="radio"] {
-  accent-color: #3E6044;
+  accent-color: var(--color-brand);
+}
+
+/* ===== Scrollbar — minimal ===== */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand);
 }

@@ -2,46 +2,71 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    q: "賞味期限はどのくらいですか？",
-    a: "製造日より6ヶ月間です（冷凍保存 -18℃以下）。冷凍保管のため、フードロスの心配がありません。"
-  },
-  {
     q: "非ヴィーガンのお客様が食べても美味しいですか？",
-    a: "はい、多くの非ヴィーガンのお客様にも『普通のジェラートより美味しい』とご好評いただいています。白みそや甘酒などの日本の伝統発酵食材が、植物性とは思えないコクと深みを実現しています。"
+    a: "はい。実際に「こっちのアイスのほうが好き」とおっしゃるノンビーガンのお客様も多くいらっしゃいます。米粉を使った独自の製法で、植物性とは思えないなめらかさとコクを実現しています。",
   },
   {
     q: "アレルギー対応の詳細を教えてください",
-    a: "全商品、乳・卵・小麦・白砂糖不使用です。大豆を使用しておりますので、大豆アレルギーの方はご注意ください。専用工場で製造しており、コンタミネーション対策を徹底しています。"
+    a: "全商品、乳・卵・小麦・白砂糖不使用です。乳化安定剤・増粘剤・着色料も使用していません。大豆を使用しておりますので、大豆アレルギーの方はご注意ください。",
   },
   {
-    q: "最小ロットはどのくらいですか？",
-    a: "1バット（2リットル）からご注文いただけます。まずは少量からお試しいただき、お客様の反応を見ながら発注量を調整していただけます。"
+    q: "卸売の最小ロットはどのくらいですか？",
+    a: "最小4リットル分（1L×4または2L×2）からご注文いただけます。大量でなくてもお気軽にご相談ください。価格の詳細はお問い合わせフォームよりどうぞ。",
   },
   {
-    q: "配送エリアと送料について教えてください",
-    a: "ヤマト運輸のクール冷凍便で全国配送に対応しております。送料は地域・数量により異なりますので、お気軽にお問い合わせください。"
+    q: "配送について教えてください",
+    a: "クール冷凍便で全国配送に対応しております。詳細はお問い合わせください。",
   },
   {
     q: "メニュー提案やPOP素材のサポートはありますか？",
-    a: "はい、導入店舗様には、メニュー提案書・多言語POP素材（日本語・英語）・SNS用素材などを無料でご提供しています。"
-  }
+    a: "はい、導入店舗様にはメニュー提案やPOP素材のご提供もご相談いただけます。お気軽にお問い合わせください。",
+  },
+  {
+    q: "オンラインストアでも購入できますか？",
+    a: "はい、一般のお客様向けにはsoystories.comでアイスセットを販売しております。フレーバーを自由に選べるセットもご用意しています。",
+  },
 ];
 
-function FAQItem({ q, a }: { q: string, a: string }) {
+const itemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.08,
+      duration: 0.6,
+      ease: "easeOut" as const,
+    },
+  }),
+};
+
+function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200 last:border-0">
+    <motion.div
+      custom={index}
+      variants={itemVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      className="border-b border-gray-100 last:border-b-0"
+    >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-6 flex items-center justify-between text-left focus:outline-none"
+        className="group flex w-full items-center justify-between py-8 text-left focus:outline-none"
       >
-        <span className="text-lg font-bold text-[#2D3A3A] pr-8">{q}</span>
-        <span className={`text-[#C67C3E] text-2xl transition-transform duration-300 flex-shrink-0 ${isOpen ? "rotate-45" : ""}`}>
-          +
+        <span className="text-ink pr-8 font-sans text-base font-bold md:text-lg">{q}</span>
+        <span
+          className={`text-brand flex-shrink-0 transition-transform duration-300 ease-out ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        >
+          <ChevronDown size={20} strokeWidth={1.5} />
         </span>
       </button>
       <AnimatePresence>
@@ -50,54 +75,40 @@ function FAQItem({ q, a }: { q: string, a: string }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: "easeInOut" as const }}
             className="overflow-hidden"
           >
-            <div className="pb-6 text-gray-600 leading-relaxed pr-8">
+            <div className="text-ink-light pr-8 pb-8 font-sans text-sm leading-relaxed font-light md:text-base">
               {a}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.h2 
+    <section id="faq" className="bg-bg py-16 md:py-28">
+      <div className="mx-auto max-w-3xl px-6 lg:px-8">
+        <div className="mb-20 text-center">
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-serif text-[#2D3A3A] sm:text-4xl"
+            transition={{ duration: 0.6, ease: "easeOut" as const }}
+            className="text-ink font-serif text-3xl sm:text-4xl"
           >
-            よくあるご質問
+            よくいただくご質問
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-4 text-lg text-gray-600"
-          >
-            導入をご検討中の方からよくいただくご質問
-          </motion.p>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-[#FDFBF7] rounded-2xl p-6 md:p-10 shadow-sm"
-        >
+        <div className="w-full">
           {faqs.map((faq, index) => (
-            <FAQItem key={index} q={faq.q} a={faq.a} />
+            <FAQItem key={index} q={faq.q} a={faq.a} index={index} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

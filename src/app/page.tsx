@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
+import PainPointSection from "./components/PainPointSection";
 import ProblemSection from "./components/ProblemSection";
 import BenefitSection from "./components/BenefitSection";
 import SocialProofSection from "./components/SocialProofSection";
@@ -15,28 +16,31 @@ export default function Home() {
     <>
       <Header />
       <main className="flex-1">
-        {/* ① ファーストビュー (Hero) */}
+        {/* ① ファーストビュー — 課題を突く */}
         <HeroSection />
 
-        {/* ② 問題提起 (Problem & Veto Vote) */}
-        <ProblemSection />
+        {/* ② 飲食店の課題に共感（PASのP・A） */}
+        <PainPointSection />
 
-        {/* ③ ベネフィット (導入後の変化) */}
-        <BenefitSection />
-
-        {/* ④ 実績・事例 (Social Proof) */}
-        <SocialProofSection />
-
-        {/* ⑤ 選ばれる理由 (Reason to Believe) */}
-        <ReasonSection />
-
-        {/* ⑥ 商品ラインナップ & B2B取引条件 */}
+        {/* ③ ソリューション — 商品で課題を解決 */}
         <ProductsSection />
 
-        {/* ⑦ FAQ */}
+        {/* ④ ブランドストーリー — なぜ製造を始めたのか？ */}
+        <ProblemSection />
+
+        {/* ⑤ 社会的証明 — 店舗での極めて高い評判（ストーリーの裏付け） */}
+        <SocialProofSection />
+
+        {/* ⑥ 素材のこだわり */}
+        <ReasonSection />
+
+        {/* ⑦ 導入メリット + B2B条件 */}
+        <BenefitSection />
+
+        {/* ⑧ FAQ */}
         <FAQSection />
 
-        {/* ⑧ クロージングCTA & フォーム */}
+        {/* ⑨ お問い合わせ */}
         <ContactForm />
       </main>
       <Footer />

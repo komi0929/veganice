@@ -1,102 +1,266 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { IceCreamCone, ShieldCheck, PackageCheck } from "lucide-react";
 
-const products = [
-  { name: "至高の濃厚抹茶", image: "https://placehold.co/400x300/4A7C59/FDFBF7?text=濃厚抹茶" },
-  { name: "とろけるショコラ", image: "https://placehold.co/400x300/5C3A21/FDFBF7?text=ショコラ" },
-  { name: "朝搾り豆乳バニラ", image: "https://placehold.co/400x300/F5E6CC/2D3A3A?text=豆乳バニラ" },
-  { name: "完熟ストロベリー", image: "https://placehold.co/400x300/C44B6C/FDFBF7?text=ストロベリー" },
-  { name: "白みそキャラメル", image: "https://placehold.co/400x300/D4A574/2D3A3A?text=白みそキャラメル" },
-  { name: "甘酒ジンジャー", image: "https://placehold.co/400x300/E8D5B7/2D3A3A?text=甘酒ジンジャー" },
-  { name: "焙煎きなこ", image: "https://placehold.co/400x300/B8956A/FDFBF7?text=焙煎きなこ" },
-  { name: "黒ごまプラリネ", image: "https://placehold.co/400x300/2D2D2D/FDFBF7?text=黒ごまプラリネ" },
+/* ── フレーバーデータ ── */
+const flavors = [
+  {
+    name: "とろけるショコラ",
+    story: "カカオの香りが広がる濃厚な味わい",
+  },
+  {
+    name: "至高の濃厚抹茶",
+    story: "甘酒配合。深みのある抹茶",
+  },
+  {
+    name: "ベリーミックス",
+    story: "数種のベリーの甘酸っぱさ",
+  },
+  {
+    name: "香るほうじ茶",
+    story: "焙煎の香ばしさとやさしい甘み",
+  },
+  {
+    name: "ジューシーすぎるもも",
+    story: "果実感をそのまま閉じ込めて",
+  },
+  {
+    name: "爽やかりんご",
+    story: "すっきりとした果実の爽快感",
+  },
+  {
+    name: "バニラココナッツ",
+    story: "ココナッツミルクのまろやかさ",
+  },
+  {
+    name: "ドラゴンフルーツ",
+    story: "鮮やかな彩りとさっぱりした甘さ",
+  },
 ];
 
+/* ── B2B 条件データ ── */
 const b2bTerms = [
-  { label: "最小ロット", value: "1バット（2L）〜 小ロットでのテスト導入が可能です", icon: "📦" },
-  { label: "配送", value: "全国対応（ヤマト運輸 クール冷凍便）", icon: "🚚" },
-  { label: "お支払い", value: "月末締め翌月末払い（請求書払い対応可能）", icon: "💳" },
-  { label: "賞味期限", value: "製造日より6ヶ月（冷凍保存 -18℃以下）", icon: "❄️" },
-  { label: "サポート", value: "メニュー提案・POP素材のご提供も可能です", icon: "🤝" },
+  {
+    label: "提供形態",
+    value: "冷凍（1Lまたは2L）/ 最小4Lから",
+  },
+  {
+    label: "配送",
+    value: "全国対応（クール冷凍便）",
+  },
+  {
+    label: "価格",
+    value: "お問い合わせください",
+  },
+  {
+    label: "対象",
+    value: "こだわりのあるお店へ、少量からお届け",
+  },
 ];
+
+/* ── アニメーション ── */
+const itemVariant = {
+  hidden: { opacity: 0, y: 16 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: i * 0.08,
+      ease: "easeOut" as const,
+    },
+  }),
+};
 
 export default function ProductsSection() {
   return (
-    <section id="products" className="py-24 bg-[#FDFBF7]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Products Grid */}
-        <div className="mb-24">
-          <div className="text-center mb-16">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl font-serif text-[#2D3A3A] sm:text-4xl"
-            >
-              全8種のプレミアムフレーバー
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="mt-4 text-lg text-[#3E6044] font-medium"
-            >
-              すべて乳・卵・小麦・白砂糖不使用
-            </motion.p>
-          </div>
+    <section id="products" className="bg-bg-white relative overflow-hidden py-20 md:py-36">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        {/* ── ヘッダー ── */}
+        <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-brand mb-4 font-sans text-sm tracking-[0.2em] uppercase"
+          >
+            Our Solution
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="text-ink font-serif text-3xl leading-snug tracking-wide sm:text-4xl lg:text-[2.5rem]"
+          >
+            あなたのお店の「困った」を解決する、
+            <br className="hidden sm:block" />
+            ８つのフレーバー
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-ink-light mt-6 text-base leading-relaxed sm:text-lg"
+          >
+            すべて乳・卵・小麦・白砂糖不使用。乳化安定剤・増粘剤・着色料も不使用。
+            <br className="hidden sm:block" />
+            お好きなフレーバーを選んでセットにできます。
+          </motion.p>
+        </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
-            {products.map((product, index) => (
+        {/* ── 3つのポイント ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mx-auto mb-16 flex max-w-4xl flex-col items-stretch justify-center gap-6 md:flex-row md:gap-8"
+        >
+          <div className="border-brand flex flex-1 items-center gap-4 border-l-2 py-2 pl-5">
+            <div className="flex-shrink-0">
+              <IceCreamCone size={20} strokeWidth={1.5} className="text-brand" />
+            </div>
+            <span className="text-ink text-sm leading-snug sm:text-base">
+              仕込み不要
+              <br className="sm:hidden" />
+              <span className="text-ink-muted">すくうだけ</span>
+            </span>
+          </div>
+          <div className="border-brand flex flex-1 items-center gap-4 border-l-2 py-2 pl-5">
+            <div className="flex-shrink-0">
+              <ShieldCheck size={20} strokeWidth={1.5} className="text-brand" />
+            </div>
+            <span className="text-ink text-sm leading-snug sm:text-base">
+              乳・卵・小麦フリー
+              <br className="sm:hidden" />
+              <span className="text-ink-muted">コンタミなし</span>
+            </span>
+          </div>
+          <div className="border-brand flex flex-1 items-center gap-4 border-l-2 py-2 pl-5">
+            <div className="flex-shrink-0">
+              <PackageCheck size={20} strokeWidth={1.5} className="text-brand" />
+            </div>
+            <span className="text-ink text-sm leading-snug sm:text-base">
+              4Lから
+              <br className="sm:hidden" />
+              <span className="text-ink-muted">小ロット対応</span>
+            </span>
+          </div>
+        </motion.div>
+
+        {/* ── 実商品写真 ── */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" as const }}
+          className="relative mx-auto mb-16 aspect-[16/10] w-full max-w-4xl overflow-hidden rounded-2xl shadow-md md:aspect-[21/9]"
+        >
+          <Image
+            src="/images/ec_gelato_18set.jpg"
+            alt="SoyStories ヴィーガン米粉アイス 全8フレーバー"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 1024px"
+          />
+        </motion.div>
+
+        {/* ── フレーバーテキストグリッド ── */}
+        <div className="mx-auto mb-28 max-w-4xl md:mb-36">
+          <div className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2 md:gap-y-10">
+            {flavors.map((flavor, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group cursor-pointer"
+                key={flavor.name}
+                custom={index}
+                variants={itemVariant}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+                className="flex flex-col items-baseline gap-2 border-b border-gray-100 pb-4 sm:flex-row sm:gap-4"
               >
-                <div className="overflow-hidden rounded-xl mb-4 bg-white shadow-sm">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <h3 className="text-center text-[#2D3A3A] font-bold md:text-lg">{product.name}</h3>
+                <h3 className="text-ink font-serif text-lg font-medium whitespace-nowrap">
+                  {flavor.name}
+                </h3>
+                <p className="text-ink-muted text-sm leading-relaxed">{flavor.story}</p>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* B2B Terms */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-serif text-[#2D3A3A] mb-3">お取引条件</h3>
-            <p className="text-gray-600">小ロットからテスト導入が可能です</p>
-          </div>
+        {/* ── CTA ── */}
+        <div className="mb-28 text-center md:mb-36">
+          <a
+            href="#contact-form"
+            className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"
+          >
+            まず味見してみる
+          </a>
+        </div>
 
-          <div className="space-y-4 max-w-4xl mx-auto">
-            {b2bTerms.map((term, index) => (
-              <div key={index} className="flex flex-col sm:flex-row sm:items-center py-4 border-b border-gray-100 last:border-0 gap-2 sm:gap-6">
-                <div className="flex items-center gap-3 sm:w-48 flex-shrink-0 text-[#3E6044] font-bold text-lg">
-                  <span className="text-xl">{term.icon}</span>
-                  {term.label}
-                </div>
-                <div className="text-[#2D3A3A] sm:flex-1">
-                  {term.value}
-                </div>
+        {/* ── B2Bパッケージング ── */}
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-12 lg:flex-row lg:gap-16">
+          {/* 画像エリア */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" as const }}
+            className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm lg:w-1/2"
+          >
+            <Image
+              src="/images/dummy_b2b_packaging.jpg"
+              alt="B2B向けの梱包と配送状態"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </motion.div>
+
+          {/* 情報エリア */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" as const }}
+            className="w-full lg:w-1/2"
+          >
+            <h3 className="text-ink mb-6 font-serif text-2xl tracking-wide sm:text-3xl">
+              お店のこだわりを、
+              <br />
+              そのまま形に。
+            </h3>
+            <p className="text-ink-light mb-8 text-base leading-relaxed">
+              少量からの仕入れで、リスクなく新しい価値をメニューに加えられます。
+              <br />
+              専用のパッケージで品質を保ったまま、確実にお届けします。
+            </p>
+
+            <div className="bg-bg rounded-xl border border-gray-100 p-6 sm:p-8">
+              <div className="space-y-4">
+                {b2bTerms.map((term, index) => (
+                  <div
+                    key={term.label}
+                    className={`flex flex-col gap-1 pb-4 sm:flex-row sm:items-baseline sm:gap-6 ${
+                      index < b2bTerms.length - 1 ? "border-b border-gray-200" : ""
+                    }`}
+                  >
+                    <span className="text-brand flex-shrink-0 font-serif text-sm font-medium sm:w-24 sm:text-base">
+                      {term.label}
+                    </span>
+                    <span className="text-ink-light text-sm leading-relaxed sm:text-base">
+                      {term.value}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
