@@ -64,7 +64,8 @@ const b2bTerms = [
   },
   {
     label: "アレルゲン",
-    value: "特定原材料7品目不使用（大豆を含む。28品目中、大豆のみ使用）",
+    value:
+      "特定原材料7品目（卵・乳・小麦・えび・かに・そば・落花生）不使用。フレーバーにより大豆・アーモンド・もも・りんごを含む",
   },
   {
     label: "添加物",
@@ -120,7 +121,7 @@ export default function ProductsSection() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-ink font-serif text-3xl leading-snug tracking-wide sm:text-4xl lg:text-[2.5rem]"
           >
-            全8フレーバー、すべて7大アレルゲン不使用。
+            全8フレーバー、乳・卵・小麦 不使用。
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
