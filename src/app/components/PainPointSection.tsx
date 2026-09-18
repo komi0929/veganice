@@ -29,23 +29,28 @@ const itemVariants = {
 const painPoints = [
   {
     num: "01",
-    text: "アレルギーやヴィーガンのお客様に、デザートを出せずにいる",
-    detail: "せっかくの食事の締めに、お断りするのは心苦しい。",
+    text: "アレルギーやヴィーガンのお客様に、デザートを断っている",
+    detail: "グループに1人でもいると、テーブル全体のデザート注文がキャンセルされることも。",
   },
   {
     num: "02",
-    text: "インバウンド客にデザートを断るたびに、客単価を逃している",
-    detail: "海外のお客様は特に食へのこだわりが強く、機会損失になっている。",
+    text: "インバウンド客に対応できず、客単価を逃している",
+    detail: "訪日外国人の約10%がベジタリアン・ヴィーガン。デザート1品で+500〜800円の機会損失に。",
   },
   {
     num: "03",
-    text: "専用設備やレシピ開発の余裕はない",
-    detail: "コンタミネーション対策や新しい機材の導入はハードルが高い。",
+    text: "パティシエがいない。仕込みに人手を割けない",
+    detail: "デザートのために専任スタッフを雇う余裕はないが、食後の一品は欲しい。",
   },
   {
     num: "04",
+    text: "生菓子の廃棄ロスが痛い",
+    detail: "ケーキやプリンは賞味期限が短く、売れ残りがそのまま原価に乗る。",
+  },
+  {
+    num: "05",
     text: "代替品を試したが、味に納得できなかった",
-    detail: "「ヴィーガン用だから」と味を妥協したくない。",
+    detail: "『ヴィーガン対応だから仕方ない』——その妥協は、もう必要ありません。",
   },
 ];
 
@@ -76,7 +81,9 @@ export default function PainPointSection() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="flex flex-col gap-5 bg-white p-10 md:p-12"
+                className={`flex flex-col gap-5 bg-white p-10 md:p-12 ${
+                  index === 4 ? "md:col-span-2" : ""
+                }`}
               >
                 <span className="text-ink-muted font-sans text-sm tracking-widest">
                   {point.num}
@@ -95,9 +102,7 @@ export default function PainPointSection() {
             className="flex w-full max-w-2xl flex-col items-center gap-8 text-center"
           >
             <p className="text-ink font-serif text-xl leading-relaxed md:text-2xl">
-              そのお悩み、
-              <br className="sm:hidden" />
-              SoyStoriesのヴィーガン米粉アイスが解決します。
+              その課題、SoyStoriesなら一括で解決できます。
             </p>
             <motion.a
               href="#products"
@@ -105,7 +110,7 @@ export default function PainPointSection() {
               whileTap={{ scale: 0.98 }}
               className="bg-cta hover:bg-cta-hover inline-block cursor-pointer rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-colors"
             >
-              商品を見る
+              解決策を見る
             </motion.a>
           </motion.div>
         </motion.div>

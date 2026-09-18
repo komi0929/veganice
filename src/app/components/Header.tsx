@@ -17,9 +17,9 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { label: "私たちのストーリー", href: "#story" },
-    { label: "商品紹介", href: "#products" },
-    { label: "お客様の声", href: "#reviews" },
+    { label: "選ばれる理由", href: "#reviews" },
+    { label: "商品ラインナップ", href: "#products" },
+    { label: "導入実績", href: "#reviews" },
   ];
 
   return (
@@ -69,7 +69,7 @@ export default function Header() {
               href="#contact-form"
               className="bg-cta hover:bg-cta-hover rounded-full px-6 py-2.5 font-sans text-sm font-medium text-white transition-colors duration-300"
             >
-              まず味見してみる
+              無料サンプルを申し込む
             </Link>
           </div>
 
@@ -113,7 +113,7 @@ export default function Header() {
             className="bg-cta mt-4 rounded-full px-8 py-3 font-sans text-base font-medium text-white"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            まず味見してみる
+            無料サンプルを申し込む
           </Link>
         </nav>
       </div>

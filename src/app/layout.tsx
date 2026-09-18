@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SoyStories | 業務用ヴィーガン米粉アイス",
     description:
-      "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。すべてのお客様に出せるアイスを、あなたのお店に。",
+      "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。直営店HappyCow 5.0・Google 200件超の実証済みクラフトジェラートを、あなたのお店に。",
     type: "website",
     locale: "ja_JP",
     url: "https://soystories.com",

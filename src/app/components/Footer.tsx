@@ -13,9 +13,9 @@ export default function Footer() {
             <h2 className="mb-2 font-serif text-3xl font-bold tracking-tight">SoyStories</h2>
             <p className="mb-6 font-sans text-sm text-white/50">ソイストーリーズ</p>
             <p className="font-sans text-base leading-relaxed text-white/80">
-              食に制限のある人にとって
+              飲食店のデザートメニューに、
               <br />
-              「ユメミタイ」な場所を。
+              新しい選択肢を。
             </p>
           </div>
 
@@ -23,8 +23,11 @@ export default function Footer() {
           <div className="flex flex-col items-start text-left md:items-center">
             <div className="flex flex-col gap-4">
               <h3 className="mb-2 text-sm font-bold tracking-wider text-white/50">メニュー</h3>
-              <Link href="#story" className="hover:text-cta text-base text-white transition-colors">
-                私たちのストーリー
+              <Link
+                href="#reviews"
+                className="hover:text-cta text-base text-white transition-colors"
+              >
+                選ばれる理由
               </Link>
               <Link
                 href="#products"
@@ -36,7 +39,7 @@ export default function Footer() {
                 href="#reviews"
                 className="hover:text-cta text-base text-white transition-colors"
               >
-                お客様の声
+                導入実績
               </Link>
               <Link
                 href="#contact-form"

@@ -9,21 +9,21 @@ const ingredientStories = [
     title: "米粉",
     subtitle: "こめこ",
     story:
-      "パートナー企業と開発した米粉の製法が、乳製品を使わずになめらかな食感を実現しています。ワッフルにも、アイスにも使っている、SoyStoriesの基本素材です。",
+      "乳製品不使用でもなめらかなディッシャー離れを実現する、独自の米粉製法。パートナー企業と開発したこの製法が、SoyStoriesの品質の根幹です。",
     imageSrc: "/images/ingredient_rice_flour.jpg",
   },
   {
     title: "豆乳",
     subtitle: "とうにゅう",
     story:
-      "バターや生クリームの代わりに、濃厚な豆乳でコクを出しています。乳・卵・小麦を扱わない専用の製造ラインで製造しています。",
+      "乳・卵・小麦を一切扱わない専用の製造ラインで製造。コンタミネーションの心配なく、アレルギー対応メニューとしてお客様にご提供いただけます。",
     imageSrc: "/images/ingredient_soymilk.jpg",
   },
   {
     title: "白みそ・甘酒",
     subtitle: "しろみそ・あまざけ",
     story:
-      "日本独自の発酵素材を、一部のフレーバーに配合。コクとうまみをプラスすることで、植物性100％とは思えない深みが生まれます。「本当にヴィーガン？」と驚かれる理由のひとつです。",
+      "日本独自の発酵素材で深みとコクを加え、「本当にヴィーガン？」とお客様に驚かれる味わいに。メニューの話題性にも貢献します。",
     imageSrc: "/images/ingredient_miso_amazake.jpg",
   },
 ];
@@ -60,7 +60,7 @@ export default function ReasonSection() {
             transition={{ duration: 0.5 }}
             className="text-brand mb-4 font-sans text-sm tracking-[0.2em] uppercase"
           >
-            Ingredients
+            Quality
           </motion.p>
 
           <motion.h2
@@ -70,9 +70,7 @@ export default function ReasonSection() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-ink font-serif text-3xl leading-snug tracking-wide sm:text-4xl lg:text-[2.75rem]"
           >
-            ひとつひとつの素材に、
-            <br />
-            物語がある
+            プロの厨房で選ばれる品質
           </motion.h2>
 
           <motion.p
@@ -82,7 +80,7 @@ export default function ReasonSection() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-ink-light mt-6 text-base leading-relaxed sm:text-lg"
           >
-            乳・卵・小麦・白砂糖不使用。素材の力で、おいしさをつくります。
+            乳・卵・小麦・白砂糖不使用。乳化安定剤・増粘剤・着色料もすべて不使用。素材の力だけで、おいしさをつくっています。
           </motion.p>
         </div>
 

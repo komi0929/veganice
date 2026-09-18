@@ -67,12 +67,12 @@ export default function HeroSection() {
             className="font-serif leading-[1.4] font-bold tracking-wider text-white sm:leading-[1.3]"
           >
             <span className="block text-2xl text-gray-200 sm:text-3xl md:text-4xl">
-              乳・卵・小麦フリー。仕込みなし。
+              飲食店のための、プラントベース・クラフトジェラート。
             </span>
             <span className="mt-2 block text-3xl sm:text-4xl md:text-5xl lg:mt-4 lg:text-6xl">
-              すべてのお客様に出せる
+              自社店舗で実証済みの味を、
               <br />
-              アイスを、あなたのお店に。
+              あなたのお店に。
             </span>
           </motion.h1>
 
@@ -81,9 +81,11 @@ export default function HeroSection() {
             variants={itemVariants}
             className="max-w-xl font-sans text-base leading-relaxed text-gray-200 sm:text-lg md:text-xl"
           >
-            アレルギー対応もヴィーガン対応も、これ一つで。
+            乳・卵・小麦フリー。仕込みゼロ。4Lの小ロットから。
+            <br />
+            HappyCow 5.0・Google レビュー200件超——直営店で圧倒的な評価を得ている
             <br className="hidden sm:block" />
-            届いたらすくうだけのヴィーガン米粉アイスを、4Lの小ロットから。
+            クラフトジェラートを、あなたのメニューに。
           </motion.p>
 
           {/* CTA buttons */}
@@ -97,7 +99,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.98 }}
               className="bg-cta hover:bg-cta-hover inline-block w-full cursor-pointer rounded-full px-10 py-4 text-center text-lg font-bold text-white shadow-md transition-colors sm:w-auto"
             >
-              まず味見してみる
+              無料サンプルを申し込む
             </motion.a>
           </motion.div>
 
@@ -106,11 +108,15 @@ export default function HeroSection() {
             variants={itemVariants}
             className="mt-4 flex w-full flex-col items-start gap-x-5 gap-y-2 border-t border-gray-100/30 pt-8 sm:max-w-xl sm:flex-row sm:flex-wrap sm:items-center"
           >
-            <span className="font-sans text-sm text-gray-300">★ HappyCow 5.0</span>
+            <span className="font-sans text-sm text-gray-300">★ 直営店 HappyCow 5.0</span>
             <span className="hidden text-gray-500 sm:inline" aria-hidden="true">
               ·
             </span>
             <span className="font-sans text-sm text-gray-300">Google レビュー 200件超</span>
+            <span className="hidden text-gray-500 sm:inline" aria-hidden="true">
+              ·
+            </span>
+            <span className="font-sans text-sm text-gray-300">仕込み不要・すくうだけ</span>
             <span className="hidden text-gray-500 sm:inline" aria-hidden="true">
               ·
             </span>

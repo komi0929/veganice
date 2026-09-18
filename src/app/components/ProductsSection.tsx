@@ -7,13 +7,13 @@ import { IceCreamCone, ShieldCheck, PackageCheck } from "lucide-react";
 /* ── フレーバーデータ ── */
 const flavors = [
   {
-    name: "とろけるショコラ",
-    story: "カカオの香りが広がる濃厚な味わい",
+    name: "濃厚ショコラ",
+    story: "カカオの深い香りと濃厚な味わい",
     image: "/images/flavors/chocolate.png",
   },
   {
-    name: "至高の濃厚抹茶",
-    story: "甘酒配合。深みのある抹茶",
+    name: "濃厚抹茶",
+    story: "甘酒配合。奥深い抹茶の余韻",
     image: "/images/flavors/matcha.png",
   },
   {
@@ -22,17 +22,17 @@ const flavors = [
     image: "/images/flavors/berry_mix.png",
   },
   {
-    name: "香るほうじ茶",
+    name: "ほうじ茶",
     story: "焙煎の香ばしさとやさしい甘み",
     image: "/images/flavors/houjicha.png",
   },
   {
-    name: "ジューシーすぎるもも",
-    story: "果実感をそのまま閉じ込めて",
+    name: "白桃",
+    story: "果実感をそのまま閉じ込めた爽やかさ",
     image: "/images/flavors/peach.png",
   },
   {
-    name: "爽やかりんご",
+    name: "りんご",
     story: "すっきりとした果実の爽快感",
     image: "/images/flavors/apple.png",
   },
@@ -59,12 +59,12 @@ const b2bTerms = [
     value: "全国対応（クール冷凍便）",
   },
   {
-    label: "価格",
-    value: "お問い合わせください",
+    label: "保管温度",
+    value: "-18℃以下で長期保存可能",
   },
   {
-    label: "対象",
-    value: "こだわりのあるお店へ、少量からお届け",
+    label: "価格",
+    value: "お問い合わせください",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function ProductsSection() {
             transition={{ duration: 0.5 }}
             className="text-brand mb-4 font-sans text-sm tracking-[0.2em] uppercase"
           >
-            Our Solution
+            Product Lineup
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -104,9 +104,7 @@ export default function ProductsSection() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-ink font-serif text-3xl leading-snug tracking-wide sm:text-4xl lg:text-[2.5rem]"
           >
-            あなたのお店の「困った」を解決する、
-            <br className="hidden sm:block" />
-            ８つのフレーバー
+            全8フレーバー、すべて7大アレルゲン不使用。
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -117,7 +115,7 @@ export default function ProductsSection() {
           >
             すべて乳・卵・小麦・白砂糖不使用。乳化安定剤・増粘剤・着色料も不使用。
             <br className="hidden sm:block" />
-            お好きなフレーバーを選んでセットにできます。
+            8種から自由に組み合わせ。和食・洋食・カフェ、どの業態にも合うラインナップです。
           </motion.p>
         </div>
 
@@ -215,7 +213,7 @@ export default function ProductsSection() {
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"
           >
-            まず味見してみる
+            無料サンプルを申し込む
           </a>
         </div>
 

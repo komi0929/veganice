@@ -2,10 +2,11 @@ import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import PainPointSection from "./components/PainPointSection";
 import ProblemSection from "./components/ProblemSection";
-import BenefitSection from "./components/BenefitSection";
 import SocialProofSection from "./components/SocialProofSection";
 import ReasonSection from "./components/ReasonSection";
 import ProductsSection from "./components/ProductsSection";
+import EconomicsSection from "./components/EconomicsSection";
+import HowItWorksSection from "./components/HowItWorksSection";
 import FAQSection from "./components/FAQSection";
 import ContactForm from "./components/ContactForm";
 import FloatingCTA from "./components/FloatingCTA";
@@ -16,31 +17,34 @@ export default function Home() {
     <>
       <Header />
       <main className="flex-1">
-        {/* ① ファーストビュー — 課題を突く */}
+        {/* ① ファーストビュー — B2B明示・実証済みの信頼 */}
         <HeroSection />
 
-        {/* ② 飲食店の課題に共感（PASのP・A） */}
+        {/* ② 飲食店の5大課題に共感 */}
         <PainPointSection />
 
-        {/* ③ ソリューション — 商品で課題を解決 */}
+        {/* ③ ソリューション — 業務用スペック・フレーバー・納品仕様 */}
         <ProductsSection />
 
-        {/* ④ ブランドストーリー — なぜ製造を始めたのか？ */}
-        <ProblemSection />
+        {/* ④ 経済性 — 原価・粗利シミュレーション */}
+        <EconomicsSection />
 
-        {/* ⑤ 社会的証明 — 店舗での極めて高い評判（ストーリーの裏付け） */}
+        {/* ⑤ 社会的証明 — 「あなたの店でもこうなる」直営店の実食評価 */}
         <SocialProofSection />
 
-        {/* ⑥ 素材のこだわり */}
+        {/* ⑥ ストーリー — 直営店の反響→専用工場設立（凝縮版） */}
+        <ProblemSection />
+
+        {/* ⑦ 品質保証 — 素材・専用工場・無添加 */}
         <ReasonSection />
 
-        {/* ⑦ 導入メリット + B2B条件 */}
-        <BenefitSection />
+        {/* ⑧ 導入フロー — かんたん3ステップ */}
+        <HowItWorksSection />
 
-        {/* ⑧ FAQ */}
+        {/* ⑨ FAQ — B2B専用 */}
         <FAQSection />
 
-        {/* ⑨ お問い合わせ */}
+        {/* ⑩ お問い合わせ */}
         <ContactForm />
       </main>
       <Footer />
