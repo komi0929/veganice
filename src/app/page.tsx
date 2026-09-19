@@ -2,15 +2,12 @@ import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import PainPointSection from "./components/PainPointSection";
 import BenefitSection from "./components/BenefitSection";
-import ProductsSection from "./components/ProductsSection";
 import SocialProofSection from "./components/SocialProofSection";
-import EconomicsSection from "./components/EconomicsSection";
+import TextureProofSection from "./components/TextureProofSection";
+import ProductsSection from "./components/ProductsSection";
 import ComparisonSection from "./components/ComparisonSection";
-import ProblemSection from "./components/ProblemSection";
-import ReasonSection from "./components/ReasonSection";
-import SeasonalMenuSection from "./components/SeasonalMenuSection";
+import EconomicsSection from "./components/EconomicsSection";
 import HowItWorksSection from "./components/HowItWorksSection";
-import CaseStudySection from "./components/CaseStudySection";
 import FAQSection from "./components/FAQSection";
 import ContactForm from "./components/ContactForm";
 import FloatingCTA from "./components/FloatingCTA";
@@ -21,46 +18,37 @@ export default function Home() {
     <>
       <Header />
       <main className="flex-1">
-        {/* ① ファーストビュー — B2B明示・実証済みの信頼 */}
+        {/* ① ファーストビュー */}
         <HeroSection />
 
-        {/* ② 飲食店の5大課題に共感 */}
+        {/* ② 飲食店のペインポイント */}
         <PainPointSection />
 
-        {/* ③ 課題の解決策 — 3つのベネフィット */}
+        {/* ③ 課題の解決策 — このアイスでなければならない理由 */}
         <BenefitSection />
 
-        {/* ④ ソリューション — 業務用スペック・フレーバー・納品仕様 */}
-        <ProductsSection />
-
-        {/* ⑤ 社会的証明 — 直営店の実食評価・感情エピソード */}
+        {/* ④ 実績とストーリー（旧SocialProof + Problem統合） */}
         <SocialProofSection />
 
-        {/* ⑥ 利益シミュレーター — インタラクティブ計算ツール */}
-        <EconomicsSection />
+        {/* ⑤ 証拠 — 「固くならない」技術的裏付け */}
+        <TextureProofSection />
 
-        {/* ⑦ 「自作 vs SoyStories」比較テーブル */}
+        {/* ⑥ プロダクト情報（フレーバー・仕様） */}
+        <ProductsSection />
+
+        {/* ⑦ 競合比較 — 安い代替品 vs SoyStories */}
         <ComparisonSection />
 
-        {/* ⑧ ストーリー — 直営店の反響→専用工場設立 */}
-        <ProblemSection />
+        {/* ⑧ 導入価値（旧Economics: 原価非公開・価値訴求） */}
+        <EconomicsSection />
 
-        {/* ⑨ 品質保証 — 素材・専用工場・無添加 */}
-        <ReasonSection />
-
-        {/* ⑩ 季節メニュー提案 — 通年デザートのポジショニング */}
-        <SeasonalMenuSection />
-
-        {/* ⑪ 導入フロー — かんたん3ステップ */}
+        {/* ⑨ 導入フロー */}
         <HowItWorksSection />
 
-        {/* ⑫ 導入事例 — 実績が取れ次第データ追加で表示 */}
-        <CaseStudySection />
-
-        {/* ⑬ FAQ — B2B専用（12問） */}
+        {/* ⑩ FAQ */}
         <FAQSection />
 
-        {/* ⑭ お問い合わせ */}
+        {/* ⑪ お問い合わせ */}
         <ContactForm />
       </main>
       <Footer />
