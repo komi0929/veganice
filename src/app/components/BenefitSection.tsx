@@ -111,11 +111,16 @@ export default function BenefitSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mt-20 text-center"
+          className="mt-20 flex flex-col items-center gap-8"
         >
-          <p className="text-ink-muted mb-8 text-sm md:text-base">
-            手づくり少量生産のため、月の製造数には限りがあります。
-          </p>
+          <div className="bg-brand/5 border-brand/20 inline-flex items-center gap-3 rounded-full border px-6 py-3">
+            <span className="text-brand text-lg" aria-hidden="true">
+              ◆
+            </span>
+            <p className="text-ink text-sm font-medium md:text-base">
+              手づくり少量生産のため、月の製造枠に限りがあります
+            </p>
+          </div>
           <a
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"

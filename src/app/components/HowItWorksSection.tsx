@@ -85,7 +85,7 @@ export default function HowItWorksSection() {
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block transform rounded-full px-10 py-4 font-medium text-white shadow-lg transition-colors duration-200 hover:-translate-y-1 hover:shadow-xl"
           >
-            無料サンプルを申し込む
+            今すぐサンプルを申し込む
           </Link>
         </motion.div>
       </div>

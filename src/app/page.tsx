@@ -8,6 +8,7 @@ import SocialProofSection from "./components/SocialProofSection";
 import ProblemSection from "./components/ProblemSection";
 import ReasonSection from "./components/ReasonSection";
 import HowItWorksSection from "./components/HowItWorksSection";
+import CaseStudySection from "./components/CaseStudySection";
 import FAQSection from "./components/FAQSection";
 import ContactForm from "./components/ContactForm";
 import FloatingCTA from "./components/FloatingCTA";
@@ -30,11 +31,11 @@ export default function Home() {
         {/* ③ ソリューション — 業務用スペック・フレーバー・納品仕様 */}
         <ProductsSection />
 
-        {/* ④ 経済性 — 原価・粗利シミュレーション */}
-        <EconomicsSection />
-
-        {/* ⑤ 社会的証明 — 「あなたの店でもこうなる」直営店の実食評価 */}
+        {/* ④ 社会的証明 — 「あなたの店でもこうなる」直営店の実食評価 */}
         <SocialProofSection />
+
+        {/* ⑤ 経済性 — 原価・粗利シミュレーション */}
+        <EconomicsSection />
 
         {/* ⑥ ストーリー — 直営店の反響→専用工場設立（凝縮版） */}
         <ProblemSection />
@@ -44,6 +45,9 @@ export default function Home() {
 
         {/* ⑧ 導入フロー — かんたん3ステップ */}
         <HowItWorksSection />
+
+        {/* ⑧-b 導入事例 — 卸売実績が取れ次第、CaseStudySectionのデータ配列に追加するだけで表示される */}
+        <CaseStudySection />
 
         {/* ⑨ FAQ — B2B専用 */}
         <FAQSection />

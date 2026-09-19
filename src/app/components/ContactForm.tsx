@@ -66,6 +66,52 @@ export default function ContactForm() {
           <br className="hidden md:block" />
           価格など、お気軽にご相談ください。
         </motion.p>
+
+        {/* リスクリバーサルバッジ */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-8 inline-flex flex-col items-center gap-3 sm:flex-row sm:gap-6"
+        >
+          <span className="text-brand flex items-center gap-1.5 font-sans text-sm font-medium">
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            サンプル無料
+          </span>
+          <span className="text-brand flex items-center gap-1.5 font-sans text-sm font-medium">
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            購入義務なし
+          </span>
+          <span className="text-brand flex items-center gap-1.5 font-sans text-sm font-medium">
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            しつこい営業は一切しません
+          </span>
+        </motion.div>
       </div>
 
       <motion.div
@@ -220,6 +266,32 @@ export default function ContactForm() {
           </div>
 
           <div className="pt-6 text-center">
+            <p className="text-ink-muted mb-4 flex items-center justify-center gap-4 font-sans text-xs">
+              <span className="flex items-center gap-1">
+                <svg
+                  className="text-brand h-3.5 w-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                購入義務なし
+              </span>
+              <span className="flex items-center gap-1">
+                <svg
+                  className="text-brand h-3.5 w-3.5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                しつこい営業はしません
+              </span>
+            </p>
             <button
               type="submit"
               disabled={isPending}

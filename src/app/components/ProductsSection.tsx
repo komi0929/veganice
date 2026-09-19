@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { IceCreamCone, ShieldCheck, PackageCheck } from "lucide-react";
 
 /* ── フレーバーデータ ── */
 const flavors = [
@@ -136,46 +135,6 @@ export default function ProductsSection() {
           </motion.p>
         </div>
 
-        {/* ── 3つのポイント ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mx-auto mb-16 flex max-w-4xl flex-col items-stretch justify-center gap-6 md:flex-row md:gap-8"
-        >
-          <div className="border-brand flex flex-1 items-center gap-4 border-l-2 py-2 pl-5">
-            <div className="flex-shrink-0">
-              <IceCreamCone size={20} strokeWidth={1.5} className="text-brand" />
-            </div>
-            <span className="text-ink text-sm leading-snug sm:text-base">
-              仕込み不要
-              <br className="sm:hidden" />
-              <span className="text-ink-muted">すくうだけ</span>
-            </span>
-          </div>
-          <div className="border-brand flex flex-1 items-center gap-4 border-l-2 py-2 pl-5">
-            <div className="flex-shrink-0">
-              <ShieldCheck size={20} strokeWidth={1.5} className="text-brand" />
-            </div>
-            <span className="text-ink text-sm leading-snug sm:text-base">
-              乳・卵・小麦フリー
-              <br className="sm:hidden" />
-              <span className="text-ink-muted">コンタミなし</span>
-            </span>
-          </div>
-          <div className="border-brand flex flex-1 items-center gap-4 border-l-2 py-2 pl-5">
-            <div className="flex-shrink-0">
-              <PackageCheck size={20} strokeWidth={1.5} className="text-brand" />
-            </div>
-            <span className="text-ink text-sm leading-snug sm:text-base">
-              4Lから
-              <br className="sm:hidden" />
-              <span className="text-ink-muted">小ロット対応</span>
-            </span>
-          </div>
-        </motion.div>
-
         {/* ── 実商品写真 ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
@@ -230,7 +189,7 @@ export default function ProductsSection() {
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"
           >
-            無料サンプルを申し込む
+            無料でサンプルを試す
           </a>
         </div>
 

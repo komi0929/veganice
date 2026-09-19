@@ -85,7 +85,7 @@ export default function HeroSection() {
             <br />
             HappyCow 5.0・Google レビュー200件超——直営店で圧倒的な評価を得ている
             <br className="hidden sm:block" />
-            クラフトジェラートを、あなたのメニューに。
+            クラフトジェラートを、まずは無料でお試しください。
           </motion.p>
 
           {/* CTA buttons */}
@@ -99,7 +99,7 @@ export default function HeroSection() {
               whileTap={{ scale: 0.98 }}
               className="bg-cta hover:bg-cta-hover inline-block w-full cursor-pointer rounded-full px-10 py-4 text-center text-lg font-bold text-white shadow-md transition-colors sm:w-auto"
             >
-              無料サンプルを申し込む
+              無料でサンプルを試す
             </motion.a>
           </motion.div>
 

@@ -50,7 +50,7 @@ export default function FloatingCTA() {
               onClick={scrollToContact}
               className="bg-cta hover:bg-cta-hover animate-breathe block rounded-full px-8 py-3 text-center font-sans text-sm font-bold whitespace-nowrap text-white shadow-sm transition-all hover:shadow-md md:px-10 md:py-3.5 md:text-base"
             >
-              無料サンプルを申し込む
+              無料でサンプルを試す
             </a>
           </div>
         </motion.div>

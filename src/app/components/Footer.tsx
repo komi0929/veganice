@@ -24,12 +24,6 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <h3 className="mb-2 text-sm font-bold tracking-wider text-white/50">メニュー</h3>
               <Link
-                href="#reviews"
-                className="hover:text-cta text-base text-white transition-colors"
-              >
-                選ばれる理由
-              </Link>
-              <Link
                 href="#products"
                 className="hover:text-cta text-base text-white transition-colors"
               >
@@ -40,6 +34,9 @@ export default function Footer() {
                 className="hover:text-cta text-base text-white transition-colors"
               >
                 導入実績
+              </Link>
+              <Link href="#faq" className="hover:text-cta text-base text-white transition-colors">
+                導入の流れ
               </Link>
               <Link
                 href="#contact-form"

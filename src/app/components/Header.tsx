@@ -77,7 +77,7 @@ export default function Header() {
               href="#contact-form"
               className="bg-cta hover:bg-cta-hover rounded-full px-6 py-2.5 font-sans text-sm font-medium text-white transition-colors duration-300"
             >
-              無料サンプルを申し込む
+              無料でサンプルを試す
             </Link>
           </div>
 
@@ -121,7 +121,7 @@ export default function Header() {
             className="bg-cta mt-4 rounded-full px-8 py-3 font-sans text-base font-medium text-white"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            無料サンプルを申し込む
+            無料でサンプルを試す
           </Link>
         </nav>
       </div>
