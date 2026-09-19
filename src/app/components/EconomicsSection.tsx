@@ -1,67 +1,45 @@
 "use client";
 
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Calculator, Percent, TrendingUp, Utensils, RefreshCcw, Wind } from "lucide-react";
+import { RefreshCcw, Wind } from "lucide-react";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" as const, delay },
-  }),
-};
+/* ── 定数 ── */
+const COST_PER_SCOOP = 150; // 1スクープあたり原価（円）
+const BUSINESS_DAYS = 25; // 月間営業日数
 
-interface StatItem {
-  label: string;
-  value: string;
-  note?: string;
-  icon: React.ReactNode;
-}
+/* ── 補足情報 ── */
+const supplementary = [
+  {
+    icon: <RefreshCcw className="text-brand h-5 w-5" />,
+    label: "廃棄ロス",
+    value: "実質ゼロ",
+    note: "冷凍食品のため賞味期限の表示義務なし。注文が入ったときだけすくえばいい。",
+  },
+  {
+    icon: <Wind className="text-brand h-5 w-5" />,
+    label: "低オーバーラン",
+    value: "素材が凝縮",
+    note: "空気含有率を抑えた濃厚な味わい。溶けにくく、提供しやすい。",
+  },
+];
 
 export default function EconomicsSection() {
-  const stats: StatItem[] = [
-    {
-      label: "1スクープあたり原価目安",
-      value: "約100〜150円",
-      note: "#12ディッシャー（80ml）使用時",
-      icon: <Calculator className="text-brand h-6 w-6" />,
-    },
-    {
-      label: "想定メニュー価格",
-      value: "550〜900円",
-      note: "業態・盛り付けにより調整可",
-      icon: <TrendingUp className="text-brand h-6 w-6" />,
-    },
-    {
-      label: "想定原価率",
-      value: "約15〜25%",
-      note: "飲食店デザート目標30%以下を大幅クリア",
-      icon: <Percent className="text-brand h-6 w-6" />,
-    },
-    {
-      label: "1Lあたり提供杯数",
-      value: "約12〜20杯",
-      note: "#12で約12杯 / #18（50ml）で約20杯",
-      icon: <Utensils className="text-brand h-6 w-6" />,
-    },
-    {
-      label: "廃棄ロス",
-      value: "実質ゼロ",
-      note: "賞味期限の表示義務なし（−18℃以下保存）",
-      icon: <RefreshCcw className="text-brand h-6 w-6" />,
-    },
-    {
-      label: "オーバーラン（空気含有率）",
-      value: "低オーバーラン",
-      note: "素材が詰まった濃厚な味わい。溶けにくく提供しやすい",
-      icon: <Wind className="text-brand h-6 w-6" />,
-    },
-  ];
+  const [menuPrice, setMenuPrice] = useState(700);
+  const [dailyServings, setDailyServings] = useState(5);
+
+  const grossProfitPerCup = menuPrice - COST_PER_SCOOP;
+  const monthlyGrossProfit = grossProfitPerCup * dailyServings * BUSINESS_DAYS;
+  const costRatio = Math.round((COST_PER_SCOOP / menuPrice) * 100);
+
+  const formatCurrency = useCallback((value: number) => {
+    return new Intl.NumberFormat("ja-JP").format(value);
+  }, []);
 
   return (
     <section id="economics" className="bg-bg-white relative overflow-hidden py-24">
-      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-12">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-12">
+        {/* ── ヘッダー ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,57 +48,144 @@ export default function EconomicsSection() {
           className="mb-16 text-center"
         >
           <span className="text-brand mb-4 block text-sm font-semibold tracking-widest uppercase">
-            Economics
+            Profit Simulator
           </span>
           <h2 className="text-ink mb-6 font-serif text-3xl md:text-5xl">
-            高単価デザートの新定番。
+            あなたのお店の利益をシミュレーション
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-lg md:text-xl">
-            仕込み不要・人件費ゼロ・廃棄ロスなし。
+            メニュー価格と提供杯数を調整して、
             <br className="hidden md:block" />
-            飲食店デザートの原価率目標30%を大幅にクリアする収益性。
+            デザート1品で生まれる利益を確認してください。
           </p>
         </motion.div>
 
-        <div className="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              variants={fadeUp}
-              custom={index * 0.08}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              className="bg-bg border-brand/10 flex flex-col items-center rounded-2xl border p-8 text-center shadow-sm transition-shadow hover:shadow-md"
-            >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm">
-                {stat.icon}
-              </div>
-              <p className="text-ink-muted mb-2 text-sm font-medium">{stat.label}</p>
-              <p className="text-ink mb-2 font-serif text-2xl">{stat.value}</p>
-              {stat.note && <p className="text-ink-muted text-xs leading-relaxed">{stat.note}</p>}
-            </motion.div>
-          ))}
-        </div>
-
+        {/* ── シミュレーター本体 ── */}
         <motion.div
-          variants={fadeUp}
-          custom={0.5}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-brand/5 mx-auto max-w-3xl rounded-2xl p-8 text-center md:p-10"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mx-auto mb-16 max-w-3xl rounded-2xl border border-gray-100 bg-white p-8 shadow-md md:p-12"
         >
-          <p className="text-ink-light mb-4 font-sans leading-relaxed">
-            冷凍食品には賞味期限の表示義務がありません。廃棄ロスは実質ゼロ。
-            <br className="hidden md:block" />
-            生菓子やケーキと違い、注文が入ったときだけすくえばいい。
-            <br className="hidden md:block" />
-            仕込みの人件費もかからない、高利益率のデザートメニューです。
+          {/* スライダー: メニュー価格 */}
+          <div className="mb-10">
+            <div className="mb-3 flex items-baseline justify-between">
+              <label htmlFor="menuPrice" className="text-ink font-sans text-sm font-bold">
+                メニュー価格（税込）
+              </label>
+              <span className="text-brand font-serif text-2xl font-bold md:text-3xl">
+                ¥{formatCurrency(menuPrice)}
+              </span>
+            </div>
+            <input
+              id="menuPrice"
+              type="range"
+              min={400}
+              max={1500}
+              step={50}
+              value={menuPrice}
+              onChange={(e) => setMenuPrice(Number(e.target.value))}
+              className="slider-brand h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 accent-[var(--color-brand)]"
+            />
+            <div className="text-ink-muted mt-2 flex justify-between font-sans text-xs">
+              <span>¥400</span>
+              <span>¥1,500</span>
+            </div>
+          </div>
+
+          {/* スライダー: 1日の提供杯数 */}
+          <div className="mb-12">
+            <div className="mb-3 flex items-baseline justify-between">
+              <label htmlFor="dailyServings" className="text-ink font-sans text-sm font-bold">
+                1日の提供杯数
+              </label>
+              <span className="text-brand font-serif text-2xl font-bold md:text-3xl">
+                {dailyServings}
+                <span className="text-ink-muted ml-1 text-base font-normal">杯</span>
+              </span>
+            </div>
+            <input
+              id="dailyServings"
+              type="range"
+              min={1}
+              max={30}
+              step={1}
+              value={dailyServings}
+              onChange={(e) => setDailyServings(Number(e.target.value))}
+              className="slider-brand h-2 w-full cursor-pointer appearance-none rounded-full bg-gray-200 accent-[var(--color-brand)]"
+            />
+            <div className="text-ink-muted mt-2 flex justify-between font-sans text-xs">
+              <span>1杯</span>
+              <span>30杯</span>
+            </div>
+          </div>
+
+          {/* 結果表示 */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="bg-bg rounded-xl p-6 text-center">
+              <p className="text-ink-muted mb-2 font-sans text-xs font-medium">1杯あたりの粗利</p>
+              <p className="text-ink font-serif text-3xl font-bold md:text-4xl">
+                ¥{formatCurrency(grossProfitPerCup)}
+              </p>
+            </div>
+            <div className="bg-brand/5 border-brand/20 rounded-xl border-2 p-6 text-center">
+              <p className="text-ink-muted mb-2 font-sans text-xs font-medium">月間粗利</p>
+              <p className="text-brand font-serif text-3xl font-bold md:text-4xl">
+                ¥{formatCurrency(monthlyGrossProfit)}
+              </p>
+              <p className="text-ink-muted mt-1 text-[10px]">月{BUSINESS_DAYS}日営業</p>
+            </div>
+            <div className="bg-bg rounded-xl p-6 text-center">
+              <p className="text-ink-muted mb-2 font-sans text-xs font-medium">原価率</p>
+              <p className="text-ink font-serif text-3xl font-bold md:text-4xl">
+                {costRatio}
+                <span className="text-xl">%</span>
+              </p>
+              <p className="text-brand mt-1 text-[10px] font-medium">
+                {costRatio <= 30 ? "目標30%をクリア ✓" : ""}
+              </p>
+            </div>
+          </div>
+
+          {/* 注釈 */}
+          <p className="text-ink-muted mt-6 text-center font-sans text-xs">
+            ※ 1スクープ原価 約¥{formatCurrency(COST_PER_SCOOP)}（#12ディッシャー / 80ml）で算出。
+            卸価格・提供杯数は業態やディッシャーサイズにより異なります。
           </p>
-          <p className="text-ink-muted text-xs">
-            ※ 上記は目安です。卸価格・提供杯数は業態やディッシャーサイズにより異なります。
-          </p>
+
+          {/* CTA */}
+          <div className="mt-8 text-center">
+            <a
+              href="#contact-form"
+              className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"
+            >
+              この利益を、あなたのお店でも
+            </a>
+          </div>
+        </motion.div>
+
+        {/* ── 補足情報 ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mx-auto grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2"
+        >
+          {supplementary.map((item) => (
+            <div key={item.label} className="bg-bg flex items-start gap-4 rounded-xl p-6">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
+                {item.icon}
+              </div>
+              <div>
+                <p className="text-ink mb-1 font-sans text-sm font-bold">
+                  {item.label}：{item.value}
+                </p>
+                <p className="text-ink-muted text-xs leading-relaxed">{item.note}</p>
+              </div>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>
