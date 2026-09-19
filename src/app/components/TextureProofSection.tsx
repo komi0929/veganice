@@ -6,18 +6,18 @@ import { Timer, Wind, CheckCircle2 } from "lucide-react";
 const evidence = [
   {
     icon: <Timer className="text-brand h-8 w-8" />,
-    title: "冷凍庫から出して、待ち時間0分",
-    desc: "植物性アイスにありがちな「ガチガチに固まって、溶けるまで20分待つ」という問題。SoyStoriesは独自の米粉製法により、-18℃の冷凍庫から出した直後でも、なめらかにディッシャーが入ります。",
+    title: "冷凍庫から出して、すぐにすくえる",
+    desc: "「植物性アイスは固くて、溶けるまで待たなきゃいけない」。そんな常識を変えたくて。独自の米粉製法により、-18℃の冷凍庫から出した直後でも、なめらかにディッシャーが入るように仕立てています。",
   },
   {
     icon: <Wind className="text-brand h-8 w-8" />,
-    title: "低オーバーランだから、溶けにくい",
-    desc: "空気を過剰に抱き込ませない（低オーバーラン）製法のため、素材がぎっしり詰まっています。そのため、お客様のテーブルに運んだ後もドロドロに溶け崩れることがありません。",
+    title: "空気を抱かせすぎないから、味が濃い",
+    desc: "空気をたくさん含ませてかさ増しするのではなく、素材のおいしさをそのまま味わってほしくて。空気含有量を抑えた作りなので、溶けにくく、最後までしっかりとした風味を楽しんでいただけます。",
   },
   {
     icon: <CheckCircle2 className="text-brand h-8 w-8" />,
-    title: "添加物に頼らない「本物の粘り」",
-    desc: "安定剤や増粘剤で無理やり作ったテクスチャーではなく、米粉が本来持つ保水力と粘りを活かしています。だからこそ、機械的な不自然さがない、手作りのようななめらかさを維持できます。",
+    title: "添加物ではなく、お米本来の粘りで",
+    desc: "安定剤や増粘剤で人工的になめらかさを作ることはしません。米粉が本来持っている自然な「保水力」と「粘り」を活かし、昔ながらの手作りのような優しい口溶けを実現しました。",
   },
 ];
 
@@ -33,15 +33,17 @@ export default function TextureProofSection() {
           className="mb-16 text-center"
         >
           <span className="text-brand mb-4 block font-sans text-sm font-semibold tracking-widest uppercase">
-            The Evidence
+            Craftsmanship
           </span>
           <h2 className="text-ink mb-6 font-serif text-3xl md:text-4xl">
-            「固くならない」には、技術的理由があります。
+            ディッシャーがすっと入る。
+            <br className="md:hidden" />
+            その秘密は、お米の力。
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-base leading-relaxed md:text-lg">
-            安い業務用ヴィーガンアイスで失敗した方にこそ、試してほしい。
+            厨房でお客様を待たせることなく、最高の状態で提供できるように。
             <br className="hidden md:block" />
-            プロのサービスを止めない、圧倒的な操作性。
+            私たちがたどり着いた、ひとつの答えです。
           </p>
         </motion.div>
 
@@ -53,7 +55,7 @@ export default function TextureProofSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="border-brand/10 bg-brand/[0.02] flex flex-col items-start rounded-2xl border p-8"
+              className="border-brand/10 bg-brand/[0.02] flex flex-col items-start rounded-2xl border p-8 transition-colors hover:bg-white"
             >
               <div className="bg-brand/10 mb-6 flex h-16 w-16 items-center justify-center rounded-full">
                 {item.icon}
@@ -74,13 +76,13 @@ export default function TextureProofSection() {
           className="mt-16 text-center"
         >
           <p className="text-ink-muted mb-4 text-sm font-medium">
-            論より証拠。実際の厨房でお確かめください。
+            言葉でお伝えするよりも、ぜひ実際の厨房で感じてみてください。
           </p>
           <a
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md"
           >
-            無料でサンプルを取り寄せる
+            無料でサンプルをお届けします
           </a>
         </motion.div>
       </div>

@@ -29,30 +29,32 @@ const itemVariants = {
 const painPoints = [
   {
     num: "01",
-    text: "ヴィーガン対応のアイスを入れたが、ガチガチに固まってスクープできない",
-    detail: "冷凍庫から出して20分待ち。忙しいサービス中にお客様を待たせ、結局メニューから外した。",
+    text: "ヴィーガンアイスを導入したけれど、固くてすくいづらい",
+    detail:
+      "冷凍庫から出してすぐには使えず、お客様をお待たせしてしまう。忙しい時間帯には少し負担になっていませんか？",
   },
   {
     num: "02",
-    text: "「植物性だから仕方ない」で済ませていた、味の妥協",
+    text: "「植物性だから」と、味わいにどこか妥協している",
     detail:
-      "ノンビーガンのお客様に出せないクオリティ。グループ全員が同じデザートを楽しめないまま。",
+      "本当はノンビーガンのお客様にも「美味しい」と喜んでいただけるデザートをお出ししたいのに、納得のいくものが見つからない。",
   },
   {
     num: "03",
-    text: "アレルギー対応を謳ったのに、自信を持って「大丈夫です」と言えない",
-    detail: "製造工程が見えない仕入れ先。コンタミリスクが怖くて、お客様に聞かれると言葉に詰まる。",
+    text: "アレルギーへの配慮。本当に安心して提供できるか不安",
+    detail:
+      "仕入れ先の製造ラインで乳や卵を扱っていないか。「大丈夫かな？」と少し心配しながらお出しするのは、とても心苦しいですよね。",
   },
   {
     num: "04",
-    text: "インバウンド需要が増えているのに、出せるデザートがない",
+    text: "インバウンドや多様なお客様に、美味しいデザートを届けたい",
     detail:
-      "HappyCow・Google Mapsで「vegan dessert」と検索する外国人客。対応メニューがなく、機会を逃し続けている。",
+      "せっかくお店に来てくださったのに、召し上がっていただけるデザートがない。そんな寂しい思いをさせてしまっている。",
   },
   {
     num: "05",
-    text: "安い業務用を何種類か試したが、結局どれも同じ——安かろう、悪かろう",
-    detail: "「もう植物性アイスはやめよう」と諦めかけていませんか？——それ、商品の問題でした。",
+    text: "業務用の植物性アイスは、どれも同じような味に感じてしまう",
+    detail: "添加物や乳化剤に頼らない、手作りのような温かみのあるジェラートを探している。",
   },
 ];
 
@@ -70,7 +72,7 @@ export default function PainPointSection() {
           {/* Heading */}
           <motion.div variants={itemVariants} className="mb-16 text-center md:mb-20">
             <h2 className="font-serif text-3xl leading-snug tracking-wide md:text-4xl">
-              こんな経験、ありませんか？
+              こんなもどかしさを、感じていませんか？
             </h2>
           </motion.div>
 
@@ -104,17 +106,19 @@ export default function PainPointSection() {
             className="flex w-full max-w-2xl flex-col items-center gap-8 text-center"
           >
             <p className="text-ink font-serif text-xl leading-relaxed md:text-2xl">
-              それは商品選びの問題でした。
+              「植物性だから仕方ない」と、
               <br />
-              <span className="text-brand">米粉の力で、すべて解決できます。</span>
+              味や扱いやすさを諦めてほしくないから。
+              <br className="hidden md:block" />
+              <span className="text-brand mt-2 block">私たちは、お米の力にたどり着きました。</span>
             </p>
             <motion.a
               href="#benefits"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-cta hover:bg-cta-hover inline-block cursor-pointer rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-colors"
+              className="bg-cta hover:bg-cta-hover mt-4 inline-block cursor-pointer rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-colors"
             >
-              SoyStoriesが違う理由を見る
+              私たちのこだわりを見る
             </motion.a>
           </motion.div>
         </motion.div>

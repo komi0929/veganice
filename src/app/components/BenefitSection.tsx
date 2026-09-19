@@ -6,18 +6,18 @@ import { Snowflake, Star, ShieldCheck } from "lucide-react";
 const benefits = [
   {
     icon: Snowflake,
-    title: "固くならない。最後の一杯まで、なめらか。",
-    body: "米粉を使った独自製法により、業務用サイズでも食感が変わりません。ディッシャーの抜けがよく、冷凍庫から出してすぐに提供できます。サービス中にお客様を待たせることはもうありません。",
+    title: "最後の一杯まで、なめらかに。",
+    body: "米粉のもつ自然な保水力で、業務用サイズでもふんわりとした食感を保ちます。ディッシャーの抜けもよく、冷凍庫から出してすぐにお客様へお届けできます。",
   },
   {
     icon: Star,
-    title: "ノンビーガンが「こっちの方が好き」と言う味。",
-    body: "HappyCow 5.0・Google レビュー200件超。直営店のお客様の8割はノンビーガンです。味で選ばれているから、プレミアムデザートとしてメニューの顔になります。",
+    title: "みんなで「美味しい」と笑い合える味。",
+    body: "直営店にいらっしゃるお客様の8割は、アレルギーのない方やノンビーガンの方です。どなたが食べても「美味しい」と思っていただけるよう、素材の風味を大切にしています。",
   },
   {
     icon: ShieldCheck,
-    title: "「大丈夫です」と、自信を持って言えます。",
-    body: "乳・卵・小麦を一切扱わない専用工場で製造。コンタミネーションの心配なく、アレルギー対応メニューとしてお客様に胸を張ってお出しいただけます。",
+    title: "「大丈夫ですよ」と、笑顔で言えるように。",
+    body: "乳・卵・小麦を一切扱わない専用の工房で、ひとつひとつ丁寧につくっています。コンタミネーションの心配がないので、安心してテーブルへ運んでいただけます。",
   },
 ] as const;
 
@@ -44,7 +44,7 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-brand mb-4 font-sans text-sm tracking-[0.2em] uppercase"
           >
-            Why SoyStories
+            Our Philosophy
           </motion.p>
           <motion.h2
             variants={fadeUp}
@@ -54,7 +54,7 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-ink font-serif text-3xl leading-relaxed font-bold md:text-4xl lg:text-[2.6rem]"
           >
-            このアイスでなければならない理由
+            素材の力が、厨房の悩みをやさしく解く。
           </motion.h2>
           <motion.p
             variants={fadeUp}
@@ -64,9 +64,9 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-ink-light mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg"
           >
-            安い代替品とは、根本的に違います。
+            添加物に頼らず、自然の恵みをそのままに。
             <br className="hidden md:block" />
-            米粉の独自製法がプロの現場を変える、3つの理由。
+            私たちが「米粉」と「豆乳」でジェラートを作る、3つの理由です。
           </motion.p>
         </div>
 
@@ -118,14 +118,14 @@ export default function BenefitSection() {
               ◆
             </span>
             <p className="text-ink text-sm font-medium md:text-base">
-              手づくり少量生産のため、月の製造枠に限りがあります
+              ひとつひとつ手づくりのため、毎月お届けできる数には限りがございます。
             </p>
           </div>
           <a
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"
           >
-            まず味見してみる
+            まずは少しだけ、味見してみる
           </a>
         </motion.div>
       </div>
