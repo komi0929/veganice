@@ -29,28 +29,30 @@ const itemVariants = {
 const painPoints = [
   {
     num: "01",
-    text: "アレルギーやヴィーガンのお客様に、デザートを断っている",
-    detail: "グループに1人でもいると、テーブル全体のデザート注文がキャンセルされることも。",
+    text: "ヴィーガン対応のアイスを入れたが、ガチガチに固まってスクープできない",
+    detail: "冷凍庫から出して20分待ち。忙しいサービス中にお客様を待たせ、結局メニューから外した。",
   },
   {
     num: "02",
-    text: "インバウンド客に対応できず、客単価を逃している",
-    detail: "訪日外国人の約10%がベジタリアン・ヴィーガン。デザート1品で+500〜800円の機会損失に。",
+    text: "「植物性だから仕方ない」で済ませていた、味の妥協",
+    detail:
+      "ノンビーガンのお客様に出せないクオリティ。グループ全員が同じデザートを楽しめないまま。",
   },
   {
     num: "03",
-    text: "パティシエがいない。仕込みに人手を割けない",
-    detail: "デザートのために専任スタッフを雇う余裕はないが、食後の一品は欲しい。",
+    text: "アレルギー対応を謳ったのに、自信を持って「大丈夫です」と言えない",
+    detail: "製造工程が見えない仕入れ先。コンタミリスクが怖くて、お客様に聞かれると言葉に詰まる。",
   },
   {
     num: "04",
-    text: "生菓子の廃棄ロスが痛い",
-    detail: "ケーキやプリンは賞味期限が短く、売れ残りがそのまま原価に乗る。",
+    text: "インバウンド需要が増えているのに、出せるデザートがない",
+    detail:
+      "HappyCow・Google Mapsで「vegan dessert」と検索する外国人客。対応メニューがなく、機会を逃し続けている。",
   },
   {
     num: "05",
-    text: "代替品を試したが、味に納得できなかった",
-    detail: "『ヴィーガン対応だから仕方ない』——その妥協は、もう必要ありません。",
+    text: "安い業務用を何種類か試したが、結局どれも同じ——安かろう、悪かろう",
+    detail: "「もう植物性アイスはやめよう」と諦めかけていませんか？——それ、商品の問題でした。",
   },
 ];
 
@@ -68,7 +70,7 @@ export default function PainPointSection() {
           {/* Heading */}
           <motion.div variants={itemVariants} className="mb-16 text-center md:mb-20">
             <h2 className="font-serif text-3xl leading-snug tracking-wide md:text-4xl">
-              こんなお悩み、ありませんか？
+              こんな経験、ありませんか？
             </h2>
           </motion.div>
 
@@ -102,15 +104,17 @@ export default function PainPointSection() {
             className="flex w-full max-w-2xl flex-col items-center gap-8 text-center"
           >
             <p className="text-ink font-serif text-xl leading-relaxed md:text-2xl">
-              その課題、SoyStoriesなら一括で解決できます。
+              それは商品選びの問題でした。
+              <br />
+              <span className="text-brand">米粉の力で、すべて解決できます。</span>
             </p>
             <motion.a
-              href="#products"
+              href="#benefits"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="bg-cta hover:bg-cta-hover inline-block cursor-pointer rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-colors"
             >
-              解決策を見る
+              SoyStoriesが違う理由を見る
             </motion.a>
           </motion.div>
         </motion.div>

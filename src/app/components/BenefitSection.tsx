@@ -1,23 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { IceCreamCone, ShieldCheck, PackageCheck } from "lucide-react";
+import { Snowflake, Star, ShieldCheck } from "lucide-react";
 
 const benefits = [
   {
-    icon: IceCreamCone,
-    title: "届いたら、すぐ提供できます",
-    body: "冷凍庫から出してディッシャーですくうだけ。仕込みも調理も不要で、既存メニューにすぐ一品加えられます。",
+    icon: Snowflake,
+    title: "固くならない。最後の一杯まで、なめらか。",
+    body: "米粉を使った独自製法により、業務用サイズでも食感が変わりません。ディッシャーの抜けがよく、冷凍庫から出してすぐに提供できます。サービス中にお客様を待たせることはもうありません。",
+  },
+  {
+    icon: Star,
+    title: "ノンビーガンが「こっちの方が好き」と言う味。",
+    body: "HappyCow 5.0・Google レビュー200件超。直営店のお客様の8割はノンビーガンです。味で選ばれているから、プレミアムデザートとしてメニューの顔になります。",
   },
   {
     icon: ShieldCheck,
-    title: "アレルギー対応も、安心です",
-    body: "乳・卵・小麦・白砂糖不使用。コンタミネーションなしの環境で製造しています。",
-  },
-  {
-    icon: PackageCheck,
-    title: "4Lの小ロットから仕入れ可能",
-    body: "最小ロットは4リットル分。大量仕入れの必要はありません。こだわりのあるお店にこそ、使っていただきたい。",
+    title: "「大丈夫です」と、自信を持って言えます。",
+    body: "乳・卵・小麦を一切扱わない専用工場で製造。コンタミネーションの心配なく、アレルギー対応メニューとしてお客様に胸を張ってお出しいただけます。",
   },
 ] as const;
 
@@ -44,7 +44,7 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-brand mb-4 font-sans text-sm tracking-[0.2em] uppercase"
           >
-            Reasons
+            Why SoyStories
           </motion.p>
           <motion.h2
             variants={fadeUp}
@@ -54,7 +54,7 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-ink font-serif text-3xl leading-relaxed font-bold md:text-4xl lg:text-[2.6rem]"
           >
-            選ばれる理由
+            このアイスでなければならない理由
           </motion.h2>
           <motion.p
             variants={fadeUp}
@@ -64,9 +64,9 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-ink-light mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg"
           >
-            食の制限がある方もない方も、みんなで同じ美味しさを共有できる喜びを。
+            安い代替品とは、根本的に違います。
             <br className="hidden md:block" />
-            ヴィーガン米粉アイスが、あなたのお店のメニューに新しい価値を加えます。
+            米粉の独自製法がプロの現場を変える、3つの理由。
           </motion.p>
         </div>
 
@@ -95,7 +95,7 @@ export default function BenefitSection() {
                   <h3 className="text-ink mb-4 font-serif text-xl leading-snug font-bold md:text-2xl">
                     {benefit.title}
                   </h3>
-                  <p className="text-ink-light max-w-[280px] text-base leading-relaxed">
+                  <p className="text-ink-light max-w-[300px] text-base leading-relaxed">
                     {benefit.body}
                   </p>
                 </motion.div>

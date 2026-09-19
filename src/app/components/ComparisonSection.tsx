@@ -1,66 +1,64 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, X, Minus } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 const comparisonRows = [
   {
-    label: "初期投資",
-    inHouse: "アイスマシン 50万円〜",
-    inHouseStatus: "negative" as const,
-    soyStories: "なし",
+    label: "テクスチャー",
+    cheap: "固まりやすい。時間が経つとカチカチ",
+    cheapStatus: "negative" as const,
+    soyStories: "米粉製法で滑らかさを長時間維持",
     soyStoriesStatus: "positive" as const,
   },
   {
-    label: "毎日の仕込み",
-    inHouse: "材料の計量・攪拌・冷凍",
-    inHouseStatus: "negative" as const,
-    soyStories: "不要（すくうだけ）",
+    label: "スクープ性",
+    cheap: "冷凍庫から出して15〜20分待ち",
+    cheapStatus: "negative" as const,
+    soyStories: "出してすぐディッシャーで提供可能",
+    soyStoriesStatus: "positive" as const,
+  },
+  {
+    label: "味の評価",
+    cheap: "「植物性だから仕方ない」という妥協",
+    cheapStatus: "negative" as const,
+    soyStories: "HappyCow 5.0 — ノンビーガンが選ぶ味",
     soyStoriesStatus: "positive" as const,
   },
   {
     label: "アレルゲン管理",
-    inHouse: "自社で管理体制の構築が必要",
-    inHouseStatus: "negative" as const,
-    soyStories: "専用工場・コンタミなし",
+    cheap: "製造ラインの共用が多い（コンタミリスク）",
+    cheapStatus: "negative" as const,
+    soyStories: "乳・卵・小麦不使用の専用工場",
     soyStoriesStatus: "positive" as const,
   },
   {
-    label: "廃棄リスク",
-    inHouse: "日持ちしない・売れ残りは損失",
-    inHouseStatus: "negative" as const,
-    soyStories: "冷凍保存で廃棄ロスゼロ",
+    label: "添加物",
+    cheap: "乳化剤・安定剤・増粘剤で食感を補正",
+    cheapStatus: "negative" as const,
+    soyStories: "乳化安定剤・増粘剤・着色料すべて不使用",
     soyStoriesStatus: "positive" as const,
   },
   {
-    label: "味の安定性",
-    inHouse: "スタッフの技量に依存",
-    inHouseStatus: "neutral" as const,
-    soyStories: "専用工場で毎回同じ品質",
+    label: "原材料",
+    cheap: "輸入原料中心・大量生産",
+    cheapStatus: "negative" as const,
+    soyStories: "米粉・豆乳ベースの独自レシピ",
     soyStoriesStatus: "positive" as const,
   },
   {
-    label: "メニューの幅",
-    inHouse: "レシピ開発に時間が必要",
-    inHouseStatus: "neutral" as const,
-    soyStories: "8種のフレーバーから自由に選択",
-    soyStoriesStatus: "positive" as const,
-  },
-  {
-    label: "人件費",
-    inHouse: "仕込み工数がそのまま上乗せ",
-    inHouseStatus: "negative" as const,
-    soyStories: "追加人件費なし",
+    label: "お客様の反応",
+    cheap: "「まあ、こんなもんか」——リピートなし",
+    cheapStatus: "negative" as const,
+    soyStories: "「本当にヴィーガン？」——驚きと感動",
     soyStoriesStatus: "positive" as const,
   },
 ] as const;
 
-function StatusIcon({ status }: { status: "positive" | "negative" | "neutral" }) {
+function StatusIcon({ status }: { status: "positive" | "negative" }) {
   if (status === "positive")
     return <Check className="text-brand h-4 w-4 flex-shrink-0" strokeWidth={3} />;
-  if (status === "negative")
-    return <X className="h-4 w-4 flex-shrink-0 text-red-400" strokeWidth={3} />;
-  return <Minus className="h-4 w-4 flex-shrink-0 text-gray-400" strokeWidth={3} />;
+  return <X className="h-4 w-4 flex-shrink-0 text-red-400" strokeWidth={3} />;
 }
 
 export default function ComparisonSection() {
@@ -78,12 +76,12 @@ export default function ComparisonSection() {
             Comparison
           </span>
           <h2 className="text-ink mb-6 font-serif text-3xl md:text-4xl">
-            「自分で作る」と、どちらが得か？
+            安い代替品との、決定的な違い
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-base leading-relaxed md:text-lg">
-            品質を担保しながら利益を最大化するために、
+            価格だけで選んだ結果、メニューから外すことになっていませんか？
             <br className="hidden md:block" />
-            何に時間とお金を使うべきかを比較してみてください。
+            プロの現場で使い続けられるかどうかが、本当の判断基準です。
           </p>
         </motion.div>
 
@@ -99,7 +97,7 @@ export default function ComparisonSection() {
             <div className="p-4 md:p-6" />
             <div className="border-l border-gray-100 p-4 text-center md:p-6">
               <p className="text-ink-muted font-sans text-xs font-bold tracking-wider uppercase">
-                自社で仕込み
+                安価な植物性アイス
               </p>
             </div>
             <div className="bg-brand/5 border-l border-gray-100 p-4 text-center md:p-6">
@@ -121,10 +119,8 @@ export default function ComparisonSection() {
                 <span className="text-ink font-sans text-sm font-bold">{row.label}</span>
               </div>
               <div className="flex items-center gap-2 border-l border-gray-50 p-4 md:p-5">
-                <StatusIcon status={row.inHouseStatus} />
-                <span className="text-ink-light text-xs leading-snug md:text-sm">
-                  {row.inHouse}
-                </span>
+                <StatusIcon status={row.cheapStatus} />
+                <span className="text-ink-light text-xs leading-snug md:text-sm">{row.cheap}</span>
               </div>
               <div className="bg-brand/[0.02] flex items-center gap-2 border-l border-gray-50 p-4 md:p-5">
                 <StatusIcon status={row.soyStoriesStatus} />
@@ -144,11 +140,14 @@ export default function ComparisonSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 text-center"
         >
+          <p className="text-ink-light mb-6 font-sans text-sm">
+            価格の違いには、理由があります。その理由は、味で確かめてください。
+          </p>
           <a
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"
           >
-            まずは味で判断してみる
+            無料でサンプルを試す
           </a>
         </motion.div>
       </div>

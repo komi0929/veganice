@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { RefreshCcw, Wind } from "lucide-react";
 
 /* ── 定数 ── */
-const COST_PER_SCOOP = 150; // 1スクープあたり原価（円）
+const COST_PER_SCOOP = 167; // 1スクープあたり原価（円）— 2L ¥4,180(税込) ÷ 25スクープ
 const BUSINESS_DAYS = 25; // 月間営業日数
 
 /* ── 補足情報 ── */
@@ -51,12 +51,12 @@ export default function EconomicsSection() {
             Profit Simulator
           </span>
           <h2 className="text-ink mb-6 font-serif text-3xl md:text-5xl">
-            あなたのお店の利益をシミュレーション
+            原価は高い。でも、利益は出ます。
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-lg md:text-xl">
-            メニュー価格と提供杯数を調整して、
+            安い代替品より原価は高い。でも&ldquo;味で選ばれる&rdquo;デザートは、
             <br className="hidden md:block" />
-            デザート1品で生まれる利益を確認してください。
+            メニューの顔になり、確実に利益を生みます。
           </p>
         </motion.div>
 
@@ -150,8 +150,8 @@ export default function EconomicsSection() {
 
           {/* 注釈 */}
           <p className="text-ink-muted mt-6 text-center font-sans text-xs">
-            ※ 1スクープ原価 約¥{formatCurrency(COST_PER_SCOOP)}（#12ディッシャー / 80ml）で算出。
-            卸価格・提供杯数は業態やディッシャーサイズにより異なります。
+            ※ 2L ¥4,180（税込）/ #12ディッシャー（80ml）で約25スクープ ≒ ¥
+            {formatCurrency(COST_PER_SCOOP)}/杯で算出。 フレーバーや提供杯数により変動します。
           </p>
 
           {/* CTA */}
