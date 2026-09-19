@@ -28,8 +28,5 @@ jobs:
       - name: Format Check
         run: npx prettier --check .
 
-      - name: Type Check
-        run: npx tsc --noEmit
-
-      - name: Build Next.js
+      - name: Build (includes TypeScript check)
         run: npm run build
