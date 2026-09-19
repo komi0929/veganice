@@ -7,13 +7,19 @@ export default function FloatingCTA() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const contactForm = document.getElementById("contact-form");
+
     const handleScroll = () => {
-      // Show CTA after scrolling past 500px (approximate hero height)
-      if (window.scrollY > 500) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
+      const pastHero = window.scrollY > 500;
+
+      // contact-form が画面内に見えていたらCTAを隠す
+      let contactVisible = false;
+      if (contactForm) {
+        const rect = contactForm.getBoundingClientRect();
+        contactVisible = rect.top < window.innerHeight && rect.bottom > 0;
       }
+
+      setIsVisible(pastHero && !contactVisible);
     };
 
     window.addEventListener("scroll", handleScroll);

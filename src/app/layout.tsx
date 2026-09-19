@@ -74,6 +74,7 @@ const jsonLd = {
       "@type": "Organization",
       "@id": "https://soystories.com/#organization",
       name: "SoyStories",
+      alternateName: "ソイストーリーズ",
       url: "https://soystories.com",
       logo: "https://soystories.com/images/jp_logo.png",
       sameAs: [
@@ -81,7 +82,14 @@ const jsonLd = {
         "https://www.happycow.net/reviews/soystories-fukuoka-289915",
       ],
       description:
-        "福岡・薬院発のヴィーガン米粉アイス専門店。乳・卵・小麦・白砂糖不使用。店舗販売と業務用卸売を展開。",
+        "福岡・薬院発のヴィーガン米粉ジェラート専門店。乳・卵・小麦・白砂糖不使用、専用工房で製造。直営店舗の販売と業務用卸売を展開。",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+81-92-231-0677",
+        email: "soystoriesyakuin@gmail.com",
+        contactType: "sales",
+        availableLanguage: ["Japanese", "English"],
+      },
     },
     {
       "@type": "LocalBusiness",
@@ -89,7 +97,7 @@ const jsonLd = {
       name: "SoyStories 薬院店",
       image: "https://soystories.com/images/store_actual.png",
       url: "https://soystories.com",
-      telephone: "",
+      telephone: "+81-92-231-0677",
       address: {
         "@type": "PostalAddress",
         addressLocality: "福岡市中央区",
@@ -109,16 +117,18 @@ const jsonLd = {
         bestRating: "5",
         worstRating: "1",
       },
-      parentOrganization: { "@id": "https://soystories.com/#org" },
+      parentOrganization: {
+        "@id": "https://soystories.com/#organization",
+      },
     },
     {
       "@type": "Product",
       "@id": "https://soystories.com/#product",
-      name: "SoyStories ヴィーガン米粉アイス（業務用）",
+      name: "SoyStories ヴィーガン米粉ジェラート（業務用卸売）",
       description:
-        "乳・卵・小麦・白砂糖不使用。コンタミネーションなしの専用工房で製造。8フレーバーから選択可能。冷凍1Lまたは2L容器、最小4Lから仕入れ可能。",
-      brand: { "@id": "https://soystories.com/#org" },
-      category: "業務用アイスクリーム",
+        "乳・卵・小麦・白砂糖不使用の植物性ジェラート（氷菓）。乳化安定剤・増粘剤・着色料も不使用。専用工房で製造しコンタミネーションなし。8フレーバー、冷凍1Lまたは2L容器、最小4Lから卸売対応。",
+      brand: { "@id": "https://soystories.com/#organization" },
+      category: "業務用氷菓・ジェラート",
       offers: {
         "@type": "Offer",
         availability: "https://schema.org/InStock",
@@ -136,50 +146,58 @@ const jsonLd = {
       mainEntity: [
         {
           "@type": "Question",
-          name: "非ヴィーガンのお客様が食べても美味しいですか？",
+          name: "ヴィーガンでないお客様にも喜ばれますか？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "はい。実際に「こっちのアイスのほうが好き」とおっしゃるノンビーガンのお客様も多くいらっしゃいます。米粉を使った独自の製法で、植物性とは思えないなめらかさとコクを実現しています。",
+            text: "はい。直営店では「こっちのアイスのほうが好き」とおっしゃるノンビーガンのお客様が多数いらっしゃいます。米粉を使った独自の製法で、植物性とは思えないなめらかさとコクを実現しており、HappyCow 5.0・Googleレビュー200件超という評価がその証拠です。",
           },
         },
         {
           "@type": "Question",
-          name: "アレルギー対応の詳細を教えてください",
+          name: "アレルゲン対応の詳細を教えてください",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "全商品、乳・卵・小麦・白砂糖不使用です。乳化安定剤・増粘剤・着色料も使用していません。大豆を使用しておりますので、大豆アレルギーの方はご注意ください。",
+            text: "全商品、乳・卵・小麦・白砂糖不使用です。乳化安定剤・増粘剤・着色料も使用していません。乳・卵・小麦を一切扱わない専用の製造ラインで製造しており、コンタミネーション（混入）のリスクがありません。フレーバーにより大豆・アーモンド・もも・りんごを含みます。",
           },
         },
         {
           "@type": "Question",
-          name: "卸売の最小ロットはどのくらいですか？",
+          name: "最小ロットと発注単位は？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "最小4リットル分（1L×4または2L×2）からご注文いただけます。価格の詳細はお問い合わせフォームよりどうぞ。",
+            text: "最小4リットル分（1L×4本 または 2L×2本）からご注文いただけます。フレーバーは8種から自由に組み合わせ可能です。",
           },
         },
         {
           "@type": "Question",
-          name: "配送について教えてください",
+          name: "保管条件を教えてください",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "クール冷凍便で全国配送に対応しております。",
+            text: "−18℃以下で冷凍保存してください。冷凍食品であるため、食品表示基準上、賞味期限の表示義務がありません。適切な温度管理のもとでは品質が長期間維持され、廃棄ロスの心配がありません。",
           },
         },
         {
           "@type": "Question",
-          name: "メニュー提案やPOP素材のサポートはありますか？",
+          name: "注文から届くまでどのくらいですか？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "はい、導入店舗様にはメニュー提案やPOP素材のご提供もご相談いただけます。",
+            text: "ご注文確定後、通常5営業日以内にクール冷凍便（ヤマト運輸）で全国発送いたします。初回のサンプルご注文もお気軽にどうぞ。",
           },
         },
         {
           "@type": "Question",
-          name: "オンラインストアでも購入できますか？",
+          name: "支払い方法は？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "はい、一般のお客様向けにはsoystories.comでアイスセットを販売しております。フレーバーを自由に選べるセットもご用意しています。",
+            text: "銀行振込でのお支払いに対応しております。継続的なお取引の場合は、請求書払い（月末締め翌月払い等）もご相談いただけます。",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "OEMや専用フレーバーの開発は可能ですか？",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "ご相談いただけます。お店のコンセプトに合わせたオリジナルフレーバーの開発や、専用パッケージでのOEM製造もお問い合わせください。",
           },
         },
       ],

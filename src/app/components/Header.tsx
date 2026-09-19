@@ -2,24 +2,32 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const isScrolled = !isHome || hasScrolled;
+
   useEffect(() => {
+    if (!isHome) return;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setHasScrolled(window.scrollY > 10);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   const navLinks = [
-    { label: "選ばれる理由", href: "#reviews" },
     { label: "商品ラインナップ", href: "#products" },
     { label: "導入実績", href: "#reviews" },
+    { label: "導入の流れ", href: "#faq" },
   ];
 
   return (

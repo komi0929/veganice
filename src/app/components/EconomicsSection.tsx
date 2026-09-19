@@ -60,7 +60,7 @@ export default function EconomicsSection() {
   ];
 
   return (
-    <section className="bg-bg-white relative overflow-hidden py-24">
+    <section id="economics" className="bg-bg-white relative overflow-hidden py-24">
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
