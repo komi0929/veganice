@@ -195,21 +195,38 @@ export default function ProductsSection() {
 
         {/* ── B2Bパッケージング ── */}
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-12 lg:flex-row lg:gap-16">
-          {/* 画像エリア */}
+          {/* 画像エリア (バルク写真) */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" as const }}
-            className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm lg:w-1/2"
+            className="flex w-full flex-col gap-4 lg:w-1/2"
           >
-            <Image
-              src="/images/soystories_icecream02081icecream.jpg"
-              alt="Soy stories ジェラートのパッケージ・納品仕様"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm">
+              <Image
+                src="/images/bulk_2l.jpg"
+                alt="2Lサイズの業務用バルク容器"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute top-4 left-4 rounded-full bg-white/90 px-4 py-1.5 text-sm font-bold text-gray-800 shadow-sm backdrop-blur-sm">
+                2L バルク
+              </div>
+            </div>
+            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl shadow-sm md:aspect-[4/3]">
+              <Image
+                src="/images/bulk_1l.jpg"
+                alt="1Lサイズの業務用バルク容器"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute top-4 left-4 rounded-full bg-white/90 px-4 py-1.5 text-sm font-bold text-gray-800 shadow-sm backdrop-blur-sm">
+                1L バルク
+              </div>
+            </div>
           </motion.div>
 
           {/* 情報エリア */}
@@ -221,14 +238,14 @@ export default function ProductsSection() {
             className="w-full lg:w-1/2"
           >
             <h3 className="text-ink mb-6 font-serif text-2xl tracking-wide sm:text-3xl">
-              お店のこだわりを、
+              限られた冷凍庫にも、
               <br />
-              そのまま形に。
+              すっきり収まる使いやすさ。
             </h3>
             <p className="text-ink-light mb-8 text-base leading-relaxed">
-              少量からの仕入れで、リスクなく新しい価値をメニューに加えられます。
+              お店の冷蔵庫のスペースに合わせて、1Lと2Lの2サイズをご用意しています。
               <br />
-              専用のパッケージで品質を保ったまま、確実にお届けします。
+              最小ロット4L（2L×2個、または1L×4個など）から、フレーバーを自由に組み合わせてご注文いただけます。
             </p>
 
             <div className="bg-bg rounded-xl border border-gray-100 p-6 sm:p-8">
