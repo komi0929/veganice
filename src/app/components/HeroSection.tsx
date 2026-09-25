@@ -39,7 +39,7 @@ export default function HeroSection() {
         >
           <Image
             src="/images/soystories_icecream02358icecream.jpg"
-            alt="Soy stories プラントベース・クラフトジェラート"
+            alt="Soy stories プラントベース クラフトアイスクリーム"
             fill
             priority
             className="object-cover object-center"
@@ -67,12 +67,12 @@ export default function HeroSection() {
             className="font-serif leading-[1.4] font-bold tracking-wider text-white sm:leading-[1.3]"
           >
             <span className="block text-2xl text-gray-200 sm:text-3xl md:text-4xl">
-              飲食店のための、プラントベース・クラフトジェラート。
+              アレルギーがあっても、なくても。
             </span>
             <span className="mt-2 block text-3xl sm:text-4xl md:text-5xl lg:mt-4 lg:text-6xl">
-              自社店舗で実証済みの味を、
+              同じテーブルで「おいしいね」と
               <br />
-              あなたのお店に。
+              言い合えるデザートを。
             </span>
           </motion.h1>
 
@@ -81,11 +81,11 @@ export default function HeroSection() {
             variants={itemVariants}
             className="max-w-xl font-sans text-base leading-relaxed text-gray-200 sm:text-lg md:text-xl"
           >
-            乳・卵・小麦フリー。仕込みゼロ。4Lの小ロットから。
+            福岡・薬院の小さなお店から生まれた、プラントベース クラフトアイスクリーム。
             <br />
-            HappyCow 5.0・Google レビュー200件超——直営店で圧倒的な評価を得ている
+            乳・卵・小麦フリー、仕込み不要。
             <br className="hidden sm:block" />
-            クラフトジェラートを、まずは無料でお試しください。
+            まずは無料のサンプルで、この味をお確かめください。
           </motion.p>
 
           {/* CTA buttons */}
@@ -108,7 +108,7 @@ export default function HeroSection() {
             variants={itemVariants}
             className="mt-4 flex w-full flex-col items-start gap-x-5 gap-y-2 border-t border-gray-100/30 pt-8 sm:max-w-xl sm:flex-row sm:flex-wrap sm:items-center"
           >
-            <span className="font-sans text-sm text-gray-300">★ 直営店 HappyCow 5.0</span>
+            <span className="font-sans text-sm text-gray-300">★ 薬院のお店 HappyCow 5.0</span>
             <span className="hidden text-gray-500 sm:inline" aria-hidden="true">
               ·
             </span>

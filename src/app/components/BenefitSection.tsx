@@ -11,8 +11,8 @@ const benefits = [
   },
   {
     icon: Star,
-    title: "みんなで「美味しい」と笑い合える味。",
-    body: "直営店にいらっしゃるお客様の8割は、アレルギーのない方やノンビーガンの方です。どなたが食べても「美味しい」と思っていただけるよう、素材の風味を大切にしています。",
+    title: "「これ、本当に植物性なの？」と驚かれる味。",
+    body: "薬院のお店にいらっしゃるお客様の8割は、アレルギーのない方やノンビーガンの方です。どなたが食べても「美味しい」と思っていただけるよう、素材の風味を大切にしています。",
   },
   {
     icon: ShieldCheck,
@@ -64,9 +64,9 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-ink-light mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg"
           >
-            添加物に頼らず、自然の恵みをそのままに。
+            お米と豆乳。たった2つの素材が、たくさんのことを解決してくれました。
             <br className="hidden md:block" />
-            私たちが「米粉」と「豆乳」でジェラートを作る、3つの理由です。
+            私たちが「米粉」と「豆乳」にこだわる3つの理由です。
           </motion.p>
         </div>
 

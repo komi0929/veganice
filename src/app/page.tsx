@@ -24,7 +24,7 @@ export default function Home() {
         {/* ② 飲食店のペインポイント */}
         <PainPointSection />
 
-        {/* ③ 課題の解決策 — このアイスでなければならない理由 */}
+        {/* ③ 課題の解決策 — このクラフトアイスでなければならない理由 */}
         <BenefitSection />
 
         {/* ④ 実績とストーリー（旧SocialProof + Problem統合） */}

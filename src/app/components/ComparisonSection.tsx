@@ -69,12 +69,10 @@ export default function ComparisonSection() {
             Our Promise
           </span>
           <h2 className="text-ink mb-6 font-serif text-3xl md:text-4xl">
-            「植物性だから」と、妥協しないでください。
+            「植物性だから仕方ない」——本当にそうでしょうか？
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-base leading-relaxed md:text-lg">
-            ヴィーガンアイスによくある「もどかしさ」。
-            <br className="hidden md:block" />
-            私たちが、ひとつひとつ丁寧に向き合い、解消しました。
+            私たちも同じ悩みを抱えていました。だから、ひとつひとつ向き合ってきました。
           </p>
         </motion.div>
 
@@ -90,7 +88,7 @@ export default function ComparisonSection() {
             <div className="p-4 md:p-6" />
             <div className="border-l border-gray-100 p-4 text-center md:p-6">
               <p className="text-ink-muted font-sans text-xs font-medium tracking-wider">
-                よくあるヴィーガンアイスの印象
+                よくあるクラフトアイスの印象
               </p>
             </div>
             <div className="bg-brand/5 border-l border-gray-100 p-4 text-center md:p-6">

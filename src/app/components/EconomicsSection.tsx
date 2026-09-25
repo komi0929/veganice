@@ -7,12 +7,12 @@ const valuePoints = [
   {
     icon: <TrendingUp className="text-brand h-6 w-6" />,
     title: "メニューの「顔」になれるデザート",
-    body: "「このアイス、美味しいね！」——ひとくちの感動が自然と会話を生み、お客様の思い出に残る。そんな、お店の誇りになるようなデザートをお届けします。",
+    body: "「このクラフトアイス、美味しいね！」——ひとくちの感動が自然と会話を生み、お客様の思い出に残る。そんな、お店の誇りになるようなデザートをお届けします。",
   },
   {
     icon: <Users className="text-brand h-6 w-6" />,
-    title: "みんなのテーブルに、同じ笑顔を",
-    body: "アレルギーのある方も、そうでない方も。ヴィーガンの方も、お肉を食べた方も。グループ全員が一緒に「美味しいね」と笑い合える、やさしい時間を。",
+    title: "「食べられないものがある」を、なくす",
+    body: "アレルギーのある方も、そうでない方も。ヴィーガンの方も、お肉好きの方も。メニューを前に「これは大丈夫？」と確認しなくていい——そんな安心を、ひと皿のデザートから。",
   },
   {
     icon: <RefreshCcw className="text-brand h-6 w-6" />,
@@ -47,9 +47,9 @@ export default function EconomicsSection() {
             お店とお客様をもっと繋ぐ。
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-base leading-relaxed md:text-lg">
-            ただのアイスクリームとしてではなく、
+            クラフトアイスをきっかけに、
             <br className="hidden md:block" />
-            あなたのお店の思い遣りを形にする、そんな存在でありたいと願っています。
+            あなたのお店の「思い遣り」が、お客様にそっと伝わりますように。
           </p>
         </motion.div>
 

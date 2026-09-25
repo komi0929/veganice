@@ -45,7 +45,7 @@ export default function Header() {
                 isScrolled ? "text-ink-light" : "text-white/70"
               }`}
             >
-              ヴィーガン米粉アイス
+              プラントベース クラフトアイスクリーム
             </span>
             <p
               className={`font-serif text-xl font-bold tracking-tight transition-all duration-300 md:text-2xl ${

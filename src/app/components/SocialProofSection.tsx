@@ -51,10 +51,10 @@ export default function SocialProofSection() {
         >
           <div className="text-center">
             <p className="text-ink-muted mb-4 font-sans text-xs tracking-[0.25em] uppercase">
-              Why We Manufacture
+              Our Story
             </p>
             <h2 className="text-ink font-serif text-3xl sm:text-4xl">
-              直営店の反響から、製造工場の設立へ
+              「こっちのほうが美味しい！」——その一言が嬉しくて、私たちは大きな決断をしました
             </h2>
           </div>
 
@@ -70,15 +70,15 @@ export default function SocialProofSection() {
             </div>
             <div className="flex w-full flex-col gap-6 md:w-1/2">
               <h3 className="text-ink font-serif text-2xl leading-[1.6] font-bold sm:text-3xl">
-                「こっちのほうが美味しい」
+                小さなお店で生まれた感動を、
                 <br className="hidden lg:block" />
-                想像以上の反響から工場が生まれました。
+                あなたのお店から届けてほしい。
               </h3>
               <p className="text-ink-light font-sans text-base leading-[2] sm:text-lg">
-                薬院の直営店で提供し始めた米粉アイスは、アレルギーをお持ちの方だけでなく、ノンビーガンのお客様からも大きな反響をいただきました。
+                私たちSoyStoriesは、福岡・薬院にある小さなお店から始まりました。米粉と豆乳で作った手作りのクラフトアイスは、アレルギーをお持ちの方だけでなく、ノンビーガンのお客様からも「こっちのほうが好き！」と嬉しいお声をいただくようになりました。
                 <br />
                 <br />
-                「このアイスなら、全国の飲食店の『デザートが出せない』という悩みを解決できる」。そう考えた私たちは、他のお店でも安心して扱っていただけるよう、コンタミネーションのない専用の製造工場を設立しました。
+                「この笑顔を、全国の飲食店でも作れるはず」。そう信じて、私たちは小さなキッチンを飛び出し、コンタミネーションのない専用の製造所を作りました。
               </p>
             </div>
           </div>
@@ -97,8 +97,8 @@ export default function SocialProofSection() {
             <div className="w-full md:w-1/2">
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-sm">
                 <Image
-                  src="/images/soystories_icecream02187icecream 1.jpg"
-                  alt="Soy storiesのジェラートをスプーンで味わう至福のひととき"
+                  src="/images/child_first_icecream.jpg"
+                  alt="初めてクラフトアイスを食べる子どもの様子"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -119,7 +119,7 @@ export default function SocialProofSection() {
                 アレルギーのあるお子さんを持つご家族にとって、「みんなと同じものを食べられる」ことは、私たちが思う以上に大きな意味があります。
                 <br />
                 <br />
-                あなたのお店でも、この体験を届けることができます。
+                あなたのお店にも、きっと同じような想いを抱えたご家族がいらっしゃるかもしれません。
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function SocialProofSection() {
           <div>
             <span className="text-brand block font-serif text-5xl font-bold md:text-7xl">5.0</span>
             <span className="text-ink-muted mt-3 block font-sans text-sm tracking-wider">
-              直営店 HappyCow 評価
+              薬院のお店 HappyCow 評価
             </span>
           </div>
           <div>
@@ -195,7 +195,7 @@ export default function SocialProofSection() {
             </div>
             <blockquote className="text-center sm:text-left">
               <p className="text-ink mb-3 font-serif text-lg leading-relaxed font-bold">
-                「アレルギーがあってもなくても、みんなで一緒に『おいしいね』と笑い合える——そんな瞬間を、あなたのお店でも作ってほしい」
+                「食べられないものがある人にとって、『あなたも食べられますよ』という一言は、想像以上にあたたかい。——その一言を、あなたのお店から届けてほしい」
               </p>
               <footer className="text-ink-light font-sans text-sm">— 代表 小南 優作</footer>
             </blockquote>

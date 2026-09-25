@@ -5,15 +5,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://soystories.com"),
   title: {
-    default: "SoyStories | 業務用ヴィーガン米粉アイス — 福岡から全国へ",
+    default: "SoyStories | 業務用プラントベース クラフトアイスクリーム — 福岡から全国へ",
     template: "%s | SoyStories",
   },
   description:
-    "乳・卵・小麦・白砂糖不使用のヴィーガン米粉アイス。コンタミネーションなし、仕込み不要、4Lの小ロットから仕入れ可能。飲食店のアレルギー・ヴィーガン対応に。福岡・薬院のSoyStoriesが製造・卸売。",
+    "乳・卵・小麦・白砂糖不使用のプラントベース クラフトアイスクリーム。コンタミネーションなし、仕込み不要、4Lの小ロットから仕入れ可能。飲食店のアレルギー・ヴィーガン対応に。福岡・薬院のSoyStoriesが製造・卸売。",
   keywords: [
-    "ヴィーガンアイス",
-    "米粉アイス",
-    "業務用アイス",
+    "クラフトアイス",
+    "クラフトアイス",
+    "業務用プラントベース クラフトアイスクリーム",
     "アレルゲンフリー",
     "乳卵小麦不使用",
     "グルテンフリー",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     "ヴィーガンスイーツ",
   ],
   openGraph: {
-    title: "SoyStories | 業務用ヴィーガン米粉アイス",
+    title: "SoyStories | 業務用プラントベース クラフトアイスクリーム",
     description:
-      "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。直営店HappyCow 5.0・Google 200件超の実証済みクラフトジェラートを、あなたのお店に。",
+      "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。薬院のお店HappyCow 5.0・Google 200件超の実証済みクラフトアイスを、あなたのお店に。",
     type: "website",
     locale: "ja_JP",
     url: "https://soystories.com",
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
         url: "/images/soystories_icecream02358icecream.jpg",
         width: 1200,
         height: 630,
-        alt: "Soy stories プラントベース・クラフトジェラート",
+        alt: "Soy stories プラントベース クラフトアイスクリーム",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SoyStories | 業務用ヴィーガン米粉アイス",
+    title: "SoyStories | 業務用プラントベース クラフトアイスクリーム",
     description:
       "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。飲食店のアレルギー・ヴィーガン対応に。",
     images: ["/images/soystories_icecream02358icecream.jpg"],
@@ -82,7 +82,7 @@ const jsonLd = {
         "https://www.happycow.net/reviews/soystories-fukuoka-289915",
       ],
       description:
-        "福岡・薬院発のヴィーガン米粉ジェラート専門店。乳・卵・小麦・白砂糖不使用、専用工房で製造。直営店舗の販売と業務用卸売を展開。",
+        "福岡・薬院発のプラントベース クラフトアイスクリーム専門店。乳・卵・小麦・白砂糖不使用、専用工房で製造。薬院のお店舗の販売と業務用卸売を展開。",
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+81-92-231-0677",
@@ -124,11 +124,11 @@ const jsonLd = {
     {
       "@type": "Product",
       "@id": "https://soystories.com/#product",
-      name: "SoyStories ヴィーガン米粉ジェラート（業務用卸売）",
+      name: "SoyStories プラントベース クラフトアイスクリーム（業務用卸売）",
       description:
-        "乳・卵・小麦・白砂糖不使用の植物性ジェラート（氷菓）。乳化安定剤・増粘剤・着色料も不使用。専用工房で製造しコンタミネーションなし。8フレーバー、冷凍1Lまたは2L容器、最小4Lから卸売対応。",
+        "乳・卵・小麦・白砂糖不使用の植物性クラフトアイス（氷菓）。乳化安定剤・増粘剤・着色料も不使用。専用工房で製造しコンタミネーションなし。8フレーバー、冷凍1Lまたは2L容器、最小4Lから卸売対応。",
       brand: { "@id": "https://soystories.com/#organization" },
-      category: "業務用氷菓・ジェラート",
+      category: "業務用氷菓・クラフトアイス",
       offers: {
         "@type": "Offer",
         availability: "https://schema.org/InStock",
@@ -149,7 +149,7 @@ const jsonLd = {
           name: "ヴィーガンでないお客様にも喜ばれますか？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "はい。直営店では「こっちのアイスのほうが好き」とおっしゃるノンビーガンのお客様が多数いらっしゃいます。米粉を使った独自の製法で、植物性とは思えないなめらかさとコクを実現しており、HappyCow 5.0・Googleレビュー200件超という評価がその証拠です。",
+            text: "はい。薬院のお店では「こっちのアイスのほうが好き」とおっしゃるノンビーガンのお客様が多数いらっしゃいます。米粉を使った独自の製法で、植物性とは思えないなめらかさとコクを実現しており、HappyCow 5.0・Googleレビュー200件超という評価がその証拠です。",
           },
         },
         {

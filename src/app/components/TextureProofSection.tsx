@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Timer, Wind, CheckCircle2 } from "lucide-react";
 
 const evidence = [
   {
     icon: <Timer className="text-brand h-8 w-8" />,
     title: "冷凍庫から出して、すぐにすくえる",
-    desc: "「植物性アイスは固くて、溶けるまで待たなきゃいけない」。そんな常識を変えたくて。独自の米粉製法により、-18℃の冷凍庫から出した直後でも、なめらかにディッシャーが入るように仕立てています。",
+    desc: "「クラフトアイスは固くて、溶けるまで待たなきゃいけない」。そんな常識を変えたくて。独自の米粉製法により、-18℃の冷凍庫から出した直後でも、なめらかにディッシャーが入るように仕立てています。",
   },
   {
     icon: <Wind className="text-brand h-8 w-8" />,
@@ -47,25 +48,49 @@ export default function TextureProofSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {evidence.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="border-brand/10 bg-brand/[0.02] flex flex-col items-start rounded-2xl border p-8 transition-colors hover:bg-white"
-            >
-              <div className="bg-brand/10 mb-6 flex h-16 w-16 items-center justify-center rounded-full">
-                {item.icon}
-              </div>
-              <h3 className="text-ink mb-4 font-serif text-xl leading-snug font-bold">
-                {item.title}
-              </h3>
-              <p className="text-ink-light font-sans text-sm leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
+        <div className="mt-16 flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+          {/* 左側：証拠の大きな写真 */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="w-full lg:w-1/2"
+          >
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-md">
+              <Image
+                src="/images/bulk_scoop.jpg"
+                alt="ディッシャーですっとすくえる、なめらかなクラフトアイス"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </motion.div>
+
+          {/* 右側：3つの理由 */}
+          <div className="flex w-full flex-col gap-8 lg:w-1/2">
+            {evidence.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.15 }}
+                className="border-brand/10 bg-brand/[0.02] flex flex-col items-start gap-5 rounded-2xl border p-8 transition-colors hover:bg-white sm:flex-row sm:items-start"
+              >
+                <div className="bg-brand/10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full">
+                  {item.icon}
+                </div>
+                <div>
+                  <h3 className="text-ink mb-2 font-serif text-lg font-bold sm:text-xl">
+                    {item.title}
+                  </h3>
+                  <p className="text-ink-light font-sans text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <motion.div

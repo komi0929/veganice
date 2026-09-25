@@ -31,7 +31,7 @@ export default function CompanyPage() {
                 <th className="text-ink w-1/3 bg-gray-50 px-6 py-4 font-bold">事業内容</th>
                 <td className="text-ink-light px-6 py-4">
                   <ul className="list-disc space-y-1 pl-5">
-                    <li>ヴィーガン米粉アイスの製造・販売</li>
+                    <li>プラントベース クラフトアイスクリームの製造・販売</li>
                     <li>飲食店向け卸売事業</li>
                     <li>アレルギー対応メニューの開発支援</li>
                   </ul>

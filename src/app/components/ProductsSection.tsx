@@ -145,7 +145,7 @@ export default function ProductsSection() {
         >
           <Image
             src="/images/soystories_icecream.1.jpg"
-            alt="Soy stories プラントベース・クラフトジェラート全フレーバー"
+            alt="Soy stories プラントベース クラフトアイスクリーム全フレーバー"
             fill
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 1024px"
@@ -189,7 +189,7 @@ export default function ProductsSection() {
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"
           >
-            無料でサンプルを試す
+            この味を、あなたのお店で試してみる
           </a>
         </div>
 

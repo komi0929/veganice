@@ -53,7 +53,9 @@ export default function ContactForm() {
           viewport={{ once: true }}
           className="text-ink mb-6 font-serif text-3xl font-bold md:text-5xl"
         >
-          まずは、お気軽にご相談ください。
+          この美味しさを、
+          <br className="md:hidden" />
+          一緒に届けていただけませんか？
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -62,9 +64,9 @@ export default function ContactForm() {
           transition={{ delay: 0.1 }}
           className="text-ink-light font-sans text-sm leading-relaxed md:text-base"
         >
-          冷凍でお届け（1Lまたは2L）。最小4リットルから。大量でなくても、こだわりのあるお店にお届けします。
+          小さなお店だからこそ、丁寧にお作りしてお届けします。最小4Lから対応可能です。
           <br className="hidden md:block" />
-          価格など、お気軽にご相談ください。
+          メニューのご相談やご試食など、まずはお気軽にお声がけください。
         </motion.p>
 
         {/* リスクリバーサルバッジ */}

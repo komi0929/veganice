@@ -29,7 +29,7 @@ const itemVariants = {
 const painPoints = [
   {
     num: "01",
-    text: "ヴィーガンアイスを導入したけれど、固くてすくいづらい",
+    text: "クラフトアイスを導入したけれど、固くてすくいづらい",
     detail:
       "冷凍庫から出してすぐには使えず、お客様をお待たせしてしまう。忙しい時間帯には少し負担になっていませんか？",
   },
@@ -53,8 +53,8 @@ const painPoints = [
   },
   {
     num: "05",
-    text: "業務用の植物性アイスは、どれも同じような味に感じてしまう",
-    detail: "添加物や乳化剤に頼らない、手作りのような温かみのあるジェラートを探している。",
+    text: "業務用のクラフトアイスは、どれも同じような味に感じてしまう",
+    detail: "添加物や乳化剤に頼らない、手作りのような温かみのあるクラフトアイスを探している。",
   },
 ];
 
@@ -72,7 +72,9 @@ export default function PainPointSection() {
           {/* Heading */}
           <motion.div variants={itemVariants} className="mb-16 text-center md:mb-20">
             <h2 className="font-serif text-3xl leading-snug tracking-wide md:text-4xl">
-              こんなもどかしさを、感じていませんか？
+              私たちも飲食店だからこそ、
+              <br className="sm:hidden" />
+              そのお悩みが痛いほどよくわかります。
             </h2>
           </motion.div>
 
