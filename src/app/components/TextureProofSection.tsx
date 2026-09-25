@@ -3,19 +3,74 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+/* 手描き風SVGアイコン */
+const ScoopIcon = () => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-brand"
+  >
+    <path d="M14 4C9 4 5 8 5 13C5 16 7 18 10 18H18C21 18 23 16 23 13C23 8 19 4 14 4Z" />
+    <line x1="14" y1="18" x2="14" y2="25" />
+    <line x1="10" y1="25" x2="18" y2="25" />
+  </svg>
+);
+
+const LeafIcon = () => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-brand"
+  >
+    <path d="M6 22C6 22 8 8 22 4C22 4 20 20 6 22Z" />
+    <path d="M6 22C10 18 14 12 22 4" strokeWidth="0.8" />
+  </svg>
+);
+
+const GrainIcon = () => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-brand"
+  >
+    <path d="M14 4C14 4 8 10 8 16C8 20 11 24 14 24C17 24 20 20 20 16C20 10 14 4 14 4Z" />
+    <line x1="14" y1="12" x2="14" y2="24" strokeWidth="0.8" />
+    <path d="M10 16C12 15 14 16 14 16" strokeWidth="0.8" />
+    <path d="M18 16C16 15 14 16 14 16" strokeWidth="0.8" />
+  </svg>
+);
+
 const evidence = [
   {
-    emoji: "🧊",
+    icon: <ScoopIcon />,
     title: "冷凍庫から出して、すぐにすくえる",
     desc: "「クラフトアイスは固くて、溶けるまで待たなきゃいけない」。そんな常識を変えたくて。独自の米粉製法により、-18℃の冷凍庫から出した直後でも、なめらかにディッシャーが入るように仕立てています。",
   },
   {
-    emoji: "🍃",
+    icon: <LeafIcon />,
     title: "空気を抱かせすぎないから、味が濃い",
     desc: "空気をたくさん含ませてかさ増しするのではなく、素材のおいしさをそのまま味わってほしくて。空気含有量を抑えた作りなので、溶けにくく、最後までしっかりとした風味を楽しんでいただけます。",
   },
   {
-    emoji: "🌾",
+    icon: <GrainIcon />,
     title: "添加物ではなく、お米本来の力で",
     desc: "安定剤や増粘剤で人工的になめらかさを作ることはしません。米粉が本来持っている自然な「保水力」と「粘り」を活かし、昔ながらの手作りのような優しい口溶けを実現しました。",
   },
@@ -78,10 +133,8 @@ export default function TextureProofSection() {
                 transition={{ duration: 0.5, delay: idx * 0.15 }}
                 className="border-brand/10 bg-brand/[0.02] flex flex-col items-start gap-5 rounded-2xl border p-8 transition-colors hover:bg-white sm:flex-row sm:items-start"
               >
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-amber-50">
-                  <span className="text-3xl" role="img" aria-hidden="true">
-                    {item.emoji}
-                  </span>
+                <div className="border-brand/20 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border bg-white">
+                  {item.icon}
                 </div>
                 <div>
                   <h3 className="text-ink mb-2 font-serif text-lg font-bold sm:text-xl">

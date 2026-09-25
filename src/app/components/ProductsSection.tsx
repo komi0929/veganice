@@ -6,7 +6,7 @@ import Image from "next/image";
 /* ── フレーバーデータ ── */
 const flavors = [
   {
-    name: "ビターショコラ",
+    name: "なめらかショコラ",
     story: "カカオの深い香りと、とろける余韻",
     image: "/images/flavors/chocolate.png",
   },
