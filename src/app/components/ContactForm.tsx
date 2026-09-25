@@ -46,7 +46,7 @@ export default function ContactForm() {
 
   return (
     <section id="contact-form" className="bg-bg-white px-5 py-20 md:px-8">
-      <div className="mx-auto mb-16 max-w-4xl text-center">
+      <div className="mx-auto mb-16 max-w-4xl md:text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,9 +64,15 @@ export default function ContactForm() {
           transition={{ delay: 0.1 }}
           className="text-ink-light font-sans text-sm leading-relaxed md:text-base"
         >
-          小さなお店だからこそ、丁寧にお作りしてお届けします。最小4Lから対応可能です。
-          <br className="hidden md:block" />
-          メニューのご相談やご試食など、まずはお気軽にお声がけください。
+          小さなお店だからこそ、
+          <br className="sm:hidden" />
+          丁寧にお作りしてお届けします。
+          <br />
+          最小4Lから対応可能です。
+          <br className="sm:hidden" />
+          メニューのご相談やご試食など、
+          <br className="sm:hidden" />
+          まずはお気軽にお声がけください。
         </motion.p>
 
         {/* リスクリバーサルバッジ */}

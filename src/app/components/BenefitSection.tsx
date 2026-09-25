@@ -1,21 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Snowflake, Star, ShieldCheck } from "lucide-react";
 
 const benefits = [
   {
-    icon: Snowflake,
+    emoji: "❄️",
     title: "最後の一杯まで、なめらかに。",
     body: "米粉のもつ自然な保水力で、業務用サイズでもふんわりとした食感を保ちます。ディッシャーの抜けもよく、冷凍庫から出してすぐにお客様へお届けできます。",
   },
   {
-    icon: Star,
+    emoji: "😲",
     title: "「これ、本当に植物性なの？」と驚かれる味。",
     body: "薬院のお店にいらっしゃるお客様の8割は、アレルギーのない方やノンビーガンの方です。どなたが食べても「美味しい」と思っていただけるよう、素材の風味を大切にしています。",
   },
   {
-    icon: ShieldCheck,
+    emoji: "🛡️",
     title: "「大丈夫ですよ」と、笑顔で言えるように。",
     body: "乳・卵・小麦を一切扱わない専用の工房で、ひとつひとつ丁寧につくっています。コンタミネーションの心配がないので、安心してテーブルへ運んでいただけます。",
   },
@@ -77,7 +76,6 @@ export default function BenefitSection() {
 
           <div className="relative z-10 flex flex-col justify-between gap-16 md:flex-row md:gap-8">
             {benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
               return (
                 <motion.div
                   key={index}
@@ -88,8 +86,10 @@ export default function BenefitSection() {
                   viewport={{ once: true, margin: "-60px" }}
                   className="group flex flex-1 flex-col items-start text-left md:items-center md:text-center"
                 >
-                  <div className="group-hover:border-brand/40 mb-8 flex h-[72px] w-[72px] items-center justify-center rounded-full border border-gray-200 bg-white transition-all duration-300 hover:scale-105">
-                    <Icon size={28} strokeWidth={1.5} className="text-brand" />
+                  <div className="mb-8 flex h-[72px] w-[72px] items-center justify-center rounded-full bg-amber-50 transition-all duration-300 group-hover:scale-105">
+                    <span className="text-3xl" role="img" aria-hidden="true">
+                      {benefit.emoji}
+                    </span>
                   </div>
 
                   <h3 className="text-ink mb-4 font-serif text-xl leading-snug font-bold md:text-2xl">

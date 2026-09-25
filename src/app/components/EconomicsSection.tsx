@@ -1,26 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { RefreshCcw, Wind, TrendingUp, Users } from "lucide-react";
 
 const valuePoints = [
   {
-    icon: <TrendingUp className="text-brand h-6 w-6" />,
+    emoji: "✨",
     title: "メニューの「顔」になれるデザート",
     body: "「このクラフトアイス、美味しいね！」——ひとくちの感動が自然と会話を生み、お客様の思い出に残る。そんな、お店の誇りになるようなデザートをお届けします。",
   },
   {
-    icon: <Users className="text-brand h-6 w-6" />,
+    emoji: "🤝",
     title: "「食べられないものがある」を、なくす",
     body: "アレルギーのある方も、そうでない方も。ヴィーガンの方も、お肉好きの方も。メニューを前に「これは大丈夫？」と確認しなくていい——そんな安心を、ひと皿のデザートから。",
   },
   {
-    icon: <RefreshCcw className="text-brand h-6 w-6" />,
+    emoji: "♻️",
     title: "お店のフードロスを、すこしでも減らす",
     body: "冷凍でお届けするため、賞味期限を気にして廃棄する必要はありません。ご注文をいただいた分だけ、大切にすくってお出しいただけます。",
   },
   {
-    icon: <Wind className="text-brand h-6 w-6" />,
+    emoji: "🍨",
     title: "新しい機材や、難しい仕込みはいりません",
     body: "冷凍庫とディッシャーさえあれば、届いたその日からお店のメニューに。厨房のオペレーションを複雑にすることなく、新しい価値を添えられます。",
   },
@@ -64,8 +63,10 @@ export default function EconomicsSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-shadow hover:shadow-md"
             >
-              <div className="bg-brand/5 mb-5 flex h-12 w-12 items-center justify-center rounded-xl">
-                {point.icon}
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-50">
+                <span className="text-2xl" role="img" aria-hidden="true">
+                  {point.emoji}
+                </span>
               </div>
               <h3 className="text-ink mb-3 font-serif text-lg font-bold">{point.title}</h3>
               <p className="text-ink-light text-sm leading-relaxed">{point.body}</p>

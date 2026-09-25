@@ -6,13 +6,13 @@ import Image from "next/image";
 /* ── フレーバーデータ ── */
 const flavors = [
   {
-    name: "濃厚ショコラ",
-    story: "カカオの深い香りと濃厚な味わい",
+    name: "ビターショコラ",
+    story: "カカオの深い香りと、とろける余韻",
     image: "/images/flavors/chocolate.png",
   },
   {
-    name: "濃厚抹茶",
-    story: "甘酒配合。奥深い抹茶の余韻",
+    name: "甘酒抹茶",
+    story: "甘酒が引き立てる、奥深い抹茶の味わい",
     image: "/images/flavors/matcha.png",
   },
   {

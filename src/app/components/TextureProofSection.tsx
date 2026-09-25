@@ -2,22 +2,21 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Timer, Wind, CheckCircle2 } from "lucide-react";
 
 const evidence = [
   {
-    icon: <Timer className="text-brand h-8 w-8" />,
+    emoji: "🧊",
     title: "冷凍庫から出して、すぐにすくえる",
     desc: "「クラフトアイスは固くて、溶けるまで待たなきゃいけない」。そんな常識を変えたくて。独自の米粉製法により、-18℃の冷凍庫から出した直後でも、なめらかにディッシャーが入るように仕立てています。",
   },
   {
-    icon: <Wind className="text-brand h-8 w-8" />,
+    emoji: "🍃",
     title: "空気を抱かせすぎないから、味が濃い",
     desc: "空気をたくさん含ませてかさ増しするのではなく、素材のおいしさをそのまま味わってほしくて。空気含有量を抑えた作りなので、溶けにくく、最後までしっかりとした風味を楽しんでいただけます。",
   },
   {
-    icon: <CheckCircle2 className="text-brand h-8 w-8" />,
-    title: "添加物ではなく、お米本来の粘りで",
+    emoji: "🌾",
+    title: "添加物ではなく、お米本来の力で",
     desc: "安定剤や増粘剤で人工的になめらかさを作ることはしません。米粉が本来持っている自然な「保水力」と「粘り」を活かし、昔ながらの手作りのような優しい口溶けを実現しました。",
   },
 ];
@@ -79,8 +78,10 @@ export default function TextureProofSection() {
                 transition={{ duration: 0.5, delay: idx * 0.15 }}
                 className="border-brand/10 bg-brand/[0.02] flex flex-col items-start gap-5 rounded-2xl border p-8 transition-colors hover:bg-white sm:flex-row sm:items-start"
               >
-                <div className="bg-brand/10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full">
-                  {item.icon}
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-amber-50">
+                  <span className="text-3xl" role="img" aria-hidden="true">
+                    {item.emoji}
+                  </span>
                 </div>
                 <div>
                   <h3 className="text-ink mb-2 font-serif text-lg font-bold sm:text-xl">
