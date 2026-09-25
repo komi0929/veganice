@@ -41,7 +41,7 @@ export default function EconomicsSection() {
           <span className="text-brand mb-4 block text-sm font-semibold tracking-widest uppercase">
             Value for you
           </span>
-          <h2 className="text-ink mb-6 font-serif text-3xl md:text-5xl">
+          <h2 className="text-ink mb-6 font-serif text-2xl sm:text-3xl md:text-5xl">
             ひとくちのデザートが、
             <br className="md:hidden" />
             お店とお客様をもっと繋ぐ。

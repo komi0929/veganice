@@ -122,7 +122,7 @@ export default function FAQSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" as const }}
-            className="text-ink font-serif text-3xl sm:text-4xl"
+            className="text-ink font-serif text-2xl sm:text-3xl md:text-4xl"
           >
             よくいただくご質問
           </motion.h2>

@@ -36,7 +36,7 @@ export default function TextureProofSection() {
           <span className="text-brand mb-4 block font-sans text-sm font-semibold tracking-widest uppercase">
             Craftsmanship
           </span>
-          <h2 className="text-ink mb-6 font-serif text-3xl md:text-4xl">
+          <h2 className="text-ink mb-6 font-serif text-2xl sm:text-3xl md:text-4xl">
             ディッシャーがすっと入る。
             <br className="md:hidden" />
             その秘密は、お米の力。

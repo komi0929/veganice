@@ -68,7 +68,7 @@ export default function ComparisonSection() {
           <span className="text-brand mb-4 block text-sm font-semibold tracking-widest uppercase">
             Our Promise
           </span>
-          <h2 className="text-ink mb-6 font-serif text-3xl md:text-4xl">
+          <h2 className="text-ink mb-6 font-serif text-2xl sm:text-3xl md:text-4xl">
             「植物性だから仕方ない」——本当にそうでしょうか？
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-base leading-relaxed md:text-lg">

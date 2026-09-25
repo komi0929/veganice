@@ -70,11 +70,13 @@ export default function PainPointSection() {
           className="flex flex-col items-center"
         >
           {/* Heading */}
-          <motion.div variants={itemVariants} className="mb-16 text-center md:mb-20">
-            <h2 className="font-serif text-3xl leading-snug tracking-wide md:text-4xl">
+          <motion.div variants={itemVariants} className="mb-12 md:mb-20 md:text-center">
+            <h2 className="font-serif text-2xl leading-relaxed tracking-wide sm:text-3xl md:text-4xl">
               私たちも飲食店だからこそ、
+              <br />
+              そのお悩みが
               <br className="sm:hidden" />
-              そのお悩みが痛いほどよくわかります。
+              痛いほどよくわかります。
             </h2>
           </motion.div>
 

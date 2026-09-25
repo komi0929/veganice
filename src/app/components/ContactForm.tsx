@@ -51,7 +51,7 @@ export default function ContactForm() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-ink mb-6 font-serif text-3xl font-bold md:text-5xl"
+          className="text-ink mb-6 font-serif text-2xl font-bold sm:text-3xl md:text-5xl"
         >
           この美味しさを、
           <br className="md:hidden" />

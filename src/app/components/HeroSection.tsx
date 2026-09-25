@@ -66,12 +66,14 @@ export default function HeroSection() {
             variants={itemVariants}
             className="font-serif leading-[1.4] font-bold tracking-wider text-white sm:leading-[1.3]"
           >
-            <span className="block text-2xl text-gray-200 sm:text-3xl md:text-4xl">
+            <span className="block text-xl text-gray-200 sm:text-2xl md:text-4xl">
               アレルギーがあっても、なくても。
             </span>
-            <span className="mt-2 block text-3xl sm:text-4xl md:text-5xl lg:mt-4 lg:text-6xl">
-              同じテーブルで「おいしいね」と
-              <br />
+            <span className="mt-2 block text-2xl sm:text-3xl md:text-5xl lg:mt-4 lg:text-6xl">
+              同じテーブルで
+              <br className="sm:hidden" />
+              「おいしいね」と
+              <br className="hidden sm:block" />
               言い合えるデザートを。
             </span>
           </motion.h1>
@@ -79,13 +81,13 @@ export default function HeroSection() {
           {/* Sub copy */}
           <motion.p
             variants={itemVariants}
-            className="max-w-xl font-sans text-base leading-relaxed text-gray-200 sm:text-lg md:text-xl"
+            className="max-w-xl font-sans text-sm leading-[1.8] text-gray-200 sm:text-base md:text-lg"
           >
-            福岡・薬院の小さなお店から生まれた、プラントベース クラフトアイスクリーム。
-            <br />
-            乳・卵・小麦フリー、仕込み不要。
+            福岡・薬院の小さなお店から生まれた、
+            <br className="sm:hidden" />
+            プラントベース クラフトアイスクリーム。
             <br className="hidden sm:block" />
-            まずは無料のサンプルで、この味をお確かめください。
+            乳・卵・小麦フリー、仕込み不要。 まずは無料のサンプルで、この味をお確かめください。
           </motion.p>
 
           {/* CTA buttons */}

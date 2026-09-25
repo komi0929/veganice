@@ -52,7 +52,7 @@ export default function BenefitSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-ink font-serif text-3xl leading-relaxed font-bold md:text-4xl lg:text-[2.6rem]"
+            className="text-ink font-serif text-2xl leading-relaxed font-bold sm:text-3xl md:text-4xl lg:text-[2.6rem]"
           >
             素材の力が、厨房の悩みをやさしく解く。
           </motion.h2>

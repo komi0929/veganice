@@ -53,7 +53,7 @@ export default function SocialProofSection() {
             <p className="text-ink-muted mb-4 font-sans text-xs tracking-[0.25em] uppercase">
               Our Story
             </p>
-            <h2 className="text-ink font-serif text-3xl sm:text-4xl">
+            <h2 className="text-ink font-serif text-2xl sm:text-3xl md:text-4xl">
               「こっちのほうが美味しい！」——その一言が嬉しくて、私たちは大きな決断をしました
             </h2>
           </div>
