@@ -36,7 +36,7 @@ export default function EconomicsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-12 md:mb-16 md:text-center"
         >
           <span className="text-brand mb-4 block text-sm font-semibold tracking-widest uppercase">
             Value for you

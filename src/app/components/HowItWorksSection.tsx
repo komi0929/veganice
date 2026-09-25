@@ -37,7 +37,7 @@ export default function HowItWorksSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="mb-20 text-center"
+          className="mb-16 md:mb-20 md:text-center"
         >
           <span className="text-brand mb-4 block text-sm font-semibold tracking-widest uppercase">
             How It Works

@@ -31,7 +31,7 @@ export default function TextureProofSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-12 md:mb-16 md:text-center"
         >
           <span className="text-brand mb-4 block font-sans text-sm font-semibold tracking-widest uppercase">
             Craftsmanship

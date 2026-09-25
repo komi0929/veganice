@@ -49,7 +49,7 @@ export default function SocialProofSection() {
           viewport={{ once: true }}
           className="mb-24 flex flex-col gap-12 md:gap-16"
         >
-          <div className="text-center">
+          <div className="md:text-center">
             <p className="text-ink-muted mb-4 font-sans text-xs tracking-[0.25em] uppercase">
               Our Story
             </p>

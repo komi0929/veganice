@@ -103,7 +103,7 @@ export default function ProductsSection() {
     <section id="products" className="bg-bg-white relative overflow-hidden py-20 md:py-36">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* ── ヘッダー ── */}
-        <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+        <div className="mx-auto mb-12 max-w-2xl md:mb-16 md:text-center">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -174,7 +174,7 @@ export default function ProductsSection() {
                     sizes="(max-width: 640px) 120px, 140px"
                   />
                 </div>
-                <h3 className="text-ink mb-1 font-serif text-base font-bold sm:text-lg">
+                <h3 className="text-ink mb-1 font-serif text-sm font-bold whitespace-nowrap sm:text-lg">
                   {flavor.name}
                 </h3>
                 <p className="text-ink-muted text-xs leading-relaxed sm:text-sm">{flavor.story}</p>

@@ -116,7 +116,7 @@ export default function FAQSection() {
   return (
     <section id="faq" className="bg-bg py-16 md:py-28">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
-        <div className="mb-20 text-center">
+        <div className="mb-12 md:mb-20 md:text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

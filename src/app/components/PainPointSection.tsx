@@ -107,7 +107,7 @@ export default function PainPointSection() {
           {/* Transition & CTA */}
           <motion.div
             variants={itemVariants}
-            className="flex w-full max-w-2xl flex-col items-center gap-8 text-center"
+            className="flex w-full max-w-2xl flex-col items-start gap-8 md:items-center md:text-center"
           >
             <p className="text-ink font-serif text-xl leading-relaxed md:text-2xl">
               「植物性だから仕方ない」と、

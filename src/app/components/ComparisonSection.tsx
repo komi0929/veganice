@@ -63,7 +63,7 @@ export default function ComparisonSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-12 md:mb-16 md:text-center"
         >
           <span className="text-brand mb-4 block text-sm font-semibold tracking-widest uppercase">
             Our Promise
@@ -83,44 +83,66 @@ export default function ComparisonSection() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm"
         >
-          {/* テーブルヘッダー */}
-          <div className="grid grid-cols-[1fr_1fr_1fr] border-b border-gray-100 bg-gray-50 md:grid-cols-[180px_1fr_1fr]">
-            <div className="p-4 md:p-6" />
-            <div className="border-l border-gray-100 p-4 text-center md:p-6">
-              <p className="text-ink-muted font-sans text-xs font-medium tracking-wider">
-                よくあるクラフトアイスの印象
-              </p>
+          {/* ── デスクトップ: テーブル表示 ── */}
+          <div className="hidden md:block">
+            {/* テーブルヘッダー */}
+            <div className="grid grid-cols-[180px_1fr_1fr] border-b border-gray-100 bg-gray-50">
+              <div className="p-6" />
+              <div className="border-l border-gray-100 p-6 text-center">
+                <p className="text-ink-muted font-sans text-xs font-medium tracking-wider">
+                  よくあるクラフトアイスの印象
+                </p>
+              </div>
+              <div className="bg-brand/5 border-l border-gray-100 p-6 text-center">
+                <p className="text-brand font-serif text-sm font-bold tracking-wider">
+                  SoyStoriesのお約束
+                </p>
+              </div>
             </div>
-            <div className="bg-brand/5 border-l border-gray-100 p-4 text-center md:p-6">
-              <p className="text-brand font-serif text-sm font-bold tracking-wider">
-                SoyStoriesのお約束
-              </p>
-            </div>
+
+            {/* テーブルボディ */}
+            {comparisonRows.map((row, index) => (
+              <div
+                key={index}
+                className={`grid grid-cols-[180px_1fr_1fr] ${
+                  index < comparisonRows.length - 1 ? "border-b border-gray-50" : ""
+                }`}
+              >
+                <div className="flex items-center p-5">
+                  <span className="text-ink font-serif text-sm font-bold">{row.label}</span>
+                </div>
+                <div className="flex items-center gap-2 border-l border-gray-50 p-5">
+                  <StatusIcon status={row.cheapStatus} />
+                  <span className="text-ink-light text-sm leading-snug">{row.cheap}</span>
+                </div>
+                <div className="bg-brand/[0.02] flex items-center gap-2 border-l border-gray-50 p-5">
+                  <StatusIcon status={row.soyStoriesStatus} />
+                  <span className="text-ink text-sm leading-snug font-medium">
+                    {row.soyStories}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* テーブルボディ */}
-          {comparisonRows.map((row, index) => (
-            <div
-              key={index}
-              className={`grid grid-cols-[1fr_1fr_1fr] md:grid-cols-[180px_1fr_1fr] ${
-                index < comparisonRows.length - 1 ? "border-b border-gray-50" : ""
-              }`}
-            >
-              <div className="flex items-center p-4 md:p-5">
-                <span className="text-ink font-serif text-sm font-bold">{row.label}</span>
+          {/* ── モバイル: カード表示 ── */}
+          <div className="divide-y divide-gray-100 md:hidden">
+            {comparisonRows.map((row, index) => (
+              <div key={index} className="px-5 py-4">
+                <p className="text-ink mb-3 font-serif text-sm font-bold">{row.label}</p>
+                <div className="mb-2 flex items-start gap-2 rounded-lg bg-gray-50 p-3">
+                  <StatusIcon status={row.cheapStatus} />
+                  <span className="text-ink-light text-sm leading-relaxed">{row.cheap}</span>
+                </div>
+                <div className="bg-brand/5 flex items-start gap-2 rounded-lg p-3">
+                  <StatusIcon status={row.soyStoriesStatus} />
+                  <span className="text-ink text-sm leading-relaxed font-medium">
+                    {row.soyStories}
+                  </span>
+                </div>
               </div>
-              <div className="flex items-center gap-2 border-l border-gray-50 p-4 md:p-5">
-                <StatusIcon status={row.cheapStatus} />
-                <span className="text-ink-light text-xs leading-snug md:text-sm">{row.cheap}</span>
-              </div>
-              <div className="bg-brand/[0.02] flex items-center gap-2 border-l border-gray-50 p-4 md:p-5">
-                <StatusIcon status={row.soyStoriesStatus} />
-                <span className="text-ink text-xs leading-snug font-medium md:text-sm">
-                  {row.soyStories}
-                </span>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </motion.div>
 
         {/* CTA */}

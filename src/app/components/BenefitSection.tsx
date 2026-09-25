@@ -35,7 +35,7 @@ export default function BenefitSection() {
     <section id="benefits" className="bg-bg-white overflow-hidden py-20 md:py-40">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* ── ヘッダー ── */}
-        <div className="mb-16 text-center md:mb-20">
+        <div className="mb-12 md:mb-20 md:text-center">
           <motion.p
             variants={fadeUp}
             custom={0}
@@ -86,7 +86,7 @@ export default function BenefitSection() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-60px" }}
-                  className="group flex flex-1 flex-col items-center text-center"
+                  className="group flex flex-1 flex-col items-start text-left md:items-center md:text-center"
                 >
                   <div className="group-hover:border-brand/40 mb-8 flex h-[72px] w-[72px] items-center justify-center rounded-full border border-gray-200 bg-white transition-all duration-300 hover:scale-105">
                     <Icon size={28} strokeWidth={1.5} className="text-brand" />
