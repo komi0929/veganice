@@ -39,21 +39,14 @@ export default function Header() {
       >
         <div className="container mx-auto flex items-center justify-between px-6 md:px-12">
           {/* Logo */}
-          <Link href="/" className="flex flex-col">
-            <span
-              className={`font-sans text-[10px] tracking-[0.2em] transition-colors duration-300 md:text-xs ${
-                isScrolled ? "text-ink-light" : "text-white/70"
+          <Link href="/" className="flex items-center">
+            <img
+              src="/images/logo_horizontal.jpg"
+              alt="SoyStories — plant base sweets"
+              className={`h-8 w-auto transition-all duration-300 sm:h-10 ${
+                isScrolled ? "" : "brightness-0 invert"
               }`}
-            >
-              プラントベース クラフトアイスクリーム
-            </span>
-            <p
-              className={`font-serif text-xl font-bold tracking-tight transition-all duration-300 md:text-2xl ${
-                isScrolled ? "text-ink" : "text-white"
-              }`}
-            >
-              SoyStories
-            </p>
+            />
           </Link>
 
           {/* Desktop Nav */}

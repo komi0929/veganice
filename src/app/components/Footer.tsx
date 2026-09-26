@@ -10,8 +10,11 @@ export default function Footer() {
         <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
           {/* Column 1: Brand & Philosophy */}
           <div className="flex flex-col items-start text-left">
-            <h2 className="mb-2 font-serif text-3xl font-bold tracking-tight">SoyStories</h2>
-            <p className="mb-6 font-sans text-sm text-white/50">ソイストーリーズ</p>
+            <img
+              src="/images/logo_square.jpg"
+              alt="SoyStories — plant base sweets"
+              className="mb-4 h-20 w-auto brightness-0 invert"
+            />
             <p className="font-sans text-base leading-relaxed text-white/80">
               飲食店のデザートメニューに、
               <br />
