@@ -29,117 +29,100 @@ const itemVariants = {
 
 export default function HeroSection() {
   return (
-    <section className="bg-ink relative flex min-h-screen w-full items-center overflow-hidden">
-      {/* Background Image with elegant overlay */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <motion.div
-          animate={{ scale: [1, 1.05] }}
-          transition={{ duration: 20, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
-          className="absolute inset-0"
-        >
-          <Image
-            src="/images/soystories_icecream02358icecream.jpg"
-            alt="Soy stories プラントベース クラフトアイスクリーム"
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="100vw"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxQf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//9k="
-          />
-        </motion.div>
-        {/* Gradient Overlay for text readability (left side darker) */}
-        <div className="from-ink/90 via-ink/60 absolute inset-0 bg-gradient-to-r to-transparent" />
-        <div className="from-ink/40 absolute inset-0 bg-gradient-to-t to-transparent" />
-      </div>
-
-      {/* Main content */}
-      <div className="relative z-10 container mx-auto flex w-full flex-col justify-center px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex max-w-2xl flex-1 flex-col items-start gap-8 text-left"
-        >
-          {/* Main headline */}
-          <motion.h1
-            variants={itemVariants}
-            className="font-serif leading-[1.5] font-bold tracking-wider text-white sm:leading-[1.3]"
-          >
-            <span className="block text-[1.65rem] leading-[1.5] sm:text-3xl md:text-5xl lg:text-6xl">
-              同じテーブルで
-              <br className="sm:hidden" />
-              「おいしいね」と
-              <br />
-              言い合えるデザートを。
-            </span>
-          </motion.h1>
-
-          {/* Sub copy */}
-          <motion.p
-            variants={itemVariants}
-            className="max-w-xl font-sans text-[0.8rem] leading-[1.9] text-gray-200 sm:text-base md:text-lg"
-          >
-            福岡・薬院の小さなお店から生まれた、
-            <br className="sm:hidden" />
-            プラントベース クラフトアイスクリーム。
-            <br />
-            乳・卵・小麦フリー。米粉と豆乳だけで作りました。
-            <br className="sm:hidden" />
-            まずは無料のサンプルで、
-            <br className="sm:hidden" />
-            この味をお確かめください。
-          </motion.p>
-
-          {/* CTA buttons */}
+    <section className="bg-bg-white relative w-full overflow-hidden">
+      <div className="mx-auto max-w-7xl">
+        {/* モバイル: 縦積み / デスクトップ: 横並び */}
+        <div className="flex flex-col lg:min-h-screen lg:flex-row lg:items-center">
+          {/* ── テキストエリア ── */}
           <motion.div
-            variants={itemVariants}
-            className="mt-4 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col items-start gap-6 px-6 pt-28 pb-8 sm:px-10 lg:w-1/2 lg:py-20 lg:pr-12 lg:pl-16"
           >
-            <motion.a
-              href="#contact-form"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-cta hover:bg-cta-hover inline-block w-full cursor-pointer rounded-full px-10 py-4 text-center text-lg font-bold text-white shadow-md transition-colors sm:w-auto"
+            <motion.h1
+              variants={itemVariants}
+              className="text-ink font-serif leading-[1.4] font-bold tracking-wider sm:leading-[1.3]"
             >
-              無料でサンプルを試す
-            </motion.a>
+              <span className="block text-[1.65rem] leading-[1.5] sm:text-3xl md:text-4xl lg:text-5xl">
+                同じテーブルで
+                <br className="sm:hidden" />
+                「おいしいね」と
+                <br />
+                言い合えるデザートを。
+              </span>
+            </motion.h1>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-ink-light max-w-xl font-sans text-sm leading-[1.9] sm:text-base"
+            >
+              福岡・薬院の小さなお店から生まれた、
+              <br className="sm:hidden" />
+              プラントベース クラフトアイスクリーム。
+              <br />
+              乳・卵・小麦フリー。米粉と豆乳だけで作りました。
+              <br className="sm:hidden" />
+              まずは無料のサンプルで、
+              <br className="sm:hidden" />
+              この味をお確かめください。
+            </motion.p>
+
+            {/* CTA */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-2 flex w-full flex-col items-center gap-4 sm:w-auto sm:flex-row"
+            >
+              <motion.a
+                href="#contact-form"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-cta hover:bg-cta-hover inline-block w-full cursor-pointer rounded-full px-10 py-4 text-center text-lg font-bold text-white shadow-md transition-colors sm:w-auto"
+              >
+                無料でサンプルを試す
+              </motion.a>
+            </motion.div>
+
+            {/* Trust badges */}
+            <motion.div
+              variants={itemVariants}
+              className="flex w-full flex-col items-start gap-x-5 gap-y-2 border-t border-gray-200 pt-6 sm:max-w-xl sm:flex-row sm:flex-wrap sm:items-center"
+            >
+              <span className="text-ink-light font-sans text-sm">★ 薬院のお店 HappyCow 5.0</span>
+              <span className="hidden text-gray-300 sm:inline" aria-hidden="true">
+                ·
+              </span>
+              <span className="text-ink-light font-sans text-sm">Google レビュー 200件超</span>
+              <span className="hidden text-gray-300 sm:inline" aria-hidden="true">
+                ·
+              </span>
+              <span className="text-ink-light font-sans text-sm">最小ロット 4L〜</span>
+            </motion.div>
           </motion.div>
 
-          {/* Trust badges */}
+          {/* ── 写真エリア ── */}
           <motion.div
-            variants={itemVariants}
-            className="mt-4 flex w-full flex-col items-start gap-x-5 gap-y-2 border-t border-gray-100/30 pt-8 sm:max-w-xl sm:flex-row sm:flex-wrap sm:items-center"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+            className="relative w-full lg:w-1/2"
           >
-            <span className="font-sans text-sm text-gray-300">★ 薬院のお店 HappyCow 5.0</span>
-            <span className="hidden text-gray-500 sm:inline" aria-hidden="true">
-              ·
-            </span>
-            <span className="font-sans text-sm text-gray-300">Google レビュー 200件超</span>
-            <span className="hidden text-gray-500 sm:inline" aria-hidden="true">
-              ·
-            </span>
-            <span className="font-sans text-sm text-gray-300">最小ロット 4L〜</span>
+            {/* モバイル: アスペクト比4:5で大きく見せる / デスクトップ: 画面高さいっぱい */}
+            <div className="relative aspect-[4/5] w-full sm:aspect-[3/4] lg:aspect-auto lg:h-screen">
+              <Image
+                src="/images/hero_flagship.jpg"
+                alt="SoyStoriesの看板商品 — ワッフルカップにクラフトアイスを盛り付けた一皿"
+                fill
+                priority
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              {/* 下部グラデーション（モバイルでの自然な繋ぎ） */}
+              <div className="from-bg-white pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t to-transparent lg:hidden" />
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
-      >
-        <span className="font-sans text-[10px] tracking-[0.2em] text-white/50 uppercase">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="h-10 w-[1px] bg-gradient-to-b from-white/50 to-transparent"
-        />
-      </motion.div>
     </section>
   );
 }
