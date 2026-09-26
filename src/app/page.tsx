@@ -1,9 +1,7 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import PainPointSection from "./components/PainPointSection";
-import BenefitSection from "./components/BenefitSection";
+import CoreValueSection from "./components/CoreValueSection";
 import SocialProofSection from "./components/SocialProofSection";
-import TextureProofSection from "./components/TextureProofSection";
 import ProductsSection from "./components/ProductsSection";
 import ComparisonSection from "./components/ComparisonSection";
 import EconomicsSection from "./components/EconomicsSection";
@@ -21,34 +19,28 @@ export default function Home() {
         {/* ① ファーストビュー */}
         <HeroSection />
 
-        {/* ② 飲食店のペインポイント */}
-        <PainPointSection />
+        {/* ② 3つの「問題→解決」— 米粉製法・発酵素材・専用工房 */}
+        <CoreValueSection />
 
-        {/* ③ 課題の解決策 — このクラフトアイスでなければならない理由 */}
-        <BenefitSection />
-
-        {/* ④ 実績とストーリー（旧SocialProof + Problem統合） */}
+        {/* ③ 導入実績・お客様の声 */}
         <SocialProofSection />
 
-        {/* ⑤ 証拠 — 「固くならない」技術的裏付け */}
-        <TextureProofSection />
-
-        {/* ⑥ プロダクト情報（フレーバー・仕様） */}
+        {/* ④ プロダクト情報（フレーバー・仕様） */}
         <ProductsSection />
 
-        {/* ⑦ 競合比較 — 安い代替品 vs SoyStories */}
+        {/* ⑤ 競合比較 */}
         <ComparisonSection />
 
-        {/* ⑧ 導入価値（旧Economics: 原価非公開・価値訴求） */}
+        {/* ⑥ 導入価値 */}
         <EconomicsSection />
 
-        {/* ⑨ 導入フロー */}
+        {/* ⑦ 導入フロー */}
         <HowItWorksSection />
 
-        {/* ⑩ FAQ */}
+        {/* ⑧ FAQ */}
         <FAQSection />
 
-        {/* ⑪ お問い合わせ */}
+        {/* ⑨ お問い合わせ */}
         <ContactForm />
       </main>
       <Footer />
