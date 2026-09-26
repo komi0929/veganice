@@ -66,10 +66,7 @@ export default function HeroSection() {
             variants={itemVariants}
             className="font-serif leading-[1.5] font-bold tracking-wider text-white sm:leading-[1.3]"
           >
-            <span className="block text-lg text-gray-200 sm:text-2xl md:text-4xl">
-              アレルギーがあっても、なくても。
-            </span>
-            <span className="mt-2 block text-[1.65rem] leading-[1.5] sm:text-3xl md:text-5xl lg:mt-4 lg:text-6xl">
+            <span className="block text-[1.65rem] leading-[1.5] sm:text-3xl md:text-5xl lg:text-6xl">
               同じテーブルで
               <br className="sm:hidden" />
               「おいしいね」と
