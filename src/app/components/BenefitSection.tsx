@@ -102,7 +102,7 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-brand mb-4 font-sans text-sm tracking-[0.2em] uppercase"
           >
-            Our Philosophy
+            Why Rice & Soy
           </motion.p>
           <motion.h2
             variants={fadeUp}
@@ -112,7 +112,7 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-ink font-serif text-2xl leading-relaxed font-bold sm:text-3xl md:text-4xl lg:text-[2.6rem]"
           >
-            素材の力が、厨房の悩みをやさしく解く。
+            米粉と豆乳で作る、3つのメリット
           </motion.h2>
           <motion.p
             variants={fadeUp}
@@ -122,9 +122,7 @@ export default function BenefitSection() {
             viewport={{ once: true }}
             className="text-ink-light mx-auto mt-6 max-w-2xl text-base leading-relaxed md:text-lg"
           >
-            お米と豆乳。たった2つの素材が、たくさんのことを解決してくれました。
-            <br className="hidden md:block" />
-            私たちが「米粉」と「豆乳」にこだわる3つの理由です。
+            お米と豆乳。この2つの素材だからこそ実現できることがあります。
           </motion.p>
         </div>
 
