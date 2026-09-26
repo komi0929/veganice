@@ -119,10 +119,6 @@ export default function HeroSection() {
             <span className="hidden text-gray-500 sm:inline" aria-hidden="true">
               ·
             </span>
-            <span className="font-sans text-sm text-gray-300">仕込み不要・すくうだけ</span>
-            <span className="hidden text-gray-500 sm:inline" aria-hidden="true">
-              ·
-            </span>
             <span className="font-sans text-sm text-gray-300">最小ロット 4L〜</span>
           </motion.div>
         </motion.div>

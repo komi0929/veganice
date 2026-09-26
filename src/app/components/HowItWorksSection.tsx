@@ -22,7 +22,7 @@ export default function HowItWorksSection() {
     },
     {
       number: "03",
-      title: "届いたら、すくうだけ",
+      title: "届いたその日から、メニューに",
       description:
         "クール冷凍便で全国配送。届いたその日からメニューに加えられます。POP素材・メニュー記載のご提案もサポートします。",
       icon: <UtensilsCrossed className="text-brand h-8 w-8" />,
