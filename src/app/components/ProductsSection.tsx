@@ -238,9 +238,9 @@ export default function ProductsSection() {
             className="w-full lg:w-1/2"
           >
             <h3 className="text-ink mb-6 font-serif text-2xl tracking-wide sm:text-3xl">
-              限られた冷凍庫にも、
+              お店のペースに合わせて、
               <br />
-              すっきり収まる使いやすさ。
+              少量から始められます。
             </h3>
             <p className="text-ink-light mb-8 text-base leading-relaxed">
               お店の冷蔵庫のスペースに合わせて、1Lと2Lの2サイズをご用意しています。

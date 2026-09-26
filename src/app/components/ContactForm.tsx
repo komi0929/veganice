@@ -117,7 +117,7 @@ export default function ContactForm() {
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
-            しつこい営業は一切しません
+            ご連絡はメールのみ
           </span>
         </motion.div>
       </div>
@@ -297,7 +297,7 @@ export default function ContactForm() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
-                しつこい営業はしません
+                ご連絡はメールのみ
               </span>
             </p>
             <button

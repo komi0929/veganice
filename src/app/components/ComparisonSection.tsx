@@ -41,7 +41,7 @@ const comparisonRows = [
   },
   {
     label: "お客様の反応",
-    cheap: "「まぁ、こんなものかな」",
+    cheap: "植物性だと伝えると納得される",
     cheapStatus: "negative" as const,
     soyStories: "「これ、本当にヴィーガンなの？」という驚き",
     soyStoriesStatus: "positive" as const,
@@ -154,7 +154,7 @@ export default function ComparisonSection() {
           className="mt-12 text-center"
         >
           <p className="text-ink-light mb-6 font-sans text-sm">
-            この違いが、お店のお客様を笑顔にする理由です。
+            ぜひ、あなたの厨房でこの違いを確かめてみてください。
           </p>
           <a
             href="#contact-form"

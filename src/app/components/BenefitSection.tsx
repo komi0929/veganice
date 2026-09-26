@@ -183,7 +183,7 @@ export default function BenefitSection() {
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"
           >
-            まずは少しだけ、味見してみる
+            まずはサンプルで、お試しください
           </a>
         </motion.div>
       </div>

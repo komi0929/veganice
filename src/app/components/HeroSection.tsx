@@ -84,7 +84,7 @@ export default function HeroSection() {
             <br className="sm:hidden" />
             プラントベース クラフトアイスクリーム。
             <br />
-            乳・卵・小麦フリー、仕込み不要。
+            乳・卵・小麦フリー。米粉と豆乳だけで作りました。
             <br className="sm:hidden" />
             まずは無料のサンプルで、
             <br className="sm:hidden" />

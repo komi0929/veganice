@@ -42,9 +42,7 @@ export default function HowItWorksSection() {
           <span className="text-brand mb-4 block text-sm font-semibold tracking-widest uppercase">
             How It Works
           </span>
-          <h2 className="text-ink font-serif text-2xl sm:text-3xl md:text-5xl">
-            導入は、かんたん3ステップ
-          </h2>
+          <h2 className="text-ink font-serif text-2xl sm:text-3xl md:text-5xl">導入までの流れ</h2>
         </motion.div>
 
         <div className="relative mb-20">

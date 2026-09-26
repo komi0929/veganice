@@ -66,7 +66,7 @@ const evidence = [
   },
   {
     icon: <LeafIcon />,
-    title: "空気を抱かせすぎないから、味が濃い",
+    title: "空気に頼らないから、素材の味がまっすぐ届く",
     desc: "空気をたくさん含ませてかさ増しするのではなく、素材のおいしさをそのまま味わってほしくて。空気含有量を抑えた作りなので、溶けにくく、最後までしっかりとした風味を楽しんでいただけます。",
   },
   {
@@ -161,7 +161,7 @@ export default function TextureProofSection() {
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md"
           >
-            無料でサンプルをお届けします
+            無料のサンプルでお確かめください
           </a>
         </motion.div>
       </div>

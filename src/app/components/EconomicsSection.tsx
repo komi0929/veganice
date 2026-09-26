@@ -87,13 +87,13 @@ const valuePoints = [
   },
   {
     icon: CycleIcon,
-    title: "お店のフードロスを、すこしでも減らす",
+    title: "廃棄の心配がない、冷凍という安心",
     body: "冷凍でお届けするため、賞味期限を気にして廃棄する必要はありません。ご注文をいただいた分だけ、大切にすくってお出しいただけます。",
   },
   {
     icon: SpoonIcon,
-    title: "新しい機材や、難しい仕込みはいりません",
-    body: "冷凍庫とディッシャーさえあれば、届いたその日からお店のメニューに。厨房のオペレーションを複雑にすることなく、新しい価値を添えられます。",
+    title: "「ここにしかない」と言ってもらえるメニュー",
+    body: "一般的な業務用アイスとは一線を画す、米粉ベースの独自製法。「このデザート、他では食べたことがない」——お客様にそう思っていただけることが、お店の個性になります。",
   },
 ];
 
@@ -115,7 +115,7 @@ export default function EconomicsSection() {
           <h2 className="text-ink mb-6 font-serif text-2xl sm:text-3xl md:text-5xl">
             ひとくちのデザートが、
             <br className="md:hidden" />
-            お店とお客様をもっと繋ぐ。
+            お客様の記憶に残る。
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-base leading-relaxed md:text-lg">
             クラフトアイスをきっかけに、
