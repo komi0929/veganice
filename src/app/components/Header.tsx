@@ -40,13 +40,17 @@ export default function Header() {
         <div className="container mx-auto flex items-center justify-between px-6 md:px-12">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img
-              src="/images/logo_horizontal.jpg"
-              alt="SoyStories — plant base sweets"
-              className={`h-8 w-auto transition-all duration-300 sm:h-10 ${
-                isScrolled ? "" : "brightness-0 invert"
+            <span
+              className={`inline-block rounded-md transition-all duration-300 ${
+                isScrolled ? "" : "bg-white/90 p-1"
               }`}
-            />
+            >
+              <img
+                src="/images/logo_horizontal.jpg"
+                alt="SoyStories — plant base sweets"
+                className="h-7 w-auto sm:h-9"
+              />
+            </span>
           </Link>
 
           {/* Desktop Nav */}
