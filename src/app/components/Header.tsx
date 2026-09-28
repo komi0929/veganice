@@ -39,28 +39,37 @@ export default function Header() {
       >
         <div className="container mx-auto flex items-center justify-between px-6 md:px-12">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <span
-              className={`inline-block rounded-md transition-all duration-300 ${
-                isScrolled ? "" : "bg-white/90 p-1"
+          <Link href="/" className="relative flex h-8 items-center sm:h-9">
+            {/* Transparent Header / Dark background (White text + Green accent) */}
+            <img
+              src="/images/logo_horizontal_white.png"
+              alt="SoyStories — plant base sweets"
+              className={`h-7 w-auto transition-opacity duration-300 sm:h-8 lg:h-8.5 ${
+                isScrolled || isMobileMenuOpen
+                  ? "pointer-events-none absolute left-0 opacity-0"
+                  : "opacity-100"
               }`}
-            >
-              <img
-                src="/images/logo_horizontal.jpg"
-                alt="SoyStories — plant base sweets"
-                className="h-7 w-auto sm:h-9"
-              />
-            </span>
+            />
+            {/* Scrolled / Light background (Dark text + Green accent) */}
+            <img
+              src="/images/logo_horizontal.png"
+              alt="SoyStories — plant base sweets"
+              className={`h-7 w-auto transition-opacity duration-300 sm:h-8 lg:h-8.5 ${
+                isScrolled || isMobileMenuOpen
+                  ? "opacity-100"
+                  : "pointer-events-none absolute left-0 opacity-0"
+              }`}
+            />
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden items-center gap-8 md:flex">
-            <nav className="flex items-center gap-8">
+          <div className="hidden items-center gap-5 md:flex lg:gap-8">
+            <nav className="flex items-center gap-5 lg:gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className={`font-sans text-sm transition-colors duration-300 ${
+                  className={`font-sans text-sm whitespace-nowrap transition-colors duration-300 ${
                     isScrolled
                       ? "text-ink-light hover:text-brand-dark"
                       : "text-white/80 hover:text-white"
@@ -72,7 +81,7 @@ export default function Header() {
             </nav>
             <Link
               href="#contact-form"
-              className="bg-cta hover:bg-cta-hover rounded-full px-6 py-2.5 font-sans text-sm font-medium text-white transition-colors duration-300"
+              className="bg-cta hover:bg-cta-hover rounded-full px-5 py-2 font-sans text-sm font-medium whitespace-nowrap text-white shadow-xs transition-colors duration-300 lg:px-6 lg:py-2.5"
             >
               無料でサンプルを試す
             </Link>

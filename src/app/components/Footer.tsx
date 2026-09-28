@@ -11,9 +11,9 @@ export default function Footer() {
           {/* Column 1: Brand & Philosophy */}
           <div className="flex flex-col items-start text-left">
             <img
-              src="/images/logo_square.jpg"
+              src="/images/logo_square_white.png"
               alt="SoyStories — plant base sweets"
-              className="mb-4 h-20 w-auto brightness-0 invert"
+              className="mb-4 h-16 w-auto sm:h-20"
             />
             <p className="font-sans text-base leading-relaxed text-white/80">
               飲食店のデザートメニューに、

@@ -76,7 +76,7 @@ const jsonLd = {
       name: "SoyStories",
       alternateName: "ソイストーリーズ",
       url: "https://soystories.com",
-      logo: "https://soystories.com/images/jp_logo.png",
+      logo: "https://soystories.com/images/logo_square.png",
       sameAs: [
         "https://www.instagram.com/soystories_yakuin",
         "https://www.happycow.net/reviews/soystories-fukuoka-289915",
