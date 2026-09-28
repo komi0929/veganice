@@ -75,10 +75,13 @@ export default function SocialProofSection() {
                 あなたのお店から届けてほしい。
               </h3>
               <p className="text-ink-light font-sans text-base leading-[2] sm:text-lg">
-                私たちSoyStoriesは、福岡・薬院にある小さなお店から始まりました。米粉と豆乳で作った手作りのクラフトアイスは、アレルギーをお持ちの方だけでなく、ノンビーガンのお客様からも「こっちのほうが好き！」と嬉しいお声をいただくようになりました。
+                私たちSoyStoriesのミッションは、アレルギーやヴィーガンなど食に制限がある方、素材にこだわる方にとって「ユメミタイ」と思える場所をつくること。
                 <br />
                 <br />
-                「この笑顔を、全国の飲食店でも作れるはず」。そう信じて、私たちは小さなキッチンを飛び出し、コンタミネーションのない専用の製造所を作りました。
+                「みんなで一緒に食べられる幸せ」をカタチにするため、福岡・薬院の小さなお店でお客様をお迎えしてきました。そこで生まれた手作りのクラフトアイスは、アレルギーをお持ちの方だけでなく、ノンビーガンのお客様からも「こっちのほうが好き！」「美味しい！」とたくさんの笑顔をいただくようになりました。
+                <br />
+                <br />
+                この「ユメミタイ」な体験を福岡のみならず、もっと多くのエリアで広げていくために、私たちは小さなお店のキッチンを飛び出し、コンタミネーションのないアイスファクトリー（専用製造所）を立ち上げました。
               </p>
             </div>
           </div>
@@ -141,11 +144,9 @@ export default function SocialProofSection() {
             </span>
           </div>
           <div>
-            <span className="text-ink block font-serif text-5xl font-bold md:text-7xl">
-              200<span className="text-4xl">+</span>
-            </span>
+            <span className="text-ink block font-serif text-5xl font-bold md:text-7xl">4.7</span>
             <span className="text-ink-muted mt-3 block font-sans text-sm tracking-wider">
-              Google レビュー
+              Google レビュー評価（200件超）
             </span>
           </div>
         </motion.div>
