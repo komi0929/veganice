@@ -69,7 +69,9 @@ export async function submitContact(
     };
   }
 
-  const gasUrl = process.env.GAS_WEB_APP_URL;
+  const DEFAULT_GAS_URL =
+    "https://script.google.com/macros/s/AKfycby1Wj8ORyoo8MNj8ze3n_KxhaBEhDnjRiejhAjrwBVyHa1ahfSnItuH3apUxmGVbun0/exec";
+  const gasUrl = process.env.GAS_WEB_APP_URL || DEFAULT_GAS_URL;
 
   if (gasUrl) {
     try {

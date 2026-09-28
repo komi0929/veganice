@@ -52,8 +52,8 @@ function doPost(e) {
       contentField,
     ]);
 
-    // メール通知（任意：自分宛に通知を飛ばす場合）
-    var notifyEmail = "info@soystories.cafe"; // ← 通知先メールを設定
+    // メール通知（管理者宛に通知）
+    var notifyEmail = "hitokoto.sogu@gmail.com";
     var subject = "【SoyStories】" + formTypeLabel + " - " + (data.companyName || "不明");
     var body =
       "■ 種別: " +
