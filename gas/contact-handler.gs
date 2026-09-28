@@ -1,10 +1,10 @@
 /**
  * SoyStories お問い合わせ受信用 Google Apps Script
- * 
+ *
  * フォームタイプ:
  *   - sample: サンプル申込（住所あり）
  *   - inquiry: お問い合わせ（メッセージ）
- * 
+ *
  * スプレッドシートの列構成:
  *   A: タイムスタンプ
  *   B: 種別（サンプル申込 / お問い合わせ）
@@ -33,14 +33,12 @@ function doPost(e) {
         "電話番号",
         "郵便番号",
         "住所",
-        "備考 / 内容"
+        "備考 / 内容",
       ]);
     }
 
     var formTypeLabel = data.formType === "sample" ? "サンプル申込" : "お問い合わせ";
-    var contentField = data.formType === "sample"
-      ? (data.notes || "")
-      : (data.message || "");
+    var contentField = data.formType === "sample" ? data.notes || "" : data.message || "";
 
     sheet.appendRow([
       new Date(data.timestamp),
@@ -51,35 +49,52 @@ function doPost(e) {
       data.phone || "",
       data.postalCode || "",
       data.address || "",
-      contentField
+      contentField,
     ]);
 
     // メール通知（任意：自分宛に通知を飛ばす場合）
     var notifyEmail = "info@soystories.cafe"; // ← 通知先メールを設定
     var subject = "【SoyStories】" + formTypeLabel + " - " + (data.companyName || "不明");
-    var body = "■ 種別: " + formTypeLabel + "\n"
-      + "■ 店舗名: " + (data.companyName || "") + "\n"
-      + "■ 担当者: " + (data.contactName || "") + "\n"
-      + "■ メール: " + (data.email || "") + "\n"
-      + "■ 電話: " + (data.phone || "") + "\n";
+    var body =
+      "■ 種別: " +
+      formTypeLabel +
+      "\n" +
+      "■ 店舗名: " +
+      (data.companyName || "") +
+      "\n" +
+      "■ 担当者: " +
+      (data.contactName || "") +
+      "\n" +
+      "■ メール: " +
+      (data.email || "") +
+      "\n" +
+      "■ 電話: " +
+      (data.phone || "") +
+      "\n";
 
     if (data.formType === "sample") {
-      body += "■ 〒: " + (data.postalCode || "") + "\n"
-        + "■ 住所: " + (data.address || "") + "\n"
-        + "■ 備考: " + (data.notes || "なし") + "\n";
+      body +=
+        "■ 〒: " +
+        (data.postalCode || "") +
+        "\n" +
+        "■ 住所: " +
+        (data.address || "") +
+        "\n" +
+        "■ 備考: " +
+        (data.notes || "なし") +
+        "\n";
     } else {
       body += "■ 内容: " + (data.message || "") + "\n";
     }
 
     MailApp.sendEmail(notifyEmail, subject, body);
 
-    return ContentService
-      .createTextOutput(JSON.stringify({ status: "success" }))
-      .setMimeType(ContentService.MimeType.JSON);
-
+    return ContentService.createTextOutput(JSON.stringify({ status: "success" })).setMimeType(
+      ContentService.MimeType.JSON
+    );
   } catch (error) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ status: "error", message: error.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(
+      JSON.stringify({ status: "error", message: error.toString() })
+    ).setMimeType(ContentService.MimeType.JSON);
   }
 }
