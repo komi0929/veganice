@@ -69,9 +69,13 @@ export default function ContactForm() {
           transition={{ delay: 0.1 }}
           className="text-ink-light font-sans text-sm leading-relaxed md:text-base"
         >
-          サンプルは無料でお届けします。送料（着払い）のみご負担ください。
+          サンプルアイス本体は無料でお届けします。
           <br />
-          購入義務はありません。
+          <span className="mt-2 inline-block rounded-lg border border-amber-200 bg-amber-50 px-3.5 py-1.5 text-xs font-semibold text-amber-900 sm:text-sm">
+            ⚠️ ヤマト運輸 クール冷凍便の送料（着払い）のみご負担をお願いしております
+          </span>
+          <br className="hidden sm:block" />
+          事前の購入義務やしつこい営業連絡は一切ございません。
         </motion.p>
       </div>
 
@@ -135,6 +139,23 @@ export default function ContactForm() {
 
             {state.message && !state.success && (
               <div className="rounded-lg bg-red-50 p-4 text-sm text-red-600">{state.message}</div>
+            )}
+
+            {activeTab === "sample" && (
+              <div className="rounded-xl border border-amber-200 bg-amber-50/80 p-4 text-left">
+                <div className="flex items-start gap-3">
+                  <span className="text-xl">🚚</span>
+                  <div className="text-xs leading-relaxed text-amber-950 sm:text-sm">
+                    <p className="font-bold">【送料のご負担について（必ずご確認ください）】</p>
+                    <p className="mt-1 text-amber-900">
+                      サンプルアイス（おすすめ6種）の<strong>商品代金は無料</strong>
+                      です。お届け時に発生する
+                      <strong>ヤマト運輸のクール冷凍便送料（着払い）のみ</strong>
+                      お客様にてご負担をお願いしております。ご了承の上、お申し込みください。
+                    </p>
+                  </div>
+                </div>
+              </div>
             )}
 
             {/* 共通フィールド: 店舗名・担当者名 */}
@@ -287,25 +308,31 @@ export default function ContactForm() {
                 <div>
                   <label
                     htmlFor="notes"
-                    className="text-ink mb-2 block font-sans text-sm font-bold"
+                    className="text-ink mb-1.5 block font-sans text-sm font-bold"
                   >
                     備考{" "}
                     <span className="ml-1 rounded border border-gray-200 px-1.5 py-0.5 text-[10px] text-gray-400">
                       任意
                     </span>
                   </label>
+                  <p className="text-ink-light mb-2 text-xs leading-relaxed sm:text-sm">
+                    おすすめの6種をお届け。絶対に入れて欲しいフレーバーがある場合はその旨、ご記入ください。
+                  </p>
                   <textarea
                     id="notes"
                     name="notes"
                     disabled={isPending}
                     rows={3}
                     className={`${inputClasses} resize-none`}
-                    placeholder="気になるフレーバーがあればお書きください"
+                    placeholder="おすすめの6種をお届け。絶対に入れて欲しいフレーバーがある場合はその旨、ご記入ください。"
                   ></textarea>
                 </div>
-                <p className="text-ink-muted font-sans text-xs leading-relaxed">
-                  ※ サンプルは無料です。送料（着払い）のみご負担をお願いしております。
-                </p>
+                <div className="rounded-lg border border-amber-200/80 bg-amber-50/70 p-3 text-left">
+                  <p className="text-xs leading-relaxed font-medium text-amber-950">
+                    ※ サンプルアイス（6種）は無料です。ヤマト運輸の
+                    <strong>クール冷凍便送料（着払い）のみ</strong>ご負担をお願いしております。
+                  </p>
+                </div>
               </div>
             )}
 
@@ -347,12 +374,12 @@ export default function ContactForm() {
                 {isPending
                   ? "送信中..."
                   : activeTab === "sample"
-                    ? "サンプルを申し込む（無料）"
+                    ? "サンプルを申し込む（送料着払い）"
                     : "送信する"}
               </button>
               <p className="text-ink-muted mt-3 font-sans text-xs">
                 {activeTab === "sample"
-                  ? "※ 通常2営業日以内に発送いたします"
+                  ? "※ 通常2営業日以内にヤマト運輸クール冷凍便（着払い）にて発送いたします"
                   : "※ 通常2営業日以内にご連絡いたします"}
               </p>
             </div>
