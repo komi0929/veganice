@@ -58,13 +58,13 @@ export default function SocialProofSection() {
             </h2>
           </div>
 
-          <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
-            <div className="bg-bg relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:w-1/2">
+          <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
+            <div className="bg-bg relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-sm sm:aspect-square md:aspect-[4/5] md:w-1/2">
               <Image
-                src="/images/craft_moment.jpg"
-                alt="SoyStoriesの工房・仕込み風景"
+                src="/images/owner_story.jpg"
+                alt="SoyStories代表・店舗でのクラフトアイス作りの様子"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
