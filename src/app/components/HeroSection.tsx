@@ -73,7 +73,7 @@ export default function HeroSection() {
             <br className="sm:hidden" />
             プラントベース クラフトアイスクリーム。
             <br />
-            乳・卵・小麦フリー。米粉と豆乳だけで作りました。
+            乳・卵・小麦フリー。
           </motion.p>
 
           {/* CTA */}
@@ -98,12 +98,14 @@ export default function HeroSection() {
               ·
             </span>
             <span className="font-sans text-xs text-white/70 sm:text-sm">
-              Google レビュー 200件超
+              Google ★4.7（200件超）
             </span>
             <span className="text-white/30" aria-hidden="true">
               ·
             </span>
-            <span className="font-sans text-xs text-white/70 sm:text-sm">最小ロット 4L〜</span>
+            <span className="font-sans text-xs text-white/70 sm:text-sm">
+              最小ロット 4L〜（例: 2L×2個）
+            </span>
           </motion.div>
         </motion.div>
       </div>
