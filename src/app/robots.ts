@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://soystories.com/sitemap.xml",
+    sitemap: "https://soystories.cafe/sitemap.xml",
   };
 }

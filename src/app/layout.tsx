@@ -3,7 +3,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://soystories.com"),
+  metadataBase: new URL("https://soystories.cafe"),
   title: {
     default: "SoyStories | 業務用プラントベース クラフトアイスクリーム — 福岡から全国へ",
     template: "%s | SoyStories",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。薬院のお店HappyCow 5.0・Google ★4.7（200件超）の実証済みクラフトアイスを、あなたのお店に。",
     type: "website",
     locale: "ja_JP",
-    url: "https://soystories.com",
+    url: "https://soystories.cafe",
     siteName: "SoyStories",
     images: [
       {
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     images: ["/images/soystories_icecream02358icecream.jpg"],
   },
   alternates: {
-    canonical: "https://soystories.com",
+    canonical: "https://soystories.cafe",
   },
   robots: {
     index: true,
@@ -72,11 +72,11 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://soystories.com/#organization",
+      "@id": "https://soystories.cafe/#organization",
       name: "SoyStories",
       alternateName: "ソイストーリーズ",
-      url: "https://soystories.com",
-      logo: "https://soystories.com/images/logo_square.png",
+      url: "https://soystories.cafe",
+      logo: "https://soystories.cafe/images/logo_square.png",
       sameAs: [
         "https://www.instagram.com/soystories_yakuin",
         "https://www.happycow.net/reviews/soystories-fukuoka-289915",
@@ -93,10 +93,10 @@ const jsonLd = {
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://soystories.com/#store",
+      "@id": "https://soystories.cafe/#store",
       name: "SoyStories 薬院店",
-      image: "https://soystories.com/images/store_actual.png",
-      url: "https://soystories.com",
+      image: "https://soystories.cafe/images/store_actual.png",
+      url: "https://soystories.cafe",
       telephone: "+81-92-231-0677",
       address: {
         "@type": "PostalAddress",
@@ -118,16 +118,16 @@ const jsonLd = {
         worstRating: "1",
       },
       parentOrganization: {
-        "@id": "https://soystories.com/#organization",
+        "@id": "https://soystories.cafe/#organization",
       },
     },
     {
       "@type": "Product",
-      "@id": "https://soystories.com/#product",
+      "@id": "https://soystories.cafe/#product",
       name: "SoyStories プラントベース クラフトアイスクリーム（業務用卸売）",
       description:
         "乳・卵・小麦・白砂糖不使用の植物性クラフトアイス（氷菓）。乳化安定剤・増粘剤・着色料も不使用。専用工房で製造しコンタミネーションなし。8フレーバー、冷凍1Lまたは2L容器、最小4Lから卸売対応。",
-      brand: { "@id": "https://soystories.com/#organization" },
+      brand: { "@id": "https://soystories.cafe/#organization" },
       category: "業務用氷菓・クラフトアイス",
       offers: {
         "@type": "Offer",
@@ -142,7 +142,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "@id": "https://soystories.com/#faq",
+      "@id": "https://soystories.cafe/#faq",
       mainEntity: [
         {
           "@type": "Question",
