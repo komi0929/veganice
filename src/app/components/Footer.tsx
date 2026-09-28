@@ -2,8 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
     <footer className="bg-ink border-t border-white/10 px-5 pt-16 pb-12 text-white md:px-8">
       <div className="container mx-auto max-w-6xl">
@@ -27,22 +31,31 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <h3 className="mb-2 text-sm font-bold tracking-wider text-white/50">メニュー</h3>
               <Link
-                href="#products"
+                href={isHome ? "#products" : "/#products"}
                 className="hover:text-cta text-base text-white transition-colors"
               >
                 商品ラインナップ
               </Link>
               <Link
-                href="#reviews"
+                href={isHome ? "#story" : "/#story"}
                 className="hover:text-cta text-base text-white transition-colors"
               >
-                導入実績
+                私たちの想い
               </Link>
-              <Link href="#faq" className="hover:text-cta text-base text-white transition-colors">
+              <Link
+                href={isHome ? "#flow" : "/#flow"}
+                className="hover:text-cta text-base text-white transition-colors"
+              >
                 導入の流れ
               </Link>
               <Link
-                href="#contact-form"
+                href={isHome ? "#faq" : "/#faq"}
+                className="hover:text-cta text-base text-white transition-colors"
+              >
+                よくあるご質問
+              </Link>
+              <Link
+                href={isHome ? "#contact-form" : "/#contact-form"}
                 className="hover:text-cta text-base text-white transition-colors"
               >
                 お問い合わせ

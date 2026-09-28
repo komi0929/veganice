@@ -25,9 +25,10 @@ export default function Header() {
   }, [isHome]);
 
   const navLinks = [
-    { label: "商品ラインナップ", href: "#products" },
-    { label: "導入実績", href: "#reviews" },
-    { label: "導入の流れ", href: "#faq" },
+    { label: "商品ラインナップ", href: isHome ? "#products" : "/#products" },
+    { label: "私たちの想い", href: isHome ? "#story" : "/#story" },
+    { label: "導入の流れ", href: isHome ? "#flow" : "/#flow" },
+    { label: "よくあるご質問", href: isHome ? "#faq" : "/#faq" },
   ];
 
   return (
@@ -80,7 +81,7 @@ export default function Header() {
               ))}
             </nav>
             <Link
-              href="#contact-form"
+              href={isHome ? "#contact-form" : "/#contact-form"}
               className="bg-cta hover:bg-cta-hover rounded-full px-5 py-2 font-sans text-sm font-medium whitespace-nowrap text-white shadow-xs transition-colors duration-300 lg:px-6 lg:py-2.5"
             >
               無料でサンプルを試す
@@ -123,7 +124,7 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="#contact-form"
+            href={isHome ? "#contact-form" : "/#contact-form"}
             className="bg-cta mt-4 rounded-full px-8 py-3 font-sans text-base font-medium text-white"
             onClick={() => setIsMobileMenuOpen(false)}
           >

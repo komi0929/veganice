@@ -24,13 +24,13 @@ export default function HowItWorksSection() {
       number: "03",
       title: "届いたその日から、メニューに",
       description:
-        "クール冷凍便で全国配送。届いたその日からメニューに加えられます。POP素材・メニュー記載のご提案もサポートします。",
+        "クール冷凍便で全国配送。届いたその日からメニューに加えられます。特別な仕込みや専用の器具は必要ありません。",
       icon: <UtensilsCrossed className="text-brand h-8 w-8" />,
     },
   ];
 
   return (
-    <section className="bg-bg relative overflow-hidden py-24">
+    <section id="flow" className="bg-bg relative overflow-hidden py-24">
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -38,7 +38,7 @@ const reviews = [
 
 export default function SocialProofSection() {
   return (
-    <section id="story-and-proof" className="bg-bg border-t border-gray-100 py-20 md:py-28">
+    <section id="story" className="bg-bg border-t border-gray-100 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {/* Story Part: Why We Manufacture */}
         <motion.div
