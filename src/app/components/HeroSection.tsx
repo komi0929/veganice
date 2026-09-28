@@ -73,7 +73,7 @@ export default function HeroSection() {
             <br className="sm:hidden" />
             プラントベース クラフトアイスクリーム。
             <br />
-            乳・卵・小麦フリー。
+            乳・卵・小麦フリー。増粘剤や着色料も不要。
           </motion.p>
 
           {/* CTA */}
