@@ -58,13 +58,13 @@ export default function SocialProofSection() {
             </h2>
           </div>
 
-          <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
-            <div className="bg-bg relative aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-sm sm:aspect-square md:aspect-[4/5] md:w-1/2">
+          <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16">
+            <div className="bg-bg relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:w-1/2">
               <Image
-                src="/images/owner_story.jpg"
-                alt="SoyStories代表・店舗でのクラフトアイス作りの様子"
+                src="/images/craft_moment.jpg"
+                alt="SoyStoriesの工房・仕込み風景"
                 fill
-                className="object-cover object-top"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
@@ -185,20 +185,22 @@ export default function SocialProofSection() {
           className="flex flex-col items-center gap-12"
         >
           <div className="flex max-w-3xl flex-col items-center gap-8 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm sm:flex-row">
-            <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full sm:h-32 sm:w-32">
+            <div className="ring-brand/20 relative h-24 w-24 shrink-0 overflow-hidden rounded-full shadow-sm ring-2 sm:h-32 sm:w-32">
               <Image
-                src="/images/craft_moment.jpg"
-                alt="代表"
+                src="/images/owner_story.jpg"
+                alt="代表 小南 優作"
                 fill
-                className="object-cover object-bottom"
+                className="object-cover object-[center_15%]"
                 sizes="128px"
               />
             </div>
             <blockquote className="text-center sm:text-left">
               <p className="text-ink mb-3 font-serif text-lg leading-relaxed font-bold">
-                「食べられないものがある人にとって、『あなたも食べられますよ』という一言は、想像以上にあたたかい。——その一言を、あなたのお店から届けてほしい」
+                「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める——薬院の小さなお店で見てきたそんな『ユメミタイ』な体験を、今度は全国の飲食店様と一緒に広げていきたい。あなたのお店のお客様へ、ぜひこの美味しさを届けてください」
               </p>
-              <footer className="text-ink-light font-sans text-sm">— 代表 小南 優作</footer>
+              <footer className="text-ink-light font-sans text-sm font-medium">
+                — 代表 小南 優作
+              </footer>
             </blockquote>
           </div>
         </motion.div>
