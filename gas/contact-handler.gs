@@ -89,6 +89,8 @@ function doPost(e) {
 
     MailApp.sendEmail(notifyEmail, subject, body);
 
+    forwardToCRM(data);
+
     return ContentService.createTextOutput(JSON.stringify({ status: "success" })).setMimeType(
       ContentService.MimeType.JSON
     );
@@ -96,5 +98,27 @@ function doPost(e) {
     return ContentService.createTextOutput(
       JSON.stringify({ status: "error", message: error.toString() })
     ).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * CRM webhook へリードデータを転送する
+ * 失敗してもスプレッドシート記録・メール通知には影響しない
+ */
+function forwardToCRM(data) {
+  try {
+    var url = "https://ureru.vercel.app/api/webhooks/soystories-lead";
+    var options = {
+      method: "post",
+      contentType: "application/json",
+      headers: {
+        "X-Webhook-Secret": "ss-webhook-2026-soystories-crm-secret",
+      },
+      payload: JSON.stringify(data),
+      muteHttpExceptions: true,
+    };
+    UrlFetchApp.fetch(url, options);
+  } catch (err) {
+    Logger.log("forwardToCRM failed: " + err.toString());
   }
 }
