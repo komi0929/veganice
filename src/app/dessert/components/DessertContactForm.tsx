@@ -74,7 +74,7 @@ export default function DessertContactForm() {
           transition={{ delay: 0.1 }}
           className="text-ink-light font-sans text-sm leading-relaxed sm:text-base md:text-lg"
         >
-          ラーメンやバーガーの後のキレ、食感のなめらかさ、ディッシャーのすくいやすさを
+          満足感あるお料理の後の心地よい後味、ジェラートのようななめらかな口どけ、ディッシャーのすくいやすさを
           <br className="hidden sm:block" />
           ご確認いただけるサンプルアイス本体（おすすめ6種）を無料でお届けします。
           <br />
@@ -333,7 +333,7 @@ export default function DessertContactForm() {
                     disabled={isPending}
                     rows={3}
                     className={`${inputClasses} resize-none`}
-                    placeholder="例: ヴィーガンラーメン店を運営しています。さっぱり系の白桃やりんご、ショコラを試してみたいです。"
+                    placeholder="例: ラーメン店を運営しています。食後デザートとして果汁系やショコラを試してみたいです。"
                   ></textarea>
                 </div>
                 <div className="rounded-lg border border-amber-200/80 bg-amber-50/70 p-3 text-left">

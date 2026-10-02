@@ -7,10 +7,10 @@ import Image from "next/image";
 const flavors = [
   {
     name: "なめらかショコラ",
-    category: "濃厚リッチ系",
+    category: "リッチ・なめらか系",
     story: "カカオの深い香りと、とろける余韻。バーガーの後に大人気。",
     image: "/images/flavors/chocolate.png",
-    recommendedPairing: "ヴィーガンバーガーやスパイシー料理の後に",
+    recommendedPairing: "バーガーやスパイシー料理の締めくくりに",
   },
   {
     name: "甘酒抹茶",
@@ -21,10 +21,10 @@ const flavors = [
   },
   {
     name: "ベリーミックス",
-    category: "すっきりリフレッシュ系",
-    story: "数種のベリーの甘酸っぱさが口の油分を爽快にリセット。",
+    category: "果実・さわやか系",
+    story: "数種のベリーの甘酸っぱさが口の中を爽快にリフレッシュ。",
     image: "/images/flavors/berry_mix.png",
-    recommendedPairing: "濃厚とんこつ風や担々麺の後に",
+    recommendedPairing: "濃厚なスープや担々麺の後に",
   },
   {
     name: "ほうじ茶",
@@ -35,28 +35,28 @@ const flavors = [
   },
   {
     name: "白桃",
-    category: "すっきりリフレッシュ系",
+    category: "果実・さわやか系",
     story: "みずみずしい果実感をそのまま閉じ込めた上品な爽やかさ。",
     image: "/images/flavors/peach.png",
     recommendedPairing: "すべての食事メニューのお口直しに",
   },
   {
     name: "りんご",
-    category: "すっきりリフレッシュ系",
-    story: "すっきりとした果実の爽快感。後味のキレが抜群。",
+    category: "果実・さわやか系",
+    story: "みずみずしい果実の爽快感。食後を心地よく整える後味。",
     image: "/images/flavors/apple.png",
     recommendedPairing: "バーガーやフライドポテトの後に",
   },
   {
     name: "バニラココナッツ",
-    category: "濃厚リッチ系",
+    category: "リッチ・なめらか系",
     story: "ココナッツミルクのまろやかさと芳醇なバニラの香り。",
     image: "/images/flavors/vanilla_coconut.png",
     recommendedPairing: "エスニック・カレー系の食後に",
   },
   {
     name: "ドラゴンフルーツ",
-    category: "すっきりリフレッシュ系",
+    category: "果実・さわやか系",
     story: "鮮やかなルビー色とさっぱりした甘さ。写真映えも抜群。",
     image: "/images/flavors/dragon_fruit.png",
     recommendedPairing: "SNS映えを狙うカフェ・ダイナーに",
@@ -146,7 +146,7 @@ export default function DessertProductsSection() {
           >
             すべて乳・卵・小麦・白砂糖不使用。添加物（乳化安定剤・増粘剤・着色料）不使用。
             <br className="hidden sm:block" />
-            ラーメンやバーガーの油分をすっきりさせる「果実系」から、深い余韻を残す「濃厚系」まで、
+            満足感あるお料理の後味をさわやかに整える「果実系」から、心地よい余韻を残す「リッチ系」まで、
             貴店のメニューに合わせて最小4Lから自由にお選びいただけます。
           </motion.p>
         </div>
@@ -242,7 +242,7 @@ export default function DessertProductsSection() {
               狭小スペースにも対応
             </div>
             <h3 className="text-ink mb-5 font-serif text-2xl font-bold tracking-wide sm:text-3xl">
-              ラーメン・バーガー店の厨房に合わせて、
+              限られた厨房の冷凍スペースでも安心。
               <br />
               最小4Lから省スペース納品。
             </h3>

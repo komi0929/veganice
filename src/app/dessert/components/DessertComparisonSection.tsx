@@ -6,9 +6,9 @@ import { Check, Info } from "lucide-react";
 const comparisonRows = [
   {
     label: "食後の後味",
-    cheap: "乳脂肪や油分が口に残り、食後に重たく感じる",
+    cheap: "乳脂肪や油分が口に残り、食後に重たくもたつく",
     cheapStatus: "negative" as const,
-    soyStories: "植物性ですっきりリフレッシュ。濃厚なのにキレが良い",
+    soyStories: "植物性だから重たく残らない。なめらかで心地よい後味",
     soyStoriesStatus: "positive" as const,
   },
   {
@@ -19,15 +19,15 @@ const comparisonRows = [
     soyStoriesStatus: "positive" as const,
   },
   {
-    label: "満足感とコク",
-    cheap: "市販シャーベットだと水っぽく、デザートとして物足りない",
+    label: "デザートの満足感",
+    cheap: "市販シャーベットだと水っぽく、デザートとしての満足感が薄い",
     cheapStatus: "negative" as const,
-    soyStories: "発酵素材（甘酒・みそ）と米粉の深いうまみと濃厚なコク",
+    soyStories: "日本の発酵素材（甘酒・みそ）と米粉の自然な深みでノンビーガンも大満足",
     soyStoriesStatus: "positive" as const,
   },
   {
     label: "冷凍スペース",
-    cheap: "大容量（4L〜10L）バルクでラーメン店の狭い冷凍庫を圧迫",
+    cheap: "大容量（4L〜10L）バルクで厨房の冷凍スペースを圧迫",
     cheapStatus: "negative" as const,
     soyStories: "1L・2Lのコンパクト容器。最小4Lから省スペース保管",
     soyStoriesStatus: "positive" as const,
@@ -43,7 +43,7 @@ const comparisonRows = [
     label: "お客様の反応",
     cheap: "「よくある市販アイスだな」と印象に残らない",
     cheapStatus: "negative" as const,
-    soyStories: "「デザートまでヴィーガンで美味しい！」と口コミ拡散",
+    soyStories: "「デザートまで妥協なく美味しい！」と海外客・ヴィーガン客が絶賛",
     soyStoriesStatus: "positive" as const,
   },
 ] as const;
@@ -74,7 +74,7 @@ export default function DessertComparisonSection() {
             すべて満たしていますか？
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-base leading-relaxed md:text-lg">
-            一般的な業務用アイスや市販シャーベットと、食事系店舗特化のSoyStories。
+            一般的な業務用アイスや市販シャーベットと、食後デザートに選ばれるSoyStories。
             厨房のオペレーションからお客様の満足度まで、違いは一目瞭然です。
           </p>
         </motion.div>

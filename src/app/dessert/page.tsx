@@ -13,14 +13,13 @@ import DessertFAQSection from "./components/DessertFAQSection";
 import DessertContactForm from "./components/DessertContactForm";
 
 export const metadata: Metadata = {
-  title:
-    "食後のデザートに最適｜ヴィーガンラーメン・バーガー等 食事系店舗向けクラフトアイス — SoyStories",
+  title: "食後のデザートに最適｜海外客絶賛のクラフトアイスで単価UP＆満足度向上 — SoyStories",
   description:
-    "ヴィーガンラーメンやヴィーガンハンバーガーなど、濃厚な食事の後に「食後のデザート」を。米粉と発酵の独自製法による後味すっきり・濃厚なコク。乳・卵・小麦不使用、仕込みゼロ・ディッシャーですくうだけ。小ロット4L〜。無料サンプル受付中。",
+    "海外のお客様から店舗にて高い評価を受けているアイスを、お店でデザートとして取り扱うことで、単価UPと満足度向上を狙いませんか。乳脂肪不使用で食後も重たく残らず、極上のなめらかさ。乳・卵・小麦不使用、仕込みゼロ・ディッシャーですくうだけ。小ロット4L〜。無料サンプル受付中。",
   keywords: [
     "食後デザート",
-    "ヴィーガンラーメン デザート",
-    "ヴィーガンバーガー デザート",
+    "飲食店 デザート 導入",
+    "単価アップ デザート",
     "お口直しアイス",
     "業務用ヴィーガンアイス",
     "プラントベース クラフトアイス",
@@ -31,9 +30,9 @@ export const metadata: Metadata = {
     "ソイストーリーズ",
   ],
   openGraph: {
-    title: "食後のデザートに最適｜ヴィーガンラーメン・バーガー向けクラフトアイス — SoyStories",
+    title: "食後のデザートに最適｜海外客絶賛のクラフトアイスで単価UP＆満足度向上 — SoyStories",
     description:
-      "ヴィーガンラーメンやバーガーの後に。乳・卵・小麦フリー、仕込みゼロ・即提供。客単価アップと顧客満足度を叶えるプラントベース クラフトアイス。小ロット4L〜。",
+      "海外のお客様から店舗にて高い評価を受けているアイスを、お店でデザートとして取り扱うことで、単価UPと満足度向上を狙いませんか。乳・卵・小麦フリー、仕込みゼロ・即提供。小ロット4L〜。",
     type: "website",
     locale: "ja_JP",
     url: "https://soystories.cafe/dessert",
@@ -49,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "食後のデザートに最適｜ヴィーガンラーメン・バーガー向けクラフトアイス — SoyStories",
+    title: "食後のデザートに最適｜海外客絶賛のクラフトアイスで単価UP＆満足度向上 — SoyStories",
     description:
-      "ヴィーガンラーメンやバーガーの後に。乳・卵・小麦フリー、仕込みゼロ・即提供。小ロット4L〜。",
+      "海外のお客様から店舗にて高い評価を受けているアイスを、お店でデザートとして取り扱うことで、単価UPと満足度向上を狙いませんか。乳・卵・小麦フリー、仕込みゼロ・即提供。小ロット4L〜。",
     images: ["/images/hero_flagship.jpg"],
   },
   alternates: {
@@ -67,7 +66,7 @@ export default function DessertPage() {
         {/* ① ファーストビュー：食後のデザートに最適です */}
         <DessertHeroSection />
 
-        {/* ② なぜヴィーガンラーメン・バーガーの食後デザートに最適なのか */}
+        {/* ② 海外客から絶賛されるアイスをなぜ食後デザートに選ぶべきなのか */}
         <DessertCoreValueSection />
 
         {/* ③ 導入価値・客単価UP＋350〜500円・メニュー事例 */}

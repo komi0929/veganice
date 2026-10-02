@@ -56,7 +56,7 @@ export default function DessertHeroSection() {
           <motion.div variants={itemVariants}>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 font-sans text-xs font-semibold tracking-wider text-white backdrop-blur-md sm:text-sm">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-              ヴィーガンラーメン・バーガー・食事系店舗様向け
+              実店舗 Google ★4.7（240件超）· HappyCow 5.0 実証済み
             </span>
           </motion.div>
 
@@ -65,10 +65,10 @@ export default function DessertHeroSection() {
             variants={itemVariants}
             className="font-serif font-bold tracking-wide text-white"
           >
-            <span className="block text-2xl leading-[1.3] sm:text-4xl md:text-5xl lg:text-6xl">
-              ヴィーガンラーメンや
-              <br className="sm:hidden" />
-              バーガーの後に。
+            <span className="block text-xl leading-[1.4] text-white/95 sm:text-3xl md:text-4xl lg:text-5xl">
+              海外のお客様から実店舗で高く評価されているアイスを、
+              <br className="hidden sm:block" />
+              貴店の「食後デザート」に。
             </span>
             <span className="mt-3 block text-3xl leading-[1.2] font-black text-[#52b788] drop-shadow-md sm:text-5xl md:text-6xl lg:text-7xl">
               食後のデザートに最適です。
@@ -80,13 +80,15 @@ export default function DessertHeroSection() {
             variants={itemVariants}
             className="max-w-2xl font-sans text-sm leading-[2] text-white/95 drop-shadow-sm sm:text-base md:text-lg"
           >
-            濃厚なスープやジューシーなパティを楽しんだお客様に、
+            満足感のある一杯や、ジューシーな一皿を楽しんだお客様へ。
             <br className="hidden sm:block" />
-            すっきりと、でも確かな満足感を残す締めくくりのひと皿を。
+            海外のお客様から店舗で高い評価を受けているクラフトアイスを、
+            <br className="hidden sm:block" />
+            お店でデザートとして取り扱うことで、単価UPと満足度向上を狙いませんか。
             <br />
-            乳・卵・小麦不使用。仕込みゼロ・ディッシャーですくうだけ。
+            乳脂肪を使わない植物性だから、食後でも重たくもたつきません。
             <br className="hidden sm:block" />
-            オペレーション負荷なく、客単価アップと顧客満足度を同時に叶えます。
+            仕込みゼロ・ディッシャーですくうだけ。厨房の負担なく導入いただけます。
           </motion.p>
 
           {/* CTA */}
@@ -119,7 +121,7 @@ export default function DessertHeroSection() {
             <span className="text-white/30" aria-hidden="true">
               ·
             </span>
-            <span className="font-sans text-xs sm:text-sm">Google ★4.7（200件超）</span>
+            <span className="font-sans text-xs sm:text-sm">Google ★4.7（240件超）</span>
             <span className="text-white/30" aria-hidden="true">
               ·
             </span>

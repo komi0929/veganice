@@ -72,7 +72,7 @@ export default function DessertSocialProofSection() {
             <h2 className="text-ink font-serif text-2xl font-bold sm:text-3xl md:text-4xl">
               「食事のあとに、このアイスがあって本当に良かった」
               <br className="hidden sm:block" />
-              その笑顔を、全国のヴィーガン食事系店舗様と一緒につくりたい。
+              その笑顔を、全国の飲食店様と一緒につくりたい。
             </h2>
           </div>
 
@@ -101,7 +101,7 @@ export default function DessertSocialProofSection() {
                 ということでした。
                 <br />
                 <br />
-                ヴィーガンラーメンやバーガーをこだわり抜いて作られている飲食店様ほど、
+                自慢のお食事メニューをこだわり抜いて作られている飲食店様ほど、
                 「デザートの仕込みまで手が回らない」「市販のアイスでは納得がいかない」という悩みを抱えていらっしゃいます。
                 <br />
                 <br />
@@ -244,7 +244,7 @@ export default function DessertSocialProofSection() {
             </div>
             <blockquote className="text-center sm:text-left">
               <p className="text-ink mb-3 font-serif text-base leading-relaxed font-bold sm:text-lg">
-                「食事系店舗の現場の皆様が、仕込みやオペレーションに追われることなく、自信を持ってお客さまにお出しできる『最高の食後デザート』を届けたい。ラーメンやバーガーの満足感をもう一段引き上げるパートナーとして、ぜひSoyStoriesをご活用ください」
+                「飲食店の現場の皆様が、仕込みやオペレーションに追われることなく、自信を持ってお客さまにお出しできる『最高の食後デザート』を届けたい。自慢のお食事メニューの満足感をもう一段引き上げるパートナーとして、ぜひSoyStoriesをご活用ください」
               </p>
               <footer className="text-ink-light font-sans text-sm font-medium">
                 — SoyStories 代表 小南 優作
