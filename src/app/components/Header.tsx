@@ -7,13 +7,15 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isDessert = pathname.startsWith("/dessert");
+  const isTransparentHeroPage = isHome || isDessert;
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const isScrolled = !isHome || hasScrolled;
+  const isScrolled = !isTransparentHeroPage || hasScrolled;
 
   useEffect(() => {
-    if (!isHome) return;
+    if (!isTransparentHeroPage) return;
 
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 10);
@@ -22,13 +24,14 @@ export default function Header() {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHome]);
+  }, [isTransparentHeroPage]);
 
+  const prefix = isDessert ? "/dessert#" : isHome ? "#" : "/#";
   const navLinks = [
-    { label: "商品ラインナップ", href: isHome ? "#products" : "/#products" },
-    { label: "私たちの想い", href: isHome ? "#story" : "/#story" },
-    { label: "導入の流れ", href: isHome ? "#flow" : "/#flow" },
-    { label: "よくあるご質問", href: isHome ? "#faq" : "/#faq" },
+    { label: "商品ラインナップ", href: `${prefix}products` },
+    { label: "私たちの想い", href: `${prefix}story` },
+    { label: "導入の流れ", href: `${prefix}flow` },
+    { label: "よくあるご質問", href: `${prefix}faq` },
   ];
 
   return (
@@ -81,7 +84,7 @@ export default function Header() {
               ))}
             </nav>
             <Link
-              href={isHome ? "#contact-form" : "/#contact-form"}
+              href={`${prefix}contact-form`}
               className="bg-cta hover:bg-cta-hover rounded-full px-5 py-2 font-sans text-sm font-medium whitespace-nowrap text-white shadow-xs transition-colors duration-300 lg:px-6 lg:py-2.5"
             >
               無料でサンプルを試す
@@ -124,7 +127,7 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href={isHome ? "#contact-form" : "/#contact-form"}
+            href={`${prefix}contact-form`}
             className="bg-cta mt-4 rounded-full px-8 py-3 font-sans text-base font-medium text-white"
             onClick={() => setIsMobileMenuOpen(false)}
           >

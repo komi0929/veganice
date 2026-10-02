@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 export default function Footer() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isDessert = pathname.startsWith("/dessert");
+  const prefix = isDessert ? "/dessert#" : isHome ? "#" : "/#";
 
   return (
     <footer className="bg-ink border-t border-white/10 px-5 pt-16 pb-12 text-white md:px-8">
@@ -31,31 +33,31 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <h3 className="mb-2 text-sm font-bold tracking-wider text-white/50">メニュー</h3>
               <Link
-                href={isHome ? "#products" : "/#products"}
+                href={`${prefix}products`}
                 className="hover:text-cta text-base text-white transition-colors"
               >
                 商品ラインナップ
               </Link>
               <Link
-                href={isHome ? "#story" : "/#story"}
+                href={`${prefix}story`}
                 className="hover:text-cta text-base text-white transition-colors"
               >
                 私たちの想い
               </Link>
               <Link
-                href={isHome ? "#flow" : "/#flow"}
+                href={`${prefix}flow`}
                 className="hover:text-cta text-base text-white transition-colors"
               >
                 導入の流れ
               </Link>
               <Link
-                href={isHome ? "#faq" : "/#faq"}
+                href={`${prefix}faq`}
                 className="hover:text-cta text-base text-white transition-colors"
               >
                 よくあるご質問
               </Link>
               <Link
-                href={isHome ? "#contact-form" : "/#contact-form"}
+                href={`${prefix}contact-form`}
                 className="hover:text-cta text-base text-white transition-colors"
               >
                 お問い合わせ
