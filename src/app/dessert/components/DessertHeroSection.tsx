@@ -64,7 +64,7 @@ export default function DessertHeroSection() {
           <div className="text-ink-light mt-4 space-y-0.5 text-[15px] leading-[1.85] sm:text-lg">
             <p>お店で人気のアイスを、業務用でお届け。</p>
             <p>重くないから、食後でもぺろっといけます。</p>
-            <p className="text-ink font-bold">お店では、すくって盛るだけ。</p>
+            <p className="text-ink font-bold">冷凍庫から出してすぐ、なめらかに提供できます。</p>
           </div>
 
           <div className="mt-6 md:flex md:justify-start">

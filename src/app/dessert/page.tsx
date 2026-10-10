@@ -13,7 +13,7 @@ import DessertSampleSection from "./components/DessertSampleSection";
 
 const TITLE = "食後のデザートにぴったりの業務用アイス｜福岡・薬院のスイーツ店";
 const DESCRIPTION =
-  "福岡・薬院のスイーツ店SoyStoriesのアイスを、業務用1L・2Lでお届け。乳脂肪ゼロで重くないから食後にぴったり。すくって盛るだけ、仕込み不要。乳・卵・小麦不使用。最小4Lから。6種類の無料サンプル受付中。";
+  "福岡・薬院のスイーツ店SoyStoriesのアイスを、業務用1L・2Lでお届け。乳脂肪ゼロで重くないから食後にぴったり。冷凍庫から出してすぐ提供可能、仕込み不要。乳・卵・小麦不使用。最小4Lから。6種類の無料サンプル受付中。";
 
 export const metadata: Metadata = {
   title: TITLE,

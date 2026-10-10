@@ -33,3 +33,13 @@ Please follow these guidelines for highest quality output:
 - Every time code changes or features are implemented and verified, commit the changes and push directly to `origin main` (`https://github.com/komi0929/veganice.git`).
 - Ensure `.env*` or sensitive credentials are never committed.
 - Keep the remote repository always synchronized with latest developments as a live backup.
+
+## 6. Copywriting & Value Proposition Rules (Strictly Enforced)
+
+- **【絶対禁止】「すくって盛るだけ」「ディッシャーですくうだけ」等を売り・メリット・キャッチコピーとしてアピールすること**
+  - アイスクリームとして当然すぎる動作であり、他の業務用アイスと何の差別化にもならず、飲食店のプロに対して的外れで稚拙な印象を与えるため完全に禁止。
+  - アピールすべき真の強み・差別化ポイント：
+    1. **食後の味・後味**: 乳脂肪ゼロで油分が口に残らず、満足感ある食事の後でもさっぱり食べきれる。
+    2. **テクスチャー**: 米粉独自の保水力によるジェラートのようなクリーミーさ、発酵素材（甘酒・みそ）のコク。
+    3. **オペレーション面の真の利点**: 「すくうだけ」ではなく、「−18℃の冷凍庫から出してすぐにディッシャーがすっと通る（カチカチに固まらず削る力や解凍待ちが不要）」。
+    4. **安全と実績**: 専用工房製造によるコンタミゼロ、薬院実店舗のGoogle ★4.7・海外客からの圧倒的な絶賛。
