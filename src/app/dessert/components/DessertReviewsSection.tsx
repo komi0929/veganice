@@ -33,9 +33,12 @@ export default function DessertReviewsSection() {
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
           tone="light"
-          eyebrow="お店での評判"
-          lines={["海外のお客さんにも、", "好評です。"]}
-          lead={["海外から、わざわざ来てくれる方も多いです。"]}
+          eyebrow="実店舗での評判"
+          lines={["国籍や食習慣を越えて、", "世界中から高い評価。"]}
+          lead={[
+            "Google ★4.7（240件超）、ヴィーガンガイドHappyCowで満点5.0を獲得。",
+            "インバウンドのお客様はもちろん、地元客からも「普通のアイスより好き」と愛されています。",
+          ]}
         />
 
         {/* 評価スコア */}

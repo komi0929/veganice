@@ -1,9 +1,9 @@
 import { MidCta, SectionHeader } from "./ui";
 
 const opsStats = [
-  { label: "仕込み", value: "0", unit: "分", note: "届いたらそのまま冷凍庫へ" },
-  { label: "提供", value: "約15", unit: "秒", note: "解凍待ち不要ですぐ提供" },
-  { label: "注文", value: "4", unit: "L〜", note: "1L×4個から注文OK" },
+  { label: "仕込み", value: "0", unit: "分", note: "自家製仕込みの手間なし" },
+  { label: "提供", value: "すぐ", unit: "", note: "ディッシャーがすっと通る" },
+  { label: "最小ロット", value: "4", unit: "L〜", note: "1L×4個など組み合わせ自由" },
   { label: "1Lで", value: "約20", unit: "杯", note: "1杯 約50mlの場合" },
 ];
 
@@ -31,9 +31,11 @@ export default function DessertOperationsSection() {
     <section id="operation" className="bg-[#f7f3ec] py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
-          eyebrow="お店の手間"
-          lines={["忙しいお店でも、", "手間はほぼゼロ。"]}
-          lead={["米粉の保水力で−18℃でも固まりすぎず、削る力や解凍待ちが不要です。"]}
+          eyebrow="お店でのオペレーション"
+          lines={["厨房の負担を増やさず、", "本格デザートを提供。"]}
+          lead={[
+            "米粉独自の保水力により、−18℃の冷凍庫から出してすぐにディッシャーがすっと通ります。削る力や事前仕込みの手間なく、忙しい現場でも常に安定したクオリティでお届けできます。",
+          ]}
         />
 
         <dl className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -42,7 +44,7 @@ export default function DessertOperationsSection() {
               <dt className="text-ink-muted text-xs font-bold">{stat.label}</dt>
               <dd className="text-brand mt-1 leading-none font-bold">
                 <span className="text-[34px] tracking-tight">{stat.value}</span>
-                <span className="ml-0.5 text-base">{stat.unit}</span>
+                {stat.unit && <span className="ml-0.5 text-base">{stat.unit}</span>}
               </dd>
               <dd className="text-ink-light mt-2 text-xs leading-relaxed">{stat.note}</dd>
             </div>
@@ -66,7 +68,7 @@ export default function DessertOperationsSection() {
           <p className="text-ink-muted mt-2 text-xs">※価格は一例です。自由に決められます。</p>
         </div>
 
-        <MidCta message="まずは、お店の冷凍庫で試してみませんか？" />
+        <MidCta message="まずは、お店の厨房で試してみませんか？" />
       </div>
     </section>
   );

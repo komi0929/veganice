@@ -9,7 +9,7 @@ interface Flavor {
 const flavorGroups: { title: string; note: string; items: Flavor[] }[] = [
   {
     title: "さっぱり系",
-    note: "こってりした料理のあとに",
+    note: "食後のお口直しや、爽やかなフルーツ感に",
     items: [
       { name: "白桃", image: "/images/flavors/peach.png" },
       { name: "りんご", image: "/images/flavors/apple.png" },
@@ -19,7 +19,7 @@ const flavorGroups: { title: string; note: string; items: Flavor[] }[] = [
   },
   {
     title: "コクあり系",
-    note: "しっかり満足感を出したいときに",
+    note: "発酵のコクと素材感を味わう濃厚デザートに",
     items: [
       { name: "なめらか\nショコラ", image: "/images/flavors/chocolate.png" },
       { name: "甘酒抹茶", image: "/images/flavors/matcha.png" },

@@ -3,9 +3,9 @@ import DessertContactForm from "./DessertContactForm";
 import { CheckItem, SectionHeader } from "./ui";
 
 const steps = [
-  { title: "フォームから申し込む", note: "1分で終わります" },
-  { title: "お店の厨房で試す", note: "味・かたさ・料理との相性をチェック" },
-  { title: "気に入ったら注文", note: "最小4Lから。約5営業日で届きます" },
+  { title: "WEBフォームから申し込む", note: "約1分で簡単にお申し込み完了" },
+  { title: "お店の厨房でテイスティング", note: "味・ディッシャーの通り・コース料理との相性を確認" },
+  { title: "ご納得後にご注文", note: "最小4Lから。約5営業日で全国お届け" },
 ];
 
 /** 最終CTA：サンプル内容を明確にしてから、その場でフォームへ */
@@ -16,8 +16,8 @@ export default function DessertSampleSection() {
         <div>
           <SectionHeader
             eyebrow="無料サンプル"
-            lines={["まずは6種類を、", "無料で試してください。"]}
-            lead={["実際にお店で味と口どけを試すのが、いちばん早いです。"]}
+            lines={["まずは6種類の味を、", "お店でお試しください。"]}
+            lead={["実際のディッシャーの通りや口どけ、料理との相性をぜひ現場でお確かめください。"]}
           />
 
           {/* サンプル内容 */}
@@ -32,12 +32,12 @@ export default function DessertSampleSection() {
               />
             </div>
             <ul className="text-ink space-y-2.5 p-5 text-[15px] leading-snug">
-              <CheckItem>おすすめの味を6種類お届け</CheckItem>
+              <CheckItem>おすすめの厳選フレーバー6種をお届け</CheckItem>
               <CheckItem>
-                商品代は<strong className="text-cta">0円</strong>（送料のみ着払い）
+                商品代金は<strong className="text-cta">無料</strong>（クール便送料のみ着払い）
               </CheckItem>
-              <CheckItem>購入の義務なし・しつこい営業もなし</CheckItem>
-              <CheckItem>申し込みから2営業日以内に発送</CheckItem>
+              <CheckItem>自動継続やご契約義務・しつこい営業は一切なし</CheckItem>
+              <CheckItem>お申し込みから最短2営業日以内に専用工房より発送</CheckItem>
             </ul>
           </div>
 
@@ -69,8 +69,8 @@ export default function DessertSampleSection() {
             </div>
             <div>
               <blockquote className="text-ink text-[13px] leading-relaxed font-bold">
-                <span className="block">「自信をもってお客さんに出せる</span>
-                <span className="block">食後デザートを、届けたい。」</span>
+                <span className="block">「飲食店様が自信を持ってお客様に届けられる、</span>
+                <span className="block">最高の後味のデザートをお届けしたい。」</span>
               </blockquote>
               <figcaption className="text-ink-muted mt-1 text-xs">
                 SoyStories 代表　小南 優作

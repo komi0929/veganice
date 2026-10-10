@@ -207,7 +207,7 @@ export default function DessertContactForm() {
               rows={5}
               disabled={isPending}
               className={`${inputClasses} resize-none ${state.errors?.message ? errorClasses : ""}`}
-              placeholder="卸値や取引条件など、なんでもどうぞ。"
+              placeholder="卸価格や取引ロット、納期、メニュー導入のご相談など、お気軽にご記入ください。"
             />
           </Field>
         )}

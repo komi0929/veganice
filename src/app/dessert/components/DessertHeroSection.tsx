@@ -60,11 +60,11 @@ export default function DessertHeroSection() {
             <span className="block">
               「
               <span className="bg-[linear-gradient(transparent_62%,#f9d9e3_62%)]">
-                こっちが好き
+                普通のアイスより美味しい
               </span>
-              」と言われる、
+              」と
             </span>
-            <span className="block">米粉の業務用クラフトアイス。</span>
+            <span className="block">選ばれる、米粉の業務用アイス。</span>
           </h1>
 
           <div className="mt-4 flex flex-wrap gap-2">
@@ -80,12 +80,12 @@ export default function DessertHeroSection() {
           </div>
 
           <div className="text-ink-light mt-4 space-y-1 text-[15px] leading-[1.8] sm:text-base">
-            <p>福岡・薬院のヴィーガン＆グルテンフリー専門店SoyStoriesが手作り。</p>
+            <p>福岡・薬院のヴィーガン＆グルテンフリー専門店が専用工房で手作り。</p>
             <p>
               米粉の保水力と甘酒・みそのコクで、植物性とは思えないジェラートのようななめらかさ。
             </p>
             <p className="text-ink font-bold">
-              −18℃の冷凍庫から出してすぐディッシャーが通り、厨房のオペレーションも軽やかです。
+              −18℃から出してすぐディッシャーが通り、厨房の手を止めずスムーズに提供できます。
             </p>
           </div>
 

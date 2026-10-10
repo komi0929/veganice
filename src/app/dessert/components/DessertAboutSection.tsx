@@ -1,25 +1,25 @@
 import Image from "next/image";
 import { SectionHeader } from "./ui";
 
-const flow = [
+const features = [
   {
-    step: "つくる",
-    title: "専用工房で手づくり",
-    body: "乳・卵・小麦を一切持ち込まない専用アイスファクトリーで製造。",
+    tag: "安心",
+    title: "100%植物性・専用工房",
+    body: "乳・卵・小麦を持ち込まない専用工房で手作り。混入の心配がなく、どなたにも安心です。",
     image: "/images/factory_kitchen_craft.webp",
     alt: "SoyStoriesの専用工房でアイスを仕込む様子",
   },
   {
-    step: "届く",
-    title: "1L・2L容器で届く",
-    body: "クール冷凍便で全国発送。最小4Lから必要な分だけ注文可能。",
+    tag: "規格",
+    title: "1L・2Lの角型バルク",
+    body: "お店の冷凍ストッカーに入るサイズ。最小4L（1L×4個など）から注文できます。",
     image: "/images/bulk_2l.jpg",
     alt: "業務用の2Lバルク容器に入ったアイス",
   },
   {
-    step: "提供",
-    title: "すぐディッシャーが通る",
-    body: "米粉の保水力で−18℃でも固まりすぎず、削る力や解凍待ちなし。",
+    tag: "現場",
+    title: "−18℃ですぐディッシャーが通る",
+    body: "米粉独自の保水力でカチカチに固まりません。削る力も不要で、ディッシャーがすっと通ります。",
     image: "/images/bulk_scoop.jpg",
     alt: "冷凍庫から出してすぐディッシャーがスムーズに通る様子",
   },
@@ -34,17 +34,17 @@ export default function DessertAboutSection() {
           eyebrow="どんなアイス？"
           lines={["福岡のヴィーガン専門店の味を、", "そのままあなたのお店へ。"]}
           lead={[
-            "SoyStoriesは、福岡・薬院にあるヴィーガン＆グルテンフリーの専門店。",
-            "乳・卵・小麦を一切使わず、米粉と発酵素材で手作りする看板アイスは、",
-            "ヴィーガンのお客様はもちろん、一般のお客様からも「こっちのほうが好き」と大好評。",
-            "厨房のオペレーションを変えずに導入できる、業務用バルクでお届けします。",
+            "福岡・薬院のヴィーガン＆グルテンフリー専門店SoyStories。",
+            "乳・卵・小麦を使わず、米粉と発酵素材で仕込む看板アイスです。",
+            "ヴィーガンの方も、そうでない方も『これがいい』と選ぶ味を、",
+            "厨房でそのまま使える業務用バルクでお届けします。",
           ]}
         />
 
         <ol className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
-          {flow.map((item, index) => (
+          {features.map((item, index) => (
             <li
-              key={item.step}
+              key={item.tag}
               className="flex items-center gap-4 rounded-2xl bg-white p-3 pr-4 shadow-sm md:flex-col md:items-stretch md:p-0 md:pr-0"
             >
               <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl md:aspect-[4/3] md:h-auto md:w-full md:rounded-t-2xl md:rounded-b-none">
@@ -58,7 +58,7 @@ export default function DessertAboutSection() {
               </div>
               <div className="md:px-5 md:pb-6">
                 <p className="text-brand text-xs font-bold">
-                  {String(index + 1).padStart(2, "0")}　{item.step}
+                  {String(index + 1).padStart(2, "0")}　{item.tag}
                 </p>
                 <h3 className="text-ink mt-1 text-base leading-snug font-bold">{item.title}</h3>
                 <p className="text-ink-light mt-1 text-[13px] leading-relaxed">{item.body}</p>
