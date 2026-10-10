@@ -8,7 +8,8 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isDessert = pathname.startsWith("/dessert");
-  const isTransparentHeroPage = isHome || isDessert;
+  // 食後デザートLPは「写真→テキスト」の明るいヒーローのため、ヘッダーは常に白背景
+  const isTransparentHeroPage = isHome;
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -27,12 +28,19 @@ export default function Header() {
   }, [isTransparentHeroPage]);
 
   const prefix = isDessert ? "/dessert#" : isHome ? "#" : "/#";
-  const navLinks = [
-    { label: "商品ラインナップ", href: `${prefix}products` },
-    { label: "私たちの想い", href: `${prefix}story` },
-    { label: "導入の流れ", href: `${prefix}flow` },
-    { label: "よくあるご質問", href: `${prefix}faq` },
-  ];
+  const navLinks = isDessert
+    ? [
+        { label: "どんなアイス？", href: `${prefix}about` },
+        { label: "食後に合う理由", href: `${prefix}reasons` },
+        { label: "フレーバー", href: `${prefix}products` },
+        { label: "よくある質問", href: `${prefix}faq` },
+      ]
+    : [
+        { label: "商品ラインナップ", href: `${prefix}products` },
+        { label: "私たちの想い", href: `${prefix}story` },
+        { label: "導入の流れ", href: `${prefix}flow` },
+        { label: "よくあるご質問", href: `${prefix}faq` },
+      ];
 
   return (
     <>

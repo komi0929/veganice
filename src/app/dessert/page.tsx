@@ -3,36 +3,36 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FloatingCTA from "../components/FloatingCTA";
 import DessertHeroSection from "./components/DessertHeroSection";
-import DessertCoreValueSection from "./components/DessertCoreValueSection";
-import DessertEconomicsSection from "./components/DessertEconomicsSection";
-import DessertComparisonSection from "./components/DessertComparisonSection";
+import DessertAboutSection from "./components/DessertAboutSection";
+import DessertReasonsSection from "./components/DessertReasonsSection";
+import DessertReviewsSection from "./components/DessertReviewsSection";
+import DessertOperationsSection from "./components/DessertOperationsSection";
 import DessertProductsSection from "./components/DessertProductsSection";
-import DessertSocialProofSection from "./components/DessertSocialProofSection";
-import DessertHowItWorksSection from "./components/DessertHowItWorksSection";
 import DessertFAQSection from "./components/DessertFAQSection";
-import DessertContactForm from "./components/DessertContactForm";
+import DessertSampleSection from "./components/DessertSampleSection";
+
+const TITLE = "食後のデザートにぴったりの業務用アイス｜福岡・薬院のスイーツ店";
+const DESCRIPTION =
+  "福岡・薬院のスイーツ店SoyStoriesのアイスを、業務用1L・2Lでお届け。乳脂肪ゼロで重くないから食後にぴったり。すくって盛るだけ、仕込み不要。乳・卵・小麦不使用。最小4Lから。6種類の無料サンプル受付中。";
 
 export const metadata: Metadata = {
-  title: "食後のデザートに最適｜海外客絶賛のクラフトアイスで単価UP＆満足度向上 — SoyStories",
-  description:
-    "海外のお客様から店舗にて高い評価を受けているアイスを、お店でデザートとして取り扱うことで、単価UPと満足度向上を狙いませんか。乳脂肪不使用で食後も重たく残らず、極上のなめらかさ。乳・卵・小麦不使用、仕込みゼロ・ディッシャーですくうだけ。小ロット4L〜。無料サンプル受付中。",
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: [
     "食後デザート",
+    "業務用アイス",
     "飲食店 デザート 導入",
-    "単価アップ デザート",
-    "お口直しアイス",
+    "バルクアイス",
     "業務用ヴィーガンアイス",
-    "プラントベース クラフトアイス",
     "乳卵小麦不使用",
     "グルテンフリー",
-    "飲食店向け デザート",
+    "福岡",
     "SoyStories",
     "ソイストーリーズ",
   ],
   openGraph: {
-    title: "食後のデザートに最適｜海外客絶賛のクラフトアイスで単価UP＆満足度向上 — SoyStories",
-    description:
-      "海外のお客様から店舗にて高い評価を受けているアイスを、お店でデザートとして取り扱うことで、単価UPと満足度向上を狙いませんか。乳・卵・小麦フリー、仕込みゼロ・即提供。小ロット4L〜。",
+    title: TITLE,
+    description: DESCRIPTION,
     type: "website",
     locale: "ja_JP",
     url: "https://soystories.cafe/dessert",
@@ -42,15 +42,14 @@ export const metadata: Metadata = {
         url: "/images/hero_flagship.jpg",
         width: 1200,
         height: 630,
-        alt: "SoyStories 食後のデザートに最適なプラントベース クラフトアイス",
+        alt: "SoyStories 食後のデザートにぴったりの業務用アイス",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "食後のデザートに最適｜海外客絶賛のクラフトアイスで単価UP＆満足度向上 — SoyStories",
-    description:
-      "海外のお客様から店舗にて高い評価を受けているアイスを、お店でデザートとして取り扱うことで、単価UPと満足度向上を狙いませんか。乳・卵・小麦フリー、仕込みゼロ・即提供。小ロット4L〜。",
+    title: TITLE,
+    description: DESCRIPTION,
     images: ["/images/hero_flagship.jpg"],
   },
   alternates: {
@@ -58,37 +57,38 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * 食後デザートLP
+ * 構成：何か → なぜ食後に合うか → 評判 → お店の手間 → 味 → 質問 → 無料サンプル
+ */
 export default function DessertPage() {
   return (
     <>
       <Header />
-      <main className="flex-1">
-        {/* ① ファーストビュー：食後のデザートに最適です */}
+      <main className="lp-friendly flex-1">
+        {/* ① 3秒で「福岡のスイーツ店の業務用アイス／食後のデザートに」 */}
         <DessertHeroSection />
 
-        {/* ② 海外客から絶賛されるアイスをなぜ食後デザートに選ぶべきなのか */}
-        <DessertCoreValueSection />
+        {/* ② どんなアイス？（つくる → 届く → 出す） */}
+        <DessertAboutSection />
 
-        {/* ③ 導入価値・客単価UP＋350〜500円・メニュー事例 */}
-        <DessertEconomicsSection />
+        {/* ③ 食後にぴったりな3つの理由 */}
+        <DessertReasonsSection />
 
-        {/* ④ 一般的な業務用アイス・シャーベットとの比較 */}
-        <DessertComparisonSection />
+        {/* ④ 実店舗の評価・海外のお客様の口コミ */}
+        <DessertReviewsSection />
 
-        {/* ⑤ プロダクト情報（フレーバー・B2B小ロット4L仕様） */}
+        {/* ⑤ お店の手間・メニュー例 */}
+        <DessertOperationsSection />
+
+        {/* ⑥ フレーバー・商品仕様 */}
         <DessertProductsSection />
 
-        {/* ⑥ 導入実績・食後に食べたお客様の声・代表メッセージ */}
-        <DessertSocialProofSection />
-
-        {/* ⑦ 導入までの3ステップ */}
-        <DessertHowItWorksSection />
-
-        {/* ⑧ 食事系店舗向けFAQ */}
+        {/* ⑦ よくある質問 */}
         <DessertFAQSection />
 
-        {/* ⑨ お問い合わせ・食後デザート用無料サンプル申込 */}
-        <DessertContactForm />
+        {/* ⑧ 無料サンプル・申込フォーム */}
+        <DessertSampleSection />
       </main>
       <Footer />
       <FloatingCTA />

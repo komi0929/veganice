@@ -53,8 +53,10 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  word-break: keep-all;
-  overflow-wrap: anywhere;
+  /* 日本語の禁則処理：句読点・閉じ括弧を行頭に置かない */
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-break: strict;
 }
 
 h1,
@@ -62,6 +64,27 @@ h2,
 h3,
 h4 {
   font-family: var(--font-serif);
+}
+
+/* ===== 食後デザートLP：見出しは親しみやすいゴシック体 ===== */
+.lp-friendly h1,
+.lp-friendly h2,
+.lp-friendly h3,
+.lp-friendly h4 {
+  font-family: var(--font-sans);
+}
+.lp-friendly p,
+.lp-friendly dd,
+.lp-friendly li {
+  text-wrap: pretty;
+}
+
+/* 横スクロールカルーセルのスクロールバーを隠す */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 ::selection {
