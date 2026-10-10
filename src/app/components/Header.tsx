@@ -31,7 +31,8 @@ export default function Header() {
   const navLinks = isDessert
     ? [
         { label: "どんなアイス？", href: `${prefix}about` },
-        { label: "食後に合う理由", href: `${prefix}reasons` },
+        { label: "3つの製法", href: `${prefix}reasons` },
+        { label: "想い・ストーリー", href: `${prefix}story` },
         { label: "フレーバー", href: `${prefix}products` },
         { label: "よくある質問", href: `${prefix}faq` },
       ]

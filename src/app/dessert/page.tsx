@@ -9,23 +9,26 @@ import DessertReviewsSection from "./components/DessertReviewsSection";
 import DessertOperationsSection from "./components/DessertOperationsSection";
 import DessertProductsSection from "./components/DessertProductsSection";
 import DessertFAQSection from "./components/DessertFAQSection";
+import DessertStorySection from "./components/DessertStorySection";
 import DessertSampleSection from "./components/DessertSampleSection";
 
-const TITLE = "食後のデザートにぴったりの業務用アイス｜福岡・薬院のスイーツ店";
+const TITLE = "ヴィーガン対応・食後デザートの業務用クラフトアイス｜乳・卵・小麦不使用 SoyStories";
 const DESCRIPTION =
-  "福岡・薬院のスイーツ店SoyStoriesのアイスを、業務用1L・2Lでお届け。乳脂肪ゼロで重くないから食後にぴったり。冷凍庫から出してすぐ提供可能、仕込み不要。乳・卵・小麦不使用。最小4Lから。6種類の無料サンプル受付中。";
+  "福岡・薬院のヴィーガン＆グルテンフリー専門店SoyStoriesのアイスを業務用1L・2Lでお届け。100%植物性・乳卵小麦不使用。米粉と発酵の独自製法でジェラートのようななめらかさ。専用工房製造で混入ゼロ。−18℃ですぐ提供可能。6種類の無料サンプル受付中。";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
+    "ヴィーガンアイス 業務用",
+    "プラントベース デザート",
     "食後デザート",
     "業務用アイス",
     "飲食店 デザート 導入",
     "バルクアイス",
-    "業務用ヴィーガンアイス",
     "乳卵小麦不使用",
-    "グルテンフリー",
+    "グルテンフリー アイス",
+    "アレルギー対応 デザート",
     "福岡",
     "SoyStories",
     "ソイストーリーズ",
@@ -58,36 +61,39 @@ export const metadata: Metadata = {
 };
 
 /**
- * 食後デザートLP
- * 構成：何か → なぜ食後に合うか → 評判 → お店の手間 → 味 → 質問 → 無料サンプル
+ * 食後デザート・ヴィーガン対応 業務用LP
+ * 構成：何か → 届く流れ → 3つの製法 → 創業ストーリー＆エピソード → 評判 → お店の手間 → フレーバー → 質問 → 無料サンプル
  */
 export default function DessertPage() {
   return (
     <>
       <Header />
       <main className="lp-friendly flex-1">
-        {/* ① 3秒で「福岡のスイーツ店の業務用アイス／食後のデザートに」 */}
+        {/* ① 3秒で伝わるファーストビュー（100%植物性・米粉クラフトアイス） */}
         <DessertHeroSection />
 
-        {/* ② どんなアイス？（つくる → 届く → 出す） */}
+        {/* ② どんなアイス？（専門店の味を厨房へ：つくる → 届く → 提供） */}
         <DessertAboutSection />
 
-        {/* ③ 食後にぴったりな3つの理由 */}
+        {/* ③ 3つの独自製法（米粉製法・発酵素材・専用工房） */}
         <DessertReasonsSection />
 
-        {/* ④ 実店舗の評価・海外のお客様の口コミ */}
+        {/* ④ 創業の想いと感動のエピソード */}
+        <DessertStorySection />
+
+        {/* ⑤ 実店舗の評価・海外のお客様の口コミ */}
         <DessertReviewsSection />
 
-        {/* ⑤ お店の手間・メニュー例 */}
+        {/* ⑥ お店の手間・メニュー例 */}
         <DessertOperationsSection />
 
-        {/* ⑥ フレーバー・商品仕様 */}
+        {/* ⑦ フレーバー・商品仕様 */}
         <DessertProductsSection />
 
-        {/* ⑦ よくある質問 */}
+        {/* ⑧ よくある質問 */}
         <DessertFAQSection />
 
-        {/* ⑧ 無料サンプル・申込フォーム */}
+        {/* ⑨ 無料サンプル・申込フォーム */}
         <DessertSampleSection />
       </main>
       <Footer />

@@ -1,16 +1,28 @@
 import { MidCta, SectionHeader } from "./ui";
 
 const opsStats = [
-  { label: "仕込み", value: "0", unit: "分", note: "届いたら冷凍庫へ" },
-  { label: "提供", value: "約15", unit: "秒", note: "出してすぐすくえる" },
-  { label: "注文", value: "4", unit: "L〜", note: "1L×4個からOK" },
+  { label: "仕込み", value: "0", unit: "分", note: "届いたらそのまま冷凍庫へ" },
+  { label: "提供", value: "約15", unit: "秒", note: "解凍待ち不要ですぐ提供" },
+  { label: "注文", value: "4", unit: "L〜", note: "1L×4個から注文OK" },
   { label: "1Lで", value: "約20", unit: "杯", note: "1杯 約50mlの場合" },
 ];
 
 const menuIdeas = [
-  { name: "食後のミニアイス", price: "¥380〜", note: "小さめを1スクープ。お口直しに。" },
-  { name: "ランチ＋アイスのセット", price: "＋¥350", note: "セットだと頼みやすい。" },
-  { name: "アイス2種盛り", price: "¥680", note: "カフェタイムやディナーの締めに。" },
+  {
+    name: "ヴィーガン＆グルテンフリーアイス",
+    price: "¥480〜",
+    note: "アレルギー対応やインバウンド・ヴィーガン客への看板デザートに。",
+  },
+  {
+    name: "ランチ・コースデザートのセット",
+    price: "＋¥350",
+    note: "乳脂肪ゼロで油分が残らず、満足感ある食事の後でもさっぱり完食。",
+  },
+  {
+    name: "季節のクラフトアイス2種盛り",
+    price: "¥680",
+    note: "発酵のコクと豊かな香りで、カフェタイムやディナーの満足度を高める一皿に。",
+  },
 ];
 
 /** お店側の手間とメニュー例。「導入できそう」と具体的に想像してもらうためのセクション */
@@ -21,7 +33,7 @@ export default function DessertOperationsSection() {
         <SectionHeader
           eyebrow="お店の手間"
           lines={["忙しいお店でも、", "手間はほぼゼロ。"]}
-          lead={["冷凍庫から出して、すぐすくえます。"]}
+          lead={["米粉の保水力で−18℃でも固まりすぎず、削る力や解凍待ちが不要です。"]}
         />
 
         <dl className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">

@@ -49,22 +49,44 @@ export default function DessertHeroSection() {
 
         {/* テキスト */}
         <div className="px-6 pt-8 pb-12 md:order-1 md:px-0 md:py-0">
-          <p className="text-brand text-[13px] font-bold">
-            福岡・薬院のスイーツ店がつくる、業務用アイス
+          <p className="text-brand text-[13px] font-bold tracking-wide">
+            福岡・薬院発｜乳・卵・小麦不使用の100%植物性クラフトアイス
           </p>
 
-          <h1 className="text-ink mt-3 text-[32px] leading-[1.35] font-bold tracking-tight sm:text-5xl sm:leading-[1.3]">
-            <span className="block">食後のデザートに、</span>
-            <span className="block">
-              <span className="bg-[linear-gradient(transparent_62%,#f9d9e3_62%)]">ぴったり</span>
-              のアイス。
+          <h1 className="text-ink mt-3 text-[30px] leading-[1.3] font-bold tracking-tight sm:text-5xl sm:leading-[1.25]">
+            <span className="text-brand mb-1 block text-base font-bold sm:text-xl">
+              ヴィーガン対応・食後デザートに。
             </span>
+            <span className="block">
+              「
+              <span className="bg-[linear-gradient(transparent_62%,#f9d9e3_62%)]">
+                こっちが好き
+              </span>
+              」と言われる、
+            </span>
+            <span className="block">米粉の業務用クラフトアイス。</span>
           </h1>
 
-          <div className="text-ink-light mt-4 space-y-0.5 text-[15px] leading-[1.85] sm:text-lg">
-            <p>お店で人気のアイスを、業務用でお届け。</p>
-            <p>重くないから、食後でもぺろっといけます。</p>
-            <p className="text-ink font-bold">冷凍庫から出してすぐ、なめらかに提供できます。</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="bg-brand/10 text-brand rounded-full px-3 py-1 text-xs font-bold">
+              100%植物性（乳・卵・小麦不使用）
+            </span>
+            <span className="text-ink-light rounded-full border border-gray-200 bg-[#f7f3ec] px-3 py-1 text-xs font-bold">
+              米粉独自製法＆発酵素材
+            </span>
+            <span className="text-ink-light rounded-full border border-gray-200 bg-[#f7f3ec] px-3 py-1 text-xs font-bold">
+              専用工房製造（コンタミゼロ）
+            </span>
+          </div>
+
+          <div className="text-ink-light mt-4 space-y-1 text-[15px] leading-[1.8] sm:text-base">
+            <p>福岡・薬院のヴィーガン＆グルテンフリー専門店SoyStoriesが手作り。</p>
+            <p>
+              米粉の保水力と甘酒・みそのコクで、植物性とは思えないジェラートのようななめらかさ。
+            </p>
+            <p className="text-ink font-bold">
+              −18℃の冷凍庫から出してすぐディッシャーが通り、厨房のオペレーションも軽やかです。
+            </p>
           </div>
 
           <div className="mt-6 md:flex md:justify-start">
