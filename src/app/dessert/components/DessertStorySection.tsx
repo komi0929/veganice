@@ -84,7 +84,7 @@ export default function DessertStorySection() {
                 src="/images/child_first_icecream.jpg"
                 alt="初めてクラフトアイスを食べる子どもの様子"
                 fill
-                className="object-cover object-top"
+                className="object-cover object-[center_45%]"
                 sizes="(max-width: 768px) 100vw, 400px"
               />
             </div>
