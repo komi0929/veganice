@@ -38,7 +38,7 @@ export function SectionHeader({
         {eyebrow}
       </p>
       <h2
-        className={`${titleColor} text-[26px] leading-[1.45] font-bold tracking-tight sm:text-4xl sm:leading-[1.4]`}
+        className={`${titleColor} text-[23px] leading-[1.4] font-bold tracking-tight sm:text-3xl sm:leading-[1.4] md:text-4xl`}
       >
         {lines.map((line) => (
           <span key={line} className="block">

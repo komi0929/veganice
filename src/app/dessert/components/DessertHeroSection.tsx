@@ -49,22 +49,28 @@ export default function DessertHeroSection() {
 
         {/* テキスト */}
         <div className="px-6 pt-8 pb-12 md:order-1 md:px-0 md:py-0">
-          <p className="text-brand text-[13px] font-bold tracking-wide">
-            福岡・薬院発｜乳・卵・小麦不使用の100%植物性クラフトアイス
+          <p className="text-brand text-xs font-bold tracking-wide">
+            <span className="inline-block">福岡・薬院発</span>
+            <span className="mx-1 opacity-50">｜</span>
+            <span className="inline-block">乳・卵・小麦不使用</span>
+            <span className="mx-1 opacity-50">｜</span>
+            <span className="inline-block">100%植物性クラフトアイス</span>
           </p>
 
-          <h1 className="text-ink mt-3 text-[30px] leading-[1.3] font-bold tracking-tight sm:text-5xl sm:leading-[1.25]">
-            <span className="text-brand mb-1 block text-base font-bold sm:text-xl">
+          <h1 className="text-ink mt-3 font-bold tracking-tight">
+            <span className="text-brand mb-1 block text-sm font-bold sm:text-lg">
               ヴィーガン対応・食後デザートに。
             </span>
-            <span className="block">
+            <span className="block text-[22px] leading-snug sm:text-4xl md:text-5xl">
               「
               <span className="bg-[linear-gradient(transparent_62%,#f9d9e3_62%)]">
                 普通のアイスより美味しい
               </span>
               」と
             </span>
-            <span className="block">選ばれる、米粉の業務用アイス。</span>
+            <span className="mt-1 block text-[21px] leading-snug sm:text-4xl md:text-5xl">
+              選ばれる、米粉の業務用アイス。
+            </span>
           </h1>
 
           <div className="mt-4 flex flex-wrap gap-2">

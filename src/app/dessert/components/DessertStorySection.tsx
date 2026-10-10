@@ -13,7 +13,7 @@ export default function DessertStorySection() {
         <div>
           <SectionHeader
             eyebrow="Our Story"
-            lines={["「こっちのほうが美味しい！」", "その一言が嬉しくて、私たちは決断しました。"]}
+            lines={["「こっちのほうが美味しい！」", "その一言が、私たちの原点です。"]}
           />
 
           <div className="mt-10 grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-12">
