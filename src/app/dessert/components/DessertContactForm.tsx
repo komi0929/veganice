@@ -112,7 +112,7 @@ export default function DessertContactForm() {
             autoComplete="organization"
             disabled={isPending}
             className={`${inputClasses} ${state.errors?.companyName ? errorClasses : ""}`}
-            placeholder="例：Cafe & Dining ○○ / レストラン〇〇"
+            placeholder="例：ヴィーガンラーメン〇〇 / BURGER STAND 〇〇 / カフェ〇〇"
           />
         </Field>
 
@@ -186,14 +186,14 @@ export default function DessertContactForm() {
               />
             </Field>
 
-            <Field id="notes" label="お店のジャンル・試したい味など">
+            <Field id="notes" label="お店の業態・試したい味など">
               <textarea
                 id="notes"
                 name="notes"
                 rows={3}
                 disabled={isPending}
                 className={`${inputClasses} resize-none`}
-                placeholder="例：ヴィーガン・オーガニック料理を提供しています。食後デザートやアレルギー対応として試したいです。"
+                placeholder="例：ヴィーガンラーメン / バーガー / カフェなどを営業しています。食後のデザートとして試したいです。"
               />
             </Field>
           </>

@@ -4,7 +4,10 @@ import { CheckItem, SectionHeader } from "./ui";
 
 const steps = [
   { title: "WEBフォームから申し込む", note: "約1分で簡単にお申し込み完了" },
-  { title: "お店の厨房でテイスティング", note: "味・ディッシャーの通り・コース料理との相性を確認" },
+  {
+    title: "お店でスタッフとご試食",
+    note: "味・ディッシャーの通り・ラーメンやバーガーなど食事との相性を確認",
+  },
   { title: "ご納得後にご注文", note: "最小4Lから。約5営業日で全国お届け" },
 ];
 
@@ -17,7 +20,7 @@ export default function DessertSampleSection() {
           <SectionHeader
             eyebrow="無料サンプル"
             lines={["まずは6種類の味を、", "お店でお試しください。"]}
-            lead={["実際のディッシャーの通りや口どけ、料理との相性をぜひ現場でお確かめください。"]}
+            lead={["実際のディッシャーの通りや口どけ、食後のさっぱり感をぜひ店舗でお確かめください。"]}
           />
 
           {/* サンプル内容 */}

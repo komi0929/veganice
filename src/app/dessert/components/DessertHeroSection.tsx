@@ -54,12 +54,12 @@ export default function DessertHeroSection() {
             <span className="mx-1 opacity-50">｜</span>
             <span className="inline-block">乳・卵・小麦不使用</span>
             <span className="mx-1 opacity-50">｜</span>
-            <span className="inline-block">100%植物性クラフトアイス</span>
+            <span className="inline-block">ヴィーガン＆グルテンフリー スイーツ専門店</span>
           </p>
 
           <h1 className="text-ink mt-3 font-bold tracking-tight">
             <span className="text-brand mb-1 block text-sm font-bold sm:text-lg">
-              ヴィーガン対応・食後デザートに。
+              ヴィーガン飲食店・カフェの食後デザートに。
             </span>
             <span className="block text-[22px] leading-snug sm:text-4xl md:text-5xl">
               「
@@ -69,7 +69,7 @@ export default function DessertHeroSection() {
               」と
             </span>
             <span className="mt-1 block text-[21px] leading-snug sm:text-4xl md:text-5xl">
-              選ばれる、米粉の業務用アイス。
+              選ばれる、専門店のクラフトアイス。
             </span>
           </h1>
 
@@ -78,20 +78,25 @@ export default function DessertHeroSection() {
               100%植物性（乳・卵・小麦不使用）
             </span>
             <span className="text-ink-light rounded-full border border-gray-200 bg-[#f7f3ec] px-3 py-1 text-xs font-bold">
-              米粉独自製法＆発酵素材
+              スイーツ専門店の本格レシピ
             </span>
             <span className="text-ink-light rounded-full border border-gray-200 bg-[#f7f3ec] px-3 py-1 text-xs font-bold">
               専用工房製造（コンタミゼロ）
             </span>
           </div>
 
-          <div className="text-ink-light mt-4 space-y-1 text-[15px] leading-[1.8] sm:text-base">
-            <p>福岡・薬院のヴィーガン＆グルテンフリー専門店が専用工房で手作り。</p>
+          <div className="text-ink-light mt-4 space-y-1.5 text-[15px] leading-[1.8] sm:text-base">
             <p>
-              米粉の保水力と甘酒・みそのコクで、植物性とは思えないジェラートのようななめらかさ。
+              私たちは福岡・薬院でヴィーガン＆グルテンフリーのスイーツだけを追求してきた専門店です。
+            </p>
+            <p>
+              ラーメンやバーガーなど自慢の料理に情熱を注ぐ飲食店様へ。食後のデザートは、スイーツ専門店の私たちが担います。
+            </p>
+            <p>
+              乳脂肪ゼロで油分が口に残らず、満足感ある食事の後でも最高にすっきり。
             </p>
             <p className="text-ink font-bold">
-              −18℃から出してすぐディッシャーが通り、厨房の手を止めずスムーズに提供できます。
+              −18℃から出してすぐディッシャーが通り、忙しいピーク時でもスタッフの手を止めず提供できます。
             </p>
           </div>
 
