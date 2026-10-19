@@ -20,7 +20,9 @@ export default function DessertSampleSection() {
           <SectionHeader
             eyebrow="無料サンプル"
             lines={["まずは6種類の味を、", "お店でお試しください。"]}
-            lead={["実際のディッシャーの通りや口どけ、食後のさっぱり感をぜひ店舗でお確かめください。"]}
+            lead={[
+              "実際のディッシャーの通りや口どけ、食後のさっぱり感をぜひ店舗でお確かめください。",
+            ]}
           />
 
           {/* サンプル内容 */}
