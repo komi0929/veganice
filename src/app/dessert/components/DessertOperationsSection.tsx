@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { TrendingUp, Sparkles, Clock, UtensilsCrossed } from "lucide-react";
+import { TrendingUp, Sparkles, Clock } from "lucide-react";
 import { MidCta, SectionHeader } from "./ui";
 
 const businessBenefits = [
@@ -20,9 +20,9 @@ const businessBenefits = [
   {
     icon: Clock,
     badge: "現場オペレーション",
-    title: "−18℃から10秒でサーブ。狭い店舗でも安心の省スペース設計",
+    title: "冷凍庫から出してすぐディッシャーが通る。解凍待ち不要の省スペース設計",
     description:
-      "コールドテーブルや小型フリーザーのすき間に収まる1L・2Lの角型バルク。米粉を使った独自製法により、冷凍庫から出してすぐディッシャーがすっと通るため、解凍待ちや削る力は不要。忙しいピーク時のオペレーションを一切乱しません。",
+      "コールドテーブルや小型フリーザーのすき間に収まる1L・2Lの角型バルク。米粉を使った独自製法により、冷凍庫から出してすぐディッシャーがすっと通るため、解凍待ちや削る力は不要。忙しいピーク時のオペレーションを乱しません。",
   },
 ];
 
@@ -33,51 +33,27 @@ const opsStats = [
   { label: "最小ロット", value: "4", unit: "L〜", note: "1L×4個など組み合わせ自由" },
 ];
 
-/** 福岡の実店舗で人気の提供スタイル実例 */
+/** 福岡の実店舗で提供している実例 */
 const servingExamples = [
   {
     image: "/images/serving/serving_float.jpg",
     objectPosition: "object-[center_35%]",
-    name: "クラフトソーダフロート",
-    category: "ドリンクデザート",
-    target: "バーガー店・カフェ・ダイナー・ラーメン店",
-    price: "¥650〜¥780",
-    description:
-      "炭酸ソーダや自家製シロップにアイスを1スクープ。ラーメンやバーガーなど満足感ある食事の後味をすっきりリセットする、高単価ドリンクメニュー。",
-    operation: "炭酸を注いでアイスを乗せるだけ（提供15秒）",
+    name: "ソーダフロート",
   },
   {
     image: "/images/serving/serving_affogato.jpg",
     objectPosition: "object-center",
-    name: "自家製アフォガート仕立て",
-    category: "食後デザート",
-    target: "カフェ・ビストロ・ラーメン店・洋食",
-    price: "¥580〜¥680",
-    description:
-      "ガラスの器にアイスを盛り、エスプレッソや黒蜜・ほうじ茶シロップを回しかけて。大人の食後を贅沢に締めくくる、高満足度の一皿。",
-    operation: "器に盛ってシロップを添えるだけ（提供30秒）",
+    name: "アフォガート",
   },
   {
     image: "/images/serving/serving_waffle_cup.jpg",
     objectPosition: "object-[center_45%]",
-    name: "ワッフル＆クラフトアイスカップ",
-    category: "カフェ・テイクアウト",
-    target: "カフェ・バーガー店・テイクアウト",
-    price: "¥480〜¥580",
-    description:
-      "クラフトカップに盛り付けて、イートインにもテイクアウトにも即座に対応。写真映えする見た目で若い客層やインバウンドに圧倒的人気。",
-    operation: "カップにすくってトッピングを添えるだけ",
+    name: "ワッフルカップ",
   },
   {
     image: "/images/serving/serving_monaka.jpg",
-    objectPosition: "object-[center_65%]",
-    name: "和モダン アイス最中（求肥添え）",
-    category: "和モダンデザート",
-    target: "ラーメン店・和食・うどん蕎麦・カフェ",
-    price: "¥520〜¥620",
-    description:
-      "香ばしい最中の皮に求肥と濃厚な和アイスをサンド。パリッとした食感と滑らかなアイスのコントラストで、食事の格を引き上げる逸品。",
-    operation: "最中の皮に挟むだけ（仕込み0分・ロスなし）",
+    objectPosition: "object-[center_70%]",
+    name: "アイス最中",
   },
 ];
 
@@ -139,25 +115,21 @@ export default function DessertOperationsSection() {
 
         {/* 実店舗での提供例（写真付きビジュアルギャラリー） */}
         <div className="mt-14 rounded-3xl bg-white p-6 shadow-sm sm:p-10">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
-            <div>
-              <p className="text-brand text-xs font-bold tracking-wide">
-                実店舗（福岡・薬院）での提供例
-              </p>
-              <h3 className="text-ink mt-1 text-2xl font-bold tracking-tight">
-                盛り付けるだけで、お店の看板デザートに。
-              </h3>
-            </div>
-            <p className="text-ink-muted text-xs">
-              ※価格は一例です。お店のコンセプトに合わせて自由に設定できます。
+          <div>
+            <p className="text-brand text-xs font-bold tracking-wide">実店舗（福岡・薬院）</p>
+            <h3 className="text-ink mt-1 text-2xl font-bold tracking-tight">
+              私たちの店舗での提供例
+            </h3>
+            <p className="text-ink-light mt-2 text-sm leading-relaxed">
+              福岡・薬院の実店舗「SoyStories」で実際に提供しているメニュー例です。
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
             {servingExamples.map((item) => (
               <div
                 key={item.name}
-                className="overflow-hidden rounded-2xl border border-gray-100 bg-[#fdfbf7] p-4 transition-shadow hover:shadow-md sm:p-5"
+                className="group overflow-hidden rounded-2xl border border-gray-100 bg-[#fdfbf7] p-3 transition-all hover:shadow-md sm:p-4"
               >
                 {/* 写真コンテナ（縦横比 4:3 で統一し、美しくトリミング調整） */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-gray-100">
@@ -165,31 +137,13 @@ export default function DessertOperationsSection() {
                     src={item.image}
                     alt={item.name}
                     fill
-                    className={`object-cover ${item.objectPosition}`}
-                    sizes="(max-width: 768px) 100vw, 500px"
+                    className={`object-cover transition-transform duration-300 group-hover:scale-105 ${item.objectPosition}`}
+                    sizes="(max-width: 768px) 50vw, 25vw"
                   />
-                  <span className="absolute top-3 left-3 rounded-full bg-black/70 px-3 py-1 text-xs font-bold text-white backdrop-blur-xs">
-                    {item.category}
-                  </span>
-                  <span className="absolute right-3 bottom-3 rounded-full bg-white/95 px-3 py-1 text-sm font-bold text-cta shadow-sm">
-                    想定価格 {item.price}
-                  </span>
                 </div>
 
-                <div className="mt-4">
-                  <div className="flex items-start justify-between gap-2">
-                    <h4 className="text-ink text-lg font-bold">{item.name}</h4>
-                  </div>
-                  <p className="text-brand mt-1 text-xs font-semibold">
-                    おすすめ業態：{item.target}
-                  </p>
-                  <p className="text-ink-light mt-2 text-[13px] leading-relaxed">
-                    {item.description}
-                  </p>
-                  <div className="mt-3 flex items-center gap-1.5 rounded-lg bg-white px-3 py-2 text-xs font-medium text-ink">
-                    <UtensilsCrossed className="text-brand h-3.5 w-3.5 shrink-0" />
-                    <span>オペレーション：{item.operation}</span>
-                  </div>
+                <div className="mt-3 text-center">
+                  <h4 className="text-ink text-sm font-bold sm:text-base">{item.name}</h4>
                 </div>
               </div>
             ))}
