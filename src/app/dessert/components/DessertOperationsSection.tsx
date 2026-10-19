@@ -38,22 +38,22 @@ const servingExamples = [
   {
     image: "/images/serving/serving_float.jpg",
     objectPosition: "object-[center_35%]",
-    name: "ソーダフロート",
+    name: "マンゴーソーダフロート",
   },
   {
     image: "/images/serving/serving_affogato.jpg",
     objectPosition: "object-center",
-    name: "アフォガート",
+    name: "ココナッツバニラ＆コーヒーゼリー",
   },
   {
     image: "/images/serving/serving_waffle_cup.jpg",
     objectPosition: "object-[center_45%]",
-    name: "ワッフルカップ",
+    name: "米粉ワッフルアイス",
   },
   {
     image: "/images/serving/serving_monaka.jpg",
     objectPosition: "object-[center_70%]",
-    name: "アイス最中",
+    name: "抹茶アイス最中",
   },
 ];
 
