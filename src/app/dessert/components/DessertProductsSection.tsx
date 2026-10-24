@@ -32,7 +32,7 @@ const flavorGroups: {
     items: [
       { name: "ショコラ", image: "/images/flavors/chocolate.png" },
       { name: "抹茶", image: "/images/flavors/matcha.png" },
-      { name: "ほうじ", image: "/images/flavors/houjicha.png" },
+      { name: "ほうじ茶", image: "/images/flavors/houjicha.png" },
       { name: "バニラ", image: "/images/flavors/vanilla_coconut.png" },
       { name: "UMAMI\nバニラ", color: "#c9a66b" },
       { name: "アール\nグレイ", color: "#9c7a5b" },

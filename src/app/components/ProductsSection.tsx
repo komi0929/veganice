@@ -47,7 +47,7 @@ const flavors: {
     image: "/images/flavors/matcha.png",
   },
   {
-    name: "ほうじ",
+    name: "ほうじ茶",
     story: "焙煎の香ばしさとやさしい甘み",
     image: "/images/flavors/houjicha.png",
   },
