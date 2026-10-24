@@ -90,6 +90,7 @@ function doPost(e) {
     MailApp.sendEmail(notifyEmail, subject, body);
 
     forwardToCRM(data);
+    forwardToOrderPortal(data);
 
     return ContentService.createTextOutput(JSON.stringify({ status: "success" })).setMimeType(
       ContentService.MimeType.JSON
@@ -122,3 +123,26 @@ function forwardToCRM(data) {
     Logger.log("forwardToCRM failed: " + err.toString());
   }
 }
+
+/**
+ * 発注ポータル（order.soystories.cafe）へサンプル申込を送る
+ * 迷惑の判定は送り先（Supabase）で行う。失敗してもシート記録・通知メールには影響しない
+ */
+function forwardToOrderPortal(data) {
+  if (data.formType !== "sample") return;
+  try {
+    UrlFetchApp.fetch(
+      "https://bnvudcxlvldrpilhcirr.supabase.co/rest/v1/rpc/submit_sample_from_lp",
+      {
+        method: "post",
+        contentType: "application/json; charset=utf-8",
+        headers: { apikey: "sb_publishable_6OSjYRgADIH8kYj4Jsi66A_WzFxvIRD" },
+        payload: JSON.stringify({ p: data }),
+        muteHttpExceptions: true,
+      }
+    );
+  } catch (err) {
+    Logger.log("forwardToOrderPortal failed: " + err.toString());
+  }
+}
+
