@@ -1,6 +1,12 @@
+import type { ReactNode } from "react";
 import { SectionHeader } from "./ui";
 
-const faqs = [
+interface FAQItem {
+  q: string;
+  a: ReactNode;
+}
+
+const faqs: FAQItem[] = [
   {
     q: "お店の冷凍スペースが限られていますが保管できますか？",
     a: "はい、問題ありません。省スペースな1Lまたは2Lの角型バルク容器を採用しているため、お店のコールドテーブルやすき間にもすっきり収まります。最小4L（1L×4個など）からご注文いただけます。",
@@ -23,7 +29,21 @@ const faqs = [
   },
   {
     q: "卸価格・お取引条件について知りたい",
-    a: "ご注文ロットや配送頻度に応じた卸価格表をご用意しています。サンプルお申し込み時、またはフォームよりお気軽にお問い合わせください。",
+    a: (
+      <>
+        1L ¥2,000／2L
+        ¥4,000（税別）、全11種同じ価格です。最小4Lから、味の組み合わせは自由。送料は地域とサイズで決まり、商品代金と一緒に月末締め・翌月末払いの請求書でご請求します。価格表とご注文は{" "}
+        <a
+          href="https://order.soystories.cafe/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-brand underline hover:opacity-80"
+        >
+          https://order.soystories.cafe/
+        </a>{" "}
+        からどうぞ。
+      </>
+    ),
   },
   {
     q: "注文からどのくらいで届きますか？",

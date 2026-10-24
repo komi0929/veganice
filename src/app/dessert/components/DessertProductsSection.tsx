@@ -1,30 +1,41 @@
-import Image from "next/image";
 import { MidCta, SectionHeader } from "./ui";
+import { FlavorThumbnail } from "@/app/components/FlavorThumbnail";
 
 interface Flavor {
   name: string;
-  image: string;
+  image?: string;
+  color?: string;
 }
 
-const flavorGroups: { title: string; note: string; items: Flavor[] }[] = [
+const flavorGroups: {
+  title: string;
+  note: string;
+  gridColsClass: string;
+  items: Flavor[];
+}[] = [
   {
     title: "さっぱり系",
     note: "食後のお口直しや、爽やかなフルーツ感に",
+    gridColsClass: "grid-cols-3 sm:grid-cols-5",
     items: [
-      { name: "白桃", image: "/images/flavors/peach.png" },
+      { name: "もも", image: "/images/flavors/peach.png" },
       { name: "りんご", image: "/images/flavors/apple.png" },
-      { name: "ベリー\nミックス", image: "/images/flavors/berry_mix.png" },
+      { name: "ミックス\nベリー", image: "/images/flavors/berry_mix.png" },
       { name: "ドラゴン\nフルーツ", image: "/images/flavors/dragon_fruit.png" },
+      { name: "マンゴー", color: "#e9a23b" },
     ],
   },
   {
     title: "コクあり系",
     note: "発酵のコクと素材感を味わう濃厚デザートに",
+    gridColsClass: "grid-cols-3 sm:grid-cols-6",
     items: [
-      { name: "なめらか\nショコラ", image: "/images/flavors/chocolate.png" },
-      { name: "甘酒抹茶", image: "/images/flavors/matcha.png" },
-      { name: "ほうじ茶", image: "/images/flavors/houjicha.png" },
-      { name: "バニラ\nココナッツ", image: "/images/flavors/vanilla_coconut.png" },
+      { name: "ショコラ", image: "/images/flavors/chocolate.png" },
+      { name: "抹茶", image: "/images/flavors/matcha.png" },
+      { name: "ほうじ", image: "/images/flavors/houjicha.png" },
+      { name: "バニラ", image: "/images/flavors/vanilla_coconut.png" },
+      { name: "UMAMI\nバニラ", color: "#c9a66b" },
+      { name: "アール\nグレイ", color: "#9c7a5b" },
     ],
   },
 ];
@@ -53,7 +64,7 @@ export default function DessertProductsSection() {
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
           eyebrow="フレーバー"
-          lines={["全8種類から、", "お店に合う味を。"]}
+          lines={["全11種類から、", "お店に合う味を。"]}
           lead={["料理に合わせて、好きな組み合わせで選べます。"]}
         />
 
@@ -64,19 +75,16 @@ export default function DessertProductsSection() {
                 {group.title}
                 <span className="text-ink-muted ml-2 text-xs font-normal">{group.note}</span>
               </p>
-              <ul className="mt-3 grid grid-cols-4 gap-2 sm:gap-4">
+              <ul className={`mt-3 grid gap-2 sm:gap-4 ${group.gridColsClass}`}>
                 {group.items.map((flavor) => (
-                  <li key={flavor.name} className="text-center">
-                    <div className="relative mx-auto aspect-square w-full rounded-2xl bg-[#f7f3ec] p-1.5">
-                      <div className="relative h-full w-full">
-                        <Image
-                          src={flavor.image}
-                          alt={flavor.name.replace("\n", "")}
-                          fill
-                          className="object-contain"
-                          sizes="(max-width: 640px) 25vw, 160px"
-                        />
-                      </div>
+                  <li key={flavor.name} className="group text-center">
+                    <div className="relative mx-auto aspect-square w-full rounded-2xl bg-[#f7f3ec] p-1.5 transition-transform duration-200 group-hover:scale-[1.02]">
+                      <FlavorThumbnail
+                        name={flavor.name}
+                        image={flavor.image}
+                        color={flavor.color}
+                        sizes="(max-width: 640px) 30vw, 160px"
+                      />
                     </div>
                     <p className="text-ink mt-1.5 text-[11px] leading-tight font-bold whitespace-pre-line sm:text-sm">
                       {flavor.name}

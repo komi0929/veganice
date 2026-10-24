@@ -17,7 +17,7 @@ export default function HowItWorksSection() {
       number: "02",
       title: "フレーバー・数量を決定",
       description:
-        "8種から自由に組み合わせ。季節のおすすめもご提案します。最小4L（2L×2本）から、お店のペースに合わせて。",
+        "11種から自由に組み合わせ。季節のおすすめもご提案します。最小4L（2L×2本）から、お店のペースに合わせて。",
       icon: <ClipboardList className="text-brand h-8 w-8" />,
     },
     {

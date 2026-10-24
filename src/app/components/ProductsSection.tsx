@@ -2,31 +2,17 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FlavorThumbnail } from "./FlavorThumbnail";
 
 /* ── フレーバーデータ ── */
-const flavors = [
+const flavors: {
+  name: string;
+  story: string;
+  image?: string;
+  color?: string;
+}[] = [
   {
-    name: "なめらかショコラ",
-    story: "カカオの深い香りと、とろける余韻",
-    image: "/images/flavors/chocolate.png",
-  },
-  {
-    name: "甘酒抹茶",
-    story: "甘酒が引き立てる、奥深い抹茶の味わい",
-    image: "/images/flavors/matcha.png",
-  },
-  {
-    name: "ベリーミックス",
-    story: "数種のベリーの甘酸っぱさ",
-    image: "/images/flavors/berry_mix.png",
-  },
-  {
-    name: "ほうじ茶",
-    story: "焙煎の香ばしさとやさしい甘み",
-    image: "/images/flavors/houjicha.png",
-  },
-  {
-    name: "白桃",
+    name: "もも",
     story: "果実感をそのまま閉じ込めた爽やかさ",
     image: "/images/flavors/peach.png",
   },
@@ -36,14 +22,49 @@ const flavors = [
     image: "/images/flavors/apple.png",
   },
   {
-    name: "バニラココナッツ",
-    story: "ココナッツミルクのまろやかさ",
-    image: "/images/flavors/vanilla_coconut.png",
+    name: "ミックスベリー",
+    story: "数種のベリーの甘酸っぱさ",
+    image: "/images/flavors/berry_mix.png",
   },
   {
     name: "ドラゴンフルーツ",
     story: "鮮やかな彩りとさっぱりした甘さ",
     image: "/images/flavors/dragon_fruit.png",
+  },
+  {
+    name: "マンゴー",
+    story: "新フレーバー",
+    color: "#e9a23b",
+  },
+  {
+    name: "ショコラ",
+    story: "カカオの深い香りと、とろける余韻",
+    image: "/images/flavors/chocolate.png",
+  },
+  {
+    name: "抹茶",
+    story: "甘酒が引き立てる、奥深い抹茶の味わい",
+    image: "/images/flavors/matcha.png",
+  },
+  {
+    name: "ほうじ",
+    story: "焙煎の香ばしさとやさしい甘み",
+    image: "/images/flavors/houjicha.png",
+  },
+  {
+    name: "バニラ",
+    story: "ココナッツミルクのまろやかさ",
+    image: "/images/flavors/vanilla_coconut.png",
+  },
+  {
+    name: "UMAMIバニラ",
+    story: "新フレーバー",
+    color: "#c9a66b",
+  },
+  {
+    name: "アールグレイ",
+    story: "新フレーバー",
+    color: "#9c7a5b",
   },
 ];
 
@@ -80,7 +101,7 @@ const b2bTerms = [
   },
   {
     label: "価格",
-    value: "お問い合わせください",
+    value: "1L ¥2,000／2L ¥4,000（税別）。全11種同価格・最小4L",
   },
 ];
 
@@ -120,7 +141,7 @@ export default function ProductsSection() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-ink font-serif text-2xl leading-snug tracking-wide sm:text-3xl lg:text-[2.5rem]"
           >
-            全8フレーバー、乳・卵・小麦 不使用。
+            全11フレーバー、乳・卵・小麦 不使用。
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -131,7 +152,7 @@ export default function ProductsSection() {
           >
             すべて乳・卵・小麦・白砂糖不使用。乳化安定剤・増粘剤・着色料も不使用。
             <br className="hidden sm:block" />
-            8種から自由に組み合わせ。和食・洋食・カフェ、どの業態にも合うラインナップです。
+            11種から自由に組み合わせ。和食・洋食・カフェ、どの業態にも合うラインナップです。
           </motion.p>
         </div>
 
@@ -166,11 +187,10 @@ export default function ProductsSection() {
                 className="group flex flex-col items-center rounded-2xl border border-stone-200/80 bg-white/90 p-4 text-center shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
               >
                 <div className="relative mb-3 aspect-square w-28 overflow-hidden transition-transform duration-300 group-hover:scale-105 sm:w-32">
-                  <Image
-                    src={flavor.image}
-                    alt={flavor.name}
-                    fill
-                    className="object-contain"
+                  <FlavorThumbnail
+                    name={flavor.name}
+                    image={flavor.image}
+                    color={flavor.color}
                     sizes="(max-width: 640px) 120px, 140px"
                   />
                 </div>
