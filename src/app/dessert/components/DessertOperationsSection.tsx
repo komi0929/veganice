@@ -26,13 +26,6 @@ const businessBenefits = [
   },
 ];
 
-const opsStats = [
-  { label: "客単価アップ", value: "＋350", unit: "円〜", note: "セットや単品で手軽にプラス" },
-  { label: "仕込み・廃棄ロス", value: "0", unit: "", note: "冷凍長期保管でロスゼロ" },
-  { label: "1Lあたりの杯数", value: "約20", unit: "杯", note: "原価計算が明快（約50ml換算）" },
-  { label: "最小ロット", value: "4", unit: "L〜", note: "1L×4個など組み合わせ自由" },
-];
-
 /** 福岡の実店舗で提供している実例 */
 const servingExamples = [
   {
@@ -98,20 +91,6 @@ export default function DessertOperationsSection() {
             );
           })}
         </div>
-
-        {/* 数字で見る安心設計 */}
-        <dl className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
-          {opsStats.map((stat) => (
-            <div key={stat.label} className="rounded-2xl bg-white p-4 shadow-sm">
-              <dt className="text-ink-muted text-xs font-bold">{stat.label}</dt>
-              <dd className="text-brand mt-1 leading-none font-bold">
-                <span className="text-[32px] tracking-tight">{stat.value}</span>
-                {stat.unit && <span className="ml-0.5 text-base">{stat.unit}</span>}
-              </dd>
-              <dd className="text-ink-light mt-2 text-xs leading-relaxed">{stat.note}</dd>
-            </div>
-          ))}
-        </dl>
 
         {/* 実店舗での提供例（写真付きビジュアルギャラリー） */}
         <div className="mt-14 rounded-3xl bg-white p-6 shadow-sm sm:p-10">
