@@ -100,7 +100,7 @@ export default function DessertHeroSection() {
               です。
             </p>
             <p className="text-ink font-bold">
-              −18℃から出してすぐディッシャーが通り、忙しいピーク時でもスタッフの手を止めず提供できます。
+              米粉を使った独自製法により、植物性アイスにありがちなシャリシャリ感がなく、業務用で冷凍庫を出し入れしても滑らかな舌触りが続きます。
             </p>
           </div>
 

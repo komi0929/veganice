@@ -14,7 +14,7 @@ import DessertSampleSection from "./components/DessertSampleSection";
 
 const TITLE = "ヴィーガン対応・食後デザートの業務用クラフトアイス｜乳・卵・小麦不使用 SoyStories";
 const DESCRIPTION =
-  "福岡・薬院のヴィーガン＆グルテンフリー専門店SoyStoriesのアイスを業務用1L・2Lでお届け。100%植物性・乳卵小麦不使用。米粉と発酵の独自製法でジェラートのようななめらかさ。専用工房製造で混入ゼロ。−18℃ですぐ提供可能。6種類の無料サンプル受付中。";
+  "福岡・薬院のヴィーガン＆グルテンフリー専門店SoyStoriesのアイスを業務用1L・2Lでお届け。100%植物性・乳卵小麦不使用。米粉と発酵の独自製法でシャリシャリ感のない滑らかな舌触りが冷凍庫を出し入れしても続く。専用工房製造で混入ゼロ。6種類の無料サンプル受付中。";
 
 export const metadata: Metadata = {
   title: TITLE,

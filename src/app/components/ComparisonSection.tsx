@@ -6,16 +6,16 @@ import { Check, Info } from "lucide-react";
 const comparisonRows = [
   {
     label: "テクスチャー",
-    cheap: "時間が経つと固くなりやすい",
+    cheap: "氷っぽくシャリシャリしたシャーベット感が出やすい",
     cheapStatus: "negative" as const,
-    soyStories: "お米の力で、なめらかさを長く保ちます",
+    soyStories: "米粉の保水力で、クリーミーで滑らかな舌触り",
     soyStoriesStatus: "positive" as const,
   },
   {
-    label: "提供のしやすさ",
-    cheap: "冷凍庫から出して少し待つ必要がある",
+    label: "業務用での品質維持",
+    cheap: "冷凍庫の出し入れで食感が劣化しやすい",
     cheapStatus: "negative" as const,
-    soyStories: "出してすぐ、ディッシャーですっとすくえます",
+    soyStories: "冷凍庫を出し入れしても、最後まで滑らかさが続く",
     soyStoriesStatus: "positive" as const,
   },
   {
