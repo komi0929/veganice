@@ -115,7 +115,7 @@ export default function ContactForm() {
           </button>
         </div>
 
-        <div className="p-8 md:p-12">
+        <div className="p-5 sm:p-8 md:p-12">
           {/* LINE CTA */}
           <div className="mb-8 rounded-xl border border-[#06C755]/20 bg-[#06C755]/5 p-5 text-center">
             <a
@@ -259,7 +259,7 @@ export default function ContactForm() {
 
             {/* ── サンプル申込：送付先 ── */}
             {activeTab === "sample" && (
-              <div className="space-y-6 rounded-xl border border-gray-100 bg-gray-50/50 p-6">
+              <div className="space-y-6 rounded-xl border border-gray-100 bg-gray-50/50 p-4 sm:p-6">
                 <p className="text-ink font-sans text-sm font-bold">サンプル送付先</p>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   <div>

@@ -84,7 +84,7 @@ export default function SampleFlavorPicker({ disabled = false, error }: SampleFl
           disabled={disabled}
           onClick={() => setMode("omakase")}
           aria-pressed={mode === "omakase"}
-          className={`flex min-h-[44px] items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
+          className={`flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border px-2 py-2.5 text-sm font-bold whitespace-nowrap transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
             mode === "omakase"
               ? "border-brand bg-brand/5 text-ink"
               : "text-ink-light hover:text-ink border-gray-200 bg-white"
@@ -106,7 +106,7 @@ export default function SampleFlavorPicker({ disabled = false, error }: SampleFl
           disabled={disabled}
           onClick={() => setMode("custom")}
           aria-pressed={mode === "custom"}
-          className={`flex min-h-[44px] items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
+          className={`flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border px-2 py-2.5 text-sm font-bold whitespace-nowrap transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
             mode === "custom"
               ? "border-brand bg-brand/5 text-ink"
               : "text-ink-light hover:text-ink border-gray-200 bg-white"
@@ -147,10 +147,12 @@ export default function SampleFlavorPicker({ disabled = false, error }: SampleFl
 
               return (
                 <li key={flavor} className="flex items-center justify-between gap-2 py-2">
-                  <span className={`text-sm ${qty > 0 ? "text-ink font-bold" : "text-ink"}`}>
+                  <span
+                    className={`min-w-0 text-sm whitespace-nowrap ${qty > 0 ? "text-ink font-bold" : "text-ink"}`}
+                  >
                     {flavor}
                   </span>
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex shrink-0 items-center gap-1">
                     <button
                       type="button"
                       onClick={() => handleDecrement(flavor)}
@@ -162,7 +164,7 @@ export default function SampleFlavorPicker({ disabled = false, error }: SampleFl
                     </button>
                     <span
                       aria-live="polite"
-                      className={`w-7 text-center text-sm tabular-nums ${
+                      className={`w-6 text-center text-sm tabular-nums ${
                         qty > 0 ? "text-brand font-bold" : "text-ink-muted"
                       }`}
                     >
