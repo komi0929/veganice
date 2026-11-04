@@ -3,6 +3,7 @@
 import React, { useActionState, useState } from "react";
 import { motion } from "framer-motion";
 import { submitContact, type ContactState } from "../actions/contact";
+import SampleFlavorPicker from "./SampleFlavorPicker";
 
 const initialState: ContactState = {
   success: false,
@@ -44,7 +45,9 @@ export default function ContactForm() {
                 ? "サンプルのお申し込みを受け付けました"
                 : "送信完了しました"}
             </h2>
-            <p className="text-ink-light font-sans text-base leading-relaxed">{state.message}</p>
+            <p className="text-ink-light font-sans text-base leading-relaxed whitespace-pre-line">
+              {state.message}
+            </p>
           </motion.div>
         </div>
       </section>
@@ -148,7 +151,7 @@ export default function ContactForm() {
                   <div className="text-xs leading-relaxed text-amber-950 sm:text-sm">
                     <p className="font-bold">【送料のご負担について（必ずご確認ください）】</p>
                     <p className="mt-1 text-amber-900">
-                      サンプルアイス（おすすめ6種）の<strong>商品代金は無料</strong>
+                      サンプルアイス（6個）の<strong>商品代金は無料</strong>
                       です。お届け時に発生する
                       <strong>ヤマト運輸のクール冷凍便送料（着払い）のみ</strong>
                       お客様にてご負担をお願いしております。ご了承の上、お申し込みください。
@@ -305,6 +308,9 @@ export default function ContactForm() {
                     <p className="mt-1 text-xs text-red-500">{state.errors.address[0]}</p>
                   )}
                 </div>
+
+                <SampleFlavorPicker disabled={isPending} error={state.errors?.sampleFlavors} />
+
                 <div>
                   <label
                     htmlFor="notes"
@@ -316,7 +322,7 @@ export default function ContactForm() {
                     </span>
                   </label>
                   <p className="text-ink-light mb-2 text-xs leading-relaxed sm:text-sm">
-                    おすすめの6種をお届け。絶対に入れて欲しいフレーバーがある場合はその旨、ご記入ください。
+                    お店の業態やメニュー、使いたい場面などをご記入ください。
                   </p>
                   <textarea
                     id="notes"
@@ -324,12 +330,12 @@ export default function ContactForm() {
                     disabled={isPending}
                     rows={3}
                     className={`${inputClasses} resize-none`}
-                    placeholder="おすすめの6種をお届け。絶対に入れて欲しいフレーバーがある場合はその旨、ご記入ください。"
+                    placeholder="お店の業態やメニュー、使いたい場面などをご記入ください。"
                   ></textarea>
                 </div>
                 <div className="rounded-lg border border-amber-200/80 bg-amber-50/70 p-3 text-left">
                   <p className="text-xs leading-relaxed font-medium text-amber-950">
-                    ※ サンプルアイス（6種）は無料です。ヤマト運輸の
+                    ※ サンプルアイス（6個）は無料です。ヤマト運輸の
                     <strong>クール冷凍便送料（着払い）のみ</strong>ご負担をお願いしております。
                   </p>
                 </div>

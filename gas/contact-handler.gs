@@ -2,7 +2,7 @@
  * SoyStories お問い合わせ受信用 Google Apps Script
  *
  * フォームタイプ:
- *   - sample: サンプル申込（住所あり）
+ *   - sample: サンプル申込（住所・サンプルの味あり）
  *   - inquiry: お問い合わせ（メッセージ）
  *
  * スプレッドシートの列構成:
@@ -15,6 +15,7 @@
  *   G: 郵便番号（サンプルのみ）
  *   H: 住所（サンプルのみ）
  *   I: 備考 / お問い合わせ内容
+ *   J: サンプルの味（サンプルのみ）
  */
 
 function doPost(e) {
@@ -34,11 +35,15 @@ function doPost(e) {
         "郵便番号",
         "住所",
         "備考 / 内容",
+        "サンプルの味",
       ]);
+    } else if (!sheet.getRange(1, 10).getValue()) {
+      sheet.getRange(1, 10).setValue("サンプルの味");
     }
 
     var formTypeLabel = data.formType === "sample" ? "サンプル申込" : "お問い合わせ";
     var contentField = data.formType === "sample" ? data.notes || "" : data.message || "";
+    var sampleSummaryField = data.formType === "sample" ? data.sampleSummary || "おまかせ6個" : "";
 
     sheet.appendRow([
       new Date(data.timestamp),
@@ -50,6 +55,7 @@ function doPost(e) {
       data.postalCode || "",
       data.address || "",
       contentField,
+      sampleSummaryField,
     ]);
 
     // メール通知（管理者宛に通知）
@@ -79,6 +85,9 @@ function doPost(e) {
         "\n" +
         "■ 住所: " +
         (data.address || "") +
+        "\n" +
+        "■ サンプルの味: " +
+        sampleSummaryField +
         "\n" +
         "■ 備考: " +
         (data.notes || "なし") +
@@ -145,4 +154,3 @@ function forwardToOrderPortal(data) {
     Logger.log("forwardToOrderPortal failed: " + err.toString());
   }
 }
-

@@ -19,7 +19,7 @@ export default function DessertSampleSection() {
         <div>
           <SectionHeader
             eyebrow="無料サンプル"
-            lines={["まずは6種類の味を、", "お店でお試しください。"]}
+            lines={["まずは6個、気になる味を", "お店でお試しください。"]}
             lead={[
               "シャリシャリ感のない滑らかな舌触りや口どけ、食後のさっぱり感をぜひ店舗でお確かめください。",
             ]}
@@ -37,7 +37,7 @@ export default function DessertSampleSection() {
               />
             </div>
             <ul className="text-ink space-y-2.5 p-5 text-[15px] leading-snug">
-              <CheckItem>おすすめの厳選フレーバー6種をお届け</CheckItem>
+              <CheckItem>全11種から6個まで選べる（おまかせも可・同じ味を複数でも）</CheckItem>
               <CheckItem>
                 商品代金は<strong className="text-cta">無料</strong>（クール便送料のみ着払い）
               </CheckItem>

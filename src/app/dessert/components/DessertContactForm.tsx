@@ -2,6 +2,7 @@
 
 import { useActionState, useState, type ReactNode } from "react";
 import { submitContact, type ContactState } from "../../actions/contact";
+import SampleFlavorPicker from "../../components/SampleFlavorPicker";
 
 const initialState: ContactState = {
   success: false,
@@ -63,7 +64,9 @@ export default function DessertContactForm() {
         <h3 className="text-ink text-xl font-bold">
           {state.formType === "sample" ? "お申し込みありがとうございます" : "送信しました"}
         </h3>
-        <p className="text-ink-light mt-3 text-[15px] leading-relaxed">{state.message}</p>
+        <p className="text-ink-light mt-3 text-[15px] leading-relaxed whitespace-pre-line">
+          {state.message}
+        </p>
       </div>
     );
   }
@@ -185,6 +188,8 @@ export default function DessertContactForm() {
                 placeholder="福岡市中央区薬院1-2-3 〇〇ビル1F"
               />
             </Field>
+
+            <SampleFlavorPicker disabled={isPending} error={state.errors?.sampleFlavors} />
 
             <Field id="notes" label="お店の業態・試したい味など">
               <textarea
