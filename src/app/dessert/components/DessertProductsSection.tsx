@@ -43,6 +43,7 @@ const flavorGroups: {
 const specs = [
   { label: "容器", value: "1L または 2L（冷凍）" },
   { label: "最小ロット", value: "4L〜（2L×2個、1L×4個など。味の組み合わせは自由）" },
+  { label: "価格", value: "1L ¥2,000／2L ¥4,000（税別）。全11種同価格・最小4L" },
   {
     label: "杯数の目安",
     value: "1Lあたり 約20杯（#18ディッシャー・約50ml）／約12杯（#12・約80ml）",
@@ -95,6 +96,13 @@ export default function DessertProductsSection() {
             </div>
           ))}
         </div>
+
+        <p className="text-ink mt-8 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[15px] font-bold">
+          <span>価格　1L ¥2,000／2L ¥4,000（税別）</span>
+          <span className="text-ink-muted text-xs font-normal">
+            全11種同価格・最小4Lから、味の組み合わせは自由
+          </span>
+        </p>
 
         {/* 商品仕様（折りたたみ） */}
         <details className="group mt-10 rounded-2xl border border-gray-200 bg-white">
