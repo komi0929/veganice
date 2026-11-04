@@ -139,8 +139,9 @@ function forwardToCRM(data) {
  */
 function forwardToOrderPortal(data) {
   if (data.formType !== "sample") return;
+  var result = "";
   try {
-    UrlFetchApp.fetch(
+    var res = UrlFetchApp.fetch(
       "https://bnvudcxlvldrpilhcirr.supabase.co/rest/v1/rpc/submit_sample_from_lp",
       {
         method: "post",
@@ -150,7 +151,15 @@ function forwardToOrderPortal(data) {
         muteHttpExceptions: true,
       }
     );
+    result = res.getResponseCode() + " " + res.getContentText();
+    Logger.log("forwardToOrderPortal: " + result);
+    if (res.getResponseCode() !== 200) throw new Error(result);
   } catch (err) {
     Logger.log("forwardToOrderPortal failed: " + err.toString());
+    MailApp.sendEmail(
+      "hitokoto.sogu@gmail.com",
+      "【要確認】サンプル申込が管理画面に届いていません - " + (data.companyName || ""),
+      "LP のサンプル申込を発注ポータルに送れませんでした。\n店名: " + (data.companyName || "") + "\nエラー: " + err.toString()
+    );
   }
 }
