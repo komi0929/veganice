@@ -1,7 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { getFlavorSpec } from "@/app/data/flavorSpecs";
+import FlavorSpecModal, { type SelectedFlavorTarget } from "./FlavorSpecModal";
 import { FlavorThumbnail } from "./FlavorThumbnail";
 
 /* ── フレーバーデータ ── */
@@ -123,6 +126,8 @@ const itemVariant = {
 };
 
 export default function ProductsSection() {
+  const [selectedFlavor, setSelectedFlavor] = useState<SelectedFlavorTarget | null>(null);
+
   return (
     <section id="products" className="bg-bg-white relative overflow-hidden py-20 md:py-36">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
@@ -179,30 +184,49 @@ export default function ProductsSection() {
         {/* ── フレーバーグリッド（画像付きカード） ── */}
         <div className="mx-auto mb-28 max-w-5xl md:mb-36">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
-            {flavors.map((flavor, index) => (
-              <motion.div
-                key={flavor.name}
-                custom={index}
-                variants={itemVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-40px" }}
-                className="group flex flex-col items-center rounded-2xl border border-stone-200/80 bg-white/90 p-4 text-center shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-              >
-                <div className="relative mb-3 aspect-square w-28 overflow-hidden transition-transform duration-300 group-hover:scale-105 sm:w-32">
-                  <FlavorThumbnail
-                    name={flavor.name}
-                    image={flavor.image}
-                    color={flavor.color}
-                    sizes="(max-width: 640px) 120px, 140px"
-                  />
-                </div>
-                <h3 className="text-ink mb-1 font-serif text-sm font-bold whitespace-nowrap sm:text-lg">
-                  {flavor.name}
-                </h3>
-                <p className="text-ink-muted text-xs leading-relaxed sm:text-sm">{flavor.story}</p>
-              </motion.div>
-            ))}
+            {flavors.map((flavor, index) => {
+              const spec = getFlavorSpec(flavor.name);
+              return (
+                <motion.button
+                  type="button"
+                  key={flavor.name}
+                  custom={index}
+                  variants={itemVariant}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-40px" }}
+                  onClick={() => {
+                    if (spec) {
+                      setSelectedFlavor({
+                        name: flavor.name,
+                        image: flavor.image,
+                        color: flavor.color,
+                        spec,
+                      });
+                    }
+                  }}
+                  className="group hover:border-brand/40 flex cursor-pointer flex-col items-center rounded-2xl border border-stone-200/80 bg-white/90 p-4 text-center shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                >
+                  <div className="relative mb-3 aspect-square w-28 overflow-hidden transition-transform duration-300 group-hover:scale-105 sm:w-32">
+                    <FlavorThumbnail
+                      name={flavor.name}
+                      image={flavor.image}
+                      color={flavor.color}
+                      sizes="(max-width: 640px) 120px, 140px"
+                    />
+                  </div>
+                  <h3 className="text-ink mb-1 font-serif text-sm font-bold whitespace-nowrap sm:text-lg">
+                    {flavor.name}
+                  </h3>
+                  <p className="text-ink-muted mb-3 text-xs leading-relaxed sm:text-sm">
+                    {flavor.story}
+                  </p>
+                  <span className="text-brand border-brand/25 bg-brand/5 group-hover:bg-brand group-hover:border-brand mt-auto inline-flex items-center justify-center rounded-full border px-3 py-1 font-sans text-[11px] font-bold transition-colors group-hover:text-white sm:text-xs">
+                    原材料・栄養
+                  </span>
+                </motion.button>
+              );
+            })}
           </div>
         </div>
 
@@ -293,6 +317,8 @@ export default function ProductsSection() {
           </motion.div>
         </div>
       </div>
+
+      <FlavorSpecModal target={selectedFlavor} onClose={() => setSelectedFlavor(null)} />
     </section>
   );
 }

@@ -85,6 +85,15 @@ export default function DessertSampleSection() {
         </div>
 
         <div className="md:pt-2">
+          <p className="text-ink-light mb-3 text-center text-xs sm:text-sm">
+            <a
+              href="#products"
+              className="text-brand font-medium underline underline-offset-4 hover:opacity-80"
+            >
+              <span className="inline-block">各味の原材料・アレルゲンは、</span>
+              <span className="inline-block">上の味のカードからご確認いただけます</span>
+            </a>
+          </p>
           <DessertContactForm />
         </div>
       </div>

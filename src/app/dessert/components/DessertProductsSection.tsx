@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { getFlavorSpec } from "@/app/data/flavorSpecs";
+import FlavorSpecModal, { type SelectedFlavorTarget } from "@/app/components/FlavorSpecModal";
 import { MidCta, SectionHeader } from "./ui";
 import { FlavorThumbnail } from "@/app/components/FlavorThumbnail";
 
@@ -61,6 +66,8 @@ const specs = [
 
 /** フレーバー一覧と商品仕様。仕様は折りたたんで、ページを短く保つ */
 export default function DessertProductsSection() {
+  const [selectedFlavor, setSelectedFlavor] = useState<SelectedFlavorTarget | null>(null);
+
   return (
     <section id="products" className="bg-bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -78,21 +85,42 @@ export default function DessertProductsSection() {
                 <span className="text-ink-muted ml-2 text-xs font-normal">{group.note}</span>
               </p>
               <ul className={`mt-3 grid gap-2 sm:gap-4 ${group.gridColsClass}`}>
-                {group.items.map((flavor) => (
-                  <li key={flavor.name} className="group text-center">
-                    <div className="relative mx-auto aspect-square w-full rounded-2xl bg-[#f7f3ec] p-1.5 transition-transform duration-200 group-hover:scale-[1.02]">
-                      <FlavorThumbnail
-                        name={flavor.name}
-                        image={flavor.image}
-                        color={flavor.color}
-                        sizes="(max-width: 640px) 30vw, 160px"
-                      />
-                    </div>
-                    <p className="text-ink mt-1.5 text-[11px] leading-tight font-bold whitespace-pre-line sm:text-sm">
-                      {flavor.name}
-                    </p>
-                  </li>
-                ))}
+                {group.items.map((flavor) => {
+                  const spec = getFlavorSpec(flavor.name);
+                  return (
+                    <li key={flavor.name} className="flex">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (spec) {
+                            setSelectedFlavor({
+                              name: flavor.name,
+                              image: flavor.image,
+                              color: flavor.color,
+                              spec,
+                            });
+                          }
+                        }}
+                        className="group flex h-full w-full cursor-pointer flex-col items-center text-center"
+                      >
+                        <div className="relative mx-auto aspect-square w-full rounded-2xl bg-[#f7f3ec] p-1.5 transition-transform duration-200 group-hover:scale-[1.02]">
+                          <FlavorThumbnail
+                            name={flavor.name}
+                            image={flavor.image}
+                            color={flavor.color}
+                            sizes="(max-width: 640px) 30vw, 160px"
+                          />
+                        </div>
+                        <p className="text-ink mt-1.5 mb-1.5 text-[11px] leading-tight font-bold whitespace-pre-line sm:text-sm">
+                          {flavor.name}
+                        </p>
+                        <span className="text-brand border-brand/25 bg-brand/5 group-hover:bg-brand group-hover:border-brand mt-auto inline-flex items-center justify-center rounded-full border px-2 py-0.5 text-[10px] font-bold whitespace-nowrap transition-colors group-hover:text-white sm:px-2.5 sm:text-[11px]">
+                          原材料・栄養
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
@@ -128,6 +156,8 @@ export default function DessertProductsSection() {
 
         <MidCta message="どの味が合うか、実際に試してみてください。" />
       </div>
+
+      <FlavorSpecModal target={selectedFlavor} onClose={() => setSelectedFlavor(null)} />
     </section>
   );
 }

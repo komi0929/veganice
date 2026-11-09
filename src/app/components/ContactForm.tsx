@@ -82,6 +82,16 @@ export default function ContactForm() {
         </motion.p>
       </div>
 
+      <p className="text-ink-light mx-auto mb-4 max-w-3xl text-center font-sans text-xs sm:text-sm">
+        <a
+          href="#products"
+          className="text-brand font-medium underline underline-offset-4 hover:opacity-80"
+        >
+          <span className="inline-block">各味の原材料・アレルゲンは、</span>
+          <span className="inline-block">上の味のカードからご確認いただけます</span>
+        </a>
+      </p>
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
