@@ -49,7 +49,7 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
     nutrition: {
       calories: "223kcal",
       protein: "2.4g",
-      fat: "2.4g",
+      fat: "12.8g",
       carbs: "24.9g",
       salt: "0.2g",
     },
