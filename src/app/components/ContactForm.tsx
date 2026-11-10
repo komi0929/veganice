@@ -4,6 +4,7 @@ import React, { useActionState, useState } from "react";
 import { motion } from "framer-motion";
 import { submitContact, type ContactState } from "../actions/contact";
 import SampleFlavorPicker from "./SampleFlavorPicker";
+import DeliveryPreferencePicker from "./DeliveryPreferencePicker";
 
 const initialState: ContactState = {
   success: false,
@@ -318,6 +319,8 @@ export default function ContactForm() {
                     <p className="mt-1 text-xs text-red-500">{state.errors.address[0]}</p>
                   )}
                 </div>
+
+                <DeliveryPreferencePicker disabled={isPending} />
 
                 <SampleFlavorPicker disabled={isPending} error={state.errors?.sampleFlavors} />
 

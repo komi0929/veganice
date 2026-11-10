@@ -79,12 +79,21 @@ function doPost(e) {
       "\n";
 
     if (data.formType === "sample") {
+      var receiveParts = [];
+      if (data.receiveDays) receiveParts.push(data.receiveDays);
+      if (data.receiveSlots) receiveParts.push(data.receiveSlots);
+      if (data.receiveNote) receiveParts.push(data.receiveNote);
+      var receiveText = receiveParts.length > 0 ? receiveParts.join("／") : "指定なし";
+
       body +=
         "■ 〒: " +
         (data.postalCode || "") +
         "\n" +
         "■ 住所: " +
         (data.address || "") +
+        "\n" +
+        "■ 受け取り: " +
+        receiveText +
         "\n" +
         "■ サンプルの味: " +
         sampleSummaryField +

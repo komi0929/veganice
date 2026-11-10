@@ -3,6 +3,7 @@
 import { useActionState, useState, type ReactNode } from "react";
 import { submitContact, type ContactState } from "../../actions/contact";
 import SampleFlavorPicker from "../../components/SampleFlavorPicker";
+import DeliveryPreferencePicker from "../../components/DeliveryPreferencePicker";
 
 const initialState: ContactState = {
   success: false,
@@ -188,6 +189,8 @@ export default function DessertContactForm() {
                 placeholder="福岡市中央区薬院1-2-3 〇〇ビル1F"
               />
             </Field>
+
+            <DeliveryPreferencePicker disabled={isPending} />
 
             <SampleFlavorPicker disabled={isPending} error={state.errors?.sampleFlavors} />
 
