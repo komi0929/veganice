@@ -42,7 +42,7 @@ const flavors: {
     name: "マンゴー",
     story:
       "濃厚なアップルマンゴーに、ココナッツのコクとレモンのさわやかさ。南国の香りが広がる、リッチなマンゴーアイス。",
-    color: "#e9a23b",
+    image: "/images/flavors/mango.png",
   },
   {
     name: "ショコラ",
@@ -72,13 +72,13 @@ const flavors: {
     name: "UMAMIバニラ",
     story:
       "白味噌とりんごピューレが引き出す深いコク。バニラビーンズが豊かに香る、植物性仕立ての濃厚バニラ。",
-    color: "#c9a66b",
+    image: "/images/flavors/umami_vanilla.png",
   },
   {
     name: "アールグレイ",
     story:
       "ベルガモット華やぐ茶葉の香りと米粉のなめらかさ。白味噌がほんのりコクを添える、大人の紅茶アイス。",
-    color: "#9c7a5b",
+    image: "/images/flavors/earl_gray.png",
   },
 ];
 

@@ -27,7 +27,7 @@ const flavorGroups: {
       { name: "りんご", image: "/images/flavors/apple.png" },
       { name: "ミックス\nベリー", image: "/images/flavors/berry_mix.png" },
       { name: "ドラゴン\nフルーツ", image: "/images/flavors/dragon_fruit.png" },
-      { name: "マンゴー", color: "#e9a23b" },
+      { name: "マンゴー", image: "/images/flavors/mango.png" },
     ],
   },
   {
@@ -39,8 +39,8 @@ const flavorGroups: {
       { name: "抹茶", image: "/images/flavors/matcha.png" },
       { name: "ほうじ茶", image: "/images/flavors/houjicha.png" },
       { name: "バニラ", image: "/images/flavors/vanilla_coconut.png" },
-      { name: "UMAMI\nバニラ", color: "#c9a66b" },
-      { name: "アール\nグレイ", color: "#9c7a5b" },
+      { name: "UMAMI\nバニラ", image: "/images/flavors/umami_vanilla.png" },
+      { name: "アール\nグレイ", image: "/images/flavors/earl_gray.png" },
     ],
   },
 ];
