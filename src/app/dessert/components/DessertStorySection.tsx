@@ -31,7 +31,7 @@ export default function DessertStorySection() {
               <h3 className="text-ink text-xl leading-snug font-bold sm:text-2xl">
                 料理に全力を注ぐ飲食店様へ。
                 <br />
-                デザートは、スイーツ専門店の私たちが担います。
+                デザートは、アイス専門店の私たちが担います。
               </h3>
               <div className="text-ink-light space-y-3 text-[14px] leading-[1.9] sm:text-[15px]">
                 <p>
