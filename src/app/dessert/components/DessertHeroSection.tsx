@@ -81,7 +81,7 @@ export default function DessertHeroSection() {
               スイーツ専門店の本格レシピ
             </span>
             <span className="text-ink-light rounded-full border border-gray-200 bg-[#f7f3ec] px-3 py-1 text-xs font-bold">
-              専用工房製造（コンタミゼロ）
+              乳・卵・小麦フリーの専用工房製造
             </span>
           </div>
 
