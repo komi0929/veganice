@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { getFlavorSpec } from "@/app/data/flavorSpecs";
 import FlavorSpecModal, { type SelectedFlavorTarget } from "./FlavorSpecModal";
 import { FlavorThumbnail } from "./FlavorThumbnail";
@@ -91,7 +90,7 @@ const b2bTerms = [
   },
   {
     label: "提供形態",
-    value: "業務用バルク（1L・2L／最小4L〜） または 個食カップ（100ml／最小60個〜）",
+    value: "冷凍（1Lまたは2L）/ 最小4Lから",
   },
   {
     label: "1Lあたり提供杯数",
@@ -116,7 +115,7 @@ const b2bTerms = [
   },
   {
     label: "価格",
-    value: "バルク：1L ¥2,000・2L ¥4,000 ／ 個食カップ：1個 ¥300（すべて税別・全11種同価格）",
+    value: "1L ¥2,000／2L ¥4,000（税別）。全11種同価格・最小4L",
   },
 ];
 
@@ -299,9 +298,9 @@ export default function ProductsSection() {
               少量から始められます。
             </h3>
             <p className="text-ink-light mb-8 text-base leading-relaxed">
-              お店のスタイルに合わせて、店内盛り付け用の業務用バルク（1L・2L／最小4L〜）と、そのまま物販・テイクアウト提供できる自社シール付き個食カップ（100ml／最小60個〜）をご用意しています。
+              お店の冷蔵庫のスペースに合わせて、1Lと2Lの2サイズをご用意しています。
               <br />
-              どちらも11種のフレーバーを自由に組み合わせてご注文いただけます。
+              最小ロット4L（2L×2個、または1L×4個など）から、フレーバーを自由に組み合わせてご注文いただけます。
             </p>
 
             <div className="bg-bg rounded-xl border border-gray-100 p-6 sm:p-8">
@@ -322,20 +321,6 @@ export default function ProductsSection() {
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* OEM（要点版LP）への誘導カード */}
-            <div className="mt-6 rounded-xl border border-gray-200 bg-white p-5">
-              <p className="text-brand text-xs font-bold">オリジナル製造（OEM・PB）のご案内</p>
-              <p className="text-ink mt-1 text-sm leading-relaxed">
-                天面シールをお店のロゴに変えるプラン（開発費0円）や、お店の素材を使ったオリジナル味開発（60個／6L〜）も承っています。
-              </p>
-              <Link
-                href="/oem/plan"
-                className="text-brand mt-2.5 inline-block text-sm font-bold underline"
-              >
-                OEMのコース・料金（要点版）を見る →
-              </Link>
             </div>
           </motion.div>
         </div>

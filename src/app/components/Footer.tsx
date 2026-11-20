@@ -33,13 +33,22 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <h3 className="mb-2 text-sm font-bold tracking-wider text-white/50">メニュー</h3>
               <Link
-                href="/dessert"
+                href={`${prefix}products`}
                 className="hover:text-cta text-base text-white transition-colors"
               >
-                業務用アイス卸（バルク・カップ）
+                商品ラインナップ
               </Link>
-              <Link href="/oem" className="hover:text-cta text-base text-white transition-colors">
-                オリジナルアイスOEM・PB製造
+              <Link
+                href={`${prefix}story`}
+                className="hover:text-cta text-base text-white transition-colors"
+              >
+                私たちの想い
+              </Link>
+              <Link
+                href={`${prefix}flow`}
+                className="hover:text-cta text-base text-white transition-colors"
+              >
+                導入の流れ
               </Link>
               <Link
                 href={`${prefix}faq`}

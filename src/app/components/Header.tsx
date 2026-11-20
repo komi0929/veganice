@@ -8,9 +8,7 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isDessert = pathname.startsWith("/dessert");
-  const isOem = pathname.startsWith("/oem");
-  const isWholesale = pathname.startsWith("/wholesale");
-  // トップページのみ暗背景ヒーロー、他ページは明るい背景のため常時白ヘッダー
+  // 食後デザートLPは「写真→テキスト」の明るいヒーローのため、ヘッダーは常に白背景
   const isTransparentHeroPage = isHome;
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,39 +27,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isTransparentHeroPage]);
 
-  const prefix = isDessert
-    ? "/dessert#"
-    : isOem
-      ? `${pathname}#`
-      : isWholesale
-        ? "/wholesale#"
-        : isHome
-          ? "#"
-          : "/#";
-  const ctaLabel = isOem ? "無料で事前相談する" : "無料でサンプルを試す";
-  const navLinks = isOem
+  const prefix = isDessert ? "/dessert#" : isHome ? "#" : "/#";
+  const navLinks = isDessert
     ? [
-        { label: "3つのコース", href: `${prefix}courses` },
-        { label: "お届けの流れ", href: `${prefix}timeline` },
-        { label: "販売イメージ試算", href: `${prefix}simulator` },
-        { label: "よくあるご質問", href: `${prefix}faq` },
-        { label: "定番11種の卸", href: "/wholesale" },
+        { label: "どんなアイス？", href: `${prefix}about` },
+        { label: "3つの製法", href: `${prefix}reasons` },
+        { label: "想い・ストーリー", href: `${prefix}story` },
+        { label: "フレーバー", href: `${prefix}products` },
+        { label: "よくある質問", href: `${prefix}faq` },
       ]
-    : isDessert
-      ? [
-          { label: "どんなアイス？", href: `${prefix}about` },
-          { label: "3つの製法", href: `${prefix}reasons` },
-          { label: "フレーバー", href: `${prefix}products` },
-          { label: "OEM製造", href: "/oem/plan" },
-          { label: "よくある質問", href: `${prefix}faq` },
-        ]
-      : [
-          { label: "商品ラインナップ", href: `${prefix}products` },
-          { label: "私たちの想い", href: `${prefix}story` },
-          { label: "導入の流れ", href: `${prefix}flow` },
-          { label: "OEM製造", href: "/oem/plan" },
-          { label: "よくあるご質問", href: `${prefix}faq` },
-        ];
+    : [
+        { label: "商品ラインナップ", href: `${prefix}products` },
+        { label: "私たちの想い", href: `${prefix}story` },
+        { label: "導入の流れ", href: `${prefix}flow` },
+        { label: "よくあるご質問", href: `${prefix}faq` },
+      ];
 
   return (
     <>
@@ -116,7 +96,7 @@ export default function Header() {
               href={`${prefix}contact-form`}
               className="bg-cta hover:bg-cta-hover rounded-full px-5 py-2 font-sans text-sm font-medium whitespace-nowrap text-white shadow-xs transition-colors duration-300 lg:px-6 lg:py-2.5"
             >
-              {ctaLabel}
+              無料でサンプルを試す
             </Link>
           </div>
 
@@ -160,7 +140,7 @@ export default function Header() {
             className="bg-cta mt-4 rounded-full px-8 py-3 font-sans text-base font-medium text-white"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            {ctaLabel}
+            無料でサンプルを試す
           </Link>
         </nav>
       </div>

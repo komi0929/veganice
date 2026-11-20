@@ -2,10 +2,10 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 import DessertReasonsSection from "../dessert/components/DessertReasonsSection";
 import DessertReviewsSection from "../dessert/components/DessertReviewsSection";
+import OemHeader from "./components/OemHeader";
 import OemCoursesSection from "./components/OemCoursesSection";
 import OemTimelineSection from "./components/OemTimelineSection";
 import OemSimulatorSection from "./components/OemSimulatorSection";
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
 };
 
 /**
- * 【LP-B】完全版 OEM LP（SoyStoriesを初めて知る方向け）
- * 専用工房の安心感・米粉×発酵製法の品質説明を含め、OEM全条件と要点版定番卸LP（/wholesale）への導線を備える
+ * 【LP-B】完全版 OEM LP（単体公開・確認用）
+ * 既存の公開ページ（/ や /dessert）には一切リンクや変更を出さず、/oem 単体で確認できる構成
  */
 export default function OemFullPage() {
   return (
     <>
-      <Header />
+      <OemHeader />
       <main className="lp-friendly flex-1 pt-16 sm:pt-20">
         {/* ① ファーストビュー */}
         <section className="bg-[#f7f3ec] py-14 sm:py-22">
@@ -128,7 +128,7 @@ export default function OemFullPage() {
           <OemContactSection />
         </Suspense>
 
-        {/* ⑨ 相互補完ブリッジ：まずは既存の11フレーバーをそのまま仕入れたい方へ（→ 要点版 定番卸LP /wholesale） */}
+        {/* ⑨ 定番フレーバー通常卸へのご案内 */}
         <section className="border-t border-gray-200 bg-[#f7f3ec] py-14">
           <div className="mx-auto max-w-4xl px-6">
             <div className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-white p-6 shadow-xs sm:flex-row sm:items-center sm:p-8">
@@ -137,17 +137,17 @@ export default function OemFullPage() {
                   オリジナル開発の前に、定番品の導入をご検討の方へ
                 </p>
                 <h2 className="text-ink mt-1 text-lg font-bold sm:text-xl">
-                  完成された定番11フレーバーの通常卸（バルク4L〜／自社シールカップ60個〜）もございます
+                  完成された定番11フレーバーの業務用卸（最小4L〜）もございます
                 </h2>
                 <p className="text-ink-light mt-2 text-sm leading-relaxed">
-                  重複する製法説明を省き、フレーバー一覧・卸価格・発注条件だけをまとめたご案内ページをご覧いただけます。
+                  開発費0円ですぐにお店のデザートメニューへ導入いただける定番ラインナップをご覧いただけます。
                 </p>
               </div>
               <Link
-                href="/wholesale"
+                href="/dessert"
                 className="bg-brand hover:bg-brand-dark shrink-0 rounded-full px-6 py-3.5 text-sm font-bold text-white transition-colors"
               >
-                定番11種の卸条件を見る →
+                定番フレーバーの卸案内を見る →
               </Link>
             </div>
           </div>
