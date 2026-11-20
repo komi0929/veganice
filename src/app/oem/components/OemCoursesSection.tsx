@@ -1,56 +1,57 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Calculator, Palette, ShieldAlert } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Calculator, Check, Palette, ShieldAlert } from "lucide-react";
 import { SectionHeader } from "@/app/dessert/components/ui";
-import type { OemCourseId } from "../data/oemSpecs";
+import { PRICING_CONSTANTS, type OemCourseId } from "../data/oemSpecs";
 import { dispatchOemIntent } from "../lib/oemInteraction";
 
 /**
- * 3つのコース（作り方）セクション
- * ・AI生成イメージを全廃し、「実物写真＋説明と100%一致するパッケージ図解」に変更
- * ・専門用語（完成ベース配合／専用ベース設計 等）をやめ、お客様が自分の手元の素材で即判断できるよう
- *   「①フタだけ変える（0円）」「②お茶・珈琲などの粉を混ぜる（1万円）」「③果物・液体から作る（3万円）」に整理
+ * 迷わせない「シンプル2プラン」セクション
+ * ① 一番かんたん：フタのシールだけお店仕様にする（開発費 0円 ／ 100mlカップ）
+ * ② おすすめ本命：3万円でオリジナルアイスを開発する（完成後は 2Lバルク も 100mlカップ もどちらでもOK！）
  */
 export default function OemCoursesSection() {
-  const selectCourseForConsult = (courseId: OemCourseId) => {
-    dispatchOemIntent({ target: "contact", tab: "oem", courseId });
+  const selectPlanForConsult = (courseId: OemCourseId, formatId?: "cup" | "bulk" | "both") => {
+    dispatchOemIntent({ target: "contact", tab: "oem", courseId, formatId });
   };
 
-  const selectCourseForSimulator = (courseId: OemCourseId) => {
+  const selectPlanForSimulator = (courseId: OemCourseId) => {
     dispatchOemIntent({ target: "simulator", courseId });
   };
 
   return (
     <section id="courses" className="bg-bg-white scroll-mt-16 py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
-          eyebrow="選べる3つの作り方と初期費用"
-          lines={["お手元の素材にあわせて、", "3つのプランから選べます。"]}
+          eyebrow="選べる2つのプランと料金"
+          lines={[
+            "選び方はとてもシンプル。",
+            "「フタだけ変える」か「オリジナル味をつくる」の2択。",
+          ]}
           lead={[
-            "どのプランを選んでも、完成後の商品単価（カップ税込309円／2L税別4,000円）は同じです。",
-            "違いは「最初の試作・開発費」だけなので、やりたいことに合わせてシンプルにお選びいただけます。",
+            "一番手軽なのは開発費0円のシール変更。おすすめは、3万円でお店だけのオリジナルアイスを開発し、店内用バルクや物販用カップで自由に展開するプランです。",
           ]}
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-7 lg:grid-cols-3">
-          {/* ── プラン①：フタだけお店ロゴ（開発費 0円） ── */}
-          <article className="flex flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xs">
-            {/* 説明と完全一致するビジュアル：定番カップのフタが「お店ロゴ丸シール」に変わる図解 */}
-            <div className="flex aspect-[4/3] w-full flex-col items-center justify-center border-b border-gray-100 bg-[#faf8f4] p-5">
+        <div className="mt-12 grid grid-cols-1 items-stretch gap-7 lg:grid-cols-12">
+          {/* ── プラン①：一番かんたん・フタだけお店ロゴ（5カラム幅） ── */}
+          <article className="flex flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xs lg:col-span-5">
+            {/* パッケージ図解 */}
+            <div className="flex h-52 w-full flex-col items-center justify-center border-b border-gray-100 bg-[#faf8f4] px-5">
               <p className="text-ink-muted mb-3 text-[11px] font-bold">
-                中身は完成された定番味 ➔ フタだけお店仕様に
+                中身は人気の定番11種 ➔ フタだけお店仕様に
               </p>
               <div className="flex w-full items-center justify-center gap-3 sm:gap-4">
-                {/* 左：実物の定番カップ写真 */}
                 <div className="flex flex-col items-center">
-                  <div className="relative h-24 w-24 sm:h-28 sm:w-28">
+                  <div className="relative h-24 w-24">
                     <Image
                       src="/images/flavors/matcha.png"
                       alt="SoyStories定番11種のカップアイス実物"
                       fill
                       className="object-contain"
-                      sizes="112px"
+                      sizes="96px"
                     />
                   </div>
                   <span className="text-ink-muted mt-1 text-[11px] font-bold">
@@ -60,10 +61,9 @@ export default function OemCoursesSection() {
 
                 <ArrowRight className="text-brand h-5 w-5 shrink-0" aria-hidden="true" />
 
-                {/* 右：お店オリジナル天面丸シールの実寸イメージ図 */}
                 <div className="flex flex-col items-center">
-                  <div className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-white bg-[#f3efe6] shadow-md ring-1 ring-gray-200 sm:h-28 sm:w-28">
-                    <div className="border-brand/50 flex h-[76px] w-[76px] flex-col items-center justify-center rounded-full border border-dashed bg-white px-2 text-center sm:h-[88px] sm:w-[88px]">
+                  <div className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-white bg-[#f3efe6] shadow-md ring-1 ring-gray-200">
+                    <div className="border-brand/50 flex h-[76px] w-[76px] flex-col items-center justify-center rounded-full border border-dashed bg-white px-2 text-center">
                       <span className="text-brand text-[9px] font-bold tracking-wider">
                         YOUR LOGO
                       </span>
@@ -80,235 +80,237 @@ export default function OemCoursesSection() {
             </div>
 
             <div className="flex flex-1 flex-col p-6">
-              <div className="flex items-center justify-between gap-2">
+              <div>
                 <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-bold text-gray-700">
-                  プラン ①｜素材持ち込みなし
+                  プラン ①｜一番かんたん
                 </span>
+                <h3 className="text-ink mt-3 text-xl leading-snug font-bold">
+                  フタだけお店ロゴにする
+                </h3>
               </div>
 
-              <h3 className="text-ink mt-3 text-xl leading-snug font-bold">
-                フタだけお店ロゴにする
-              </h3>
-
-              <div className="mt-3 rounded-2xl bg-[#f7f3ec] px-4 py-3">
+              <div className="mt-3.5 rounded-2xl bg-[#f7f3ec] px-4 py-3.5">
                 <span className="text-ink-muted block text-xs">初期の試作・開発費</span>
-                <p className="text-brand mt-0.5 text-2xl font-bold">¥0</p>
-                <span className="text-ink-light mt-0.5 block text-[11px]">
-                  試作なしですぐ本製造へ進めます
+                <p className="text-brand mt-0.5 text-3xl font-bold">¥0</p>
+                <span className="text-ink-light mt-0.5 block text-xs">
+                  試作なしですぐに製造スタートできます
                 </span>
               </div>
 
               <p className="text-ink-light mt-4 text-[13.5px] leading-relaxed">
-                薬院店で人気の定番11フレーバー（抹茶・ほうじ茶・ベリー・バニラ等）から味を選び、
-                <strong>フタの丸シールだけお店のロゴや屋号</strong>に変える一番手軽なプランです。
+                薬院店で人気の定番11フレーバー（抹茶・ほうじ茶・ショコラ・バニラ・フルーツ系など）から味を選び、
+                <strong>フタの丸シールだけお店のロゴデザイン</strong>にするプランです。
               </p>
 
-              <dl className="mt-4 space-y-1.5 border-t border-gray-100 pt-3 text-xs">
-                <div className="flex justify-between gap-2">
-                  <dt className="text-ink-muted">こんな方に</dt>
-                  <dd className="text-ink text-right font-bold">カフェ物販・周年品・お土産に</dd>
+              {/* 納品スタイル（カップのみ） */}
+              <div className="mt-4 rounded-2xl border border-gray-200/90 bg-[#fafaf8] p-3.5">
+                <p className="text-ink-muted text-[11px] font-bold">お届けする商品のかたち</p>
+                <div className="mt-2 flex items-center gap-3">
+                  <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-white">
+                    <Image
+                      src="/images/gelato_cup_tower.jpg"
+                      alt="100ml個食カップ"
+                      fill
+                      className="object-cover"
+                      sizes="48px"
+                    />
+                  </div>
+                  <div className="text-xs">
+                    <p className="text-ink font-bold">
+                      100ml 個食カップ：税込 ¥{PRICING_CONSTANTS.cupOemPriceTaxIncl}／個
+                    </p>
+                    <p className="text-ink-light mt-0.5">最小ロット：1味 60個〜（120個で1箱）</p>
+                  </div>
                 </div>
-                <div className="flex justify-between gap-2">
-                  <dt className="text-ink-muted">作れる形</dt>
-                  <dd className="text-ink text-right font-bold">100mlカップ専用（1味60個〜）</dd>
-                </div>
-              </dl>
+              </div>
+
+              <p className="text-ink-muted mt-3 text-[11.5px] leading-relaxed">
+                ※シール不要で定番味を店内皿盛りしたい場合は、
+                <Link href="/dessert" className="text-brand underline">
+                  通常の業務用バルク卸（4L〜）
+                </Link>
+                をご利用いただけます。
+              </p>
 
               <div className="mt-auto pt-5">
                 <button
                   type="button"
-                  onClick={() => selectCourseForConsult("seal_only")}
-                  className="bg-brand hover:bg-brand-dark min-h-11 w-full cursor-pointer rounded-full px-4 py-2.5 text-xs font-bold text-white transition-colors sm:text-[13px]"
+                  onClick={() => selectPlanForConsult("seal_only", "cup")}
+                  className="bg-brand hover:bg-brand-dark min-h-12 w-full cursor-pointer rounded-full px-4 py-3 text-sm font-bold text-white transition-colors"
                 >
                   プラン①（開発費0円）で相談する →
                 </button>
                 <button
                   type="button"
-                  onClick={() => selectCourseForSimulator("seal_only")}
+                  onClick={() => selectPlanForSimulator("seal_only")}
                   className="text-ink-muted hover:text-brand mt-2 flex w-full cursor-pointer items-center justify-center gap-1 py-1 text-xs font-medium transition-colors"
                 >
                   <Calculator className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>利益を試算する</span>
+                  <span>このプランで利益を試算する</span>
                 </button>
               </div>
             </div>
           </article>
 
-          {/* ── プラン②：お茶・珈琲などの「粉・乾物」を混ぜる（試作費 1万円） ── */}
-          <article className="flex flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xs">
-            {/* 実物写真：アイス＋横の粉末素材がそのまま写っているSoyStories実物写真 */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-gray-100 bg-white">
-              <Image
-                src="/images/gelato_kinako.jpg"
-                alt="なめらかな植物性アイスに粉末素材を合わせた実物写真"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 33vw"
-              />
+          {/* ── プラン②：おすすめ本命・3万円でオリジナル開発（カップもバルクもOK！・7カラム幅） ── */}
+          <article className="border-brand/55 ring-brand/15 flex flex-col overflow-hidden rounded-3xl border bg-white shadow-sm ring-2 lg:col-span-7">
+            {/* 実物写真2枚並び（果物・地域食材 × お茶・珈琲など幅広い素材に対応することが一目でわかる） */}
+            <div className="relative grid h-52 w-full grid-cols-2 border-b border-gray-100 bg-white">
+              <div className="relative h-full w-full border-r border-gray-100">
+                <Image
+                  src="/images/gelato_strawberry.jpg"
+                  alt="旬の果物や地域の食材からつくったオリジナルアイスの実物"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 50vw, 30vw"
+                />
+              </div>
+              <div className="relative h-full w-full">
+                <Image
+                  src="/images/gelato_kinako.jpg"
+                  alt="お茶や焙煎素材からつくったオリジナルアイスの実物"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 50vw, 30vw"
+                />
+              </div>
+
+              <span className="bg-cta absolute top-3 left-3 rounded-full px-3.5 py-1 text-xs font-bold text-white shadow-2xs">
+                おすすめ｜一番人気のプラン
+              </span>
               <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-gray-800 shadow-2xs">
-                実物例：茶葉パウダー・珈琲粉・きな粉・ナッツ等
+                地域の食材・果物・お茶・珈琲・発酵素材など何でも対応
               </span>
             </div>
 
-            <div className="flex flex-1 flex-col p-6">
-              <div className="flex items-center justify-between gap-2">
+            <div className="flex flex-1 flex-col p-6 sm:p-7">
+              <div>
                 <span className="bg-brand/10 text-brand rounded-full px-3 py-1 text-xs font-bold">
-                  プラン ②｜水分を含まない素材
+                  プラン ②｜完全オリジナル開発
                 </span>
+                <h3 className="text-ink mt-3 text-xl leading-snug font-bold sm:text-2xl">
+                  お店の素材でオリジナルアイスをつくる
+                </h3>
               </div>
 
-              <h3 className="text-ink mt-3 text-xl leading-snug font-bold">
-                お店の「粉末・具材」を混ぜる
-              </h3>
-
-              <div className="mt-3 rounded-2xl bg-[#f7f3ec] px-4 py-3">
-                <span className="text-ink-muted block text-xs">
-                  初期の試作開発費（2回戦まで調整OK）
-                </span>
-                <p className="text-brand mt-0.5 text-2xl font-bold">税別 ¥10,000</p>
-                <span className="text-ink-light mt-0.5 block text-[11px]">
+              <div className="mt-3.5 rounded-2xl bg-[#f7f3ec] px-4 py-3.5 sm:flex sm:items-baseline sm:justify-between">
+                <div>
+                  <span className="text-ink-muted block text-xs font-bold">
+                    初期の試作開発費（どんな素材でも一律）
+                  </span>
+                  <p className="text-brand mt-0.5 text-3xl font-bold">税別 ¥30,000</p>
+                </div>
+                <span className="text-ink-light mt-1 block text-xs sm:mt-0 sm:text-right">
                   ＋試作材料1,500円・資材・送料実費
+                  <br />
+                  （2種×3個の食べ比べ ／ 2回戦まで調整OK）
                 </span>
               </div>
 
-              <p className="text-ink-light mt-4 text-[13.5px] leading-relaxed">
-                ほうじ茶粉・抹茶・焙煎コーヒー粉・スパイス・ナッツなど
-                <strong>水分のない素材</strong>
-                を、完成されたなめらかベースに混ぜ込みます。土台のレシピ比率を変えずに作れるため、1万円でオリジナル味が完成します。
+              <p className="text-ink-light mt-4 text-sm leading-relaxed">
+                <strong>3万円かけていただくだけで、お店だけの専用レシピが完成します。</strong>
+                素材の水分や糖度・香りにあわせて一から配合を組むため、どんな食材でも滑らかな口どけに仕上がります。
               </p>
 
-              <dl className="mt-4 space-y-1.5 border-t border-gray-100 pt-3 text-xs">
-                <div className="flex justify-between gap-2">
-                  <dt className="text-ink-muted">こんな方に</dt>
-                  <dd className="text-ink text-right font-bold">日本茶・自家焙煎珈琲・乾物店様</dd>
+              {/* 最大の魅力：完成したオリジナル味は「バルク」でも「カップ」でもどちらでもOK！ */}
+              <div className="border-brand/25 bg-brand/4 mt-4 rounded-2xl border p-4">
+                <p className="text-brand flex items-center gap-1.5 text-xs font-bold sm:text-[13px]">
+                  <Check className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  完成したオリジナルアイスは、用途に合わせてどちらの形でも納品OK！（両方でもOK）
+                </p>
+
+                <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {/* 業務用2Lバルク */}
+                  <div className="flex items-center gap-3 rounded-xl bg-white p-3 shadow-2xs">
+                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                      <Image
+                        src="/images/bulk_2l.jpg"
+                        alt="業務用2Lバルク"
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                      />
+                    </div>
+                    <div className="text-xs">
+                      <span className="text-brand block text-[10.5px] font-bold">
+                        店内デザート・パフェに
+                      </span>
+                      <p className="text-ink font-bold">
+                        2Lバルク：税別 ¥{PRICING_CONSTANTS.bulk2LPriceExTax.toLocaleString("ja-JP")}
+                      </p>
+                      <p className="text-ink-muted text-[11px]">最小 6L（3本）〜・シール不要</p>
+                    </div>
+                  </div>
+
+                  {/* 100mlカップ */}
+                  <div className="flex items-center gap-3 rounded-xl bg-white p-3 shadow-2xs">
+                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-gray-100">
+                      <Image
+                        src="/images/gelato_cup_tower.jpg"
+                        alt="100ml個食カップ"
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                      />
+                    </div>
+                    <div className="text-xs">
+                      <span className="text-brand block text-[10.5px] font-bold">
+                        お持ち帰り・店頭物販に
+                      </span>
+                      <p className="text-ink font-bold">
+                        100mlカップ：税込 ¥{PRICING_CONSTANTS.cupOemPriceTaxIncl}／個
+                      </p>
+                      <p className="text-ink-muted text-[11px]">最小 60個〜・お店シール貼付</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-between gap-2">
-                  <dt className="text-ink-muted">作れる形</dt>
-                  <dd className="text-ink text-right font-bold">100mlカップ ／ 2Lバルク 両方OK</dd>
-                </div>
-              </dl>
+              </div>
 
               <div className="mt-auto pt-5">
                 <button
                   type="button"
-                  onClick={() => selectCourseForConsult("base_arrange")}
-                  className="bg-brand hover:bg-brand-dark min-h-11 w-full cursor-pointer rounded-full px-4 py-2.5 text-xs font-bold text-white transition-colors sm:text-[13px]"
+                  onClick={() => selectPlanForConsult("custom_recipe", "both")}
+                  className="bg-cta hover:bg-cta-hover min-h-12 w-full cursor-pointer rounded-full px-5 py-3 text-sm font-bold text-white shadow-2xs transition-colors"
                 >
-                  プラン②（粉末・具材）で相談する →
+                  プラン②（オリジナル開発）で無料相談する →
                 </button>
                 <button
                   type="button"
-                  onClick={() => selectCourseForSimulator("base_arrange")}
+                  onClick={() => selectPlanForSimulator("custom_recipe")}
                   className="text-ink-muted hover:text-brand mt-2 flex w-full cursor-pointer items-center justify-center gap-1 py-1 text-xs font-medium transition-colors"
                 >
                   <Calculator className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>利益を試算する</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          {/* ── プラン③：果物・果汁などの「水分のある素材」から作る（試作費 3万円） ── */}
-          <article className="border-brand/50 ring-brand/15 flex flex-col overflow-hidden rounded-3xl border bg-white shadow-sm ring-2">
-            {/* 実物写真：生いちごとストロベリーアイスのSoyStories実物写真 */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-gray-100 bg-white">
-              <Image
-                src="/images/gelato_strawberry.jpg"
-                alt="果物から専用レシピで仕上げたストロベリーアイスの実物写真"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 33vw"
-              />
-              <span className="bg-cta absolute top-3 left-3 rounded-full px-3 py-1 text-[11px] font-bold text-white shadow-2xs">
-                農園・飲食店様に一番人気
-              </span>
-              <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-gray-800 shadow-2xs">
-                実物例：果物・果汁・ピューレ・酒粕・甘酒等
-              </span>
-            </div>
-
-            <div className="flex flex-1 flex-col p-6">
-              <div className="flex items-center justify-between gap-2">
-                <span className="bg-brand/10 text-brand rounded-full px-3 py-1 text-xs font-bold">
-                  プラン ③｜水分・糖分を含む素材
-                </span>
-              </div>
-
-              <h3 className="text-ink mt-3 text-xl leading-snug font-bold">
-                果物・特産品から専用開発する
-              </h3>
-
-              <div className="mt-3 rounded-2xl bg-[#f7f3ec] px-4 py-3">
-                <span className="text-ink-muted block text-xs">
-                  初期の試作開発費（2回戦まで調整OK）
-                </span>
-                <p className="text-brand mt-0.5 text-2xl font-bold">税別 ¥30,000</p>
-                <span className="text-ink-light mt-0.5 block text-[11px]">
-                  ＋試作材料1,500円・資材・送料実費
-                </span>
-              </div>
-
-              <p className="text-ink-light mt-4 text-[13.5px] leading-relaxed">
-                果物・果汁・ピューレ・酒粕など<strong>水分を含む素材</strong>
-                は、そのまま混ぜると氷っぽくシャリシャリしやすいため、素材の糖度や水分量にあわせて一から専用レシピを組み、なめらかな看板アイスに仕上げます。
-              </p>
-
-              <dl className="mt-4 space-y-1.5 border-t border-gray-100 pt-3 text-xs">
-                <div className="flex justify-between gap-2">
-                  <dt className="text-ink-muted">こんな方に</dt>
-                  <dd className="text-ink text-right font-bold">果樹園・農家・レストラン・宿様</dd>
-                </div>
-                <div className="flex justify-between gap-2">
-                  <dt className="text-ink-muted">作れる形</dt>
-                  <dd className="text-ink text-right font-bold">100mlカップ ／ 2Lバルク 両方OK</dd>
-                </div>
-              </dl>
-
-              <div className="mt-auto pt-5">
-                <button
-                  type="button"
-                  onClick={() => selectCourseForConsult("custom_recipe")}
-                  className="bg-cta hover:bg-cta-hover min-h-11 w-full cursor-pointer rounded-full px-4 py-2.5 text-xs font-bold text-white transition-colors sm:text-[13px]"
-                >
-                  プラン③（果物・専用開発）で相談する →
-                </button>
-                <button
-                  type="button"
-                  onClick={() => selectCourseForSimulator("custom_recipe")}
-                  className="text-ink-muted hover:text-brand mt-2 flex w-full cursor-pointer items-center justify-center gap-1 py-1 text-xs font-medium transition-colors"
-                >
-                  <Calculator className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>利益を試算する</span>
+                  <span>カップ・バルクそれぞれの利益を試算する</span>
                 </button>
               </div>
             </div>
           </article>
         </div>
 
-        {/* 補足：初見の人が疑問に思いやすい「シール手配」と「試作実費・素材条件」だけを穏やかに整理 */}
+        {/* 補足：シール作成サポート＆素材条件（穏やかな2ボックス） */}
         <div className="mt-10 grid grid-cols-1 gap-4 rounded-3xl bg-[#f7f3ec] p-6 sm:grid-cols-2 sm:p-8">
           <div className="rounded-2xl bg-white p-5">
             <p className="text-ink flex items-center gap-2 text-sm font-bold">
               <Palette className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
-              カップの「フタ丸シール」はどう作ればいい？
+              カップの「フタ丸シール」もかんたんに作れます
             </p>
             <p className="text-ink-light mt-2 text-xs leading-relaxed">
-              デザインソフトがなくても大丈夫です。
-              <strong>Canva対応の丸シール見本テンプレート</strong>
-              と推奨の耐水シール印刷案内を無料でお渡しします。お客様にてシールをご用意いただく分、カップ単価を基準価格（税込324円）から
-              <strong>税込15円引きの「税込309円」</strong>にしております。
+              デザインソフトがなくてもロゴを入れるだけで作れる<strong>Canva対応テンプレート</strong>
+              と、冷凍に強い推奨シール印刷のご案内を無料でお渡しします。お客様にてシールをご用意いただく分、カップ単価を基準価格（税込324円）から
+              <strong>税込15円引きの「税込309円」</strong>
+              にしております（底面の原材料ラベルは当社で貼付）。
             </p>
           </div>
 
           <div className="rounded-2xl bg-white p-5">
             <p className="text-ink flex items-center gap-2 text-sm font-bold">
               <ShieldAlert className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
-              お預かりできる素材と試作実費について
+              お預かりできる素材の条件について
             </p>
             <p className="text-ink-light mt-2 text-xs leading-relaxed">
               専用工房の安全を守るため、
               <strong>卵・乳・小麦を含まない素材（加工ライン混入なし）</strong>
-              に限ります。プラン②③の試作時は1回あたり「材料費1,500円＋資材200円＋60サイズ冷凍送料」の実費のみ別途ご負担いただき、主役素材は無償ご支給いただくことで本製造の据え置き単価を維持しています。
+              に限ります。主役となるお店の素材は無償ご支給いただく形で、定番品と同じ据え置き製造単価を実現しています（当社で素材仕入れを代行する場合は別途お見積りとなります）。
             </p>
           </div>
         </div>

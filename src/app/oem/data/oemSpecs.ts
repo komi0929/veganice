@@ -1,7 +1,23 @@
 /**
- * SoyStories 定番卸 ＆ OEM製造 共通仕様・試算ロジック
- * すべての金額・ロット・送料条件をこのファイルで一元管理する
+ * SoyStories OEM・PB製造 共通マスタ・料金試算ロジック（v3.0 シンプル2プラン確定版）
+ *
+ * 【事業設計の基本原則】
+ * 1. 一番かんたんなOEM：プラン①「フタだけお店ロゴにする」（開発費 0円 ／ 100mlカップ 税込309円・60個〜）
+ * 2. おすすめ本命：プラン②「お店の素材でオリジナルアイスをつくる」（試作開発費 税別30,000円＋試作実費 ／ 100mlカップ・2LバルクどちらでもOK）
+ * 3. 量産価格は定番卸と同額据え置き（カップ税込309円［シールご支給15円引後］、2Lバルク税別4,000円 ※主役素材は無償ご支給）
  */
+
+export interface ShippingRegion {
+  key: ShippingRegionKey;
+  label: string;
+  prefecturesHint: string;
+  /** クール冷凍便 税込送料（60サイズ：試作6個 ／ 100サイズ：カップ60〜120個・バルク6L ／ 120サイズ：バルク12L） */
+  coolFareTaxIncl: {
+    size60: number;
+    size100: number;
+    size120: number;
+  };
+}
 
 export type ShippingRegionKey =
   | "kyushu_chugoku"
@@ -11,52 +27,45 @@ export type ShippingRegionKey =
   | "tohoku"
   | "hokkaido_okinawa";
 
-export interface ShippingRegionSpec {
-  key: ShippingRegionKey;
-  label: string;
-  /** クール冷凍便 契約運賃（税込） */
-  coolFareTaxIncl: {
-    size60: number;
-    size80: number;
-    size100: number;
-    size120: number;
-  };
-}
-
-export const SHIPPING_REGIONS: ReadonlyArray<ShippingRegionSpec> = [
+export const SHIPPING_REGIONS: ReadonlyArray<ShippingRegion> = [
   {
     key: "kyushu_chugoku",
     label: "九州・中国",
-    coolFareTaxIncl: { size60: 1210, size80: 1551, size100: 1969, size120: 2750 },
+    prefecturesHint: "福岡・佐賀・長崎・熊本・大分・宮崎・鹿児島・山口・広島・岡山・島根・鳥取",
+    coolFareTaxIncl: { size60: 1215, size100: 1710, size120: 2040 },
   },
   {
     key: "shikoku_kansai",
     label: "四国・関西",
-    coolFareTaxIncl: { size60: 1350, size80: 1690, size100: 2110, size120: 2890 },
+    prefecturesHint: "大阪・京都・兵庫・滋賀・奈良・和歌山・香川・徳島・愛媛・高知",
+    coolFareTaxIncl: { size60: 1325, size100: 1820, size120: 2150 },
   },
   {
     key: "chubu_hokuriku",
     label: "中部・北陸",
-    coolFareTaxIncl: { size60: 1490, size80: 1830, size100: 2250, size120: 3050 },
+    prefecturesHint: "愛知・静岡・岐阜・三重・石川・富山・福井",
+    coolFareTaxIncl: { size60: 1435, size100: 1930, size120: 2260 },
   },
   {
     key: "kanto_shinetsu",
     label: "関東・信越",
-    coolFareTaxIncl: { size60: 1727, size80: 2068, size100: 2486, size120: 3322 },
+    prefecturesHint: "東京・神奈川・千葉・埼玉・茨城・栃木・群馬・山梨・長野・新潟",
+    coolFareTaxIncl: { size60: 1655, size100: 2150, size120: 2480 },
   },
   {
     key: "tohoku",
     label: "東北",
-    coolFareTaxIncl: { size60: 1980, size80: 2320, size100: 2740, size120: 3580 },
+    prefecturesHint: "宮城・山形・福島・青森・岩手・秋田",
+    coolFareTaxIncl: { size60: 1875, size100: 2370, size120: 2700 },
   },
   {
     key: "hokkaido_okinawa",
     label: "北海道・沖縄",
-    coolFareTaxIncl: { size60: 2420, size80: 2860, size100: 3410, size120: 4350 },
+    prefecturesHint: "北海道・沖縄",
+    coolFareTaxIncl: { size60: 2205, size100: 2810, size120: 3250 },
   },
 ];
 
-/** 価格・ロットの確定定数 */
 export const PRICING_CONSTANTS = {
   /** 軽減税率（食品 8%） */
   foodTaxRate: 0.08,
@@ -92,7 +101,7 @@ export const PRICING_CONSTANTS = {
   extraTrialFeeExTax: 5000,
 } as const;
 
-export type OemCourseId = "seal_only" | "base_arrange" | "custom_recipe";
+export type OemCourseId = "seal_only" | "custom_recipe";
 export type OemFormatId = "cup" | "bulk";
 
 export interface OemCourseSpec {
@@ -110,50 +119,33 @@ export interface OemCourseSpec {
 export const OEM_COURSES: ReadonlyArray<OemCourseSpec> = [
   {
     id: "seal_only",
-    badge: "開発費 0円・手軽にお店の顔づくり",
-    title: "プラン①：フタだけお店ロゴにする（定番11種）",
-    shortTitle: "① フタだけお店ロゴ",
-    subtitle: "SoyStoriesで人気の11フレーバーから選び、ふた（天面）をお店のオリジナルデザインに。",
+    badge: "一番かんたん｜開発費 0円",
+    title: "プラン①：フタだけお店ロゴにする",
+    shortTitle: "① フタだけお店ロゴ（¥0）",
+    subtitle: "人気の定番11フレーバーから味を選び、フタの丸シールだけお店のデザインにします。",
     devFeeExTax: 0,
     availableFormats: ["cup"],
-    idealFor: "カフェのレジ横販売・お土産・ギフトセットを、開発費なしで始めたいお店に",
+    idealFor: "テイクアウト・レジ横販売・周年ギフトなどを、初期開発費なしで手軽に始めたいお店に",
     detailPoints: [
-      "試作・開発費 0円（事前に味のサンプル試食も可能です）",
-      "天面シールをご支給いただくことで、基準価格から税込15円引き（1個 税込309円／税別約286円）",
+      "試作・開発費 0円（事前に6個おためしサンプルで味をお確かめいただけます）",
+      "フタの丸シールをご支給いただく分、基準価格から税込15円引き（1個 税込309円）",
       "1つの味につき60個単位（120個で1箱ぴったりになり送料効率が最適です）",
     ],
   },
   {
-    id: "base_arrange",
-    badge: "試作費 10,000円（税別）＋実費",
-    title: "プラン②：お店の「粉末・具材」を混ぜる",
-    shortTitle: "② 粉末・具材を混ぜる",
-    subtitle:
-      "完成されたベース配合の比率は変えず、お店の茶葉粉末・スパイス・機能性パウダー・固形具材を混ぜ込みます。",
-    devFeeExTax: 10000,
-    availableFormats: ["cup", "bulk"],
-    idealFor: "自家焙煎珈琲やオリジナル茶葉、健康素材などを活かして手頃にお店の味を作りたい方に",
-    detailPoints: [
-      "事前ヒアリング後、3つの方向性をご提案してから試作（初回2パターン×各3個をお届け）",
-      "基本試作費内で2回戦目まで調整可能（都度の材料1,500円・資材200円・60サイズ送料のみ実費）",
-      "量産価格は定番と同額据え置き（カップ税込309円 ／ 2Lバルク税別4,000円 ※主役素材は無償ご支給）",
-    ],
-  },
-  {
     id: "custom_recipe",
-    badge: "試作費 30,000円（税別）＋実費",
-    title: "プラン③：果物・特産品から専用開発する",
-    shortTitle: "③ 果物・特産品から開発",
+    badge: "おすすめ｜カップもバルクも両方OK",
+    title: "プラン②：お店の素材でオリジナルアイスをつくる",
+    shortTitle: "② オリジナル開発（¥3万）",
     subtitle:
-      "果物・果汁・ピューレ・ペースト・酒粕など、素材の水分や糖度・酸味に合わせて土台の配合から専用設計します。",
+      "地産地消の食材・果物・お茶・珈琲・発酵素材など、お店のこだわり素材から専用レシピを開発します。",
     devFeeExTax: 30000,
     availableFormats: ["cup", "bulk"],
-    idealFor:
-      "農園の果物や地域の特産品、看板食材の個性を最大限に引き出した特別な一品を作りたい方に",
+    idealFor: "お店ならではの食材を活かして、食後の看板デザートやオリジナル商品を作りたいお店に",
     detailPoints: [
-      "素材の糖度・水分・脂質バランスを科学的に計算し、冷凍庫の出し入れでもなめらかさが続く専用配合を設計",
-      "初回はバランス違い2種×各3個をお届け。2回戦目（大幅な方向変更も含む）まで基本試作費内で対応",
-      "1つのレシピから「物販用100mlカップ」と「店内提供用2Lバルク」の両方をご注文いただけます",
+      "初回はバランス違い2種×各3個（計6個）をお届け。2回戦目まで基本試作費内で調整可能",
+      "完成したレシピは「店内用2Lバルク（税別4,000円・6L〜）」でも「物販用100mlカップ（税込309円・60個〜）」でも注文可能",
+      "量産単価は定番卸と同額据え置き（主役素材は無償ご支給にて承ります）",
     ],
   },
 ];
@@ -164,7 +156,7 @@ export interface SimulationInput {
   /** お客様の想定販売価格（税込：カップ1個 または バルク80ml 1皿） */
   sellingPriceTaxIncl: number;
   regionKey: ShippingRegionKey;
-  /** 既存取引先で通常納品と試作品を同梱できる場合 true */
+  /** 既存の定期納品と試作便を同梱できる場合（試作送料0円） */
   bundleTrialWithRegularOrder: boolean;
 }
 
@@ -200,7 +192,7 @@ export function simulateCustomerEconomics(input: SimulationInput): SimulationRes
   const region = SHIPPING_REGIONS.find((r) => r.key === input.regionKey) ?? SHIPPING_REGIONS[3];
   const course = OEM_COURSES.find((c) => c.id === input.courseId) ?? OEM_COURSES[1];
 
-  // 試作費用（コース①は0円）
+  // 試作費用（プラン①は0円）
   const hasTrial = course.devFeeExTax > 0;
   const devFeeTaxIncl = Math.round(course.devFeeExTax * (1 + PRICING_CONSTANTS.standardTaxRate));
   const trialIngredientTaxIncl = hasTrial
@@ -261,8 +253,8 @@ export function simulateCustomerEconomics(input: SimulationInput): SimulationRes
   }
 
   // 業務用2Lバルク（店内イートイン10%税率想定、#12ディッシャー約80ml＝2Lあたり24皿＝6Lで72皿、12Lで144皿目安）
-  const servingsPerTub = 24; // ロス考慮の安全値（1Lあたり12皿）
-  const recTubs = PRICING_CONSTANTS.bulkOemRecommendedTubs; // 6本＝12L＝144皿
+  const servingsPerTub = 24;
+  const recTubs = PRICING_CONSTANTS.bulkOemRecommendedTubs;
   const recServings = servingsPerTub * recTubs;
 
   const sellingExTax = input.sellingPriceTaxIncl / (1 + PRICING_CONSTANTS.standardTaxRate);
@@ -271,7 +263,7 @@ export function simulateCustomerEconomics(input: SimulationInput): SimulationRes
   const firstLotShippingTaxIncl = region.coolFareTaxIncl.size100;
   const firstLotTotalTaxIncl = firstLotProductTaxIncl + firstLotShippingTaxIncl;
 
-  // 推奨12L（6本）は120サイズ1箱（15kg以内）
+  // 推奨12L（6本）は120サイズ1箱
   const recTotalCostExTax =
     recTubs * PRICING_CONSTANTS.bulk2LPriceExTax +
     region.coolFareTaxIncl.size120 / (1 + PRICING_CONSTANTS.standardTaxRate);

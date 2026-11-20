@@ -57,7 +57,7 @@ export default function OemSimulatorSection() {
     bundleTrialWithRegularOrder: bundleTrial,
   });
 
-  const selectedCourse = OEM_COURSES.find((c) => c.id === courseId) ?? OEM_COURSES[2];
+  const selectedCourse = OEM_COURSES.find((c) => c.id === courseId) ?? OEM_COURSES[1];
   const minSlider = formatId === "cup" ? 480 : 400;
   const maxSlider = formatId === "cup" ? 800 : 750;
   const profitPctClamped = Math.min(80, Math.max(10, result.storeGrossMarginPercent));
@@ -75,10 +75,10 @@ export default function OemSimulatorSection() {
         <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* 左側：タップで選ぶ条件パネル */}
           <div className="space-y-6 rounded-3xl bg-white p-6 shadow-2xs sm:p-8 lg:col-span-7">
-            {/* 1. コース */}
+            {/* 1. プラン */}
             <div>
-              <label className="text-ink block text-sm font-bold">1. コースを選ぶ</label>
-              <div className="mt-2.5 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+              <label className="text-ink block text-sm font-bold">1. プランを選ぶ</label>
+              <div className="mt-2.5 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 {OEM_COURSES.map((course) => {
                   const active = course.id === courseId;
                   return (
@@ -94,7 +94,7 @@ export default function OemSimulatorSection() {
                     >
                       <p className="text-xs font-bold">{course.shortTitle}</p>
                       <p className="text-brand mt-1 text-xs font-bold">
-                        試作費 ¥{course.devFeeExTax.toLocaleString("ja-JP")}
+                        初期開発費 ¥{course.devFeeExTax.toLocaleString("ja-JP")}
                       </p>
                     </button>
                   );

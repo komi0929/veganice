@@ -23,10 +23,10 @@ export default function OemHeader() {
         <div className="hidden items-center gap-6 md:flex">
           <nav className="flex items-center gap-5 text-sm text-gray-600">
             <a href="#about-oem" className="hover:text-brand transition-colors">
-              作れるかたち
+              アイスの特徴
             </a>
             <a href="#courses" className="hover:text-brand transition-colors">
-              3つの作り方・料金
+              2つのプラン・料金
             </a>
             <a href="#timeline" className="hover:text-brand transition-colors">
               お届けの流れ

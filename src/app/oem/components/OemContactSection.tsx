@@ -26,37 +26,36 @@ const COURSE_CHOICES: {
   title: string;
   badge: string;
 }[] = [
+  { id: "custom_recipe", title: "② オリジナル開発（おすすめ）", badge: "試作費 ¥3万" },
   { id: "seal_only", title: "① フタだけお店ロゴ", badge: "開発費 ¥0" },
-  { id: "base_arrange", title: "② 粉末・具材を混ぜる", badge: "試作費 ¥1万" },
-  { id: "custom_recipe", title: "③ 果物・特産品から開発", badge: "試作費 ¥3万" },
-  { id: "undecided", title: "まだ迷っている・相談したい", badge: "おすすめ提案" },
+  { id: "undecided", title: "まだ迷っている・相談したい", badge: "ご提案希望" },
 ];
 
 const FORMAT_CHOICES: {
   id: OemSelectableFormat;
   label: string;
 }[] = [
-  { id: "cup", label: "100mlカップ（お店シール）" },
+  { id: "both", label: "まだ未定・両方検討" },
   { id: "bulk", label: "2L業務用バルク" },
-  { id: "both", label: "両方・まだ未定" },
+  { id: "cup", label: "100ml個食カップ" },
 ];
 
 const QUICK_MEMO_CHIPS = [
   {
-    label: "＋ 果物・果汁を使いたい",
-    text: "自家農園（または地域）の果物・果汁を使ったアイスを検討しています。",
+    label: "＋ 地域の食材・果物で作りたい",
+    text: "お店で扱っている地域の食材・果物を使ったオリジナルアイスを検討しています。",
   },
   {
-    label: "＋ 茶葉・珈琲で作りたい",
-    text: "お店の茶葉・焙煎珈琲パウダーを使ったオリジナル味を検討しています。",
+    label: "＋ お茶・珈琲で作りたい",
+    text: "お店のお茶・焙煎珈琲を使ったオリジナルフレーバーを検討しています。",
   },
   {
-    label: "＋ 開発費0円のシール変更を知りたい",
-    text: "まずは開発費0円の天面シール変更コースと入稿テンプレートについて知りたいです。",
+    label: "＋ 食後デザート用バルクを検討",
+    text: "店内の食後デザート・パフェ用の2L業務用バルクでの製造を相談したいです。",
   },
   {
-    label: "＋ 店内用の2Lバルクも検討中",
-    text: "店内の食後デザート・パフェ用の業務用バルク導入もあわせて相談したいです。",
+    label: "＋ フタ変更（¥0）を知りたい",
+    text: "まずは開発費0円のフタシール変更プランと入稿テンプレートについて知りたいです。",
   },
 ];
 
@@ -106,7 +105,7 @@ export default function OemContactSection() {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
   const [activeTab, setActiveTab] = useState<OemTab>("oem");
   const [selectedCourse, setSelectedCourse] = useState<OemSelectableCourse>("custom_recipe");
-  const [selectedFormat, setSelectedFormat] = useState<OemSelectableFormat>("cup");
+  const [selectedFormat, setSelectedFormat] = useState<OemSelectableFormat>("both");
   const [tasteMemo, setTasteMemo] = useState<string>("");
   const [syncedNotice, setSyncedNotice] = useState<boolean>(false);
 
@@ -241,13 +240,13 @@ export default function OemContactSection() {
 
                 {activeTab === "oem" && (
                   <>
-                    {/* タップで直感選択できるコースカード */}
+                    {/* タップで直感選択できるプランカード */}
                     <div>
                       <span className="text-ink mb-2 block text-sm font-bold">
-                        気になるコース（後から変更OK）
+                        気になるプラン（後から変更OK）
                       </span>
                       <input type="hidden" name="oemCourse" value={selectedCourse} />
-                      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                         {COURSE_CHOICES.map((c) => {
                           const active = selectedCourse === c.id;
                           return (
@@ -255,14 +254,14 @@ export default function OemContactSection() {
                               key={c.id}
                               type="button"
                               onClick={() => handleCourseTap(c.id)}
-                              className={`flex min-h-12 cursor-pointer items-center justify-between rounded-xl border px-3.5 py-2.5 text-left transition-all ${
+                              className={`flex min-h-12 cursor-pointer flex-col justify-center rounded-xl border px-3.5 py-2 text-left transition-all ${
                                 active
                                   ? "border-brand bg-brand/8 text-ink ring-brand/20 ring-2"
                                   : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
                               }`}
                             >
                               <span className="text-xs font-bold">{c.title}</span>
-                              <span className="text-brand shrink-0 text-[11px] font-bold">
+                              <span className="text-brand mt-0.5 text-[11px] font-bold">
                                 {c.badge}
                               </span>
                             </button>
@@ -308,7 +307,7 @@ export default function OemContactSection() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Field
                     id="companyName"
-                    label="お店・会社・農園のお名前"
+                    label="お店・会社のお名前"
                     required
                     error={state.errors?.companyName}
                   >
@@ -318,7 +317,7 @@ export default function OemContactSection() {
                       name="companyName"
                       defaultValue={prefillStore}
                       disabled={isPending}
-                      placeholder="例：〇〇農園 ／ カフェ〇〇"
+                      placeholder="例：レストラン〇〇 ／ カフェ〇〇"
                       className={`${inputClasses} ${state.errors?.companyName ? errorClasses : ""}`}
                     />
                   </Field>
