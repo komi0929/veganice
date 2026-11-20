@@ -272,6 +272,48 @@ export async function submitContact(
             timestamp,
           };
 
+  // 統合管理システム（Supabase DB）への直接登録：OEM相談・一般問い合わせも管理画面・顧客カルテへ即時連動
+  const SUPABASE_RPC_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL.replace(/\/$/, "")}/rest/v1/rpc`
+    : "https://bnvudcxlvldrpilhcirr.supabase.co/rest/v1/rpc";
+  const SUPABASE_PUB_KEY =
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    "sb_publishable_6OSjYRgADIH8kYj4Jsi66A_WzFxvIRD";
+
+  if (data.formType === "oem" || data.formType === "inquiry") {
+    const readableMessage = data.formType === "oem" ? buildOemReadableMessage(data) : data.message;
+    try {
+      await fetch(`${SUPABASE_RPC_BASE}/submit_oem_from_lp`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: SUPABASE_PUB_KEY,
+        },
+        body: JSON.stringify({
+          p: {
+            kind: data.formType,
+            companyName: data.companyName,
+            contactName: data.contactName,
+            email: data.email,
+            phone: data.phone ?? "",
+            customerToken: data.customerToken ?? "",
+            oemCourse: data.formType === "oem" ? data.oemCourse : null,
+            packageFormat: data.formType === "oem" ? data.packageFormat : null,
+            ingredientName: data.formType === "oem" ? (data.ingredientName ?? "") : "",
+            ingredientState: data.formType === "oem" ? (data.ingredientState ?? "") : "",
+            allergenStatus: data.formType === "oem" ? data.allergenStatus : null,
+            tasteImage: data.formType === "oem" ? (data.tasteImage ?? "") : "",
+            desiredTiming: data.formType === "oem" ? (data.desiredTiming ?? "") : "",
+            message: readableMessage,
+            timestamp,
+          },
+        }),
+      });
+    } catch (supaErr) {
+      console.error("Supabase OEM直接登録エラー（GASフォールバック継続）:", supaErr);
+    }
+  }
+
   if (directEndpoint) {
     try {
       await fetch(directEndpoint, {
