@@ -5,9 +5,8 @@ import Footer from "../components/Footer";
 import DessertReviewsSection from "../dessert/components/DessertReviewsSection";
 import OemHeader from "./components/OemHeader";
 import OemHeroSection from "./components/OemHeroSection";
+import OemPremiseSection from "./components/OemPremiseSection";
 import OemCoursesSection from "./components/OemCoursesSection";
-import OemUseCasesSection from "./components/OemUseCasesSection";
-import OemStrengthsSection from "./components/OemStrengthsSection";
 import OemMidCtaBanner from "./components/OemMidCtaBanner";
 import OemTimelineSection from "./components/OemTimelineSection";
 import OemSimulatorSection from "./components/OemSimulatorSection";
@@ -17,7 +16,7 @@ import OemFloatingCTA from "./components/OemFloatingCTA";
 
 const TITLE = "オリジナル植物性アイスOEM・PB製造｜小ロット60個・最短1か月｜乳・卵・小麦不使用";
 const DESCRIPTION =
-  "卵・乳・小麦を持ち込まない専用工房（福岡・薬院 SoyStories）で、お店の素材や屋号シールを使ったオリジナル植物性クラフトアイスを60個／6Lの小ロットからOEM製造。米粉と発酵素材の独自製法で滑らかな口どけ。最短約1か月でお届け。";
+  "卵・乳・小麦を持ち込まない専用工房（福岡・薬院 SoyStories）で、お店の素材やロゴシールを使ったオリジナル植物性クラフトアイスを60個／6Lの小ロットからOEM製造。米粉と発酵素材の独自製法で滑らかな口どけ。最短約1か月でお届け。";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "SoyStories",
     images: [
       {
-        url: "/images/ec_gelato_6set.jpg",
+        url: "/images/gelato_circle_lineup.jpg",
         width: 1200,
         height: 630,
         alt: "SoyStories 専用工房でのオリジナルクラフトアイスOEM製造",
@@ -44,51 +43,38 @@ export const metadata: Metadata = {
 };
 
 /**
- * 【LP-B】完全版 OEM LP（ビジュアル・図解進化版）
- * 構成順序も「何ができるか（3コース図解・活用シーン）」を最優先で先頭に出し、
- * 直感理解 → 品質の裏付け → 1か月フロー図解 → 収支試算 → 相談フォームへと自然に流れる設計
+ * 【LP-B】完全版 OEM LP（初見のお客様の頭に入る一本道構成 × 100%実物写真・パッケージ図解版）
+ * 1. 何屋さんで何ができる？（Hero）
+ * 2. どんな形・品質の商品が届く？（Premise：100mlカップ309円 / 2Lバルク4,000円 ＆ 3つの特徴）
+ * 3. 手元の素材にあわせた3つの作り方・初期費用（Courses：①フタだけ0円 / ②粉を混ぜる1万円 / ③果物・液体から作る3万円）
+ * 4. 実店舗での味の評価（Reviews：Google ★4.7）
+ * 5. 検討フェーズ別の入り口（MidCta：無料3案相談 or 6個試食サンプル）
+ * 6. ご相談から約1か月の流れ（Timeline）
+ * 7. お店の利益シミュレーター（Simulator）
+ * 8. よくあるご質問（FAQ）
+ * 9. 無料相談・試食申込フォーム（Contact）
  */
 export default function OemFullPage() {
   return (
     <>
       <OemHeader />
       <main className="lp-friendly flex-1 pt-14 sm:pt-16">
-        {/* ① 3秒で全体像が直感できる写真コラージュ＆数字ヒーロー */}
         <OemHeroSection />
-
-        {/* ② 最重要：文字を読まずに「写真＋足し算図解＋比較表」でわかる3つのコース */}
+        <OemPremiseSection />
         <OemCoursesSection />
-
-        {/* ③ 写真で見る4つの業態別活用イメージ（農園・カフェ・レストラン・物販） */}
-        <OemUseCasesSection />
-
-        {/* ④ 専用工房・米粉製法・発酵素材の3つの品質基盤（写真＋タグ図解） */}
-        <OemStrengthsSection />
-
-        {/* ⑤ 薬院実店舗での評価（Google ★4.7・海外のお客様の声） */}
         <DessertReviewsSection />
-
-        {/* ⑤-B 検討フェーズ別の2ルート分岐（無料3方向提案 or 6個試食サンプル） */}
         <OemMidCtaBanner />
-
-        {/* ⑥ 最短約1か月の流れ ＆ 初回試作「2種×3個食べ比べBOX」図解 */}
         <OemTimelineSection />
-
-        {/* ⑦ お店での販売イメージと、ご負担の目安シミュレーター */}
         <OemSimulatorSection />
-
-        {/* ⑧ よくあるご質問（アコーディオン） */}
         <OemFAQSection />
-
-        {/* ⑨ 事前ヒアリング・試食サンプル申込フォーム */}
         <Suspense
           fallback={<div className="py-16 text-center text-sm text-gray-500">読み込み中...</div>}
         >
           <OemContactSection />
         </Suspense>
 
-        {/* ⑩ 定番フレーバー通常卸へのご案内 */}
-        <section className="border-t border-gray-200 bg-[#f7f3ec] py-14">
+        {/* 定番フレーバー通常卸へのご案内 */}
+        <section className="border-t border-gray-200 bg-[#f7f3ec] py-14 pb-24 md:pb-14">
           <div className="mx-auto max-w-4xl px-6">
             <div className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-white p-6 shadow-2xs sm:flex-row sm:items-center sm:p-8">
               <div>

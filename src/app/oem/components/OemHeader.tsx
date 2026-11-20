@@ -21,25 +21,28 @@ export default function OemHeader() {
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">
-          <nav className="flex items-center gap-6 text-sm text-gray-600">
+          <nav className="flex items-center gap-5 text-sm text-gray-600">
+            <a href="#about-oem" className="hover:text-brand transition-colors">
+              作れるかたち
+            </a>
             <a href="#courses" className="hover:text-brand transition-colors">
-              3つのコース
+              3つの作り方・料金
             </a>
             <a href="#timeline" className="hover:text-brand transition-colors">
               お届けの流れ
             </a>
             <a href="#simulator" className="hover:text-brand transition-colors">
-              販売イメージ試算
+              利益試算
             </a>
             <a href="#faq" className="hover:text-brand transition-colors">
-              よくあるご質問
+              よくある質問
             </a>
           </nav>
           <a
             href="#contact-form"
             className="bg-cta hover:bg-cta-hover rounded-full px-5 py-2 text-sm font-bold text-white shadow-2xs transition-colors"
           >
-            無料で事前相談する
+            無料で相談する
           </a>
         </div>
 
@@ -47,7 +50,7 @@ export default function OemHeader() {
           href="#contact-form"
           className="bg-cta hover:bg-cta-hover rounded-full px-4 py-2 text-xs font-bold text-white md:hidden"
         >
-          事前相談する
+          無料相談する
         </a>
       </div>
     </header>

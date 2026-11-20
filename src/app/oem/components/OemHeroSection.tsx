@@ -1,151 +1,107 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ShieldCheck, Sparkles, Clock, Package } from "lucide-react";
 
-const HERO_STATS = [
-  { icon: Sparkles, value: "¥0〜", label: "開発費\n（シール変更なら0円）" },
-  { icon: Package, value: "60個〜", label: "小ロット製造\n（バルクは6L〜）" },
-  { icon: Clock, value: "最短 1か月", label: "ご相談から\nお手元まで" },
-  { icon: ShieldCheck, value: "★4.7", label: "薬院実店舗の\nGoogle評価" },
+const HERO_NUMBERS = [
+  { value: "60個 / 6L〜", label: "小ロットから\n製造できます" },
+  { value: "開発費 ¥0〜", label: "フタシール変更なら\n初期開発費なし" },
+  { value: "最短 1か月", label: "ご相談から\n納品までの目安" },
 ];
 
 /**
- * 3秒で直感理解できる OEM 完全版ファーストビュー
- * LCP最適化のためメイン写真と見出しはSSR直後から即描画し、フローティング要素に心地よいモーションを添える
+ * 初見の人に3秒で「何屋さんで、何ができるのか」がスッと伝わるファーストビュー
+ * AI生成イラストは使わず、SoyStories実物のカップアイス写真とシンプルな言葉だけで構成
  */
 export default function OemHeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[#f7f3ec] pt-8 pb-16 sm:pt-14 sm:pb-24">
-      <div
-        className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-white/60 blur-3xl"
-        aria-hidden="true"
-      />
+    <section className="bg-bg-white w-full pt-6 pb-14 sm:pt-12 sm:pb-20">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 px-6 md:grid-cols-12 md:gap-12">
+        {/* 実物写真（スマホでは最初に目に入るよう上部に配置） */}
+        <div className="relative md:order-2 md:col-span-6">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[#f7f3ec] shadow-sm">
+            <Image
+              src="/images/gelato_circle_lineup.jpg"
+              alt="SoyStoriesの専用工房で製造する100%植物性クラフトアイス"
+              fill
+              priority
+              fetchPriority="high"
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
 
-      <div className="relative mx-auto max-w-6xl px-6">
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* メインビジュアルコラージュ */}
-          <div className="relative lg:order-2 lg:col-span-6">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-white shadow-lg ring-4 ring-white">
+          {/* 業務用2Lバルクも選べることを実物写真1つでシンプルに補足 */}
+          <div className="mt-3 inline-flex items-center gap-3 rounded-2xl border border-gray-200/80 bg-white p-2 pr-4 shadow-sm sm:absolute sm:-bottom-5 sm:left-4 sm:mt-0">
+            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-gray-100">
               <Image
-                src="/images/oem/course_3_original.jpg"
-                alt="旬の果実やお店のこだわり食材からつくる植物性クラフトアイス"
+                src="/images/bulk_2l.jpg"
+                alt="業務用の2Lバルク容器"
                 fill
-                priority
-                fetchPriority="high"
                 className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="44px"
               />
-              <div className="absolute top-3 left-3 rounded-full bg-black/70 px-3.5 py-1.5 text-xs font-bold text-white backdrop-blur-xs">
-                卵・乳・小麦 持ち込みゼロ専用工房
-              </div>
             </div>
-
-            {/* フローティング写真カード2枚（お店シールカップ ＆ 2Lバルク） */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="mt-3 grid grid-cols-2 gap-2.5 sm:mt-0"
-            >
-              <div className="flex items-center gap-2.5 rounded-2xl bg-white p-2.5 pr-3.5 shadow-md sm:absolute sm:-bottom-6 sm:left-3">
-                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-gray-100">
-                  <Image
-                    src="/images/oem/course_1_sticker.jpg"
-                    alt="お店ロゴシール対応の100ml個食カップ"
-                    fill
-                    className="object-cover"
-                    sizes="48px"
-                  />
-                </div>
-                <div>
-                  <p className="text-brand text-[10.5px] font-bold">お店ロゴ対応</p>
-                  <p className="text-ink text-xs leading-snug font-bold">100mlカップ</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2.5 rounded-2xl bg-white p-2.5 pr-3.5 shadow-md sm:absolute sm:right-3 sm:-bottom-6">
-                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-gray-100">
-                  <Image
-                    src="/images/bulk_2l.jpg"
-                    alt="2L業務用バルク容器"
-                    fill
-                    className="object-cover"
-                    sizes="48px"
-                  />
-                </div>
-                <div>
-                  <p className="text-brand text-[10.5px] font-bold">店内皿盛り用も</p>
-                  <p className="text-ink text-xs leading-snug font-bold">2Lバルク対応</p>
-                </div>
-              </div>
-            </motion.div>
+            <p className="text-ink text-xs leading-snug font-bold">
+              お土産用の「100mlカップ」も、
+              <br />
+              店内皿盛り用の「2Lバルク」も作れます
+            </p>
           </div>
+        </div>
 
-          {/* コピー ＋ 4つの数字カード */}
-          <div className="lg:order-1 lg:col-span-6">
-            <span className="bg-brand inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-bold text-white shadow-2xs">
-              植物性クラフトアイスの小ロットOEM・PB製造
-            </span>
+        {/* テキスト（初見の人が迷わないよう、要素を詰め込みすぎず一本道で伝える） */}
+        <div className="md:order-1 md:col-span-6">
+          <p className="text-brand text-xs font-bold tracking-wide">
+            福岡・薬院の植物性スイーツ専門店 SoyStories｜乳・卵・小麦不使用
+          </p>
 
-            <h1 className="text-ink mt-4 text-[23px] leading-[1.38] font-bold tracking-tight sm:text-4xl lg:text-[40px]">
-              お店の食材と名前で、
-              <span className="mt-1 block">
-                「
-                <span className="bg-[linear-gradient(transparent_62%,#f9d9e3_62%)]">
-                  ここにしかない一皿
-                </span>
-                」を。
+          <h1 className="text-ink mt-3 text-[22px] leading-[1.42] font-bold tracking-tight sm:text-3xl lg:text-[34px]">
+            お店の素材やロゴでつくる、
+            <span className="mt-1 block whitespace-nowrap">
+              「
+              <span className="bg-[linear-gradient(transparent_62%,#f9d9e3_62%)]">
+                お店だけのクラフトアイス
               </span>
-            </h1>
+              」
+            </span>
+          </h1>
 
-            <p className="text-ink-light mt-4 text-[15px] leading-[1.8] sm:text-base">
-              ふたシールを変えるだけの<strong>開発費0円プラン</strong>
-              から、自慢の農作物・茶葉でつくる<strong>専用レシピ開発</strong>
-              まで。福岡・薬院の専用工房から全国へお届けします。
-            </p>
+          <p className="text-ink-light mt-4 text-[15px] leading-[1.85] sm:text-base">
+            農園で育てた果物、カフェ自慢のお茶やコーヒー、あるいはお店のロゴシールを使って、オリジナルの植物性アイスを
+            <strong>60個・6Lの小ロット</strong>から製造いたします。
+          </p>
+          <p className="text-ink-light mt-2 text-[15px] leading-[1.85] sm:text-base">
+            乳・卵・小麦を一切持ち込まない福岡・薬院の専用工房から、冷凍便で全国へお届けします。
+          </p>
 
-            {/* 4つの直感数字グリッド */}
-            <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-              {HERO_STATS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.value}
-                    className="flex flex-col items-center rounded-2xl bg-white p-3.5 text-center shadow-2xs ring-1 ring-gray-200/60"
-                  >
-                    <Icon className="text-brand h-4 w-4" aria-hidden="true" />
-                    <p className="text-ink mt-1.5 text-lg leading-none font-bold sm:text-xl">
-                      {item.value}
-                    </p>
-                    <p className="text-ink-muted mt-1.5 text-[11px] leading-tight whitespace-pre-line">
-                      {item.label}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* 48px以上のタップしやすいCTAボタン ＋ 安心マイクロコピー */}
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#courses"
-                className="bg-brand hover:bg-brand-dark inline-flex min-h-12 items-center justify-center gap-1.5 rounded-full px-5 py-3.5 text-sm font-bold whitespace-nowrap text-white shadow-sm transition-colors sm:px-6"
-              >
-                3つのコースを図で見る ↓
-              </a>
-              <a
-                href="#contact-form"
-                className="bg-cta hover:bg-cta-hover inline-flex min-h-12 items-center justify-center gap-1.5 rounded-full px-5 py-3.5 text-sm font-bold whitespace-nowrap text-white shadow-sm transition-colors sm:px-6"
-              >
-                無料で「3方向案」を相談する →
-              </a>
-            </div>
-            <p className="text-ink-muted mt-2.5 text-xs">
-              ✓ 相談・方向性ご提案は無料　✓ しつこい営業電話なし　✓ 6個試食サンプルも申込可
-            </p>
+          {/* シンプルで迷わない2ボタン */}
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="#courses"
+              className="bg-brand hover:bg-brand-dark inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3.5 text-sm font-bold whitespace-nowrap text-white shadow-2xs transition-colors"
+            >
+              3つの作り方・料金を見る ↓
+            </a>
+            <a
+              href="#contact-form"
+              className="bg-cta hover:bg-cta-hover inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3.5 text-sm font-bold whitespace-nowrap text-white shadow-2xs transition-colors"
+            >
+              無料で相談・試食を申し込む →
+            </a>
           </div>
+
+          {/* 3つの基本数字（箱で囲わずすっきり配置） */}
+          <dl className="mt-8 grid grid-cols-3 divide-x divide-gray-200 border-t border-gray-100 pt-5">
+            {HERO_NUMBERS.map((item) => (
+              <div key={item.value} className="px-2 text-center first:pl-0 last:pr-0">
+                <dt className="sr-only">{item.label}</dt>
+                <dd className="text-ink text-base font-bold tracking-tight sm:text-xl">
+                  {item.value}
+                </dd>
+                <dd className="text-ink-muted mt-1 text-[11px] leading-snug whitespace-pre-line">
+                  {item.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

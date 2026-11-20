@@ -111,8 +111,8 @@ export const OEM_COURSES: ReadonlyArray<OemCourseSpec> = [
   {
     id: "seal_only",
     badge: "開発費 0円・手軽にお店の顔づくり",
-    title: "コース①：既存の11種の味 ＋ お店の天面シール",
-    shortTitle: "① 既存の味＋お店シール",
+    title: "プラン①：フタだけお店ロゴにする（定番11種）",
+    shortTitle: "① フタだけお店ロゴ",
     subtitle: "SoyStoriesで人気の11フレーバーから選び、ふた（天面）をお店のオリジナルデザインに。",
     devFeeExTax: 0,
     availableFormats: ["cup"],
@@ -126,8 +126,8 @@ export const OEM_COURSES: ReadonlyArray<OemCourseSpec> = [
   {
     id: "base_arrange",
     badge: "試作費 10,000円（税別）＋実費",
-    title: "コース②：既存ベース ＋ お店の粉末素材・具材をプラス",
-    shortTitle: "② 既存ベース＋素材追加",
+    title: "プラン②：お店の「粉末・具材」を混ぜる",
+    shortTitle: "② 粉末・具材を混ぜる",
     subtitle:
       "完成されたベース配合の比率は変えず、お店の茶葉粉末・スパイス・機能性パウダー・固形具材を混ぜ込みます。",
     devFeeExTax: 10000,
@@ -142,8 +142,8 @@ export const OEM_COURSES: ReadonlyArray<OemCourseSpec> = [
   {
     id: "custom_recipe",
     badge: "試作費 30,000円（税別）＋実費",
-    title: "コース③：お店の素材を主役に、専用ベースから開発",
-    shortTitle: "③ お店の素材で専用開発",
+    title: "プラン③：果物・特産品から専用開発する",
+    shortTitle: "③ 果物・特産品から開発",
     subtitle:
       "果物・果汁・ピューレ・ペースト・酒粕など、素材の水分や糖度・酸味に合わせて土台の配合から専用設計します。",
     devFeeExTax: 30000,

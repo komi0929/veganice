@@ -26,9 +26,9 @@ const COURSE_CHOICES: {
   title: string;
   badge: string;
 }[] = [
-  { id: "seal_only", title: "① 既存11種の味＋シール", badge: "開発費 ¥0" },
-  { id: "base_arrange", title: "② ベース＋粉末・具材", badge: "試作費 ¥1万" },
-  { id: "custom_recipe", title: "③ お店の素材で専用開発", badge: "試作費 ¥3万" },
+  { id: "seal_only", title: "① フタだけお店ロゴ", badge: "開発費 ¥0" },
+  { id: "base_arrange", title: "② 粉末・具材を混ぜる", badge: "試作費 ¥1万" },
+  { id: "custom_recipe", title: "③ 果物・特産品から開発", badge: "試作費 ¥3万" },
   { id: "undecided", title: "まだ迷っている・相談したい", badge: "おすすめ提案" },
 ];
 
