@@ -25,7 +25,7 @@ const FAQ_ITEMS = [
 
 export default function OemFAQSection() {
   return (
-    <section id="faq" className="bg-[#fafaf8] py-16 sm:py-24">
+    <section id="faq" className="scroll-mt-16 bg-[#fafaf8] py-16 sm:py-24">
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeader
           eyebrow="よくあるご質問"

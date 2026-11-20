@@ -63,7 +63,7 @@ export default function OemContactSection() {
   const [selectedCourse, setSelectedCourse] = useState<string>("custom_recipe");
 
   return (
-    <section id="contact-form" className="bg-bg-white py-16 sm:py-24">
+    <section id="contact-form" className="bg-bg-white scroll-mt-16 py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-6">
         <div className="text-center">
           <p className="text-brand text-xs font-bold tracking-widest uppercase">
