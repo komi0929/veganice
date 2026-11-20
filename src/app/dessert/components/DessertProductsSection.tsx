@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { getFlavorSpec } from "@/app/data/flavorSpecs";
 import FlavorSpecModal, { type SelectedFlavorTarget } from "@/app/components/FlavorSpecModal";
 import { MidCta, SectionHeader } from "./ui";
@@ -46,12 +47,19 @@ const flavorGroups: {
 ];
 
 const specs = [
-  { label: "容器", value: "1L または 2L（冷凍）" },
-  { label: "最小ロット", value: "4L〜（2L×2個、1L×4個など。味の組み合わせは自由）" },
-  { label: "価格", value: "1L ¥2,000／2L ¥4,000（税別）。全11種同価格・最小4L" },
+  { label: "提供形態", value: "① 業務用バルク（1L・2L）／ ② 個食カップ（100ml・自社シール付）" },
+  {
+    label: "最小ロット",
+    value:
+      "バルク：4L〜（2L×2本、1L×4本など） ／ カップ：60個〜（おススメ120個）。味の組み合わせ自由",
+  },
+  {
+    label: "価格（税別）",
+    value: "バルク：1L ¥2,000・2L ¥4,000 ／ 個食カップ：1個 ¥300（税込¥324）。全11種同価格",
+  },
   {
     label: "杯数の目安",
-    value: "1Lあたり 約20杯（#18ディッシャー・約50ml）／約12杯（#12・約80ml）",
+    value: "バルク1Lあたり 約20杯（#18ディッシャー・約50ml）／約12杯（#12・約80ml）",
   },
   { label: "不使用", value: "乳・卵・小麦・白砂糖・乳化安定剤・増粘剤・着色料" },
   {
@@ -126,15 +134,19 @@ export default function DessertProductsSection() {
           ))}
         </div>
 
-        <p className="text-ink mt-8 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[15px] font-bold">
-          <span>価格　1L ¥2,000／2L ¥4,000（税別）</span>
-          <span className="text-ink-muted text-xs font-normal">
-            全11種同価格・最小4Lから、味の組み合わせは自由
-          </span>
-        </p>
+        <div className="mt-8 rounded-2xl border border-gray-200/80 bg-[#faf8f4] p-5">
+          <p className="text-ink flex flex-wrap items-baseline gap-x-3 gap-y-1 text-[15px] font-bold">
+            <span>① 業務用バルク：1L ¥2,000 ／ 2L ¥4,000（税別・最小4L〜）</span>
+            <span className="text-brand">｜</span>
+            <span>② 個食カップ（自社シール）：1個 ¥300（税別・最小60個〜）</span>
+          </p>
+          <p className="text-ink-muted mt-1.5 text-xs">
+            全11種同価格。味の組み合わせ（アソート）は自由にお選びいただけます。
+          </p>
+        </div>
 
         {/* 商品仕様（折りたたみ） */}
-        <details className="group mt-10 rounded-2xl border border-gray-200 bg-white">
+        <details className="group mt-6 rounded-2xl border border-gray-200 bg-white">
           <summary className="text-ink flex cursor-pointer list-none items-center justify-between px-5 py-4 text-[15px] font-bold [&::-webkit-details-marker]:hidden">
             商品の仕様を見る
             <span
@@ -153,6 +165,24 @@ export default function DessertProductsSection() {
             ))}
           </dl>
         </details>
+
+        {/* OEM（要点版LP）への相互補完ブリッジ */}
+        <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-gray-200 bg-white p-5 sm:flex-row sm:items-center sm:p-6">
+          <div>
+            <p className="text-brand text-xs font-bold">
+              お店の屋号シール・オリジナル味をご希望の方へ
+            </p>
+            <p className="text-ink mt-1 text-sm font-bold sm:text-[15px]">
+              天面シール変更（開発費0円）や、お店の素材を使ったOEM製造（60個／6L〜）も承っています
+            </p>
+          </div>
+          <Link
+            href="/oem/plan"
+            className="text-brand border-brand/30 hover:bg-brand shrink-0 rounded-full border px-5 py-2.5 text-xs font-bold transition-colors hover:text-white sm:text-sm"
+          >
+            OEMの仕組み・料金を見る →
+          </Link>
+        </div>
 
         <MidCta message="どの味が合うか、実際に試してみてください。" />
       </div>

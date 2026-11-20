@@ -26,7 +26,7 @@ const sampleFlavorItemSchema = z.object({
 export type SampleFlavorItem = z.infer<typeof sampleFlavorItemSchema>;
 
 const baseSchema = z.object({
-  companyName: z.string().min(1, "店舗名は必須です"),
+  companyName: z.string().min(1, "お店・会社名は必須です"),
   contactName: z.string().min(1, "ご担当者名は必須です"),
   email: z.string().email("有効なメールアドレスを入力してください"),
 });
@@ -41,6 +41,7 @@ const sampleSchema = baseSchema
     receiveSlots: z.string().max(100).optional(),
     receiveNote: z.string().max(100).optional(),
     notes: z.string().optional(),
+    customerToken: z.string().max(120).optional(),
     sampleMode: z.enum(["omakase", "custom"]).default("omakase"),
     sampleFlavors: z
       .string()
@@ -101,15 +102,31 @@ const sampleSchema = baseSchema
 const inquirySchema = baseSchema.extend({
   formType: z.literal("inquiry"),
   phone: z.string().optional(),
+  customerToken: z.string().max(120).optional(),
   message: z.string().min(1, "お問い合わせ内容は必須です"),
 });
 
-const contactSchema = z.discriminatedUnion("formType", [sampleSchema, inquirySchema]);
+const oemSchema = baseSchema.extend({
+  formType: z.literal("oem"),
+  phone: z.string().optional(),
+  customerToken: z.string().max(120).optional(),
+  oemCourse: z.enum(["seal_only", "base_arrange", "custom_recipe", "undecided"]),
+  packageFormat: z.enum(["cup", "bulk", "both", "undecided"]),
+  ingredientName: z.string().max(200).optional(),
+  ingredientState: z.string().max(200).optional(),
+  allergenStatus: z.enum(["free_confirmed", "checking", "none_seal_only"]),
+  tasteImage: z.string().max(1000).optional(),
+  desiredTiming: z.string().max(200).optional(),
+});
+
+const contactSchema = z.discriminatedUnion("formType", [sampleSchema, inquirySchema, oemSchema]);
+
+export type ContactFormType = "sample" | "inquiry" | "oem";
 
 export type ContactState = {
   success: boolean;
   message: string;
-  formType?: "sample" | "inquiry";
+  formType?: ContactFormType;
   errors?: Record<string, string[]>;
 };
 
@@ -129,11 +146,47 @@ function buildSampleSummary(
   return parts;
 }
 
+const COURSE_LABELS: Record<z.infer<typeof oemSchema>["oemCourse"], string> = {
+  seal_only: "① 既存の11種の味＋お店の天面シール（開発費0円）",
+  base_arrange: "② 既存ベース＋お店の粉末・具材追加（試作費1万円）",
+  custom_recipe: "③ お店の素材で専用ベースから開発（試作費3万円）",
+  undecided: "相談しながら決めたい",
+};
+
+const FORMAT_LABELS: Record<z.infer<typeof oemSchema>["packageFormat"], string> = {
+  cup: "100ml 個食カップ（お店シール）",
+  bulk: "2L 業務用バルク",
+  both: "カップと2Lバルクの両方検討",
+  undecided: "未定・相談したい",
+};
+
+const ALLERGEN_LABELS: Record<z.infer<typeof oemSchema>["allergenStatus"], string> = {
+  free_confirmed: "素材・加工場所ともに卵・乳・小麦不使用を確認済み",
+  checking: "確認中（後ほど規格書等で確認）",
+  none_seal_only: "素材の持ち込みなし（シール変更のみ）",
+};
+
+function buildOemReadableMessage(data: z.infer<typeof oemSchema>): string {
+  const lines = [
+    "【OEM・オリジナル製造 事前ヒアリング】",
+    `・ご希望コース：${COURSE_LABELS[data.oemCourse]}`,
+    `・ご希望形態：${FORMAT_LABELS[data.packageFormat]}`,
+    data.ingredientName ? `・使いたい素材：${data.ingredientName}` : null,
+    data.ingredientState ? `・素材の状態：${data.ingredientState}` : null,
+    `・アレルゲン確認：${ALLERGEN_LABELS[data.allergenStatus]}`,
+    data.desiredTiming ? `・ご希望時期：${data.desiredTiming}` : null,
+    data.tasteImage ? `・目指したい味わい・ご相談内容：\n${data.tasteImage}` : null,
+    data.customerToken ? `・顧客連携キー：${data.customerToken}` : null,
+  ].filter((line): line is string => Boolean(line));
+  return lines.join("\n");
+}
+
 export async function submitContact(
   prevState: ContactState,
   formData: FormData
 ): Promise<ContactState> {
-  const formType = formData.get("formType") as string;
+  const rawType = formData.get("formType");
+  const formType: ContactFormType = rawType === "sample" || rawType === "oem" ? rawType : "inquiry";
 
   const rawData =
     formType === "sample"
@@ -148,42 +201,88 @@ export async function submitContact(
           receiveDays: (formData.get("receiveDays") as string) || "",
           receiveSlots: (formData.get("receiveSlots") as string) || "",
           receiveNote: (formData.get("receiveNote") as string) || "",
-          notes: formData.get("notes"),
+          notes: formData.get("notes") || undefined,
+          customerToken: (formData.get("customerToken") as string) || undefined,
           sampleMode: (formData.get("sampleMode") as string) || "omakase",
           sampleFlavors: (formData.get("sampleFlavors") as string) || "[]",
         }
-      : {
-          formType: "inquiry" as const,
-          companyName: formData.get("companyName"),
-          contactName: formData.get("contactName"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          message: formData.get("message"),
-        };
+      : formType === "oem"
+        ? {
+            formType: "oem" as const,
+            companyName: formData.get("companyName"),
+            contactName: formData.get("contactName"),
+            email: formData.get("email"),
+            phone: (formData.get("phone") as string) || undefined,
+            customerToken: (formData.get("customerToken") as string) || undefined,
+            oemCourse: (formData.get("oemCourse") as string) || "undecided",
+            packageFormat: (formData.get("packageFormat") as string) || "cup",
+            ingredientName: (formData.get("ingredientName") as string) || undefined,
+            ingredientState: (formData.get("ingredientState") as string) || undefined,
+            allergenStatus: (formData.get("allergenStatus") as string) || "checking",
+            tasteImage: (formData.get("tasteImage") as string) || undefined,
+            desiredTiming: (formData.get("desiredTiming") as string) || undefined,
+          }
+        : {
+            formType: "inquiry" as const,
+            companyName: formData.get("companyName"),
+            contactName: formData.get("contactName"),
+            email: formData.get("email"),
+            phone: (formData.get("phone") as string) || undefined,
+            customerToken: (formData.get("customerToken") as string) || undefined,
+            message: formData.get("message"),
+          };
 
   const validatedFields = contactSchema.safeParse(rawData);
 
   if (!validatedFields.success) {
     return {
       success: false,
-      message: "入力内容にエラーがあります。ご確認ください。",
-      formType: formType as "sample" | "inquiry",
+      message: "入力内容に確認が必要な項目があります。ご確認ください。",
+      formType,
       errors: validatedFields.error.flatten().fieldErrors,
     };
   }
 
-  const payload =
-    validatedFields.data.formType === "sample"
+  const data = validatedFields.data;
+
+  // 統合管理システム側の直接受信URLが設定されている場合は先に直接連携し、同時に既存受付経路とも互換性を保つ
+  const directEndpoint = process.env.ORDER_SYSTEM_INGEST_URL;
+  const timestamp = new Date().toISOString();
+
+  const outboundPayload =
+    data.formType === "sample"
       ? {
-          ...validatedFields.data,
-          sampleFlavors:
-            validatedFields.data.sampleMode === "omakase" ? [] : validatedFields.data.sampleFlavors,
-          sampleSummary: buildSampleSummary(
-            validatedFields.data.sampleMode,
-            validatedFields.data.sampleFlavors
-          ),
+          ...data,
+          sampleFlavors: data.sampleMode === "omakase" ? [] : data.sampleFlavors,
+          sampleSummary: buildSampleSummary(data.sampleMode, data.sampleFlavors),
+          timestamp,
         }
-      : validatedFields.data;
+      : data.formType === "oem"
+        ? {
+            ...data,
+            // 既存の受信テーブルでも全文が読めるよう formType互換の message も同梱
+            formType: "inquiry",
+            inquiryKind: "oem_hearing",
+            oemDetail: data,
+            message: buildOemReadableMessage(data),
+            timestamp,
+          }
+        : {
+            ...data,
+            timestamp,
+          };
+
+  if (directEndpoint) {
+    try {
+      await fetch(directEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(outboundPayload),
+      });
+    } catch (directErr) {
+      console.error("統合システム直接連携エラー（フォールバック継続）:", directErr);
+    }
+  }
 
   const DEFAULT_GAS_URL =
     "https://script.google.com/macros/s/AKfycby1Wj8ORyoo8MNj8ze3n_KxhaBEhDnjRiejhAjrwBVyHa1ahfSnItuH3apUxmGVbun0/exec";
@@ -194,42 +293,49 @@ export async function submitContact(
       const response = await fetch(gasUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...payload,
-          timestamp: new Date().toISOString(),
-        }),
+        body: JSON.stringify(outboundPayload),
         redirect: "follow",
       });
 
       if (!response.ok) {
-        throw new Error(`GASへの送信に失敗しました (HTTP ${response.status})`);
+        throw new Error(`受付サーバーへの送信に失敗しました (HTTP ${response.status})`);
       }
 
-      const result = await response.json();
-      if (result.status === "error") {
-        throw new Error(result.message || "GASでエラーが発生しました");
+      const result: unknown = await response.json();
+      if (
+        typeof result === "object" &&
+        result !== null &&
+        "status" in result &&
+        (result as { status?: string }).status === "error"
+      ) {
+        const msg =
+          "message" in result && typeof (result as { message?: string }).message === "string"
+            ? (result as { message: string }).message
+            : "受付処理でエラーが発生しました";
+        throw new Error(msg);
       }
     } catch (error) {
       console.error("お問い合わせ送信エラー:", error);
       return {
         success: false,
         message: "送信に失敗しました。時間をおいて再度お試しください。",
-        formType: formType as "sample" | "inquiry",
+        formType,
       };
     }
-  } else {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("【開発モード】受信 (GAS未設定):", payload);
   }
 
   const successMessage =
-    payload.formType === "sample"
-      ? `サンプルのお申し込みを受け付けました。通常2営業日以内に発送いたします。送料は着払いとなります。\nサンプルの味：${payload.sampleSummary}`
-      : "お問い合わせありがとうございます。通常2営業日以内に担当者よりご連絡いたします。";
+    data.formType === "sample"
+      ? `サンプルのお申し込みを受け付けました。通常2営業日以内に発送いたします。送料は着払いとなります。\nサンプルの味：${buildSampleSummary(data.sampleMode, data.sampleFlavors)}`
+      : data.formType === "oem"
+        ? data.oemCourse === "seal_only"
+          ? "OEM（既存フレーバー＋お店の天面シール）のご相談を受け付けました。通常2営業日以内に、シールのベースデータとお見積りのご案内をお送りいたします。"
+          : "オリジナルアイス開発の事前ヒアリングを受け付けました。いただいた内容をもとに、お店の素材に合わせた「3つの味の方向性・アレンジ案」を整理して、通常2〜3営業日以内にご提案いたします。"
+        : "お問い合わせありがとうございます。通常2営業日以内に担当者よりご連絡いたします。";
 
   return {
     success: true,
     message: successMessage,
-    formType: formType as "sample" | "inquiry",
+    formType,
   };
 }
