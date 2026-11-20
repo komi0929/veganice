@@ -127,21 +127,24 @@ export default function OemHeroSection() {
               })}
             </div>
 
-            {/* 48px以上のタップしやすいCTAボタン */}
+            {/* 48px以上のタップしやすいCTAボタン ＋ 安心マイクロコピー */}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#courses"
-                className="bg-brand hover:bg-brand-dark inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white shadow-sm transition-colors sm:text-base"
+                className="bg-brand hover:bg-brand-dark inline-flex min-h-12 items-center justify-center gap-1.5 rounded-full px-5 py-3.5 text-sm font-bold whitespace-nowrap text-white shadow-sm transition-colors sm:px-6"
               >
                 3つのコースを図で見る ↓
               </a>
               <a
                 href="#contact-form"
-                className="bg-cta hover:bg-cta-hover inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white shadow-sm transition-colors sm:text-base"
+                className="bg-cta hover:bg-cta-hover inline-flex min-h-12 items-center justify-center gap-1.5 rounded-full px-5 py-3.5 text-sm font-bold whitespace-nowrap text-white shadow-sm transition-colors sm:px-6"
               >
-                無料で事前相談する →
+                無料で「3方向案」を相談する →
               </a>
             </div>
+            <p className="text-ink-muted mt-2.5 text-xs">
+              ✓ 相談・方向性ご提案は無料　✓ しつこい営業電話なし　✓ 6個試食サンプルも申込可
+            </p>
           </div>
         </div>
       </div>

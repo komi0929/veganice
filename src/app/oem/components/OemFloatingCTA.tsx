@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /**
- * スマホ閲覧時にいつでも1タップで「3コース図解」または「無料事前相談」へ移動できる下部バー
+ * スマホ閲覧時にいつでも1タップで「利益試算」または「無料相談（60秒）」へ移動できる下部バー
  */
 export default function OemFloatingCTA() {
   const [visible, setVisible] = useState(false);
@@ -19,7 +19,10 @@ export default function OemFloatingCTA() {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200/90 bg-white/95 px-4 py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] backdrop-blur-xs md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-200/90 bg-white/95 px-4 pt-2 pb-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] backdrop-blur-xs md:hidden">
+      <p className="text-ink-muted mb-1.5 text-center text-[10.5px]">
+        相談・3方向案のご提案 0円 ／ 営業電話なし
+      </p>
       <div className="mx-auto grid max-w-md grid-cols-2 gap-2.5">
         <a
           href="#simulator"
@@ -31,7 +34,7 @@ export default function OemFloatingCTA() {
           href="#contact-form"
           className="bg-cta flex min-h-11 items-center justify-center rounded-full text-xs font-bold text-white shadow-2xs"
         >
-          無料で事前相談 →
+          無料相談・試食申込 →
         </a>
       </div>
     </div>

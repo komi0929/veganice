@@ -8,6 +8,7 @@ import OemHeroSection from "./components/OemHeroSection";
 import OemCoursesSection from "./components/OemCoursesSection";
 import OemUseCasesSection from "./components/OemUseCasesSection";
 import OemStrengthsSection from "./components/OemStrengthsSection";
+import OemMidCtaBanner from "./components/OemMidCtaBanner";
 import OemTimelineSection from "./components/OemTimelineSection";
 import OemSimulatorSection from "./components/OemSimulatorSection";
 import OemFAQSection from "./components/OemFAQSection";
@@ -66,6 +67,9 @@ export default function OemFullPage() {
 
         {/* ⑤ 薬院実店舗での評価（Google ★4.7・海外のお客様の声） */}
         <DessertReviewsSection />
+
+        {/* ⑤-B 検討フェーズ別の2ルート分岐（無料3方向提案 or 6個試食サンプル） */}
+        <OemMidCtaBanner />
 
         {/* ⑥ 最短約1か月の流れ ＆ 初回試作「2種×3個食べ比べBOX」図解 */}
         <OemTimelineSection />

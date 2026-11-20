@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeader } from "@/app/dessert/components/ui";
 import {
@@ -12,9 +12,10 @@ import {
   type OemFormatId,
   type ShippingRegionKey,
 } from "../data/oemSpecs";
+import { dispatchOemIntent, subscribeOemIntent } from "../lib/oemInteraction";
 
 /**
- * スライダー連動の「売価と手残り利益バー図解」つき販売イメージシミュレーター
+ * スライダー連動の「売価と手残り利益バー図解」＋「試算条件のまま1タップで無料相談できる直結ボタン」つきシミュレーター
  */
 export default function OemSimulatorSection() {
   const [courseId, setCourseId] = useState<OemCourseId>("custom_recipe");
@@ -29,6 +30,15 @@ export default function OemSimulatorSection() {
       setFormatId("cup");
     }
   };
+
+  useEffect(() => {
+    return subscribeOemIntent((detail) => {
+      if (detail.target === "simulator" && detail.courseId && detail.courseId !== "undecided") {
+        handleCourseChange(detail.courseId);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formatId]);
 
   const handleFormatChange = (nextFormat: OemFormatId) => {
     setFormatId(nextFormat);
@@ -198,7 +208,7 @@ export default function OemSimulatorSection() {
             </div>
           </div>
 
-          {/* 右側：一目でわかる棒グラフ＆結果パネル */}
+          {/* 右側：一目でわかる棒グラフ＆結果パネル＋1タップ相談ブリッジ */}
           <div className="flex flex-col justify-between rounded-3xl bg-white p-6 shadow-2xs sm:p-8 lg:col-span-5">
             <div className="space-y-5">
               <div>
@@ -272,9 +282,27 @@ export default function OemSimulatorSection() {
               </div>
             </div>
 
-            <p className="text-ink-muted mt-4 text-[11px] leading-relaxed">
-              ※税抜会計ベースの概算目安です。ご支給素材の原価・工房への素材送料・天面シールの印刷費は別途となります。
-            </p>
+            {/* 試算条件をそのままフォームへ引き継ぐCVボタン */}
+            <div className="mt-5">
+              <button
+                type="button"
+                onClick={() =>
+                  dispatchOemIntent({
+                    target: "contact",
+                    tab: "oem",
+                    courseId,
+                    formatId,
+                  })
+                }
+                className="bg-cta hover:bg-cta-hover min-h-12 w-full cursor-pointer rounded-full px-5 py-3 text-sm font-bold text-white shadow-2xs transition-colors"
+              >
+                この条件（{selectedCourse.shortTitle}・{formatId === "cup" ? "カップ" : "2Lバルク"}
+                ）で無料相談する →
+              </button>
+              <p className="text-ink-muted mt-2.5 text-[11px] leading-relaxed">
+                ※税抜会計ベースの概算目安です。ご支給素材の原価・工房への素材送料・天面シールの印刷費は別途となります。
+              </p>
+            </div>
           </div>
         </div>
       </div>
