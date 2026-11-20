@@ -249,7 +249,7 @@ export async function submitContact(
   const directEndpoint = process.env.ORDER_SYSTEM_INGEST_URL;
   const timestamp = new Date().toISOString();
 
-  const outboundPayload =
+  let outboundPayload =
     data.formType === "sample"
       ? {
           ...data,
@@ -283,7 +283,7 @@ export async function submitContact(
   if (data.formType === "oem" || data.formType === "inquiry") {
     const readableMessage = data.formType === "oem" ? buildOemReadableMessage(data) : data.message;
     try {
-      await fetch(`${SUPABASE_RPC_BASE}/submit_oem_from_lp`, {
+      const supaRes = await fetch(`${SUPABASE_RPC_BASE}/submit_oem_from_lp`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -309,8 +309,28 @@ export async function submitContact(
           },
         }),
       });
+      const supaJson = (await supaRes.json().catch(() => null)) as {
+        status?: string;
+        reason?: string;
+      } | null;
+      if (
+        !supaRes.ok ||
+        !supaJson ||
+        (supaJson.status !== "ok" && supaJson.status !== "already_received")
+      ) {
+        const reason = supaJson?.reason ?? `http_${supaRes.status}`;
+        console.warn("submit_oem_from_lp not accepted:", reason);
+        outboundPayload = {
+          ...outboundPayload,
+          message: `【要確認：管理画面DB自動登録保留（${reason}）】\n${readableMessage}`,
+        };
+      }
     } catch (supaErr) {
       console.error("Supabase OEM直接登録エラー（GASフォールバック継続）:", supaErr);
+      outboundPayload = {
+        ...outboundPayload,
+        message: `【要確認：管理画面DB通信エラー・メール本文より登録してください】\n${readableMessage}`,
+      };
     }
   }
 
