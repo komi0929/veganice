@@ -98,7 +98,7 @@ export default function HeroSection() {
               ·
             </span>
             <span className="font-sans text-xs text-white/70 sm:text-sm">
-              Google ★4.7（200件超）
+              Google ★4.7（250件以上）
             </span>
             <span className="text-white/30" aria-hidden="true">
               ·

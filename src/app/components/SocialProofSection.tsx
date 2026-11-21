@@ -245,7 +245,7 @@ export default function SocialProofSection() {
           <div>
             <span className="text-ink block font-serif text-5xl font-bold md:text-7xl">★4.7</span>
             <span className="text-ink-muted mt-3 block font-sans text-sm tracking-wider">
-              Google マップ クチコミ評価（250件超）
+              Google マップ クチコミ評価（250件以上）
             </span>
           </div>
           <div className="flex flex-col items-center">

@@ -29,6 +29,7 @@ const baseSchema = z.object({
   companyName: z.string().min(1, "お店・会社名は必須です"),
   contactName: z.string().min(1, "ご担当者名は必須です"),
   email: z.string().email("有効なメールアドレスを入力してください"),
+  source: z.string().max(50).optional(),
 });
 
 const sampleSchema = baseSchema
@@ -188,6 +189,8 @@ export async function submitContact(
   const rawType = formData.get("formType");
   const formType: ContactFormType = rawType === "sample" || rawType === "oem" ? rawType : "inquiry";
 
+  const rawSource = ((formData.get("source") as string) || "").trim() || undefined;
+
   const rawData =
     formType === "sample"
       ? {
@@ -195,6 +198,7 @@ export async function submitContact(
           companyName: formData.get("companyName"),
           contactName: formData.get("contactName"),
           email: formData.get("email"),
+          source: rawSource,
           phone: formData.get("phone"),
           postalCode: formData.get("postalCode"),
           address: formData.get("address"),
@@ -212,6 +216,7 @@ export async function submitContact(
             companyName: formData.get("companyName"),
             contactName: formData.get("contactName"),
             email: formData.get("email"),
+            source: rawSource,
             phone: (formData.get("phone") as string) || undefined,
             customerToken: (formData.get("customerToken") as string) || undefined,
             oemCourse: (formData.get("oemCourse") as string) || "undecided",
@@ -227,6 +232,7 @@ export async function submitContact(
             companyName: formData.get("companyName"),
             contactName: formData.get("contactName"),
             email: formData.get("email"),
+            source: rawSource,
             phone: (formData.get("phone") as string) || undefined,
             customerToken: (formData.get("customerToken") as string) || undefined,
             message: formData.get("message"),
@@ -249,10 +255,17 @@ export async function submitContact(
   const directEndpoint = process.env.ORDER_SYSTEM_INGEST_URL;
   const timestamp = new Date().toISOString();
 
+  const sourcePrefix = data.source ? `[申込LP: ${data.source}]` : "";
+
   let outboundPayload =
     data.formType === "sample"
       ? {
           ...data,
+          notes: sourcePrefix
+            ? data.notes
+              ? `${sourcePrefix} ${data.notes}`
+              : sourcePrefix
+            : data.notes,
           sampleFlavors: data.sampleMode === "omakase" ? [] : data.sampleFlavors,
           sampleSummary: buildSampleSummary(data.sampleMode, data.sampleFlavors),
           timestamp,
@@ -269,6 +282,7 @@ export async function submitContact(
           }
         : {
             ...data,
+            message: sourcePrefix ? `${sourcePrefix}\n${data.message}` : data.message,
             timestamp,
           };
 
@@ -281,7 +295,12 @@ export async function submitContact(
     "sb_publishable_6OSjYRgADIH8kYj4Jsi66A_WzFxvIRD";
 
   if (data.formType === "oem" || data.formType === "inquiry") {
-    const readableMessage = data.formType === "oem" ? buildOemReadableMessage(data) : data.message;
+    const readableMessage =
+      data.formType === "oem"
+        ? buildOemReadableMessage(data)
+        : sourcePrefix
+          ? `${sourcePrefix}\n${data.message}`
+          : data.message;
     try {
       const supaRes = await fetch(`${SUPABASE_RPC_BASE}/submit_oem_from_lp`, {
         method: "POST",

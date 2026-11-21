@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SoyStories | 業務用プラントベース クラフトアイスクリーム",
     description:
-      "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。薬院のお店HappyCow 5.0・Google ★4.7（200件超）の実証済みクラフトアイスを、あなたのお店に。",
+      "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。薬院のお店HappyCow 5.0・Google ★4.7（250件以上）の実証済みクラフトアイスを、あなたのお店に。",
     type: "website",
     locale: "ja_JP",
     url: "https://soystories.cafe",
@@ -120,7 +120,7 @@ const jsonLd = {
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "5.0",
-        reviewCount: "200",
+        reviewCount: "250",
         bestRating: "5",
         worstRating: "1",
       },
@@ -156,7 +156,7 @@ const jsonLd = {
           name: "ヴィーガンでないお客様にも喜ばれますか？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "はい。薬院のお店では「こっちのアイスのほうが好き」とおっしゃるノンビーガンのお客様が多数いらっしゃいます。米粉を使った独自の製法で、植物性アイスにありがちなシャリシャリ感（シャーベット感）のない滑らかな舌触りとコクを実現しており、HappyCow 5.0・Googleレビュー200件超（★4.7）という評価がその証拠です。",
+            text: "はい。薬院のお店では「こっちのアイスのほうが好き」とおっしゃるノンビーガンのお客様が多数いらっしゃいます。米粉を使った独自の製法で、植物性アイスにありがちなシャリシャリ感（シャーベット感）のない滑らかな舌触りとコクを実現しており、HappyCow 5.0・Googleレビュー250件以上（★4.7）という評価がその証拠です。",
           },
         },
         {

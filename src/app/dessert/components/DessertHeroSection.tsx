@@ -2,7 +2,7 @@ import Image from "next/image";
 import { CtaButton } from "./ui";
 
 const trustStats = [
-  { value: "★4.7", label: "Googleの口コミ\n240件以上" },
+  { value: "★4.7", label: "Googleの口コミ\n250件以上" },
   { value: "5.0", label: "HappyCow\n海外の口コミ" },
   { value: "4L〜", label: "少量から\n注文できます" },
 ];
@@ -90,7 +90,7 @@ export default function DessertHeroSection() {
               私たちは福岡・薬院でヴィーガン＆グルテンフリーのスイーツだけを追求してきた専門店です。
             </p>
             <p>
-              ラーメンやバーガーなど自慢の料理に情熱を注ぐ飲食店様へ。食後のデザートは、アイス専門店の私たちが担います。
+              ラーメンやバーガーなど自慢の料理に情熱を注ぐ飲食店様へ。食後のデザートは、スイーツ専門店の私たちが担います。
             </p>
             <p>
               乳脂肪ゼロで油分が口に残らず、満足感ある食事の後でも最高にすっきり。ヴィーガンの方はもちろん、
