@@ -5,9 +5,9 @@ import WholesaleFlavorGrid, {
 } from "@/app/components/wholesale/WholesaleFlavorGrid";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
-/** 撮影後に画像パスを入れると自動で写真表示に切り替わる */
-const MIZUGASHI_FRUIT_PHOTO_SRC: string | null = null;
+/** 新規写真を撮影後、パスを設定すると該当カード上部に写真が表示される（未設定時は枠を出さない） */
 const SMALL_BOWL_PHOTO_SRC: string | null = null;
+const MIZUGASHI_FRUIT_PHOTO_SRC: string | null = null;
 
 const ryokanFlavorGroups: WholesaleFlavorGroup[] = [
   {
@@ -101,63 +101,106 @@ export default function RyokanFlavorsSection() {
           <WholesaleFlavorGrid groups={ryokanFlavorGroups} />
         </div>
 
-        {/* 季節の果物・水菓子に添える使い方 */}
+        {/* 季節の果物・水菓子に添える使い方＋実店舗での器盛り実写例 */}
         <div className="mt-12 rounded-3xl border border-stone-200/80 bg-[#f7f3ec] p-6 sm:p-8">
           <h3 className="text-ink font-serif text-xl font-bold sm:text-2xl">
             単体の一皿にも、季節の果物・水菓子の添えにも
           </h3>
           <p className="text-ink-light mt-2 font-sans text-sm leading-relaxed">
-            そのまま小鉢に盛るだけでなく、季節の果物や和甘味と合わせても献立になじみます。
+            そのまま小鉢に盛るだけでなく、季節の果物や和甘味・ゼリーと合わせても献立になじみます。
           </p>
 
-          <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-3">
-            <div className="flex flex-col rounded-2xl bg-white p-4 shadow-2xs">
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="flex flex-col rounded-2xl bg-white p-5 shadow-2xs">
               <PhotoSlot
                 src={SMALL_BOWL_PHOTO_SRC}
                 alt="会席の小鉢に抹茶アイスを盛り付けた例"
-                placeholderLabel="和の小鉢・豆皿に一皿として"
-                placeholderSub="抹茶・ほうじ茶・UMAMIバニラなど（実写撮影枠）"
                 aspectClassName="aspect-[4/3]"
+                wrapperClassName="mb-3.5"
               />
-              <h4 className="text-ink mt-3.5 font-serif text-base font-bold">会席の最後の甘味に</h4>
-              <p className="text-ink-light mt-1.5 font-sans text-xs leading-relaxed">
-                小鉢に50mlほど盛り付け、黒豆やきな粉、ミントを少し添えるだけで落ち着いた会席の甘味になります。
+              <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
+                会席の小鉢に
+              </span>
+              <h4 className="text-ink mt-3 font-serif text-base font-bold">
+                会席の最後の甘味として
+              </h4>
+              <p className="text-ink-light mt-2 font-sans text-xs leading-[1.8] sm:text-[13px]">
+                和の小鉢や豆皿に50mlほど盛り付け、黒豆やきな粉、ミントを少し添えるだけで落ち着いた締めくくりの一皿になります。
               </p>
             </div>
 
-            <div className="flex flex-col rounded-2xl bg-white p-4 shadow-2xs">
+            <div className="flex flex-col rounded-2xl bg-white p-5 shadow-2xs">
               <PhotoSlot
                 src={MIZUGASHI_FRUIT_PHOTO_SRC}
                 alt="季節の果物・水菓子にりんごやもものアイスを添えた例"
-                placeholderLabel="季節の果物・水菓子に添えて"
-                placeholderSub="梨・柿・苺などと合わせた水菓子（実写撮影枠）"
                 aspectClassName="aspect-[4/3]"
+                wrapperClassName="mb-3.5"
               />
-              <h4 className="text-ink mt-3.5 font-serif text-base font-bold">
+              <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
+                水菓子・果物と
+              </span>
+              <h4 className="text-ink mt-3 font-serif text-base font-bold">
                 季節の果物・水菓子に添えて
               </h4>
-              <p className="text-ink-light mt-1.5 font-sans text-xs leading-relaxed">
-                旬の果物やゼリー・コンポートの横に、りんご・もも・バニラを小さく添える水菓子仕立てにも合います。
+              <p className="text-ink-light mt-2 font-sans text-xs leading-[1.8] sm:text-[13px]">
+                柿・梨・苺など旬の果物やコンポートの横に、りんご・もも・バニラを小さく添える水菓子仕立てにも合います。
               </p>
             </div>
 
-            <div className="flex flex-col rounded-2xl bg-white p-4 shadow-2xs">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-stone-100">
+            <div className="flex flex-col rounded-2xl bg-white p-5 shadow-2xs">
+              <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
+                和甘味・洋コースに
+              </span>
+              <h4 className="text-ink mt-3 font-serif text-base font-bold">
+                最中・求肥やゼリーと合わせて
+              </h4>
+              <p className="text-ink-light mt-2 font-sans text-xs leading-[1.8] sm:text-[13px]">
+                最中皮・求肥と合わせた和甘味や、ガラス器で珈琲ゼリー・ジュレに添える洋コースのドルチェにもお使いいただけます。
+              </p>
+            </div>
+          </div>
+
+          {/* 薬院店での器盛り実写2点（和皿の最中・ガラス器のゼリー添え） */}
+          <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <figure className="flex items-center gap-4 rounded-2xl bg-white p-3.5 shadow-2xs">
+              <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-stone-100 sm:h-24 sm:w-28">
                 <Image
                   src="/images/serving/serving_monaka.jpg"
-                  alt="抹茶とほうじ茶のアイスを最中皮と求肥で挟んだ薬院店の提供例"
+                  alt="薬院店での提供例：抹茶・ほうじ茶アイス最中"
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="120px"
                   className="object-cover object-[center_70%]"
                 />
               </div>
-              <h4 className="text-ink mt-3.5 font-serif text-base font-bold">
-                最中・求肥と合わせた和甘味に
-              </h4>
-              <p className="text-ink-light mt-1.5 font-sans text-xs leading-relaxed">
-                最中皮や求肥（餅）と合わせた提供例（薬院店での実物写真）。お迎え菓子や特別なコースの一皿にも。
-              </p>
-            </div>
+              <figcaption>
+                <p className="text-brand font-sans text-[11px] font-bold">薬院店での盛り付け例</p>
+                <p className="text-ink mt-0.5 font-serif text-sm font-bold">抹茶アイス最中</p>
+                <p className="text-ink-muted mt-1 font-sans text-xs leading-relaxed">
+                  最中皮と求肥に挟み、和皿で提供する一皿
+                </p>
+              </figcaption>
+            </figure>
+
+            <figure className="flex items-center gap-4 rounded-2xl bg-white p-3.5 shadow-2xs">
+              <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-stone-100 sm:h-24 sm:w-28">
+                <Image
+                  src="/images/serving/serving_affogato.jpg"
+                  alt="薬院店での提供例：ココナッツバニラ＆コーヒーゼリー"
+                  fill
+                  sizes="120px"
+                  className="object-cover object-center"
+                />
+              </div>
+              <figcaption>
+                <p className="text-brand font-sans text-[11px] font-bold">薬院店での盛り付け例</p>
+                <p className="text-ink mt-0.5 font-serif text-sm font-bold">
+                  バニラ＆コーヒーゼリー
+                </p>
+                <p className="text-ink-muted mt-1 font-sans text-xs leading-relaxed">
+                  ガラス器にゼリーと合わせて盛るコースの甘味に
+                </p>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

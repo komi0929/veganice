@@ -1,8 +1,8 @@
 import PhotoSlot from "@/app/components/wholesale/PhotoSlot";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
-/** 撮影後に画像パス（例: "/images/cafe/hero_cake_plate.jpg"）を入れると自動で写真表示に切り替わる */
-const HERO_CAFE_PLATE_PHOTO_SRC: string | null = null;
+/** ケーキ・ワッフル横添えの皿盛り写真が撮れたらパスを差し替える（現在は実写「米粉ワッフルアイス」を表示） */
+const HERO_CAFE_PLATE_PHOTO_SRC: string | null = "/images/hero_flagship.jpg";
 
 const summaryPoints = [
   "卵・乳・小麦を持ち込まない専用工房",
@@ -64,14 +64,13 @@ export default function CafeHeroSection() {
           </div>
         </div>
 
-        {/* 写真（ケーキやワッフルの横に添えた写真：撮影後に差し替え） */}
+        {/* 写真（薬院店の実写「米粉ワッフルとクラフトアイス」） */}
         <div className="md:col-span-5">
           <PhotoSlot
             src={HERO_CAFE_PLATE_PHOTO_SRC}
-            alt="平皿のケーキやワッフルの横に添えたSoyStoriesの植物性クラフトアイス"
-            placeholderLabel="ケーキやワッフルの横に添えた一皿"
-            placeholderSub="カフェプレート盛り付けイメージ（実写撮影枠）"
+            alt="米粉ワッフルに盛り付けたSoyStoriesの抹茶とミックスベリーのクラフトアイス"
             aspectClassName="aspect-[16/9] md:aspect-[4/3]"
+            objectPositionClassName="object-cover object-[center_62%]"
             priority
           />
         </div>

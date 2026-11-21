@@ -2,7 +2,7 @@ import Image from "next/image";
 import PhotoSlot from "@/app/components/wholesale/PhotoSlot";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
-/** 撮影後に画像パスを入れると自動で写真表示に切り替わる */
+/** 新規写真を撮影後、パスを設定すると該当カード上部に写真が表示される（未設定時は枠を出さない） */
 const BAKED_SWEETS_SIDE_PHOTO_SRC: string | null = null;
 const PARFAIT_PHOTO_SRC: string | null = null;
 
@@ -76,16 +76,18 @@ export default function CafeServingSection() {
         </div>
 
         {/* フロート・パフェ・アフォガート・焼き菓子に添える使い方 */}
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="flex flex-col rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
             <PhotoSlot
               src={BAKED_SWEETS_SIDE_PHOTO_SRC}
               alt="焼き菓子やタルトの横にバニラアイスを添えたプレート"
-              placeholderLabel="ケーキ・タルト・焼き菓子に添えて"
-              placeholderSub="パウンドケーキ・ガトーショコラ・ワッフル等の横に（実写撮影枠）"
               aspectClassName="aspect-[16/9]"
+              wrapperClassName="mb-4"
             />
-            <h3 className="text-ink mt-4 font-serif text-lg font-bold">焼き菓子に添える</h3>
+            <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
+              ケーキ・焼き菓子の皿盛りに
+            </span>
+            <h3 className="text-ink mt-3 font-serif text-lg font-bold">焼き菓子に添える</h3>
             <p className="text-ink-light mt-2 font-sans text-sm leading-[1.8]">
               ガトーショコラ、タルト、シフォン、パウンドケーキ、スコーン、パンケーキ、ワッフルの横に。温かい焼き菓子に冷たいバニラやアールグレイを添えるデザートプレートに。
             </p>
@@ -95,18 +97,20 @@ export default function CafeServingSection() {
             <PhotoSlot
               src={PARFAIT_PHOTO_SRC}
               alt="季節の果物とグラノーラに重ねたグラスパフェ"
-              placeholderLabel="季節のパフェに重ねて"
-              placeholderSub="グラスパフェの上段・中段のベースとして（実写撮影枠）"
               aspectClassName="aspect-[16/9]"
+              wrapperClassName="mb-4"
             />
-            <h3 className="text-ink mt-4 font-serif text-lg font-bold">パフェに重ねる</h3>
+            <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
+              季節のグラスデザートに
+            </span>
+            <h3 className="text-ink mt-3 font-serif text-lg font-bold">パフェに重ねる</h3>
             <p className="text-ink-light mt-2 font-sans text-sm leading-[1.8]">
               旬の果物やグラノーラ、ゼリーと重ねる季節のパフェに。米粉の独自製法でシャリシャリ感がなく、冷凍庫の出し入れを繰り返しても滑らかな舌触りが続きます。
             </p>
           </div>
 
-          <div className="rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
-            <span className="bg-brand/10 text-brand inline-block rounded-full px-3 py-1 font-sans text-xs font-bold">
+          <div className="flex flex-col rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
+            <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
               ドリンクメニューに
             </span>
             <h3 className="text-ink mt-3 font-serif text-lg font-bold">フロートにする</h3>
@@ -115,8 +119,8 @@ export default function CafeServingSection() {
             </p>
           </div>
 
-          <div className="rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
-            <span className="bg-brand/10 text-brand inline-block rounded-full px-3 py-1 font-sans text-xs font-bold">
+          <div className="flex flex-col rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
+            <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
               エスプレッソ・日本茶と
             </span>
             <h3 className="text-ink mt-3 font-serif text-lg font-bold">アフォガートにする</h3>

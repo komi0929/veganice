@@ -1,8 +1,8 @@
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import PhotoSlot from "@/app/components/wholesale/PhotoSlot";
 
-/** 撮影後に画像パス（例: "/images/ryokan/hero_kaiseki.jpg"）を入れると自動で写真表示に切り替わる */
-const HERO_KAISEKI_PHOTO_SRC: string | null = null;
+/** 和の小鉢の写真が撮れたらパスを差し替える（現在は薬院店の実写「抹茶アイス最中」を表示） */
+const HERO_KAISEKI_PHOTO_SRC: string | null = "/images/serving/serving_monaka.jpg";
 
 const summaryPoints = [
   {
@@ -79,14 +79,13 @@ export default function RyokanHeroSection() {
           </div>
         </div>
 
-        {/* 写真（和の器に小さく盛ったアイス：撮影後に差し替え） */}
+        {/* 写真（薬院店の実写「抹茶・ほうじ茶アイス最中」） */}
         <div className="md:col-span-5">
           <PhotoSlot
             src={HERO_KAISEKI_PHOTO_SRC}
-            alt="和の小鉢に小さく盛り付けたSoyStoriesの植物性クラフトアイス"
-            placeholderLabel="和の器に小さく盛ったアイス（約50ml）"
-            placeholderSub="会席・水菓子の一皿イメージ（実写撮影枠）"
+            alt="和の黒皿に盛り付けたSoyStoriesの抹茶・ほうじ茶クラフトアイス最中"
             aspectClassName="aspect-[16/9] md:aspect-[4/3]"
+            objectPositionClassName="object-cover object-[center_72%]"
             priority
           />
         </div>
