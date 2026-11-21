@@ -1,3 +1,4 @@
+import WholesaleMidCta from "@/app/components/wholesale/WholesaleMidCta";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 const termsRows = [
@@ -13,7 +14,7 @@ const termsRows = [
   { label: "不使用素材", value: WHOLESALE_FACTS.freeFromAdditivesAndWhiteSugar },
 ] as const;
 
-export default function RyokanTermsSection() {
+export default function HotelTermsSection() {
   return (
     <section id="terms" className="bg-[#f7f3ec] py-16 sm:py-24">
       <div className="mx-auto max-w-4xl px-6">
@@ -41,6 +42,8 @@ export default function RyokanTermsSection() {
             ))}
           </dl>
         </div>
+
+        <WholesaleMidCta lead="まずは1回、無料の試食サンプル（6個）で味と厨房での扱いやすさをお確かめください。" />
       </div>
     </section>
   );

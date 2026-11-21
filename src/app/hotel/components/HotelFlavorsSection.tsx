@@ -3,13 +3,14 @@ import PhotoSlot from "@/app/components/wholesale/PhotoSlot";
 import WholesaleFlavorGrid, {
   type WholesaleFlavorGroup,
 } from "@/app/components/wholesale/WholesaleFlavorGrid";
+import WholesaleMidCta from "@/app/components/wholesale/WholesaleMidCta";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 /** 新規写真を撮影後、パスを設定すると該当カード上部に写真が表示される（未設定時は枠を出さない） */
 const SMALL_BOWL_PHOTO_SRC: string | null = null;
 const MIZUGASHI_FRUIT_PHOTO_SRC: string | null = null;
 
-const ryokanFlavorGroups: WholesaleFlavorGroup[] = [
+const hotelFlavorGroups: WholesaleFlavorGroup[] = [
   {
     title: "和の献立に（5種）",
     subtitle:
@@ -45,7 +46,7 @@ const ryokanFlavorGroups: WholesaleFlavorGroup[] = [
   },
   {
     title: "洋のコース・朝食に（6種）",
-    subtitle: "オーベルジュや洋食コースのドルチェ、ケーキ・果物への添え盛り、朝食ビュッフェに",
+    subtitle: "ホテルやオーベルジュのコースドルチェ、ケーキ・果物への添え盛り、朝食ビュッフェに",
     items: [
       {
         displayName: "バニラ",
@@ -81,7 +82,7 @@ const ryokanFlavorGroups: WholesaleFlavorGroup[] = [
   },
 ];
 
-export default function RyokanFlavorsSection() {
+export default function HotelFlavorsSection() {
   return (
     <section id="flavors" className="bg-bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -94,20 +95,20 @@ export default function RyokanFlavorsSection() {
         </h2>
         <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
           {WHOLESALE_FACTS.price}。{WHOLESALE_FACTS.minLot}
-          （1L×4個・2L×2個など）。各カードを押すと、献立表・アレルギー確認にそのまま使える原材料名と栄養成分をご確認いただけます。
+          （1L×4個・2L×2個など）。各カードの「原材料・栄養を見る」を押すと、アレルギー確認・献立作成にそのまま使える全原材料名をご確認いただけます。
         </p>
 
         <div className="mt-8">
-          <WholesaleFlavorGrid groups={ryokanFlavorGroups} />
+          <WholesaleFlavorGrid groups={hotelFlavorGroups} />
         </div>
 
-        {/* 季節の果物・水菓子に添える使い方＋実店舗での器盛り実写例 */}
+        {/* 季節の果物・水菓子・ドルチェでの使い方 */}
         <div className="mt-12 rounded-3xl border border-stone-200/80 bg-[#f7f3ec] p-6 sm:p-8">
           <h3 className="text-ink font-serif text-xl font-bold sm:text-2xl">
-            単体の一皿にも、季節の果物・水菓子の添えにも
+            単体の一皿にも、ケーキや季節の果物への添えにも
           </h3>
           <p className="text-ink-light mt-2 font-sans text-sm leading-relaxed">
-            そのまま小鉢に盛るだけでなく、季節の果物や和甘味・ゼリーと合わせても献立になじみます。
+            そのまま器に盛るだけでなく、コースのデザート皿の添えや水菓子としても幅広くお使いいただけます。
           </p>
 
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -119,7 +120,7 @@ export default function RyokanFlavorsSection() {
                 wrapperClassName="mb-3.5"
               />
               <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-                会席の小鉢に
+                会席・和食に
               </span>
               <h4 className="text-ink mt-3 font-serif text-base font-bold">
                 会席の最後の甘味として
@@ -137,13 +138,13 @@ export default function RyokanFlavorsSection() {
                 wrapperClassName="mb-3.5"
               />
               <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-                水菓子・果物と
+                水菓子・ドルチェ添えに
               </span>
               <h4 className="text-ink mt-3 font-serif text-base font-bold">
-                季節の果物・水菓子に添えて
+                季節の果物やケーキに添えて
               </h4>
               <p className="text-ink-light mt-2 font-sans text-xs leading-[1.8] sm:text-[13px]">
-                柿・梨・苺など旬の果物やコンポートの横に、りんご・もも・バニラを小さく添える水菓子仕立てにも合います。
+                旬の果物・コンポートの横にりんごやももを添える水菓子や、ホテルのガトー・タルトにバニラやアールグレイを添えるアシェットデセールに。
               </p>
             </div>
 
@@ -152,35 +153,16 @@ export default function RyokanFlavorsSection() {
                 和甘味・洋コースに
               </span>
               <h4 className="text-ink mt-3 font-serif text-base font-bold">
-                最中・求肥やゼリーと合わせて
+                最中・求肥やジュレと合わせて
               </h4>
               <p className="text-ink-light mt-2 font-sans text-xs leading-[1.8] sm:text-[13px]">
-                最中皮・求肥と合わせた和甘味や、ガラス器で珈琲ゼリー・ジュレに添える洋コースのドルチェにもお使いいただけます。
+                最中皮・求肥と合わせた和甘味や、ガラス器で珈琲ゼリー・ジュレに重ねるコースの締めくくりにもそのまま馴染みます。
               </p>
             </div>
           </div>
 
-          {/* 薬院店での器盛り実写2点（和皿の最中・ガラス器のゼリー添え） */}
+          {/* 薬院店での器盛り実写2点 */}
           <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <figure className="flex items-center gap-4 rounded-2xl bg-white p-3.5 shadow-2xs">
-              <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-stone-100 sm:h-24 sm:w-28">
-                <Image
-                  src="/images/serving/serving_monaka.jpg"
-                  alt="薬院店での提供例：抹茶・ほうじ茶アイス最中"
-                  fill
-                  sizes="120px"
-                  className="object-cover object-[center_70%]"
-                />
-              </div>
-              <figcaption>
-                <p className="text-brand font-sans text-[11px] font-bold">薬院店での盛り付け例</p>
-                <p className="text-ink mt-0.5 font-serif text-sm font-bold">抹茶アイス最中</p>
-                <p className="text-ink-muted mt-1 font-sans text-xs leading-relaxed">
-                  最中皮と求肥に挟み、和皿で提供する一皿
-                </p>
-              </figcaption>
-            </figure>
-
             <figure className="flex items-center gap-4 rounded-2xl bg-white p-3.5 shadow-2xs">
               <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-stone-100 sm:h-24 sm:w-28">
                 <Image
@@ -197,12 +179,33 @@ export default function RyokanFlavorsSection() {
                   バニラ＆コーヒーゼリー
                 </p>
                 <p className="text-ink-muted mt-1 font-sans text-xs leading-relaxed">
-                  ガラス器にゼリーと合わせて盛るコースの甘味に
+                  ガラス器にゼリーと合わせて盛る洋コース・夕食の甘味に
+                </p>
+              </figcaption>
+            </figure>
+
+            <figure className="flex items-center gap-4 rounded-2xl bg-white p-3.5 shadow-2xs">
+              <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-stone-100 sm:h-24 sm:w-28">
+                <Image
+                  src="/images/serving/serving_monaka.jpg"
+                  alt="薬院店での提供例：抹茶・ほうじ茶アイス最中"
+                  fill
+                  sizes="120px"
+                  className="object-cover object-[center_70%]"
+                />
+              </div>
+              <figcaption>
+                <p className="text-brand font-sans text-[11px] font-bold">薬院店での盛り付け例</p>
+                <p className="text-ink mt-0.5 font-serif text-sm font-bold">抹茶アイス最中</p>
+                <p className="text-ink-muted mt-1 font-sans text-xs leading-relaxed">
+                  最中皮と求肥に挟み、和皿でお出しする一皿に
                 </p>
               </figcaption>
             </figure>
           </div>
         </div>
+
+        <WholesaleMidCta lead="献立に合う味と滑らかな口どけを、まずは6個の無料試食サンプルで厨房にてお確かめください。" />
       </div>
     </section>
   );

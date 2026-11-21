@@ -1,6 +1,7 @@
 import WholesaleFlavorGrid, {
   type WholesaleFlavorGroup,
 } from "@/app/components/wholesale/WholesaleFlavorGrid";
+import WholesaleMidCta from "@/app/components/wholesale/WholesaleMidCta";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 const cafeFlavorGroups: WholesaleFlavorGroup[] = [
@@ -94,6 +95,8 @@ export default function CafeFlavorsSection() {
         <div className="mt-8">
           <WholesaleFlavorGrid groups={cafeFlavorGroups} />
         </div>
+
+        <WholesaleMidCta lead="お店の焼き菓子やドリンクとの相性を、まずは6個の無料試食サンプルでお確かめください。" />
       </div>
     </section>
   );

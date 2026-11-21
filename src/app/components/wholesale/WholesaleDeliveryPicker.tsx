@@ -33,7 +33,7 @@ export default function WholesaleDeliveryPicker({
   };
 
   return (
-    <div className="space-y-4 rounded-xl border border-gray-100 bg-[#fafaf8] p-4 sm:p-5">
+    <div className="space-y-3 rounded-xl border border-gray-100 bg-[#fafaf8] p-3.5 sm:p-4">
       <input type="hidden" name="receiveDays" value={selectedDays.join(",")} />
       <input type="hidden" name="receiveSlots" value={selectedSlots.join(",")} />
 
@@ -44,14 +44,14 @@ export default function WholesaleDeliveryPicker({
             任意
           </span>
         </div>
-        <p className="text-ink-light mt-1 font-sans text-xs leading-relaxed">{description}</p>
+        <p className="text-ink-light mt-0.5 font-sans text-xs leading-relaxed">{description}</p>
       </div>
 
       <div>
-        <span className="text-ink-muted block font-sans text-xs font-medium">
+        <span className="text-ink-muted block font-sans text-[11px] font-medium">
           受け取りやすい曜日
         </span>
-        <div className="mt-2 flex flex-wrap gap-2 sm:gap-2.5">
+        <div className="mt-1.5 grid grid-cols-7 gap-1 sm:flex sm:flex-wrap sm:gap-2">
           {RECEIVE_DAYS.map((day) => {
             const isSelected = selectedDays.includes(day);
             return (
@@ -62,7 +62,7 @@ export default function WholesaleDeliveryPicker({
                 onClick={() => toggleDay(day)}
                 aria-pressed={isSelected}
                 aria-label={`${day}曜日`}
-                className={`flex h-11 w-11 cursor-pointer items-center justify-center rounded-full font-sans text-sm font-bold transition-all disabled:cursor-not-allowed disabled:opacity-50 ${
+                className={`flex h-9 w-full cursor-pointer items-center justify-center rounded-full font-sans text-xs font-bold transition-all disabled:cursor-not-allowed disabled:opacity-50 sm:h-10 sm:w-10 sm:text-sm ${
                   isSelected
                     ? "bg-brand text-white shadow-2xs"
                     : "text-ink border border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50"
@@ -76,10 +76,10 @@ export default function WholesaleDeliveryPicker({
       </div>
 
       <div>
-        <span className="text-ink-muted block font-sans text-xs font-medium">
+        <span className="text-ink-muted block font-sans text-[11px] font-medium">
           受け取りやすい時間帯
         </span>
-        <div className="mt-2 flex flex-wrap gap-2">
+        <div className="mt-1.5 flex flex-wrap gap-1.5">
           {RECEIVE_SLOTS.map((slot) => {
             const isSelected = selectedSlots.includes(slot.value);
             return (
@@ -89,7 +89,7 @@ export default function WholesaleDeliveryPicker({
                 disabled={disabled}
                 onClick={() => toggleSlot(slot.value)}
                 aria-pressed={isSelected}
-                className={`min-h-[42px] cursor-pointer rounded-xl px-3.5 py-2 font-sans text-xs font-bold transition-all disabled:cursor-not-allowed disabled:opacity-50 sm:text-sm ${
+                className={`min-h-[38px] cursor-pointer rounded-xl px-3 py-1.5 font-sans text-xs font-bold transition-all disabled:cursor-not-allowed disabled:opacity-50 ${
                   isSelected
                     ? "bg-brand text-white shadow-2xs"
                     : "text-ink border border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50"
@@ -103,7 +103,10 @@ export default function WholesaleDeliveryPicker({
       </div>
 
       <div>
-        <label htmlFor="receiveNote" className="text-ink-muted block font-sans text-xs font-medium">
+        <label
+          htmlFor="receiveNote"
+          className="text-ink-muted block font-sans text-[11px] font-medium"
+        >
           受け取りのメモ
         </label>
         <input
@@ -115,7 +118,7 @@ export default function WholesaleDeliveryPicker({
           value={note}
           onChange={(e) => setNote(e.target.value)}
           placeholder={notePlaceholder}
-          className="text-ink focus:border-brand focus:ring-brand mt-1.5 w-full rounded-lg border border-gray-200 bg-white px-3.5 py-2.5 font-sans text-sm transition-shadow placeholder:text-gray-300 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+          className="text-ink focus:border-brand focus:ring-brand mt-1 w-full rounded-lg border border-gray-200 bg-white px-3 py-2 font-sans text-sm transition-shadow placeholder:text-gray-300 focus:ring-1 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
     </div>

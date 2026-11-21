@@ -1,4 +1,5 @@
 import Image from "next/image";
+import WholesaleMidCta from "@/app/components/wholesale/WholesaleMidCta";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 const termsRows = [
@@ -80,6 +81,8 @@ export default function CafeTermsSection() {
             </div>
           </div>
         </div>
+
+        <WholesaleMidCta lead="まずは1回、無料の試食サンプル（6個）で滑らかな口どけと素材の香りをお確かめください。" />
       </div>
     </section>
   );

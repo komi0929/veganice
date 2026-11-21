@@ -1,14 +1,14 @@
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
-interface RyokanFAQItem {
+interface HotelFAQItem {
   q: string;
   a: string;
 }
 
-const ryokanFaqs: RyokanFAQItem[] = [
+const hotelFaqs: HotelFAQItem[] = [
   {
-    q: "献立表やアレルギー表にどう書けばよいですか？（原材料とアレルゲンの見方）",
-    a: `お品書きには「植物性クラフトアイス（乳・卵・小麦不使用）」などと記載いただけます。${WHOLESALE_FACTS.allergen}。味ごとの詳しい原材料名・対象アレルゲン・栄養成分は、上の「会席・コースに合う味」の各カードにある「原材料・栄養を見る」ボタンから一覧でご確認いただけます。`,
+    q: "献立表・メニューやアレルギー表にどう書けばよいですか？（原材料とアレルゲンの見方）",
+    a: `お品書きやメニュー表には「植物性クラフトアイス（乳・卵・小麦不使用）」などと記載いただけます。${WHOLESALE_FACTS.allergen}。味ごとの詳しい原材料名・対象アレルゲン・栄養成分は、上の「会席・コースに合う味」の各カードにある「原材料・栄養を見る」ボタンから一覧でご確認いただけます。`,
   },
   {
     q: "ナッツのアレルギーの方には出せますか？",
@@ -28,7 +28,7 @@ const ryokanFaqs: RyokanFAQItem[] = [
   },
 ];
 
-export default function RyokanFAQSection() {
+export default function HotelFAQSection() {
   return (
     <section id="faq" className="bg-bg-white py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-6">
@@ -41,7 +41,7 @@ export default function RyokanFAQSection() {
         </h2>
 
         <div className="mt-8 space-y-3">
-          {ryokanFaqs.map((faq) => (
+          {hotelFaqs.map((faq) => (
             <details
               key={faq.q}
               className="group rounded-2xl border border-stone-200/80 bg-[#fafaf8] open:bg-white open:shadow-2xs"

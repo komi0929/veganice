@@ -1,9 +1,19 @@
 import Image from "next/image";
 import WholesaleContactCard from "@/app/components/wholesale/WholesaleContactCard";
+import type { SampleFlavorName } from "@/app/components/SampleFlavorPicker";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
+const CAFE_PRESET_FLAVORS: readonly SampleFlavorName[] = [
+  "バニラ",
+  "UMAMIバニラ",
+  "アールグレイ",
+  "抹茶",
+  "マンゴー",
+  "ミックスベリー",
+];
+
 const steps = [
-  { title: "フォームまたはLINEから申し込む", note: "約1分で入力完了" },
+  { title: "フォームまたはLINEから申し込む", note: "約1分で入力完了（おすすめ6種は選択済み）" },
   {
     title: "お店のケーキやドリンクと合わせてご試食",
     note: "焼き菓子・ワッフルへの添え盛りや、フロート・アフォガートの相性を確認",
@@ -46,7 +56,7 @@ export default function CafeSampleSection() {
                 {WHOLESALE_FACTS.sampleTerms}
               </p>
               <p className="text-ink-muted mt-2 font-sans text-xs leading-relaxed">
-                ※事前の購入義務やしつこい営業連絡は一切ございません。
+                ※事前の購入義務やお申し込み後の電話営業は一切ございません。
               </p>
             </div>
           </div>
@@ -107,6 +117,9 @@ export default function CafeSampleSection() {
             notesLabel="備考（お店の業態・合わせたいお菓子やドリンクなど）"
             notesPlaceholder="例：米粉ケーキやワッフルの横に添えるアイス、ソーダフロートとして試したいです。"
             inquiryPlaceholder="お取引条件やロット、メニューへの添え方のご相談など、お気軽にご記入ください。"
+            presetTitle="おすすめ6種"
+            presetDescription="焼き菓子への添え盛りとフロートで人気の定番6種をお届けします（バニラ・UMAMIバニラ・アールグレイ・抹茶・マンゴー・ミックスベリー 各1個）"
+            presetFlavors={CAFE_PRESET_FLAVORS}
           />
         </div>
       </div>

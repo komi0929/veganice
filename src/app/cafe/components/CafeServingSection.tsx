@@ -6,6 +6,13 @@ import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 const BAKED_SWEETS_SIDE_PHOTO_SRC: string | null = null;
 const PARFAIT_PHOTO_SRC: string | null = null;
 
+const cafeScenes = [
+  "ケーキ・タルト・焼菓子の横に",
+  "ワッフル・パンケーキ添え",
+  "ランチ後のミニデザート",
+  "ソーダ・珈琲フロート・パフェ",
+] as const;
+
 const flagshipExamples = [
   {
     image: "/images/serving/serving_float.jpg",
@@ -33,6 +40,17 @@ export default function CafeServingSection() {
   return (
     <section id="serving" className="bg-[#f7f3ec] py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
+        <div className="mb-7 flex flex-wrap gap-2">
+          {cafeScenes.map((scene) => (
+            <span
+              key={scene}
+              className="text-ink rounded-full border border-stone-300/70 bg-white px-3.5 py-1 font-sans text-xs font-medium shadow-2xs"
+            >
+              {scene}
+            </span>
+          ))}
+        </div>
+
         <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
           <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
           添える使い方
@@ -42,7 +60,7 @@ export default function CafeServingSection() {
         </h2>
         <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
           1Lあたり50mlなら約20杯（1杯 約100円・税別）、80mlなら約12杯（1杯
-          約167円・税別）。自家製の焼き菓子やドリンクにそのまま添えられます。
+          約167円・税別）。自家製の焼き菓子やドリンク、ランチプレートの食後にそのまま添えられます。
         </p>
 
         {/* 先頭：薬院店の実物提供例4点 */}
@@ -75,7 +93,7 @@ export default function CafeServingSection() {
           </div>
         </div>
 
-        {/* フロート・パフェ・アフォガート・焼き菓子に添える使い方 */}
+        {/* フロート・パフェ・アフォガート・焼き菓子・ランチ食後に添える使い方 */}
         <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="flex flex-col rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
             <PhotoSlot
@@ -87,7 +105,9 @@ export default function CafeServingSection() {
             <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
               ケーキ・焼き菓子の皿盛りに
             </span>
-            <h3 className="text-ink mt-3 font-serif text-lg font-bold">焼き菓子に添える</h3>
+            <h3 className="text-ink mt-3 font-serif text-lg font-bold">
+              焼き菓子・ワッフルに添える
+            </h3>
             <p className="text-ink-light mt-2 font-sans text-sm leading-[1.8]">
               ガトーショコラ、タルト、シフォン、パウンドケーキ、スコーン、パンケーキ、ワッフルの横に。温かい焼き菓子に冷たいバニラやアールグレイを添えるデザートプレートに。
             </p>
@@ -101,11 +121,13 @@ export default function CafeServingSection() {
               wrapperClassName="mb-4"
             />
             <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-              季節のグラスデザートに
+              季節のパフェ・アフォガートに
             </span>
-            <h3 className="text-ink mt-3 font-serif text-lg font-bold">パフェに重ねる</h3>
+            <h3 className="text-ink mt-3 font-serif text-lg font-bold">
+              パフェやアフォガートに仕立てる
+            </h3>
             <p className="text-ink-light mt-2 font-sans text-sm leading-[1.8]">
-              旬の果物やグラノーラ、ゼリーと重ねる季節のパフェに。米粉の独自製法でシャリシャリ感がなく、冷凍庫の出し入れを繰り返しても滑らかな舌触りが続きます。
+              旬の果物やグラノーラと重ねる季節のパフェや、熱々のエスプレッソ・濃い抹茶を注ぐアフォガートに。白味噌や甘酒の深いコクが珈琲の苦みを引き立て、出し入れしても滑らかさが続きます。
             </p>
           </div>
 
@@ -121,11 +143,14 @@ export default function CafeServingSection() {
 
           <div className="flex flex-col rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
             <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-              エスプレッソ・日本茶と
+              カフェランチの締めくくりに
             </span>
-            <h3 className="text-ink mt-3 font-serif text-lg font-bold">アフォガートにする</h3>
+            <h3 className="text-ink mt-3 font-serif text-lg font-bold">
+              ランチの食後デザートに出す
+            </h3>
             <p className="text-ink-light mt-2 font-sans text-sm leading-[1.8]">
-              バニラやUMAMIバニラに、お店自慢のエスプレッソや濃いめに点てた抹茶・ほうじ茶を熱々で注いで。白味噌や甘酒がもたらす深いコクが、珈琲やお茶の苦みを引き立てます。
+              プレートランチやパスタ・カレーの食後に小さな一皿（約50ml＝原価
+              約100円・税別）として。乳脂肪ゼロで食後も軽やかに食べきれ、冷凍保管のため平日のロスも出ません。
             </p>
           </div>
         </div>

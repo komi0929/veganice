@@ -1,10 +1,18 @@
 "use client";
 
-import { useActionState, useState, useSyncExternalStore, type ReactNode } from "react";
+import {
+  useActionState,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ChangeEvent,
+  type ReactNode,
+} from "react";
 import { submitContact, type ContactState } from "@/app/actions/contact";
-import SampleFlavorPicker from "@/app/components/SampleFlavorPicker";
+import type { SampleFlavorName } from "@/app/components/SampleFlavorPicker";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import WholesaleDeliveryPicker from "./WholesaleDeliveryPicker";
+import WholesaleSamplePicker from "./WholesaleSamplePicker";
 
 const initialState: ContactState = {
   success: false,
@@ -14,7 +22,7 @@ const initialState: ContactState = {
 type FormTab = "sample" | "inquiry";
 
 const inputClasses =
-  "w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 font-sans text-base text-ink placeholder:text-gray-300 transition-shadow focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
+  "w-full rounded-xl border border-gray-200 bg-white px-4 py-3 font-sans text-base text-ink placeholder:text-gray-300 transition-shadow focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
 const errorClasses = "border-red-300 focus:border-red-500 focus:ring-red-500";
 
 interface FieldProps {
@@ -22,10 +30,11 @@ interface FieldProps {
   label: string;
   required?: boolean;
   error?: string[];
+  hint?: string;
   children: ReactNode;
 }
 
-function Field({ id, label, required = false, error, children }: FieldProps) {
+function Field({ id, label, required = false, error, hint, children }: FieldProps) {
   return (
     <div>
       <label
@@ -39,8 +48,9 @@ function Field({ id, label, required = false, error, children }: FieldProps) {
           <span className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] text-gray-500">任意</span>
         )}
       </label>
+      {hint ? <p className="text-ink-muted mb-1.5 font-sans text-xs">{hint}</p> : null}
       {children}
-      {error && <p className="mt-1 font-sans text-xs text-red-500">{error[0]}</p>}
+      {error ? <p className="mt-1 font-sans text-xs text-red-500">{error[0]}</p> : null}
     </div>
   );
 }
@@ -53,8 +63,12 @@ function LineIcon() {
   );
 }
 
+const emptySubscribe = () => () => {};
+const getLocationSearchSnapshot = () => window.location.search;
+const getServerLocationSearchSnapshot = () => "";
+
 export interface WholesaleContactCardProps {
-  source: "ryokan" | "cafe";
+  source: "hotel" | "cafe";
   companyLabel: string;
   companyPlaceholder: string;
   contactNameLabel?: string;
@@ -65,11 +79,10 @@ export interface WholesaleContactCardProps {
   notesLabel: string;
   notesPlaceholder: string;
   inquiryPlaceholder: string;
+  presetTitle: string;
+  presetDescription: string;
+  presetFlavors: readonly SampleFlavorName[];
 }
-
-const emptySubscribe = () => () => {};
-const getCustomerTokenSnapshot = () => new URLSearchParams(window.location.search).get("c") ?? "";
-const getServerCustomerTokenSnapshot = () => "";
 
 export default function WholesaleContactCard({
   source,
@@ -83,14 +96,47 @@ export default function WholesaleContactCard({
   notesLabel,
   notesPlaceholder,
   inquiryPlaceholder,
+  presetTitle,
+  presetDescription,
+  presetFlavors,
 }: WholesaleContactCardProps) {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
   const [activeTab, setActiveTab] = useState<FormTab>("sample");
-  const customerToken = useSyncExternalStore(
+  const addressInputRef = useRef<HTMLInputElement>(null);
+  const lastLookedUpZip = useRef<string>("");
+
+  const searchString = useSyncExternalStore(
     emptySubscribe,
-    getCustomerTokenSnapshot,
-    getServerCustomerTokenSnapshot
+    getLocationSearchSnapshot,
+    getServerLocationSearchSnapshot
   );
+  const queryParams = new URLSearchParams(searchString);
+  const customerToken = queryParams.get("c") ?? "";
+  const prefillStore = queryParams.get("store") ?? "";
+  const prefillName = queryParams.get("name") ?? "";
+  const prefillEmail = queryParams.get("email") ?? "";
+  const prefillPhone = queryParams.get("phone") ?? "";
+
+  const handlePostalCodeChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const digits = e.target.value.replace(/[^\d]/g, "");
+    if (digits.length !== 7 || digits === lastLookedUpZip.current) return;
+    lastLookedUpZip.current = digits;
+
+    try {
+      const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${digits}`);
+      if (!res.ok) return;
+      const json = (await res.json()) as {
+        results?: { address1: string; address2: string; address3: string }[] | null;
+      };
+      const hit = json.results?.[0];
+      if (!hit || !addressInputRef.current) return;
+      if (!addressInputRef.current.value.trim()) {
+        addressInputRef.current.value = `${hit.address1}${hit.address2}${hit.address3}`;
+      }
+    } catch {
+      // ネットワーク制限環境等では手動入力のまま継続
+    }
+  };
 
   if (state.success) {
     return (
@@ -136,22 +182,28 @@ export default function WholesaleContactCard({
         </button>
       </div>
 
-      <form action={formAction} aria-label="お問い合わせフォーム" className="mt-6 space-y-5">
+      <form
+        key={searchString || "default"}
+        action={formAction}
+        aria-label="お問い合わせフォーム"
+        className="mt-5 space-y-4"
+      >
         <input type="hidden" name="formType" value={activeTab} />
         <input type="hidden" name="source" value={source} />
-        {customerToken && <input type="hidden" name="customerToken" value={customerToken} />}
+        {customerToken ? <input type="hidden" name="customerToken" value={customerToken} /> : null}
 
-        {state.message && !state.success && (
+        {state.message && !state.success ? (
           <div className="rounded-xl bg-red-50 p-4 font-sans text-sm text-red-600">
             {state.message}
           </div>
-        )}
+        ) : null}
 
         <Field id="companyName" label={companyLabel} required error={state.errors?.companyName}>
           <input
             type="text"
             id="companyName"
             name="companyName"
+            defaultValue={prefillStore}
             autoComplete="organization"
             disabled={isPending}
             className={`${inputClasses} ${state.errors?.companyName ? errorClasses : ""}`}
@@ -159,23 +211,51 @@ export default function WholesaleContactCard({
           />
         </Field>
 
-        <Field id="contactName" label={contactNameLabel} required error={state.errors?.contactName}>
-          <input
-            type="text"
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <Field
             id="contactName"
-            name="contactName"
-            autoComplete="name"
-            disabled={isPending}
-            className={`${inputClasses} ${state.errors?.contactName ? errorClasses : ""}`}
-            placeholder="山田 太郎"
-          />
-        </Field>
+            label={contactNameLabel}
+            required
+            error={state.errors?.contactName}
+          >
+            <input
+              type="text"
+              id="contactName"
+              name="contactName"
+              defaultValue={prefillName}
+              autoComplete="name"
+              disabled={isPending}
+              className={`${inputClasses} ${state.errors?.contactName ? errorClasses : ""}`}
+              placeholder="山田 太郎"
+            />
+          </Field>
+
+          <Field
+            id="phone"
+            label="電話番号"
+            required={activeTab === "sample"}
+            error={state.errors?.phone}
+          >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              defaultValue={prefillPhone}
+              autoComplete="tel"
+              inputMode="tel"
+              disabled={isPending}
+              className={`${inputClasses} ${state.errors?.phone ? errorClasses : ""}`}
+              placeholder="092-231-0677"
+            />
+          </Field>
+        </div>
 
         <Field id="email" label="メールアドレス" required error={state.errors?.email}>
           <input
             type="email"
             id="email"
             name="email"
+            defaultValue={prefillEmail}
             autoComplete="email"
             inputMode="email"
             disabled={isPending}
@@ -184,50 +264,44 @@ export default function WholesaleContactCard({
           />
         </Field>
 
-        <Field
-          id="phone"
-          label="電話番号"
-          required={activeTab === "sample"}
-          error={state.errors?.phone}
-        >
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            autoComplete="tel"
-            inputMode="tel"
-            disabled={isPending}
-            className={`${inputClasses} ${state.errors?.phone ? errorClasses : ""}`}
-            placeholder="092-231-0677"
-          />
-        </Field>
-
-        {activeTab === "sample" && (
+        {activeTab === "sample" ? (
           <>
-            <Field id="postalCode" label="郵便番号" required error={state.errors?.postalCode}>
-              <input
-                type="text"
-                id="postalCode"
-                name="postalCode"
-                autoComplete="postal-code"
-                inputMode="numeric"
-                disabled={isPending}
-                className={`${inputClasses} max-w-[12rem] ${state.errors?.postalCode ? errorClasses : ""}`}
-                placeholder="810-0022"
-              />
-            </Field>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-[10rem_1fr]">
+              <Field id="postalCode" label="郵便番号" required error={state.errors?.postalCode}>
+                <input
+                  type="text"
+                  id="postalCode"
+                  name="postalCode"
+                  autoComplete="postal-code"
+                  inputMode="numeric"
+                  onChange={handlePostalCodeChange}
+                  disabled={isPending}
+                  className={`${inputClasses} ${state.errors?.postalCode ? errorClasses : ""}`}
+                  placeholder="810-0022"
+                />
+              </Field>
 
-            <Field id="address" label="お届け先の住所" required error={state.errors?.address}>
-              <input
-                type="text"
-                id="address"
-                name="address"
-                autoComplete="street-address"
-                disabled={isPending}
-                className={`${inputClasses} ${state.errors?.address ? errorClasses : ""}`}
-                placeholder={addressPlaceholder}
-              />
-            </Field>
+              <Field id="address" label="お届け先の住所" required error={state.errors?.address}>
+                <input
+                  ref={addressInputRef}
+                  type="text"
+                  id="address"
+                  name="address"
+                  autoComplete="street-address"
+                  disabled={isPending}
+                  className={`${inputClasses} ${state.errors?.address ? errorClasses : ""}`}
+                  placeholder={addressPlaceholder}
+                />
+              </Field>
+            </div>
+
+            <WholesaleSamplePicker
+              disabled={isPending}
+              error={state.errors?.sampleFlavors}
+              presetTitle={presetTitle}
+              presetDescription={presetDescription}
+              presetFlavors={presetFlavors}
+            />
 
             <WholesaleDeliveryPicker
               disabled={isPending}
@@ -235,22 +309,20 @@ export default function WholesaleContactCard({
               notePlaceholder={deliveryNotePlaceholder}
             />
 
-            <SampleFlavorPicker disabled={isPending} error={state.errors?.sampleFlavors} />
-
             <Field id="notes" label={notesLabel}>
               <textarea
                 id="notes"
                 name="notes"
-                rows={3}
+                rows={2}
                 disabled={isPending}
                 className={`${inputClasses} resize-none`}
                 placeholder={notesPlaceholder}
               />
             </Field>
           </>
-        )}
+        ) : null}
 
-        {activeTab === "inquiry" && (
+        {activeTab === "inquiry" ? (
           <Field id="message" label="ご相談内容" required error={state.errors?.message}>
             <textarea
               id="message"
@@ -261,7 +333,7 @@ export default function WholesaleContactCard({
               placeholder={inquiryPlaceholder}
             />
           </Field>
-        )}
+        ) : null}
 
         <div className="pt-2">
           <button
@@ -271,25 +343,29 @@ export default function WholesaleContactCard({
               isPending ? "cursor-wait opacity-70" : ""
             }`}
           >
-            {isPending ? "送信中…" : activeTab === "sample" ? WHOLESALE_FACTS.ctaLabel : "送信する"}
+            {isPending
+              ? "送信中…"
+              : activeTab === "sample"
+                ? `${WHOLESALE_FACTS.ctaLabel} →`
+                : "送信する →"}
           </button>
-          <p className="text-ink-muted mt-2.5 text-center font-sans text-xs">
+          <p className="text-ink-muted mt-2.5 text-center font-sans text-xs leading-relaxed">
             {activeTab === "sample"
-              ? "商品代は無料・クール便の送料のみ着払い（通常2営業日以内に発送）"
-              : "通常2営業日以内に担当者よりご連絡いたします"}
+              ? "商品代は無料・クール便の送料のみ着払い（通常2営業日以内に発送）／電話での営業連絡は一切いたしません"
+              : "通常2営業日以内にメールにてご返信いたします"}
           </p>
         </div>
       </form>
 
-      <div className="mt-6 border-t border-gray-100 pt-6 text-center">
+      <div className="mt-5 border-t border-gray-100 pt-5 text-center">
         <p className="text-ink-light font-sans text-xs">
-          LINEからのサンプルお申し込み・ご相談も承ります
+          フォーム入力のお時間がない場合は、LINEから一言お送りいただく形でも承ります
         </p>
         <a
           href={WHOLESALE_FACTS.lineUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#06C755] px-6 py-3 font-sans text-sm font-bold text-white transition-colors hover:bg-[#05b34c]"
+          className="mt-2.5 inline-flex items-center gap-2 rounded-full bg-[#06C755] px-6 py-2.5 font-sans text-sm font-bold text-white transition-colors hover:bg-[#05b34c]"
         >
           <LineIcon />
           LINEで申し込む・相談する

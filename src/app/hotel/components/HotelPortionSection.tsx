@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
-export default function RyokanPortionSection() {
+export default function HotelPortionSection() {
   return (
     <section id="portion" className="bg-[#f7f3ec] py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
@@ -10,18 +10,18 @@ export default function RyokanPortionSection() {
           盛り付けと量・原価の目安
         </p>
         <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
-          会席の小鉢なら、1Lで約20人分。
+          小鉢・添え盛りなら1Lで約20人分、ドルチェ皿なら約12人分。
         </h2>
         <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
           {WHOLESALE_FACTS.scoopsPerLiter}
-          。器や献立のボリュームに合わせて、1人あたりの量を調整いただけます。
+          。コースの構成や器の大きさに合わせて、1人あたりの提供量を無駄なく調整いただけます。
         </p>
 
         <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
           {/* 50ml 目安 */}
           <div className="rounded-3xl border border-stone-200/80 bg-white p-6 shadow-2xs sm:p-7">
             <span className="bg-brand/10 text-brand inline-block rounded-full px-3 py-1 font-sans text-xs font-bold">
-              会席の小鉢・豆皿・水菓子に
+              会席の小鉢・水菓子・ケーキ添え・朝食ビュッフェに
             </span>
             <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <p className="text-ink font-serif text-2xl font-bold sm:text-3xl">約50ml（#18）</p>
@@ -34,14 +34,14 @@ export default function RyokanPortionSection() {
               </span>
             </p>
             <p className="text-ink-light mt-3 font-sans text-sm leading-[1.8]">
-              品数の多い会席・懐石の締めくくりや、季節の果物の横に添える水菓子の器に収まりのよい上品な量です。2L容器（4,000円・税別）なら約40人分とれます。
+              品数の多い会席・懐石の小鉢や、季節の果物・ケーキの横に添える一玉に収まりのよい上品な量です。2L容器（4,000円・税別）なら約40人分とれます。
             </p>
           </div>
 
           {/* 80ml 目安 */}
           <div className="rounded-3xl border border-stone-200/80 bg-white p-6 shadow-2xs sm:p-7">
             <span className="inline-block rounded-full bg-stone-100 px-3 py-1 font-sans text-xs font-bold text-stone-700">
-              洋コースのドルチェ・単品デザートに
+              洋食コースのドルチェ・婚礼宴会のメイン甘味に
             </span>
             <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <p className="text-ink font-serif text-2xl font-bold sm:text-3xl">約80ml（#12）</p>
@@ -54,7 +54,7 @@ export default function RyokanPortionSection() {
               </span>
             </p>
             <p className="text-ink-light mt-3 font-sans text-sm leading-[1.8]">
-              洋食コースのメインデザート皿や、お子さまの夕食デザートとしてしっかり一皿でお出ししたい時に適した量です。
+              ホテル・オーベルジュのコースドルチェ皿や、お子さま夕食のデザートとしてしっかり一皿でお出ししたい時に適した量です。
             </p>
           </div>
         </div>

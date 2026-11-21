@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: "https://soystories.cafe/ryokan",
+      url: "https://soystories.cafe/hotel",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
