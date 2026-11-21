@@ -287,16 +287,16 @@ export default function OemCoursesSection() {
           </article>
         </div>
 
-        {/* 補足：シール作成サポート＆素材条件（穏やかな2ボックス） */}
+        {/* 補足：天面シールの支給ルール＆素材条件（穏やかな2ボックス） */}
         <div className="mt-10 grid grid-cols-1 gap-4 rounded-3xl bg-[#f7f3ec] p-6 sm:grid-cols-2 sm:p-8">
           <div className="rounded-2xl bg-white p-5">
             <p className="text-ink flex items-center gap-2 text-sm font-bold">
               <Palette className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
-              カップの「フタ丸シール」もかんたんに作れます
+              カップの「フタ丸シール」のご支給について
             </p>
             <p className="text-ink-light mt-2 text-xs leading-relaxed">
-              デザインソフトがなくてもロゴを入れるだけで作れる<strong>Canva対応テンプレート</strong>
-              と、冷凍に強い推奨シール印刷のご案内を無料でお渡しします。お客様にてシールをご用意いただく分、カップ単価を基準価格（税込324円）から
+              当社より規定サイズの<strong>テンプレート（Illustrator .aiデータ）を支給</strong>
+              いたします。そちらをもとにお客様にてデザイン制作・シール印刷までご手配いただき、当工房へご納品いただく形となります。お客様にてシールをご手配いただく分、カップ単価を基準価格（税込324円）から
               <strong>税込15円引きの「税込309円」</strong>
               にしております（底面の原材料ラベルは当社で貼付）。
             </p>

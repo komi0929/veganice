@@ -55,7 +55,7 @@ const QUICK_MEMO_CHIPS = [
   },
   {
     label: "＋ フタ変更（¥0）を知りたい",
-    text: "まずは開発費0円のフタシール変更プランと入稿テンプレートについて知りたいです。",
+    text: "まずは開発費0円のフタシール変更プランと、シール用.aiテンプレートについて知りたいです。",
   },
 ];
 
@@ -176,7 +176,7 @@ export default function OemContactSection() {
             </div>
             <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 shadow-2xs">
               <Check className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
-              <span className="text-ink font-bold">Canvaシール入稿テンプレ</span>
+              <span className="text-ink font-bold">シール用 .aiテンプレート</span>
             </div>
           </div>
         </div>

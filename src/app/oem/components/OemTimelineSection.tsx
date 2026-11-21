@@ -25,9 +25,9 @@ const TIMELINE_STEPS = [
     week: "第3週",
     duration: "5〜7日",
     icon: FileCheck2,
-    title: "味決定・シールご手配",
+    title: "味決定・シールご納品",
     shortDesc:
-      "表示確認とWeb合意で確定。カップはテンプレでシール印刷手配（2Lバルクはシール不要）。",
+      "表示確認で確定。カップは支給の.aiテンプレで制作・印刷のうえ工房へご納品（2Lバルクは不要）。",
   },
   {
     week: "第4週",
