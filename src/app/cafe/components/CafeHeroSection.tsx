@@ -92,16 +92,16 @@ export default function CafeHeroSection() {
                     業務用 1L・2L角型容器
                   </p>
                   <p className="text-ink-muted mt-0.5 font-sans text-[10.5px] leading-tight whitespace-nowrap sm:text-[11px]">
-                    50ml 約100円〜・白砂糖不使用
+                    50ml 約100円〜・最小4L〜
                   </p>
                 </div>
               </div>
               <div className="border-l border-stone-200 pl-2.5 text-right">
-                <p className="text-brand font-sans text-xs leading-tight font-bold whitespace-nowrap">
-                  Google {WHOLESALE_FACTS.googleRating}
+                <p className="text-brand font-sans text-[11px] leading-tight font-bold whitespace-nowrap sm:text-xs">
+                  HappyCow {WHOLESALE_FACTS.happyCowRating}
                 </p>
                 <p className="text-ink-muted mt-0.5 font-sans text-[10px] leading-tight whitespace-nowrap">
-                  {WHOLESALE_FACTS.googleReviewCount}
+                  Google {WHOLESALE_FACTS.googleRating}
                 </p>
               </div>
             </div>

@@ -37,7 +37,7 @@ export default function HotelSampleSection() {
             まずは6個、厨房で味をお確かめください。
           </h2>
           <p className="text-ink-light mt-3 font-sans text-sm leading-[1.85] sm:text-[15px]">
-            コースや会席の最後に出せる味わいか、食後のすっきり感や滑らかな口どけを、実際の器に盛ってお確かめいただけます。
+            海外からのお客様にも一般のお客様にも同じ一皿として出せる味わいか、食後のすっきり感や滑らかな口どけを実際の器に盛ってお確かめいただけます。
           </p>
 
           <div className="mt-7 overflow-hidden rounded-3xl border border-stone-200/80 bg-white shadow-2xs">
@@ -87,7 +87,7 @@ export default function HotelSampleSection() {
             </div>
             <div>
               <blockquote className="text-ink font-sans text-xs leading-relaxed font-bold sm:text-[13px]">
-                「アレルギーや食事制限のあるお客様も、ほかのお客様と同じデザートで大切な食事を締めくくれるよう、専用工房から丁寧にお届けします。」
+                「海外からのお客様も、食の制限がある方も、皆様が同じデザートで日本の食事を笑顔で締めくくれるよう、専用工房から丁寧にお届けします。」
               </blockquote>
               <figcaption className="text-ink-muted mt-1 font-sans text-xs">
                 SoyStories（株式会社ヒトコト）代表　小南 優作
@@ -115,10 +115,10 @@ export default function HotelSampleSection() {
             deliveryDescription="フロントか厨房で受け取れる曜日と時間"
             deliveryNotePlaceholder="例：厨房勝手口・サービスヤードへ納品希望／11〜14時は仕込み中など"
             notesLabel="ご施設・お店の業態・試したい場面など"
-            notesPlaceholder="例：ホテルコースのドルチェ／旅館会席の甘味／婚礼・アレルギー対応として試したいです。"
-            inquiryPlaceholder="お取引条件や納期、コース・献立での使い方の相談など、お気軽にご記入ください。"
+            notesPlaceholder="例：海外宿泊客のヴィーガン・グルテンフリー対応／コースや会席の甘味として試したいです。"
+            inquiryPlaceholder="お取引条件や納期、インバウンド対応・献立での使い方の相談など、お気軽にご記入ください。"
             presetTitle="おすすめ6種"
-            presetDescription="和洋のコースで試しやすい定番6種をお届けします（抹茶・ほうじ茶・UMAMIバニラ・バニラ・りんご・もも 各1個）"
+            presetDescription="海外ゲストにも人気の和素材と定番6種をお届けします（抹茶・ほうじ茶・UMAMIバニラ・バニラ・りんご・もも 各1個）"
             presetFlavors={HOTEL_PRESET_FLAVORS}
           />
         </div>

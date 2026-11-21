@@ -3,15 +3,15 @@ import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 const summaryPoints = [
   {
-    main: "卵・乳・小麦を持ち込まない専用工房",
-    sub: null,
+    main: "ヴィーガン・グルテンフリーに1つで対応",
+    sub: "乳・卵・小麦フリーの専用工房（アレルギーも安心）",
   },
   {
-    main: "盛り付けるだけ・冷凍で保存",
-    sub: null,
+    main: "海外ゲストが絶賛する和素材・果実11種",
+    sub: `HappyCow ${WHOLESALE_FACTS.happyCowRating}満点・Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）`,
   },
   {
-    main: "1人分 約100円から",
+    main: "盛り付けるだけ・冷凍保存・1人分 約100円〜",
     sub: "50mlで盛った場合・税別（1L 2,000円÷約20杯）",
   },
 ] as const;
@@ -27,42 +27,40 @@ export default function HotelHeroSection() {
             <span className="opacity-40" aria-hidden="true">
               ｜
             </span>
-            <span>業務用 植物性クラフトアイス（1L・2L）</span>
+            <span>インバウンド・多様な食対応の業務用アイス</span>
           </p>
 
-          <h1 className="text-ink mt-2.5 font-serif text-[22px] leading-[1.42] font-bold tracking-tight sm:mt-3.5 sm:text-4xl sm:leading-[1.38] lg:text-[40px]">
+          <h1 className="text-ink mt-2.5 font-serif text-[22px] leading-[1.4] font-bold tracking-tight sm:mt-3.5 sm:text-4xl sm:leading-[1.38] lg:text-[40px]">
             <span className="block">会席やコースの最後の一皿に、</span>
-            <span className="block">アレルギーのお客様にも</span>
+            <span className="block">海外のお客様にも喜ばれる</span>
             <span className="block">
               <span className="bg-[linear-gradient(transparent_68%,#e6efe8_68%)]">
-                同じデザート
+                みんなと同じデザート
               </span>
               を。
             </span>
           </h1>
 
-          <ul className="mt-4 space-y-2 rounded-2xl border border-stone-200/80 bg-[#fafaf8] px-4 py-3.5 sm:mt-5 sm:space-y-2.5 sm:px-5 sm:py-4">
+          <ul className="mt-3.5 space-y-2 rounded-2xl border border-stone-200/80 bg-[#fafaf8] px-3.5 py-3 sm:mt-5 sm:space-y-2.5 sm:px-5 sm:py-4">
             {summaryPoints.map((point) => (
-              <li key={point.main} className="flex items-baseline gap-2.5">
+              <li key={point.main} className="flex items-start gap-2">
                 <span
-                  className="bg-brand relative top-[-1px] inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full font-sans text-[10px] font-bold text-white"
+                  className="bg-brand mt-[3px] inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full font-sans text-[10px] font-bold text-white"
                   aria-hidden="true"
                 >
                   ✓
                 </span>
-                <span className="font-sans text-[14px] leading-snug text-stone-800 sm:text-base">
-                  <strong className="text-ink font-bold">{point.main}</strong>
-                  {point.sub ? (
-                    <span className="text-ink-muted ml-1.5 block text-[11px] font-normal sm:inline sm:text-xs">
-                      {point.sub}
-                    </span>
-                  ) : null}
+                <span className="font-sans text-[13px] leading-snug text-stone-800 sm:text-[15px]">
+                  <strong className="text-ink block font-bold">{point.main}</strong>
+                  <span className="text-ink-muted mt-0.5 block text-[11px] font-normal sm:text-xs">
+                    {point.sub}
+                  </span>
                 </span>
               </li>
             ))}
           </ul>
 
-          <div className="mt-5 flex flex-col items-center sm:mt-6 md:items-start">
+          <div className="mt-4 flex flex-col items-center sm:mt-6 md:items-start">
             <a
               href="#contact-form"
               className="bg-cta hover:bg-cta-hover inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 font-sans text-[15px] font-bold text-white shadow-[0_6px_20px_rgba(212,112,143,0.32)] transition-colors sm:w-auto sm:px-10 sm:py-4 sm:text-base"
@@ -76,7 +74,7 @@ export default function HotelHeroSection() {
           </div>
         </div>
 
-        {/* 右ビジュアル：和の会席盛り＆洋のコース盛りの実写2点＋業務用1L・2Lバルク証明＋口コミ評価 */}
+        {/* 右ビジュアル：洋コース盛り＆和食会席盛りの実写2点＋業務用1L・2L容器＋海外口コミ評価 */}
         <div className="md:col-span-5">
           <div className="overflow-hidden rounded-3xl border border-stone-200/80 bg-[#f7f3ec] p-2.5 shadow-2xs sm:p-3">
             <div className="grid grid-cols-2 gap-2">
@@ -109,9 +107,9 @@ export default function HotelHeroSection() {
               </div>
             </div>
 
-            {/* 業務用1L・2L容器＋第三者評価バッジ */}
-            <div className="mt-2.5 flex items-center justify-between gap-2.5 rounded-2xl bg-white px-3 py-2.5">
-              <div className="flex items-center gap-2.5">
+            {/* 業務用1L・2L容器＋HappyCow / Google 評価バッジ */}
+            <div className="mt-2.5 flex items-center justify-between gap-2 rounded-2xl bg-white px-3 py-2.5">
+              <div className="flex min-w-0 items-center gap-2.5">
                 <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-stone-100">
                   <Image
                     src="/images/bulk_2l.jpg"
@@ -126,16 +124,16 @@ export default function HotelHeroSection() {
                     業務用 1L・2L角型容器
                   </p>
                   <p className="text-ink-muted mt-0.5 font-sans text-[10.5px] leading-tight whitespace-nowrap sm:text-[11px]">
-                    最小4L〜・全11種組み合わせ自由
+                    最小4L〜・味組み合わせ自由
                   </p>
                 </div>
               </div>
               <div className="border-l border-stone-200 pl-2.5 text-right">
-                <p className="text-brand font-sans text-xs leading-tight font-bold whitespace-nowrap">
-                  Google {WHOLESALE_FACTS.googleRating}
+                <p className="text-brand font-sans text-[11px] leading-tight font-bold whitespace-nowrap sm:text-xs">
+                  HappyCow {WHOLESALE_FACTS.happyCowRating}
                 </p>
                 <p className="text-ink-muted mt-0.5 font-sans text-[10px] leading-tight whitespace-nowrap">
-                  {WHOLESALE_FACTS.googleReviewCount}
+                  Google {WHOLESALE_FACTS.googleRating}
                 </p>
               </div>
             </div>
