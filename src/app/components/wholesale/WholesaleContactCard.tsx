@@ -68,7 +68,7 @@ const getLocationSearchSnapshot = () => window.location.search;
 const getServerLocationSearchSnapshot = () => "";
 
 export interface WholesaleContactCardProps {
-  source: "hotel" | "cafe";
+  source: "hotel" | "cafe" | "wholesale";
   companyLabel: string;
   companyPlaceholder: string;
   contactNameLabel?: string;

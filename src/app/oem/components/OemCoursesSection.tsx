@@ -126,7 +126,7 @@ export default function OemCoursesSection() {
 
               <p className="text-ink-muted mt-3 text-[11.5px] leading-relaxed">
                 ※シール不要で定番味を店内皿盛りしたい場合は、
-                <Link href="/dessert" className="text-brand underline">
+                <Link href="/wholesale" className="text-brand underline">
                   通常の業務用バルク卸（4L〜）
                 </Link>
                 をご利用いただけます。

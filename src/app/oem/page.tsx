@@ -89,7 +89,7 @@ export default function OemFullPage() {
                 </p>
               </div>
               <Link
-                href="/dessert"
+                href="/wholesale"
                 className="bg-brand hover:bg-brand-dark shrink-0 rounded-full px-6 py-3.5 text-sm font-bold text-white transition-colors"
               >
                 定番フレーバーの卸案内を見る →
