@@ -78,7 +78,7 @@ const cafeFlavorGroups: WholesaleFlavorGroup[] = [
 
 export default function CafeFlavorsSection() {
   return (
-    <section id="flavors" className="bg-[#f7f3ec] py-16 sm:py-24">
+    <section id="flavors" className="scroll-mt-14 bg-[#f7f3ec] py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
           <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
@@ -88,7 +88,7 @@ export default function CafeFlavorsSection() {
           4L（1L×4個など）から、好きな味を組み合わせて。
         </h2>
         <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
-          {WHOLESALE_FACTS.price}。{WHOLESALE_FACTS.minLot}
+          全11種すべて同じ価格で、{WHOLESALE_FACTS.minLot}
           。各カードを押すと、全原材料とアレルゲン・栄養成分をご確認いただけます。
         </p>
 

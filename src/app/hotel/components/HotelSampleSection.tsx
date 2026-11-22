@@ -26,7 +26,7 @@ const steps = [
 
 export default function HotelSampleSection() {
   return (
-    <section id="contact-form" className="bg-[#f7f3ec] py-16 sm:py-24">
+    <section id="contact-form" className="bg-bg-white scroll-mt-14 py-16 sm:py-24">
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 px-6 md:grid-cols-2 md:gap-12">
         <div>
           <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
@@ -40,7 +40,7 @@ export default function HotelSampleSection() {
             海外からのお客様にも一般のお客様にも同じ一皿として出せる味わいか、食後のすっきり感や滑らかな口どけを実際の器に盛ってお確かめいただけます。
           </p>
 
-          <div className="mt-7 overflow-hidden rounded-3xl border border-stone-200/80 bg-white shadow-2xs">
+          <div className="mt-7 overflow-hidden rounded-3xl border border-stone-200/80 bg-[#f7f3ec]">
             <div className="relative aspect-[16/9] w-full">
               <Image
                 src="/images/gelato_cup_tower.jpg"
@@ -75,7 +75,7 @@ export default function HotelSampleSection() {
             ))}
           </ol>
 
-          <figure className="mt-7 flex items-center gap-4 rounded-2xl border border-stone-200/80 bg-white p-4">
+          <figure className="mt-7 flex items-center gap-4 rounded-2xl border border-stone-200/80 bg-[#f7f3ec] p-4">
             <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full">
               <Image
                 src="/images/owner_story.jpg"

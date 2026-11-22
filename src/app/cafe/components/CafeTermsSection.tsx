@@ -1,5 +1,4 @@
 import Image from "next/image";
-import WholesaleMidCta from "@/app/components/wholesale/WholesaleMidCta";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 const termsRows = [
@@ -18,20 +17,20 @@ const termsRows = [
 
 export default function CafeTermsSection() {
   return (
-    <section id="terms" className="bg-bg-white py-16 sm:py-24">
+    <section id="terms" className="bg-bg-white scroll-mt-14 py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <div className="flex flex-col items-start gap-10 lg:flex-row lg:gap-14">
-          {/* 左：1L・2Lバルク容器の実物写真（/ と同じパッケージ写真） */}
+          {/* 左：1L・2Lバルク容器の実物写真 */}
           <div className="flex w-full flex-col gap-4 lg:w-5/12">
             <p className="text-brand inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
               <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
-              お取引条件・容器サイズ
+              仕入れ条件・容器サイズ
             </p>
             <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
               お店のペースに合わせて、少量4Lから始められます。
             </h2>
             <p className="text-ink-light font-sans text-sm leading-relaxed sm:text-base">
-              冷凍庫のスペースに合わせて、1Lと2Lの角型容器をご用意しています。1L×4個で4種類を少しずつ揃えることも、よく出る味を2L×2個で揃えることも可能です。
+              冷凍庫のスペースに収まりやすい1Lと2Lの角型容器をご用意しています。1L×4個で4種類を少しずつ揃えることも、よく出る定番味を2L×2個で揃えることも可能です。
             </p>
 
             <div className="mt-2 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-1">
@@ -44,7 +43,7 @@ export default function CafeTermsSection() {
                   className="object-cover"
                 />
                 <span className="text-ink absolute top-3 left-3 rounded-full bg-white/95 px-3 py-1 font-sans text-xs font-bold shadow-2xs">
-                  2L 容器
+                  2L 容器（約40杯分／50ml）
                 </span>
               </div>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-stone-200/80 shadow-2xs">
@@ -56,7 +55,7 @@ export default function CafeTermsSection() {
                   className="object-cover"
                 />
                 <span className="text-ink absolute top-3 left-3 rounded-full bg-white/95 px-3 py-1 font-sans text-xs font-bold shadow-2xs">
-                  1L 容器
+                  1L 容器（約20杯分／50ml）
                 </span>
               </div>
             </div>
@@ -81,8 +80,6 @@ export default function CafeTermsSection() {
             </div>
           </div>
         </div>
-
-        <WholesaleMidCta lead="まずは1回、無料の試食サンプル（6個）で滑らかな口どけと素材の香りをお確かめください。" />
       </div>
     </section>
   );

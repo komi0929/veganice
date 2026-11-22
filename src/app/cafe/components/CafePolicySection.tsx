@@ -1,95 +1,90 @@
 import Image from "next/image";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
-const policyPoints = [
+const policyPillars = [
   {
-    badge: "無添加へのこだわり",
-    title: "乳化安定剤・増粘剤・着色料は使っていない",
-    body: "素材本来の香りとすっきりした後味を損なわないよう、乳化安定剤・増粘剤・合成着色料に頼らず、米粉が持つ自然な保水力を活かした独自製法でクリーミーな口どけをつくっています。",
+    step: "01",
+    badge: "無添加・白砂糖不使用",
+    title: "乳化安定剤・増粘剤・着色料・白砂糖は使っていない",
+    body: "甜菜糖やきび砂糖、自家製の甘酒で穏やかな甘みに仕上げています。さらに白味噌などの発酵素材を合わせることで、焼き菓子や珈琲の香りに負けない深いコクを引き出しています。",
+    image: "/images/ingredient_miso_amazake.jpg",
+    alt: "甘酒や白味噌など日本の伝統発酵素材",
   },
   {
-    badge: "やさしい甘みと発酵のコク",
-    title: "白砂糖は使っていない",
-    body: "白砂糖を使わず、甜菜糖やきび砂糖、自家製の甘酒などで穏やかな甘みに仕上げています。さらに白味噌や甘酒といった日本の発酵素材を合わせることで、植物性でも物足りなさのない深いコクを引き出しています。",
+    step: "02",
+    badge: "米粉の独自製法",
+    title: "シャリシャリ感がなく、出し入れしても滑らかさが続く",
+    body: "米粉が持つ自然な保水力を活かした独自製法により、植物性アイスにありがちな氷のシャリシャリ感（シャーベット感）のないクリーミーな口どけを実現。営業中の出し入れでも滑らかな舌触りが続きます。",
+    image: "/images/bulk_scoop.jpg",
+    alt: "米粉の独自製法による滑らかな植物性クラフトアイス",
   },
   {
-    badge: "専用工房での製造",
+    step: "03",
+    badge: "専用工房で手づくり",
     title: "乳・卵・小麦を持ち込まない専用工房",
-    body: `グルテンフリーやプラントベースの焼き菓子・ケーキを手づくりされているお店でも、原材料の方針を崩さず同じお皿に添えていただけます（${WHOLESALE_FACTS.allergenAssurance}）。`,
+    body: `グルテンフリーやプラントベースの焼き菓子・ケーキを手づくりされているお店でも、素材の方針を崩さず同じお皿に添えていただけます（${WHOLESALE_FACTS.allergenAssurance}）。`,
+    image: "/images/factory_kitchen_craft.webp",
+    alt: "乳・卵・小麦を持ち込まない専用工房での製造風景",
   },
 ] as const;
 
 export default function CafePolicySection() {
   return (
-    <section id="policy" className="bg-bg-white py-16 sm:py-24">
+    <section id="policy" className="scroll-mt-14 bg-[#f7f3ec] py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
           <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
-          素材と工房の方針
+          どんなアイス？
         </p>
         <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
-          素材を選ぶお店の方針に、そのまま合うアイスです。
+          素材を選ぶお店のお菓子に、
+          <br className="hidden sm:inline" />
+          そのまま寄り添うクラフトアイスです。
         </h2>
-        <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
-          全11種とも、{WHOLESALE_FACTS.freeFromAdditivesAndWhiteSugar}
-          。お店の焼き菓子やケーキの隣に、安心してお出しいただけます。
-        </p>
-
-        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {policyPoints.map((item) => (
-            <div
-              key={item.title}
-              className="flex flex-col rounded-3xl border border-stone-200/80 bg-[#fafaf8] p-6"
-            >
-              <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-                {item.badge}
-              </span>
-              <h3 className="text-ink mt-4 font-serif text-lg leading-snug font-bold">
-                {item.title}
-              </h3>
-              <p className="text-ink-light mt-3 font-sans text-sm leading-[1.85]">{item.body}</p>
-            </div>
-          ))}
+        <div className="text-ink-light mt-4 max-w-3xl space-y-2.5 font-sans text-[15px] leading-[1.85] sm:text-base">
+          <p>
+            私たちSoyStories（ソイストーリーズ）は、100%植物性・グルテンフリーのお菓子とアイスを手づくりしている福岡・薬院のスイーツ専門店です。
+          </p>
+          <p>
+            「自家製のケーキや焼き菓子は素材を選んでいるのに、横に添える市販アイスだけ乳製品や添加物入りになってしまう」——そんなカフェ・菓子店様へ向けて、専用工房で仕込んだクラフトアイスを業務用の1L・2L容器でお届けしています。
+          </p>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <div className="flex items-center gap-4 rounded-2xl border border-stone-200/80 bg-white p-4">
-            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl sm:h-24 sm:w-24">
-              <Image
-                src="/images/craft_scoop_cup.webp"
-                alt="米粉の独自製法による滑らかなクラフトアイス"
-                fill
-                sizes="96px"
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-ink font-sans text-sm font-bold">
-                米粉の独自製法で、出し入れしても滑らかさが続く
-              </p>
-              <p className="text-ink-light mt-1 font-sans text-xs leading-relaxed">
-                植物性アイスにありがちなシャリシャリ感（シャーベット感）がなく、カフェ営業中に冷凍庫を出し入れしても滑らかな舌触りが続きます。
-              </p>
-            </div>
-          </div>
+        <ol className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
+          {policyPillars.map((item) => (
+            <li
+              key={item.step}
+              className="flex flex-col overflow-hidden rounded-3xl border border-stone-200/80 bg-white shadow-2xs"
+            >
+              <div className="relative aspect-[16/10] w-full bg-stone-100">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
+                  {item.step}｜{item.badge}
+                </span>
+                <h3 className="text-ink mt-3 font-serif text-base leading-snug font-bold sm:text-lg">
+                  {item.title}
+                </h3>
+                <p className="text-ink-light mt-2.5 font-sans text-sm leading-[1.85]">
+                  {item.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
 
-          <div className="flex items-center gap-4 rounded-2xl border border-stone-200/80 bg-white p-4">
-            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl sm:h-24 sm:w-24">
-              <Image
-                src="/images/factory_kitchen_craft.webp"
-                alt="乳・卵・小麦を持ち込まない専用工房での製造風景"
-                fill
-                sizes="96px"
-                className="object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-ink font-sans text-sm font-bold">アレルゲン管理について</p>
-              <p className="text-ink-light mt-1 font-sans text-xs leading-relaxed">
-                {WHOLESALE_FACTS.allergen}
-              </p>
-            </div>
-          </div>
+        <div className="mt-6 rounded-2xl border border-stone-200/80 bg-white px-5 py-4 sm:px-6">
+          <p className="text-ink font-sans text-xs leading-relaxed sm:text-sm">
+            <strong className="text-brand mr-2 font-bold">アレルゲン・不使用素材について：</strong>
+            {WHOLESALE_FACTS.freeFromAdditivesAndWhiteSugar}。{WHOLESALE_FACTS.allergen}。
+          </p>
         </div>
       </div>
     </section>

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PhotoSlot from "@/app/components/wholesale/PhotoSlot";
 import WholesaleFlavorGrid, {
   type WholesaleFlavorGroup,
@@ -84,17 +83,17 @@ const hotelFlavorGroups: WholesaleFlavorGroup[] = [
 
 export default function HotelFlavorsSection() {
   return (
-    <section id="flavors" className="bg-bg-white py-16 sm:py-24">
+    <section id="flavors" className="bg-bg-white scroll-mt-14 py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
           <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
-          会席・コースに合う味
+          会席・コースに合う味（全11種）
         </p>
         <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
           和の献立にも、洋のコースにも合う全11種。
         </h2>
         <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
-          {WHOLESALE_FACTS.price}。{WHOLESALE_FACTS.minLot}
+          全11種すべて同じ価格で、{WHOLESALE_FACTS.minLot}
           （1L×4個・2L×2個など）。各カードの「原材料・栄養を見る」を押すと、アレルギー確認・献立作成にそのまま使える全原材料名をご確認いただけます。
         </p>
 
@@ -102,7 +101,7 @@ export default function HotelFlavorsSection() {
           <WholesaleFlavorGrid groups={hotelFlavorGroups} />
         </div>
 
-        {/* 季節の果物・水菓子・ドルチェでの使い方 */}
+        {/* 季節の果物・水菓子・ドルチェでの盛り付け方 */}
         <div className="mt-12 rounded-3xl border border-stone-200/80 bg-[#f7f3ec] p-6 sm:p-8">
           <h3 className="text-ink font-serif text-xl font-bold sm:text-2xl">
             単体の一皿にも、ケーキや季節の果物への添えにも
@@ -159,49 +158,6 @@ export default function HotelFlavorsSection() {
                 最中皮・求肥と合わせた和甘味や、ガラス器で珈琲ゼリー・ジュレに重ねるコースの締めくくりにもそのまま馴染みます。
               </p>
             </div>
-          </div>
-
-          {/* 薬院店での器盛り実写2点 */}
-          <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <figure className="flex items-center gap-4 rounded-2xl bg-white p-3.5 shadow-2xs">
-              <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-stone-100 sm:h-24 sm:w-28">
-                <Image
-                  src="/images/serving/serving_affogato.jpg"
-                  alt="薬院店での提供例：ココナッツバニラ＆コーヒーゼリー"
-                  fill
-                  sizes="120px"
-                  className="object-cover object-center"
-                />
-              </div>
-              <figcaption>
-                <p className="text-brand font-sans text-[11px] font-bold">薬院店での盛り付け例</p>
-                <p className="text-ink mt-0.5 font-serif text-sm font-bold">
-                  バニラ＆コーヒーゼリー
-                </p>
-                <p className="text-ink-muted mt-1 font-sans text-xs leading-relaxed">
-                  ガラス器にゼリーと合わせて盛る洋コース・夕食の甘味に
-                </p>
-              </figcaption>
-            </figure>
-
-            <figure className="flex items-center gap-4 rounded-2xl bg-white p-3.5 shadow-2xs">
-              <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-stone-100 sm:h-24 sm:w-28">
-                <Image
-                  src="/images/serving/serving_monaka.jpg"
-                  alt="薬院店での提供例：抹茶・ほうじ茶アイス最中"
-                  fill
-                  sizes="120px"
-                  className="object-cover object-[center_70%]"
-                />
-              </div>
-              <figcaption>
-                <p className="text-brand font-sans text-[11px] font-bold">薬院店での盛り付け例</p>
-                <p className="text-ink mt-0.5 font-serif text-sm font-bold">抹茶アイス最中</p>
-                <p className="text-ink-muted mt-1 font-sans text-xs leading-relaxed">
-                  最中皮と求肥に挟み、和皿でお出しする一皿に
-                </p>
-              </figcaption>
-            </figure>
           </div>
         </div>
 

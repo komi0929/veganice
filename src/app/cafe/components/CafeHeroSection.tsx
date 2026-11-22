@@ -1,8 +1,7 @@
-import Image from "next/image";
 import PhotoSlot from "@/app/components/wholesale/PhotoSlot";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
-/** ケーキ・ワッフル横添えの皿盛り写真が撮れたらパスを差し替える（現在は実写「米粉ワッフルアイス」を表示） */
+/** ケーキ・ワッフル横添えの皿盛り写真が撮れたらパスを差し替える（現在は実写「米粉ワッフルとクラフトアイス」を表示） */
 const HERO_CAFE_PLATE_PHOTO_SRC: string | null = "/images/hero_flagship.jpg";
 
 const summaryPoints = [
@@ -65,43 +64,32 @@ export default function CafeHeroSection() {
           </div>
         </div>
 
-        {/* 右ビジュアル：薬院店の実写＋業務用1L・2L容器＆1杯原価目安＋口コミ評価 */}
+        {/* 右ビジュアル：実写＋お届け形態・1杯あたりの目安 */}
         <div className="md:col-span-5">
           <div className="overflow-hidden rounded-3xl border border-stone-200/80 bg-[#f7f3ec] p-2.5 shadow-2xs sm:p-3">
             <PhotoSlot
               src={HERO_CAFE_PLATE_PHOTO_SRC}
-              alt="米粉ワッフルに盛り付けたSoyStoriesの抹茶とミックスベリーのクラフトアイス"
+              alt="米粉ワッフルに添えたSoyStoriesの植物性クラフトアイス"
               aspectClassName="aspect-[16/9] md:aspect-[4/3]"
               objectPositionClassName="object-cover object-[center_62%]"
               priority
             />
 
-            <div className="mt-2.5 flex items-center justify-between gap-2.5 rounded-2xl bg-white px-3 py-2.5">
-              <div className="flex items-center gap-2.5">
-                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-stone-100">
-                  <Image
-                    src="/images/bulk_1l.jpg"
-                    alt="業務用1L角型バルク容器"
-                    fill
-                    sizes="40px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-ink font-sans text-xs leading-tight font-bold whitespace-nowrap">
-                    業務用 1L・2L角型容器
-                  </p>
-                  <p className="text-ink-muted mt-0.5 font-sans text-[10.5px] leading-tight whitespace-nowrap sm:text-[11px]">
-                    50ml 約100円〜・最小4L〜
-                  </p>
-                </div>
+            <div className="mt-2.5 flex items-center justify-between gap-2.5 rounded-2xl bg-white px-3.5 py-2.5">
+              <div className="min-w-0">
+                <p className="text-ink font-sans text-xs leading-tight font-bold whitespace-nowrap">
+                  業務用 1L・2L 角型容器
+                </p>
+                <p className="text-ink-muted mt-0.5 font-sans text-[11px] leading-tight whitespace-nowrap">
+                  50ml 約100円〜・最小4L〜
+                </p>
               </div>
-              <div className="border-l border-stone-200 pl-2.5 text-right">
-                <p className="text-brand font-sans text-[11px] leading-tight font-bold whitespace-nowrap sm:text-xs">
-                  HappyCow {WHOLESALE_FACTS.happyCowRating}
+              <div className="shrink-0 border-l border-stone-200 pl-3 text-right">
+                <p className="text-brand font-sans text-[11px] leading-tight font-bold whitespace-nowrap">
+                  白砂糖・添加物不使用
                 </p>
                 <p className="text-ink-muted mt-0.5 font-sans text-[10px] leading-tight whitespace-nowrap">
-                  Google {WHOLESALE_FACTS.googleRating}
+                  全11種・冷凍保管
                 </p>
               </div>
             </div>

@@ -24,13 +24,13 @@ const hotelFaqs: HotelFAQItem[] = [
   },
   {
     q: "個包装・カップはありますか？",
-    a: `ございません。業務用のお取り扱いは1L・2Lの容器だけです（${WHOLESALE_FACTS.price}／${WHOLESALE_FACTS.minLot}）。`,
+    a: `定番11種の通常卸は、厨房で器に盛り付けてお使いいただく1L・2Lの容器のみでのお取り扱いです（既製品の個包装・カップ在庫はございません）。なお、貴館の屋号ロゴ入りカップ製造（60個〜）をご希望の場合は、ページ下部の別プランにて承っております。`,
   },
 ];
 
 export default function HotelFAQSection() {
   return (
-    <section id="faq" className="bg-bg-white py-16 sm:py-24">
+    <section id="faq" className="scroll-mt-14 bg-[#f7f3ec] py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-6">
         <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
           <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
@@ -44,7 +44,7 @@ export default function HotelFAQSection() {
           {hotelFaqs.map((faq) => (
             <details
               key={faq.q}
-              className="group rounded-2xl border border-stone-200/80 bg-[#fafaf8] open:bg-white open:shadow-2xs"
+              className="group rounded-2xl border border-stone-200/80 bg-white shadow-2xs"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4.5 [&::-webkit-details-marker]:hidden">
                 <span className="text-ink flex gap-2.5 font-sans text-[15px] leading-snug font-bold">

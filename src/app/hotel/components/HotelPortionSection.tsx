@@ -3,14 +3,14 @@ import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 export default function HotelPortionSection() {
   return (
-    <section id="portion" className="bg-[#f7f3ec] py-16 sm:py-24">
+    <section id="portion" className="scroll-mt-14 bg-[#f7f3ec] py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
           <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
-          盛り付けと量・原価の目安
+          分量と原価・大人数対応
         </p>
         <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
-          小鉢・添え盛りなら1Lで約20人分、ドルチェ皿なら約12人分。
+          小鉢なら1Lで約20人分、ドルチェ皿なら約12人分。宴会やビュッフェにも。
         </h2>
         <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
           {WHOLESALE_FACTS.scoopsPerLiter}
@@ -54,7 +54,7 @@ export default function HotelPortionSection() {
               </span>
             </p>
             <p className="text-ink-light mt-3 font-sans text-sm leading-[1.8]">
-              ホテル・オーベルジュのコースドルチェ皿や、お子さま夕食のデザートとしてしっかり一皿でお出ししたい時に適した量です。
+              ホテル・オーベルジュのコースドルチェ皿や、お子さま夕食のデザートとしてしっかり一皿でお出ししたい時に適した量です。2L容器なら約24人分とれます。
             </p>
           </div>
         </div>
@@ -63,50 +63,54 @@ export default function HotelPortionSection() {
           ※1杯あたりの計算：{WHOLESALE_FACTS.costPerScoop}
         </p>
 
-        {/* 業務用1L・2L容器の実物写真 */}
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <div className="overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-3">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-              <Image
-                src="/images/bulk_1l.jpg"
-                alt="業務用 1L角型バルク容器"
-                fill
-                sizes="(max-width: 640px) 100vw, 33vw"
-                className="object-cover"
-              />
+        {/* 容器サイズ写真＋国際会議・婚礼・宴会・朝食ビュッフェ対応（一体構成） */}
+        <div
+          id="banquet"
+          className="mt-8 grid grid-cols-1 items-center gap-6 rounded-3xl border border-stone-200/80 bg-white p-6 shadow-2xs sm:p-8 lg:grid-cols-12"
+        >
+          <div className="grid grid-cols-2 gap-3 lg:col-span-5">
+            <div className="overflow-hidden rounded-2xl border border-stone-200/70 bg-[#fafaf8] p-2.5">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                <Image
+                  src="/images/bulk_1l.jpg"
+                  alt="業務用 1L角型バルク容器"
+                  fill
+                  sizes="(max-width: 1024px) 45vw, 20vw"
+                  className="object-cover"
+                />
+              </div>
+              <p className="text-ink mt-2 text-center font-sans text-xs font-bold">
+                1L 角型容器（約20人分）
+              </p>
             </div>
-            <p className="text-ink mt-2.5 text-center font-sans text-xs font-bold">
-              1L 角型容器（2,000円・税別）
-            </p>
+
+            <div className="overflow-hidden rounded-2xl border border-stone-200/70 bg-[#fafaf8] p-2.5">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                <Image
+                  src="/images/bulk_2l.jpg"
+                  alt="業務用 2L角型バルク容器"
+                  fill
+                  sizes="(max-width: 1024px) 45vw, 20vw"
+                  className="object-cover"
+                />
+              </div>
+              <p className="text-ink mt-2 text-center font-sans text-xs font-bold">
+                2L 角型容器（約40人分）
+              </p>
+            </div>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-3">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-              <Image
-                src="/images/bulk_2l.jpg"
-                alt="業務用 2L角型バルク容器"
-                fill
-                sizes="(max-width: 640px) 100vw, 33vw"
-                className="object-cover"
-              />
-            </div>
-            <p className="text-ink mt-2.5 text-center font-sans text-xs font-bold">
-              2L 角型容器（4,000円・税別）
-            </p>
-          </div>
-
-          <div className="overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-3">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-              <Image
-                src="/images/bulk_scoop.jpg"
-                alt="滑らかな舌触りのクラフトアイスを盛り付ける様子"
-                fill
-                sizes="(max-width: 640px) 100vw, 33vw"
-                className="object-cover"
-              />
-            </div>
-            <p className="text-ink mt-2.5 text-center font-sans text-xs font-bold">
-              出し入れしても滑らかな舌触り
+          <div className="lg:col-span-7">
+            <span className="bg-brand/10 text-brand inline-block rounded-full px-3 py-1 font-sans text-xs font-bold">
+              国際会議・訪日団体・婚礼・朝食ビュッフェにも
+            </span>
+            <h3 className="text-ink mt-3 font-serif text-lg leading-snug font-bold sm:text-xl">
+              人数の多い席でも全員に同じデザートを出せ、冷凍庫に常備しておける。
+            </h3>
+            <p className="text-ink-light mt-2.5 font-sans text-sm leading-[1.85]">
+              国際会議（MICE）や訪日インバウンド団体の会食、婚礼披露宴・ご宴会・ケータリングなど人数の多いお席でも、菜食やアレルギーの方だけ別皿に差し替えることなく皆様に同じ一皿をお出しいただけます。省スペースな1L・2Lの角型容器のまま
+              {WHOLESALE_FACTS.storage}
+              しておけるため、朝食ビュッフェや急なリクエスト対応の常備品としても重宝します。
             </p>
           </div>
         </div>

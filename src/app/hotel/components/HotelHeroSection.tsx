@@ -4,11 +4,11 @@ import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 const summaryPoints = [
   {
     main: "ヴィーガン・グルテンフリーに1つで対応",
-    sub: "乳・卵・小麦フリーの専用工房（アレルギーも安心）",
+    sub: "乳・卵・小麦フリーの専用工房製（アレルギーも安心）",
   },
   {
-    main: "海外ゲストが絶賛する和素材・果実11種",
-    sub: `HappyCow ${WHOLESALE_FACTS.happyCowRating}満点・Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）`,
+    main: "日本の茶葉・発酵素材・国産果実の全11種",
+    sub: "甘酒・白味噌の深いコクと、油分が残らないすっきり後味",
   },
   {
     main: "盛り付けるだけ・冷凍保存・1人分 約100円〜",
@@ -27,7 +27,7 @@ export default function HotelHeroSection() {
             <span className="opacity-40" aria-hidden="true">
               ｜
             </span>
-            <span>インバウンド・多様な食対応の業務用アイス</span>
+            <span>業務用 植物性クラフトアイス（1L・2L）</span>
           </p>
 
           <h1 className="text-ink mt-2.5 font-serif text-[22px] leading-[1.4] font-bold tracking-tight sm:mt-3.5 sm:text-4xl sm:leading-[1.38] lg:text-[40px]">
@@ -74,7 +74,7 @@ export default function HotelHeroSection() {
           </div>
         </div>
 
-        {/* 右ビジュアル：洋コース盛り＆和食会席盛りの実写2点＋業務用1L・2L容器＋海外口コミ評価 */}
+        {/* 右ビジュアル：洋コース盛り＆和食会席盛りの実写2点＋お届け形態＆直営店評価 */}
         <div className="md:col-span-5">
           <div className="overflow-hidden rounded-3xl border border-stone-200/80 bg-[#f7f3ec] p-2.5 shadow-2xs sm:p-3">
             <div className="grid grid-cols-2 gap-2">
@@ -107,33 +107,21 @@ export default function HotelHeroSection() {
               </div>
             </div>
 
-            {/* 業務用1L・2L容器＋HappyCow / Google 評価バッジ */}
-            <div className="mt-2.5 flex items-center justify-between gap-2 rounded-2xl bg-white px-3 py-2.5">
-              <div className="flex min-w-0 items-center gap-2.5">
-                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-stone-100">
-                  <Image
-                    src="/images/bulk_2l.jpg"
-                    alt="業務用1L・2L角型バルク容器"
-                    fill
-                    sizes="40px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-ink font-sans text-xs leading-tight font-bold whitespace-nowrap">
-                    業務用 1L・2L角型容器
-                  </p>
-                  <p className="text-ink-muted mt-0.5 font-sans text-[10.5px] leading-tight whitespace-nowrap sm:text-[11px]">
-                    最小4L〜・味組み合わせ自由
-                  </p>
-                </div>
+            <div className="mt-2.5 flex items-center justify-between gap-2.5 rounded-2xl bg-white px-3.5 py-2.5">
+              <div className="min-w-0">
+                <p className="text-ink font-sans text-xs leading-tight font-bold whitespace-nowrap">
+                  業務用 1L・2L 角型容器
+                </p>
+                <p className="text-ink-muted mt-0.5 font-sans text-[11px] leading-tight whitespace-nowrap">
+                  最小4L〜・組み合わせ自由
+                </p>
               </div>
-              <div className="border-l border-stone-200 pl-2.5 text-right">
-                <p className="text-brand font-sans text-[11px] leading-tight font-bold whitespace-nowrap sm:text-xs">
-                  HappyCow {WHOLESALE_FACTS.happyCowRating}
+              <div className="shrink-0 border-l border-stone-200 pl-3 text-right">
+                <p className="text-brand font-sans text-[11px] leading-tight font-bold whitespace-nowrap">
+                  直営店 HappyCow {WHOLESALE_FACTS.happyCowRating}
                 </p>
                 <p className="text-ink-muted mt-0.5 font-sans text-[10px] leading-tight whitespace-nowrap">
-                  Google {WHOLESALE_FACTS.googleRating}
+                  Google {WHOLESALE_FACTS.googleRating}（{WHOLESALE_FACTS.googleReviewCount}）
                 </p>
               </div>
             </div>

@@ -8,7 +8,6 @@ import HotelHeroSection from "./components/HotelHeroSection";
 import HotelNoExtraPrepSection from "./components/HotelNoExtraPrepSection";
 import HotelFlavorsSection from "./components/HotelFlavorsSection";
 import HotelPortionSection from "./components/HotelPortionSection";
-import HotelBanquetSection from "./components/HotelBanquetSection";
 import HotelTermsSection from "./components/HotelTermsSection";
 import HotelFAQSection from "./components/HotelFAQSection";
 import HotelSampleSection from "./components/HotelSampleSection";
@@ -61,13 +60,20 @@ export const metadata: Metadata = {
 };
 
 const navItems: WholesaleNavItem[] = [
-  { label: "海外ゲスト対応", href: "#no-extra-prep" },
+  { label: "どんなアイス？", href: "#no-extra-prep" },
   { label: "海外からの声", href: "#reviews" },
   { label: "11種の味", href: "#flavors" },
+  { label: "分量・大人数対応", href: "#portion" },
   { label: "注文の決まり", href: "#terms" },
   { label: "よくある質問", href: "#faq" },
 ];
 
+/**
+ * ホテル・旅館・婚礼宴会・コース料理店向け 業務用卸LP
+ * 構成：何の提案か（Hero） → どこの誰がつくるどんなアイスか＆4つの現場メリット（NoExtraPrep）
+ *     → 海外旅行者からの実証口コミ（Reviews） → 会席・コースに合う11種の味と盛り付け方（Flavors）
+ *     → 1人分の分量・容器・団体ビュッフェ対応（Portion） → 注文の決まり（Terms） → FAQ → 無料サンプル申込
+ */
 export default function HotelPage() {
   return (
     <>
@@ -76,36 +82,33 @@ export default function HotelPage() {
         {/* 1. 最初の画面 */}
         <HotelHeroSection />
 
-        {/* 2. 海外のお客様に必要な4つの要素＋厨房で別に仕込まなくていい理由 */}
+        {/* 2. どんなアイス？｜専門店の紹介・海外ゲストに必要な4要素・専用工房＆製法 */}
         <HotelNoExtraPrepSection />
 
-        {/* 3. 海外からのヴィーガン・旅行者のお客様の実物口コミ（確かな裏づけを序盤で提示） */}
+        {/* 3. 海外からのヴィーガンのお客様の声（直営スイーツ店での実証評価） */}
         <WholesaleReviewsSlider
           eyebrow="HappyCow 5.0満点・Google ★4.7の実績"
-          heading="海外からのヴィーガン・旅行者のお客様の声"
-          lead={`薬院の実店舗では世界最大のヴィーガンガイドHappyCowで満点 ${WHOLESALE_FACTS.happyCowRating}、Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）を獲得。欧米・豪州・アジアから訪れるヴィーガンやグルテンフリーのお客様はもちろん、ヴィーガンではないお客様からも「今まで食べたアイスで一番美味しい」と高い評価をいただいています。`}
+          heading="海外からのヴィーガンのお客様の声"
+          lead={`私たちの直営スイーツ店（福岡・薬院）には欧米・豪州・アジアから多くの旅行者が訪れ、世界最大のヴィーガンガイドHappyCowで満点 ${WHOLESALE_FACTS.happyCowRating}、Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）を獲得しています。ヴィーガンやグルテンフリーの方はもちろん、ヴィーガンではないお客様からも「世界中で食べたどんな乳製品よりも美味しい」と高い評価をいただいています。`}
           variant="dark"
         />
 
-        {/* 4. 会席・コースに合う味 */}
+        {/* 4. 会席・コースに合う全11種の味と盛り付け方 */}
         <HotelFlavorsSection />
 
-        {/* 5. 盛り付けと量 */}
+        {/* 5. 盛り付け量の目安・1L/2L容器・国際会議／婚礼／朝食ビュッフェ対応 */}
         <HotelPortionSection />
 
-        {/* 6. 国際会議・訪日団体・宴会・婚礼・ビュッフェ */}
-        <HotelBanquetSection />
-
-        {/* 7. 注文の決まり */}
+        {/* 6. 注文の決まり */}
         <HotelTermsSection />
 
-        {/* 8. よくある質問 */}
+        {/* 7. よくある質問 */}
         <HotelFAQSection />
 
-        {/* 9. サンプルの申込フォーム */}
+        {/* 8. 無料試食サンプル6個のお申し込み */}
         <HotelSampleSection />
 
-        {/* 10. OEM・オリジナル水菓子／売店カップ製造のご案内 */}
+        {/* 9. OEM・オリジナル水菓子／売店カップ製造のご案内 */}
         <OemCrossLinkBanner context="hotel" />
       </main>
       <WholesaleFooter

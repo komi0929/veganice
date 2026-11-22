@@ -6,158 +6,136 @@ import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 const BAKED_SWEETS_SIDE_PHOTO_SRC: string | null = null;
 const PARFAIT_PHOTO_SRC: string | null = null;
 
-const cafeScenes = [
-  "ケーキ・タルト・焼菓子の横に",
-  "ワッフル・パンケーキ添え",
-  "ランチ後のミニデザート",
-  "ソーダ・珈琲フロート・パフェ",
+const usageCards = [
+  {
+    badge: "01｜ケーキ・焼き菓子の皿盛りに",
+    title: "焼き菓子・タルト・ワッフルの横に添える",
+    body: "ガトーショコラ、タルト、シフォン、パウンドケーキ、スコーン、パンケーキ、ワッフルの横に。温かい焼き菓子に冷たいバニラやアールグレイを添える一皿にそのまま使えます。",
+    photoSrc: BAKED_SWEETS_SIDE_PHOTO_SRC,
+    photoAlt: "焼き菓子やタルトの横にバニラアイスを添えたプレート",
+  },
+  {
+    badge: "02｜ドリンクメニューに",
+    title: "ソーダ・珈琲・紅茶のフロートにする",
+    body: "自家製レモネードやクラフトソーダ、水出しコーヒー、紅茶の上に浮かべて。乳脂肪を使っていないため氷と接しても油分が浮きにくく、ドリンクの香りにすっきり馴染みます。",
+    photoSrc: null,
+    photoAlt: "",
+  },
+  {
+    badge: "03｜グラスデザートに",
+    title: "パフェやアフォガートに仕立てる",
+    body: "旬の果物やグラノーラと重ねる季節のパフェや、熱々のエスプレッソ・濃い抹茶を注ぐアフォガートに。白味噌や甘酒の深いコクが珈琲の苦みを引き立てます。",
+    photoSrc: PARFAIT_PHOTO_SRC,
+    photoAlt: "季節の果物とグラノーラに重ねたグラスパフェ",
+  },
+  {
+    badge: "04｜カフェランチの締めくくりに",
+    title: "ランチの食後デザートに出す",
+    body: "プレートランチやパスタの食後に小さな一皿（約50ml＝原価 約100円・税別）として。乳脂肪ゼロで食後も軽やかに食べきれ、冷凍保管のため平日の廃棄ロスも出ません。",
+    photoSrc: null,
+    photoAlt: "",
+  },
 ] as const;
 
-const flagshipExamples = [
+const platingIdeas = [
   {
     image: "/images/serving/serving_float.jpg",
     objectPosition: "object-[center_35%]",
-    name: "マンゴーソーダフロート",
+    title: "季節果実のソーダフロート",
+    caption: "マンゴーやミックスベリーを自家製ソーダに浮かべて",
   },
   {
     image: "/images/serving/serving_affogato.jpg",
     objectPosition: "object-center",
-    name: "ココナッツバニラ＆コーヒーゼリー",
-  },
-  {
-    image: "/images/serving/serving_waffle_cup.jpg",
-    objectPosition: "object-[center_45%]",
-    name: "米粉ワッフルアイス",
+    title: "珈琲ゼリー・アフォガート仕立て",
+    caption: "珈琲ゼリーやエスプレッソにバニラを添えて",
   },
   {
     image: "/images/serving/serving_monaka.jpg",
     objectPosition: "object-[center_70%]",
-    name: "抹茶アイス最中",
+    title: "和素材・米粉菓子のアレンジ",
+    caption: "抹茶・ほうじ茶を最中皮や求肥、焼き菓子と合わせて",
   },
 ] as const;
 
 export default function CafeServingSection() {
   return (
-    <section id="serving" className="bg-[#f7f3ec] py-16 sm:py-24">
+    <section id="serving" className="bg-bg-white scroll-mt-14 py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
-        <div className="mb-7 flex flex-wrap gap-2">
-          {cafeScenes.map((scene) => (
-            <span
-              key={scene}
-              className="text-ink rounded-full border border-stone-300/70 bg-white px-3.5 py-1 font-sans text-xs font-medium shadow-2xs"
+        <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
+          <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
+          お店での使い方
+        </p>
+        <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
+          焼き菓子の横添えから、フロート・ランチ後のひと皿まで。
+        </h2>
+        <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
+          冷凍庫から盛り付けるだけで、仕込みの手間やロスを増やさずメニューを広げられます。1Lあたり50ml（#18）なら約20杯・1杯
+          約100円（税別）、80ml（#12）なら約12杯・1杯 約167円（税別）が目安です。
+        </p>
+
+        {/* カフェ・菓子店の4つの提供シーン */}
+        <div className="mt-9 grid grid-cols-1 gap-5 md:grid-cols-2">
+          {usageCards.map((card) => (
+            <div
+              key={card.badge}
+              className="flex flex-col rounded-3xl border border-stone-200/80 bg-[#fafaf8] p-5 sm:p-6"
             >
-              {scene}
-            </span>
+              <PhotoSlot
+                src={card.photoSrc}
+                alt={card.photoAlt}
+                aspectClassName="aspect-[16/9]"
+                wrapperClassName="mb-4"
+              />
+              <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
+                {card.badge}
+              </span>
+              <h3 className="text-ink mt-3 font-serif text-lg font-bold">{card.title}</h3>
+              <p className="text-ink-light mt-2 font-sans text-sm leading-[1.85]">{card.body}</p>
+            </div>
           ))}
         </div>
 
-        <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
-          <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
-          添える使い方
-        </p>
-        <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
-          お店のケーキやドリンクに、ひと皿の広がりを。
-        </h2>
-        <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
-          1Lあたり50mlなら約20杯（1杯 約100円・税別）、80mlなら約12杯（1杯
-          約167円・税別）。自家製の焼き菓子やドリンク、ランチプレートの食後にそのまま添えられます。
+        <p className="text-ink-muted mt-3 font-sans text-xs">
+          ※1杯あたりの計算：{WHOLESALE_FACTS.costPerScoop}
         </p>
 
-        {/* 先頭：薬院店の実物提供例4点 */}
-        <div className="mt-8 rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-8">
-          <p className="text-brand font-sans text-xs font-bold">福岡・薬院の実店舗での提供例</p>
-          <h3 className="text-ink mt-1 font-serif text-lg font-bold sm:text-xl">
-            SoyStories 薬院店で実際にお出ししているメニュー
-          </h3>
+        {/* 盛り付け・アレンジのイメージ（直営店での実写3点・Heroと重複なし） */}
+        <div className="mt-10 rounded-3xl border border-stone-200/80 bg-[#f7f3ec] p-5 sm:p-7">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+            <h3 className="text-ink font-serif text-base font-bold sm:text-lg">
+              盛り付け・アレンジのイメージ
+            </h3>
+            <p className="text-ink-muted font-sans text-xs">
+              直営カフェで実際にお出ししているメニュー写真です
+            </p>
+          </div>
 
-          <div className="mt-5 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-4">
-            {flagshipExamples.map((item) => (
-              <div
-                key={item.name}
-                className="group overflow-hidden rounded-2xl border border-stone-100 bg-[#fafaf8] p-3"
+          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {platingIdeas.map((item) => (
+              <figure
+                key={item.title}
+                className="overflow-hidden rounded-2xl border border-stone-200/70 bg-white p-3"
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-stone-100">
                   <Image
                     src={item.image}
-                    alt={item.name}
+                    alt={item.title}
                     fill
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                    className={`object-cover transition-transform duration-300 group-hover:scale-105 ${item.objectPosition}`}
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                    className={`object-cover ${item.objectPosition}`}
                   />
                 </div>
-                <h4 className="text-ink mt-2.5 text-center font-sans text-xs font-bold sm:text-sm">
-                  {item.name}
-                </h4>
-              </div>
+                <figcaption className="mt-2.5 px-0.5">
+                  <p className="text-ink font-sans text-xs font-bold sm:text-sm">{item.title}</p>
+                  <p className="text-ink-muted mt-0.5 font-sans text-[11px] leading-relaxed">
+                    {item.caption}
+                  </p>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
-
-        {/* フロート・パフェ・アフォガート・焼き菓子・ランチ食後に添える使い方 */}
-        <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
-          <div className="flex flex-col rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
-            <PhotoSlot
-              src={BAKED_SWEETS_SIDE_PHOTO_SRC}
-              alt="焼き菓子やタルトの横にバニラアイスを添えたプレート"
-              aspectClassName="aspect-[16/9]"
-              wrapperClassName="mb-4"
-            />
-            <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-              ケーキ・焼き菓子の皿盛りに
-            </span>
-            <h3 className="text-ink mt-3 font-serif text-lg font-bold">
-              焼き菓子・ワッフルに添える
-            </h3>
-            <p className="text-ink-light mt-2 font-sans text-sm leading-[1.8]">
-              ガトーショコラ、タルト、シフォン、パウンドケーキ、スコーン、パンケーキ、ワッフルの横に。温かい焼き菓子に冷たいバニラやアールグレイを添えるデザートプレートに。
-            </p>
-          </div>
-
-          <div className="flex flex-col rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
-            <PhotoSlot
-              src={PARFAIT_PHOTO_SRC}
-              alt="季節の果物とグラノーラに重ねたグラスパフェ"
-              aspectClassName="aspect-[16/9]"
-              wrapperClassName="mb-4"
-            />
-            <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-              季節のパフェ・アフォガートに
-            </span>
-            <h3 className="text-ink mt-3 font-serif text-lg font-bold">
-              パフェやアフォガートに仕立てる
-            </h3>
-            <p className="text-ink-light mt-2 font-sans text-sm leading-[1.8]">
-              旬の果物やグラノーラと重ねる季節のパフェや、熱々のエスプレッソ・濃い抹茶を注ぐアフォガートに。白味噌や甘酒の深いコクが珈琲の苦みを引き立て、出し入れしても滑らかさが続きます。
-            </p>
-          </div>
-
-          <div className="flex flex-col rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
-            <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-              ドリンクメニューに
-            </span>
-            <h3 className="text-ink mt-3 font-serif text-lg font-bold">フロートにする</h3>
-            <p className="text-ink-light mt-2 font-sans text-sm leading-[1.8]">
-              自家製レモネードやクラフトソーダ、水出しコーヒー、紅茶の上に浮かべて。乳脂肪を使っていないため氷と接しても油分が浮きにくく、ドリンクの香りを邪魔せずすっきり馴染みます。
-            </p>
-          </div>
-
-          <div className="flex flex-col rounded-3xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6">
-            <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-              カフェランチの締めくくりに
-            </span>
-            <h3 className="text-ink mt-3 font-serif text-lg font-bold">
-              ランチの食後デザートに出す
-            </h3>
-            <p className="text-ink-light mt-2 font-sans text-sm leading-[1.8]">
-              プレートランチやパスタ・カレーの食後に小さな一皿（約50ml＝原価
-              約100円・税別）として。乳脂肪ゼロで食後も軽やかに食べきれ、冷凍保管のため平日のロスも出ません。
-            </p>
-          </div>
-        </div>
-
-        <p className="text-ink-muted mt-4 font-sans text-xs">
-          ※1杯あたりの計算：{WHOLESALE_FACTS.costPerScoop}
-        </p>
       </div>
     </section>
   );

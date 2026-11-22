@@ -5,8 +5,8 @@ import WholesaleFloatingCTA from "@/app/components/wholesale/WholesaleFloatingCT
 import WholesaleReviewsSlider from "@/app/components/wholesale/WholesaleReviewsSlider";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import CafeHeroSection from "./components/CafeHeroSection";
-import CafeServingSection from "./components/CafeServingSection";
 import CafePolicySection from "./components/CafePolicySection";
+import CafeServingSection from "./components/CafeServingSection";
 import CafeFlavorsSection from "./components/CafeFlavorsSection";
 import CafeTermsSection from "./components/CafeTermsSection";
 import CafeFAQSection from "./components/CafeFAQSection";
@@ -59,13 +59,19 @@ export const metadata: Metadata = {
 };
 
 const navItems: WholesaleNavItem[] = [
-  { label: "添える使い方", href: "#serving" },
-  { label: "素材の方針", href: "#policy" },
+  { label: "どんなアイス？", href: "#policy" },
+  { label: "お店での使い方", href: "#serving" },
   { label: "11種の味", href: "#flavors" },
-  { label: "注文の決まり", href: "#terms" },
+  { label: "お客様の声", href: "#reviews" },
+  { label: "仕入れ条件", href: "#terms" },
   { label: "よくある質問", href: "#faq" },
 ];
 
+/**
+ * カフェ・ベーカリー・菓子店向け 業務用卸LP
+ * 構成：何の提案か（Hero） → どこの誰がつくるどんなアイスか（Policy） → お店での4つの使い方（Serving）
+ *     → 11種の味（Flavors） → 実際に食べたお客様の声（Reviews） → 仕入れ条件・容器（Terms） → FAQ → 無料サンプル申込
+ */
 export default function CafePage() {
   return (
     <>
@@ -74,33 +80,33 @@ export default function CafePage() {
         {/* 1. 最初の画面 */}
         <CafeHeroSection />
 
-        {/* 2. 添える使い方 */}
-        <CafeServingSection />
-
-        {/* 3. お店の方針に合う */}
+        {/* 2. どんなアイス？（専門店の紹介・無添加＆白砂糖不使用・米粉製法・専用工房） */}
         <CafePolicySection />
 
-        {/* 4. 味（ケーキ・焼き菓子に／ドリンク・フロートに） */}
+        {/* 3. お店での使い方（焼き菓子横添え・フロート・パフェ・ランチ後＋盛り付け写真） */}
+        <CafeServingSection />
+
+        {/* 4. フレーバー全11種（ケーキ・焼き菓子に／ドリンク・フロートに） */}
         <CafeFlavorsSection />
 
-        {/* 5-1. 口コミ */}
+        {/* 5. 直営スイーツ店に寄せられたお客様の声（味の確かな裏づけ） */}
         <WholesaleReviewsSlider
-          eyebrow="実店舗での評判"
-          heading="「世界中で食べた乳製品より美味しい」国内外から届く声"
-          lead={`福岡・薬院の実店舗ではGoogle ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）・HappyCow ${WHOLESALE_FACTS.happyCowRating}を獲得。素材にこだわるお客様やアレルギーをお持ちの方、ヴィーガンではないお客様からも高く評価されています。`}
-          variant="light"
+          eyebrow="直営スイーツ店に届くお客様の声"
+          heading="「乳製品のアイスより美味しい」国内外から届く評価"
+          lead={`私たちの直営スイーツ店（福岡・薬院）では、Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）・HappyCow ${WHOLESALE_FACTS.happyCowRating}の評価をいただいています。アレルギーやヴィーガンの方はもちろん、普段は乳製品のお菓子を召し上がるヴィーガンではないお客様からも「言われなければ植物性だと気づかない」「後味が軽やかで一番好き」と喜ばれています。`}
+          variant="dark"
         />
 
-        {/* 5-2. 注文の決まり */}
+        {/* 6. 仕入れ条件・容器サイズ */}
         <CafeTermsSection />
 
-        {/* 5-3. よくある質問 */}
+        {/* 7. よくあるご質問 */}
         <CafeFAQSection />
 
-        {/* 5-4. 無料サンプル申込フォーム */}
+        {/* 8. 無料試食サンプル6個のお申し込み */}
         <CafeSampleSection />
 
-        {/* 6. OEM・オリジナル味／ロゴ入りカップ製造のご案内 */}
+        {/* 9. OEM・オリジナル味／店名ロゴ展開のご案内 */}
         <OemCrossLinkBanner context="cafe" />
       </main>
       <WholesaleFooter
