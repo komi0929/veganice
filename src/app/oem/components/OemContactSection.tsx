@@ -3,8 +3,10 @@
 import {
   useActionState,
   useEffect,
+  useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
   type ChangeEvent,
   type ReactNode,
 } from "react";
@@ -77,6 +79,10 @@ const inputClasses =
   "w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-base text-ink placeholder:text-gray-300 transition-shadow focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
 const errorClasses = "border-red-300 focus:border-red-500 focus:ring-red-500";
 
+const emptySubscribe = () => () => {};
+const getClientHydrated = () => true;
+const getServerHydrated = () => false;
+
 function createRequestId(): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
     return crypto.randomUUID();
@@ -145,24 +151,86 @@ export default function OemContactSection() {
   const [allergenStatus, setAllergenStatus] = useState<AllergenStatus>("checking");
   const [tasteMemo, setTasteMemo] = useState<string>("");
 
-  const requestIdRef = useRef<string>("");
+  const isHydrated = useSyncExternalStore(emptySubscribe, getClientHydrated, getServerHydrated);
+  const [prevSuccess, setPrevSuccess] = useState<boolean>(false);
+  const [submissionEpoch, setSubmissionEpoch] = useState<number>(0);
+  if (state.success !== prevSuccess) {
+    setPrevSuccess(state.success);
+    if (state.success) {
+      setSubmissionEpoch((n) => n + 1);
+    }
+  }
+
+  const activeRequestId = useMemo(
+    () => (isHydrated ? createRequestId() : ""),
+    // submissionEpoch は送信成功時のみインクリメントし、エラー差し戻し時は同一 requestId を維持する
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isHydrated, submissionEpoch]
+  );
+
   const [syncedNotice, setSyncedNotice] = useState<boolean>(false);
   const errorBannerRef = useRef<HTMLDivElement>(null);
   const lastLookedUpZip = useRef<string>("");
 
   useEffect(() => {
-    if (state.success) {
-      requestIdRef.current = "";
-    } else if (state.message && errorBannerRef.current) {
+    if (!state.success && state.message && errorBannerRef.current) {
       errorBannerRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [state]);
 
+  // 専用トークン（c=）経由で着地した際、URLクエリに個人情報（メール・電話）を載せなくても安全に初期値を補完する
+  useEffect(() => {
+    const tok = customerToken.trim();
+    if (!tok || tok.length < 16 || tok.startsWith("lead:") || /^IG:|^SS-/i.test(tok)) return;
+    if (contactName && email && phone) return;
+
+    let cancelled = false;
+    const rpcBase = process.env.NEXT_PUBLIC_SUPABASE_URL
+      ? `${process.env.NEXT_PUBLIC_SUPABASE_URL.replace(/\/$/, "")}/rest/v1/rpc`
+      : "https://bnvudcxlvldrpilhcirr.supabase.co/rest/v1/rpc";
+    const pubKey =
+      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+      "sb_publishable_6OSjYRgADIH8kYj4Jsi66A_WzFxvIRD";
+
+    void fetch(`${rpcBase}/get_oem_prefill_by_token`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: pubKey },
+      body: JSON.stringify({ p_token: tok }),
+    })
+      .then((res) => (res.ok ? res.json() : null))
+      .then(
+        (
+          data: {
+            store_name?: string | null;
+            contact_name?: string | null;
+            email?: string | null;
+            phone?: string | null;
+          } | null
+        ) => {
+          if (cancelled || !data) return;
+          if (data.store_name) setCompanyName((prev) => prev || String(data.store_name));
+          if (data.contact_name) setContactName((prev) => prev || String(data.contact_name));
+          if (data.email) setEmail((prev) => prev || String(data.email));
+          if (data.phone) {
+            const p = normalizeDomesticPhone(String(data.phone)) || String(data.phone);
+            setPhone((prev) => prev || p);
+          }
+        }
+      )
+      .catch(() => {
+        /* トークン補完失敗時は手入力のまま継続 */
+      });
+
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [customerToken]);
+
   const handleFormAction = (fd: FormData) => {
-    if (!requestIdRef.current) {
-      requestIdRef.current = createRequestId();
+    if (!fd.get("requestId")) {
+      fd.set("requestId", activeRequestId || createRequestId());
     }
-    fd.set("requestId", requestIdRef.current);
     formAction(fd);
   };
 
@@ -341,6 +409,7 @@ export default function OemContactSection() {
               <form action={handleFormAction} className="relative mt-6 space-y-5">
                 <input type="hidden" name="formType" value={activeTab} />
                 <input type="hidden" name="source" value={resolvedSource} />
+                <input type="hidden" name="requestId" value={activeRequestId} />
                 {customerToken && (
                   <input type="hidden" name="customerToken" value={customerToken} />
                 )}
