@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calculator, Check, Palette, ShieldAlert } from "lucide-react";
+import { ArrowRight, Calculator, Check, Download, Palette, ShieldAlert } from "lucide-react";
 import { SectionHeader } from "@/app/dessert/components/ui";
-import { PRICING_CONSTANTS, type OemCourseId } from "../data/oemSpecs";
+import { LID_STICKER_SPEC, PRICING_CONSTANTS, type OemCourseId } from "../data/oemSpecs";
 import { dispatchOemIntent } from "../lib/oemInteraction";
 
 /**
@@ -298,14 +298,33 @@ export default function OemCoursesSection() {
           <div className="rounded-2xl bg-white p-5">
             <p className="text-ink flex items-center gap-2 text-sm font-bold">
               <Palette className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
-              カップの「フタ丸シール」のご支給について
+              カップの「フタ丸シール（φ72mm）」のご支給について
             </p>
             <p className="text-ink-light mt-2 text-xs leading-relaxed">
-              当社より規定サイズの<strong>テンプレート（Illustrator .aiデータ）を支給</strong>
-              いたします。そちらをもとにお客様にてデザイン制作・シール印刷までご手配いただき、当工房へご納品いただく形となります。お客様にてシールをご手配いただく分、カップ単価を基準価格（税込324円）から
+              規定サイズは<strong>{LID_STICKER_SPEC.shortSize}</strong>
+              （文字・ロゴ安全圏φ66mm以内／推奨：{LID_STICKER_SPEC.material}
+              ）です。底面の法定一括表示ラベルは株式会社ヒトコト側で貼付するため、天面シールに原材料名等を入れる必要はなく、店ロゴ・商品名だけで自由にデザインいただけます。お客様にてご手配・ご支給いただく分、カップ単価を基準価格（税込324円）から
               <strong>税込15円引きの「税込309円」</strong>
-              にしております（底面の法定一括表示ラベルは当社で貼付。※ご請求は税別286円基準（税込目安309円））。
+              にしております（※ご請求は税別286円基準（税込目安309円））。
             </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <a
+                href={LID_STICKER_SPEC.guidePdfHref}
+                download
+                className="text-brand border-brand/30 hover:bg-brand/8 inline-flex items-center gap-1.5 rounded-full border bg-[#fafaf8] px-3 py-1.5 text-[11px] font-bold transition-colors"
+              >
+                <Download className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                {LID_STICKER_SPEC.guidePdfLabel}
+              </a>
+              <a
+                href={LID_STICKER_SPEC.aiTemplateHref}
+                download
+                className="text-brand border-brand/30 hover:bg-brand/8 inline-flex items-center gap-1.5 rounded-full border bg-[#fafaf8] px-3 py-1.5 text-[11px] font-bold transition-colors"
+              >
+                <Download className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                {LID_STICKER_SPEC.aiTemplateLabel}
+              </a>
+            </div>
           </div>
 
           <div className="rounded-2xl bg-white p-5">

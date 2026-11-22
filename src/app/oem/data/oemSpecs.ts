@@ -101,6 +101,21 @@ export const PRICING_CONSTANTS = {
   extraTrialFeeExTax: 5000,
 } as const;
 
+export const LID_STICKER_SPEC = {
+  /** 短縮サイズ表記 */
+  shortSize: "正円 直径72mm（φ72mm・塗り足し78mm）",
+  /** 塗り足し・安全圏込みの詳細サイズ表記 */
+  fullSize: "正円 直径72mm（φ72mm）／塗り足し周囲3mm込み78mm／文字・ロゴ安全圏φ66mm以内",
+  /** 推奨用紙・糊仕様 */
+  material: "耐水フィルム系（ユポ等）＋ラミネート加工＋冷凍用強粘着（冷食糊）",
+  /** 作成ガイドPDF */
+  guidePdfHref: "/downloads/soystories-oem-lid-sticker-guide-72mm.pdf",
+  guidePdfLabel: "天面丸シール作成ガイドPDF（φ72mm）",
+  /** Illustratorテンプレート(.ai) */
+  aiTemplateHref: "/downloads/soystories-oem-lid-sticker-72mm.ai",
+  aiTemplateLabel: "Illustrator型紙（.ai）",
+} as const;
+
 export type OemCourseId = "seal_only" | "custom_recipe";
 export type OemFormatId = "cup" | "bulk";
 
