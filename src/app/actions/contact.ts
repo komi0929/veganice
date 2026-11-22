@@ -18,7 +18,6 @@ const ALLOWED_FLAVORS = [
   "ショコラ",
   "抹茶",
   "ほうじ茶",
-  "バニラ",
   "バニラココナッツ",
   "UMAMIバニラ",
   "アールグレイ",
@@ -26,8 +25,12 @@ const ALLOWED_FLAVORS = [
 
 type AllowedFlavor = (typeof ALLOWED_FLAVORS)[number];
 
+const LEGACY_FLAVOR_INPUTS = [...ALLOWED_FLAVORS, "バニラ"] as const;
+
 const sampleFlavorItemSchema = z.object({
-  flavor: z.enum(ALLOWED_FLAVORS),
+  flavor: z
+    .enum(LEGACY_FLAVOR_INPUTS)
+    .transform((val): AllowedFlavor => (val === "バニラ" ? "バニラココナッツ" : val)),
   qty: z.number().int().min(1).max(6),
 });
 
@@ -37,7 +40,8 @@ const baseSchema = z.object({
   companyName: z.string().min(1, "お店・会社名は必須です"),
   contactName: z.string().min(1, "ご担当者名は必須です"),
   email: z.string().email("有効なメールアドレスを入力してください"),
-  source: z.string().max(50).optional(),
+  source: z.string().max(100).optional(),
+  requestId: z.string().max(100).optional(),
 });
 
 const sampleSchema = baseSchema
@@ -141,7 +145,7 @@ const oemSchema = baseSchema.extend({
   packageFormat: z.enum(["cup", "bulk", "both", "undecided"]),
   ingredientName: z.string().max(200).optional(),
   ingredientState: z.string().max(200).optional(),
-  allergenStatus: z.enum(["free_confirmed", "checking", "none_seal_only"]),
+  allergenStatus: z.enum(["free_confirmed", "checking", "contains_or_unknown", "none_seal_only"]),
   tasteImage: z.string().max(1000).optional(),
   desiredTiming: z.string().max(200).optional(),
 });
@@ -154,7 +158,9 @@ export type ContactState = {
   success: boolean;
   message: string;
   formType?: ContactFormType;
+  caseNumber?: string;
   errors?: Record<string, string[]>;
+  fields?: Record<string, string>;
 };
 
 function buildSampleSummary(
@@ -174,10 +180,10 @@ function buildSampleSummary(
 }
 
 const COURSE_LABELS: Record<z.infer<typeof oemSchema>["oemCourse"], string> = {
-  seal_only: "① 既存の11種の味＋お店の天面シール（開発費0円）",
-  base_arrange: "② 既存ベース＋お店の粉末・具材追加（試作費1万円）",
-  custom_recipe: "③ お店の素材で専用ベースから開発（試作費3万円）",
-  undecided: "相談しながら決めたい",
+  seal_only: "プラン①：フタだけお店ロゴ（既存11種・開発費0円）",
+  custom_recipe: "プラン②：お店の素材でオリジナル開発（試作開発費 税別30,000円＋試作実費）",
+  base_arrange: "プラン②（旧アレンジ枠）",
+  undecided: "まだ迷っている・相談しながら決めたい",
 };
 
 const FORMAT_LABELS: Record<z.infer<typeof oemSchema>["packageFormat"], string> = {
@@ -190,6 +196,8 @@ const FORMAT_LABELS: Record<z.infer<typeof oemSchema>["packageFormat"], string> 
 const ALLERGEN_LABELS: Record<z.infer<typeof oemSchema>["allergenStatus"], string> = {
   free_confirmed: "素材・加工場所ともに卵・乳・小麦不使用を確認済み",
   checking: "確認中（後ほど規格書等で確認）",
+  contains_or_unknown:
+    "卵・乳・小麦を含む可能性あり／不明（工房持ち込み不可のため代替・別案を要確認）",
   none_seal_only: "素材の持ち込みなし（シール変更のみ）",
 };
 
@@ -203,7 +211,7 @@ function buildOemReadableMessage(data: z.infer<typeof oemSchema>): string {
     `・アレルゲン確認：${ALLERGEN_LABELS[data.allergenStatus]}`,
     data.desiredTiming ? `・ご希望時期：${data.desiredTiming}` : null,
     data.tasteImage ? `・目指したい味わい・ご相談内容：\n${data.tasteImage}` : null,
-    data.customerToken ? `・顧客連携キー：${data.customerToken}` : null,
+    data.customerToken ? "・顧客台帳連携：専用URL経由" : null,
   ].filter((line): line is string => Boolean(line));
   return lines.join("\n");
 }
@@ -215,7 +223,19 @@ export async function submitContact(
   const rawType = formData.get("formType");
   const formType: ContactFormType = rawType === "sample" || rawType === "oem" ? rawType : "inquiry";
 
-  const rawSource = ((formData.get("source") as string) || "").trim() || undefined;
+  // スパムボット用 Honeypot：値が入っていれば外部通信・DB枠消費をせず静かに終了
+  const honeypot = String(formData.get("websiteUrl") ?? "").trim();
+  if (honeypot.length > 0) {
+    return {
+      success: true,
+      message: "受け付けいたしました。",
+      formType,
+    };
+  }
+
+  const rawSource = ((formData.get("source") as string) || "").trim().slice(0, 100) || undefined;
+  const rawRequestId =
+    ((formData.get("requestId") as string) || "").trim().slice(0, 100) || undefined;
   const normalizedPhone = normalizeDomesticPhone(String(formData.get("phone") ?? ""));
   const normalizedZip = normalizePostalCode(String(formData.get("postalCode") ?? ""));
   let resolvedAddress = String(formData.get("address") ?? "").trim();
@@ -237,6 +257,11 @@ export async function submitContact(
     }
   }
 
+  const rawOemCourse = (formData.get("oemCourse") as string) || "undecided";
+  const rawAllergenInput = (formData.get("allergenStatus") as string) || "";
+  const resolvedAllergenStatus =
+    rawOemCourse === "seal_only" ? "none_seal_only" : rawAllergenInput || "checking";
+
   const rawData =
     formType === "sample"
       ? {
@@ -245,6 +270,7 @@ export async function submitContact(
           contactName: formData.get("contactName"),
           email: formData.get("email"),
           source: rawSource,
+          requestId: rawRequestId,
           phone: normalizedPhone,
           postalCode: normalizedZip.formatted,
           address: resolvedAddress,
@@ -263,13 +289,14 @@ export async function submitContact(
             contactName: formData.get("contactName"),
             email: formData.get("email"),
             source: rawSource,
+            requestId: rawRequestId,
             phone: normalizedPhone || undefined,
             customerToken: (formData.get("customerToken") as string) || undefined,
-            oemCourse: (formData.get("oemCourse") as string) || "undecided",
+            oemCourse: rawOemCourse,
             packageFormat: (formData.get("packageFormat") as string) || "cup",
             ingredientName: (formData.get("ingredientName") as string) || undefined,
             ingredientState: (formData.get("ingredientState") as string) || undefined,
-            allergenStatus: (formData.get("allergenStatus") as string) || "checking",
+            allergenStatus: resolvedAllergenStatus,
             tasteImage: (formData.get("tasteImage") as string) || undefined,
             desiredTiming: (formData.get("desiredTiming") as string) || undefined,
           }
@@ -279,19 +306,41 @@ export async function submitContact(
             contactName: formData.get("contactName"),
             email: formData.get("email"),
             source: rawSource,
+            requestId: rawRequestId,
             phone: normalizedPhone || undefined,
             customerToken: (formData.get("customerToken") as string) || undefined,
             message: formData.get("message"),
           };
+
+  const submittedFields: Record<string, string> = {
+    companyName: String(formData.get("companyName") ?? ""),
+    contactName: String(formData.get("contactName") ?? ""),
+    email: String(formData.get("email") ?? ""),
+    phone: normalizedPhone || String(formData.get("phone") ?? ""),
+    postalCode: normalizedZip.formatted || String(formData.get("postalCode") ?? ""),
+    address: resolvedAddress || String(formData.get("address") ?? ""),
+    receiveDays: String(formData.get("receiveDays") ?? ""),
+    receiveSlots: String(formData.get("receiveSlots") ?? ""),
+    receiveNote: String(formData.get("receiveNote") ?? ""),
+    notes: String(formData.get("notes") ?? ""),
+    message: String(formData.get("message") ?? ""),
+    ingredientName: String(formData.get("ingredientName") ?? ""),
+    ingredientState: String(formData.get("ingredientState") ?? ""),
+    allergenStatus: resolvedAllergenStatus,
+    tasteImage: String(formData.get("tasteImage") ?? ""),
+    desiredTiming: String(formData.get("desiredTiming") ?? ""),
+  };
 
   const validatedFields = contactSchema.safeParse(rawData);
 
   if (!validatedFields.success) {
     return {
       success: false,
-      message: "入力内容に確認が必要な項目があります。ご確認ください。",
+      message:
+        "入力内容に確認が必要な項目があります。赤字の項目をご確認ください（入力内容は保持されています）。",
       formType,
       errors: validatedFields.error.flatten().fieldErrors,
+      fields: submittedFields,
     };
   }
 
@@ -302,35 +351,50 @@ export async function submitContact(
   const timestamp = new Date().toISOString();
 
   const sourcePrefix = data.source ? `[申込LP: ${data.source}]` : "";
+  const oemReadableWithSource =
+    data.formType === "oem"
+      ? sourcePrefix
+        ? `${sourcePrefix}\n${buildOemReadableMessage(data)}`
+        : buildOemReadableMessage(data)
+      : "";
 
-  let outboundPayload =
-    data.formType === "sample"
-      ? {
-          ...data,
-          notes: sourcePrefix
-            ? data.notes
-              ? `${sourcePrefix} ${data.notes}`
-              : sourcePrefix
-            : data.notes,
-          sampleFlavors: data.sampleMode === "omakase" ? [] : data.sampleFlavors,
-          sampleSummary: buildSampleSummary(data.sampleMode, data.sampleFlavors),
-          timestamp,
-        }
-      : data.formType === "oem"
-        ? {
-            ...data,
-            // 既存の受信テーブルでも全文が読めるよう formType互換の message も同梱
-            formType: "inquiry",
-            inquiryKind: "oem_hearing",
-            oemDetail: data,
-            message: buildOemReadableMessage(data),
-            timestamp,
-          }
-        : {
-            ...data,
-            message: sourcePrefix ? `${sourcePrefix}\n${data.message}` : data.message,
-            timestamp,
-          };
+  // OEM・一般問い合わせでは GAS・シートに customerToken（ポータル合鍵）を平文で渡さない
+  let outboundPayload: Record<string, unknown>;
+  if (data.formType === "sample") {
+    outboundPayload = {
+      ...data,
+      notes: sourcePrefix
+        ? data.notes
+          ? `${sourcePrefix} ${data.notes}`
+          : sourcePrefix
+        : data.notes,
+      sampleFlavors: data.sampleMode === "omakase" ? [] : data.sampleFlavors,
+      sampleSummary: buildSampleSummary(data.sampleMode, data.sampleFlavors),
+      timestamp,
+    };
+  } else if (data.formType === "oem") {
+    const { customerToken: _omitToken, ...oemSafeData } = data;
+    void _omitToken;
+    outboundPayload = {
+      ...oemSafeData,
+      hasCustomerToken: Boolean(data.customerToken),
+      // 既存の受信テーブルでも全文が読めるよう formType互換の message も同梱
+      formType: "inquiry",
+      inquiryKind: "oem_hearing",
+      oemDetail: oemSafeData,
+      message: oemReadableWithSource,
+      timestamp,
+    };
+  } else {
+    const { customerToken: _omitToken, ...inquirySafeData } = data;
+    void _omitToken;
+    outboundPayload = {
+      ...inquirySafeData,
+      hasCustomerToken: Boolean(data.customerToken),
+      message: sourcePrefix ? `${sourcePrefix}\n${data.message}` : data.message,
+      timestamp,
+    };
+  }
 
   // 統合管理システム（Supabase DB）への直接登録：OEM相談・一般問い合わせも管理画面・顧客カルテへ即時連動
   const SUPABASE_RPC_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -340,10 +404,13 @@ export async function submitContact(
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
     "sb_publishable_6OSjYRgADIH8kYj4Jsi66A_WzFxvIRD";
 
+  let supaAccepted = false;
+  let caseNumber: string | undefined;
+
   if (data.formType === "oem" || data.formType === "inquiry") {
     const readableMessage =
       data.formType === "oem"
-        ? buildOemReadableMessage(data)
+        ? oemReadableWithSource
         : sourcePrefix
           ? `${sourcePrefix}\n${data.message}`
           : data.message;
@@ -357,6 +424,8 @@ export async function submitContact(
         body: JSON.stringify({
           p: {
             kind: data.formType,
+            requestId: data.requestId ?? "",
+            source: data.source ?? "",
             companyName: data.companyName,
             contactName: data.contactName,
             email: data.email,
@@ -377,12 +446,53 @@ export async function submitContact(
       const supaJson = (await supaRes.json().catch(() => null)) as {
         status?: string;
         reason?: string;
+        case_number?: string;
+        due_date?: string;
       } | null;
-      if (
-        !supaRes.ok ||
-        !supaJson ||
-        (supaJson.status !== "ok" && supaJson.status !== "already_received")
-      ) {
+
+      const returnedCaseNumber =
+        typeof supaJson?.case_number === "string" && supaJson.case_number.trim()
+          ? supaJson.case_number.trim()
+          : undefined;
+
+      if (supaRes.ok && supaJson?.status === "ok") {
+        supaAccepted = true;
+        caseNumber = returnedCaseNumber;
+        if (caseNumber) {
+          const caseTag = `[受付番号: ${caseNumber}]`;
+          outboundPayload = {
+            ...outboundPayload,
+            caseNumber,
+            subjectPrefix: caseTag,
+            subject: `${caseTag} ${data.companyName}様 ${
+              data.formType === "oem" ? "OEM事前相談" : "お問い合わせ"
+            }`,
+            message: `${caseTag}\n${readableMessage}`,
+          };
+        }
+      } else if (supaRes.ok && supaJson?.status === "already_received") {
+        if (supaJson.reason === "duplicate_recent") {
+          outboundPayload = {
+            ...outboundPayload,
+            message: `【要確認：短時間複数送信のため管理画面DB自動起票スキップ・メールより確認】\n${readableMessage}`,
+          };
+        } else {
+          supaAccepted = true;
+          caseNumber = returnedCaseNumber;
+          if (caseNumber) {
+            const caseTag = `[受付番号: ${caseNumber}]`;
+            outboundPayload = {
+              ...outboundPayload,
+              caseNumber,
+              subjectPrefix: caseTag,
+              subject: `${caseTag} ${data.companyName}様 ${
+                data.formType === "oem" ? "OEM事前相談" : "お問い合わせ"
+              }`,
+              message: `${caseTag}\n${readableMessage}`,
+            };
+          }
+        }
+      } else {
         const reason = supaJson?.reason ?? `http_${supaRes.status}`;
         console.warn("submit_oem_from_lp not accepted:", reason);
         outboundPayload = {
@@ -442,27 +552,38 @@ export async function submitContact(
         throw new Error(msg);
       }
     } catch (error) {
-      console.error("お問い合わせ送信エラー:", error);
-      return {
-        success: false,
-        message: "送信に失敗しました。時間をおいて再度お試しください。",
-        formType,
-      };
+      if (supaAccepted) {
+        console.error(
+          "GAS送信エラー（Supabase DB登録・通知済みのため二重起票防止として完了扱い）:",
+          error
+        );
+      } else {
+        console.error("お問い合わせ送信エラー:", error);
+        return {
+          success: false,
+          message:
+            "通信エラーにより送信できませんでした（入力内容は保持されています）。再度お試しいただくか、フォーム下部のLINEよりご連絡ください。",
+          formType,
+          fields: submittedFields,
+        };
+      }
     }
   }
 
+  const caseLabel = caseNumber ? `（受付番号：${caseNumber}）` : "";
   const successMessage =
     data.formType === "sample"
       ? `サンプルのお申し込みを受け付けました。通常2営業日以内に発送いたします。送料は着払いとなります。\nサンプルの味：${buildSampleSummary(data.sampleMode, data.sampleFlavors)}`
       : data.formType === "oem"
         ? data.oemCourse === "seal_only"
-          ? "OEM（既存フレーバー＋お店の天面シール）のご相談を受け付けました。通常2営業日以内に、シールのベースデータとお見積りのご案内をお送りいたします。"
-          : "オリジナルアイス開発の事前ヒアリングを受け付けました。いただいた内容をもとに、お店の素材に合わせた「3つの味の方向性・アレンジ案」を整理して、通常2〜3営業日以内にご提案いたします。"
-        : "お問い合わせありがとうございます。通常2営業日以内に担当者よりご連絡いたします。";
+          ? `OEM（プラン①：フタだけお店ロゴ）のご相談を受け付けました${caseLabel}。通常2〜3営業日以内に、シール用 .aiテンプレートと概算お見積り・納期目安のご案内をお送りいたします。`
+          : `オリジナルアイス開発の事前ヒアリングを受け付けました${caseLabel}。いただいた内容をもとに、お店の素材に合わせた「3つの味の方向性・アレンジ案」と概算お見積りを整理して、通常2〜3営業日以内にご提案いたします。`
+        : `お問い合わせありがとうございます${caseLabel}。通常2〜3営業日以内に担当者よりご連絡いたします。`;
 
   return {
     success: true,
     message: successMessage,
     formType,
+    caseNumber,
   };
 }

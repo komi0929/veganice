@@ -7,7 +7,7 @@ const HOTEL_PRESET_FLAVORS: readonly SampleFlavorName[] = [
   "抹茶",
   "ほうじ茶",
   "UMAMIバニラ",
-  "バニラ",
+  "バニラココナッツ",
   "りんご",
   "もも",
 ];
@@ -97,14 +97,6 @@ export default function HotelSampleSection() {
         </div>
 
         <div className="md:pt-2">
-          <p className="text-ink-light mb-3 text-center font-sans text-xs sm:text-sm">
-            <a
-              href="#flavors"
-              className="text-brand font-medium underline underline-offset-4 hover:opacity-80"
-            >
-              各味の原材料・アレルゲンは、上の味のカードからご確認いただけます
-            </a>
-          </p>
           <WholesaleContactCard
             source="hotel"
             companyLabel="施設・店の名前"
@@ -114,11 +106,11 @@ export default function HotelSampleSection() {
             addressPlaceholder="福岡市中央区薬院2-2-24"
             deliveryDescription="フロントか厨房で受け取れる曜日と時間"
             deliveryNotePlaceholder="例：厨房勝手口・サービスヤードへ納品希望／11〜14時は仕込み中など"
-            notesLabel="ご施設・お店の業態・試したい場面など"
+            notesLabel="ご施設・お店の業態・試したい場面・確認したい点"
             notesPlaceholder="例：海外宿泊客のヴィーガン・グルテンフリー対応／コースや会席の甘味として試したいです。"
-            inquiryPlaceholder="お取引条件や納期、インバウンド対応・献立での使い方の相談など、お気軽にご記入ください。"
+            inquiryPlaceholder="お取引条件や納期、売店用100mlカップ・ロゴOEM、献立での使い方の相談などお気軽にご記入ください。"
             presetTitle="おすすめ6種"
-            presetDescription="海外ゲストにも人気の和素材と定番6種をお届けします（抹茶・ほうじ茶・UMAMIバニラ・バニラ・りんご・もも 各1個）"
+            presetDescription="海外ゲストにも人気の和素材と定番6種をお届けします（抹茶・ほうじ茶・UMAMIバニラ・バニラココナッツ・りんご・もも 各1個）"
             presetFlavors={HOTEL_PRESET_FLAVORS}
           />
         </div>

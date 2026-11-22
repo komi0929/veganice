@@ -135,15 +135,27 @@ export default function FlavorSpecModal({ target, onClose }: FlavorSpecModalProp
           </div>
         </dl>
 
-        {/* ── フッター（スマホで片手で閉じやすいボタン） ── */}
-        <div className="mt-5">
-          <button
-            type="button"
-            onClick={onClose}
-            className="bg-brand hover:bg-brand-dark w-full cursor-pointer rounded-full py-3 font-sans text-sm font-bold text-white transition-colors"
-          >
-            閉じる
-          </button>
+        {/* ── フッター（サンプル試食導線＋片手で閉じやすいボタン） ── */}
+        <div className="mt-5 space-y-2.5">
+          <p className="text-ink-muted text-center font-sans text-xs leading-relaxed">
+            アルコール由来原料や特定素材の有無など、お店の基準に合わせた味選びも個別にご案内します。
+          </p>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <a
+              href="#contact-form"
+              onClick={onClose}
+              className="bg-cta hover:bg-cta-hover flex items-center justify-center rounded-full py-3 text-center font-sans text-sm font-bold text-white transition-colors"
+            >
+              無料サンプル・基準相談へ ↓
+            </a>
+            <button
+              type="button"
+              onClick={onClose}
+              className="text-ink w-full cursor-pointer rounded-full bg-stone-100 py-3 font-sans text-sm font-bold transition-colors hover:bg-stone-200"
+            >
+              閉じる
+            </button>
+          </div>
         </div>
       </div>
     </div>,

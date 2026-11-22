@@ -11,11 +11,37 @@ import WholesaleContactCard from "@/app/components/wholesale/WholesaleContactCar
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import { PRICING_CONSTANTS } from "@/app/oem/data/oemSpecs";
 
+const PAGE_TITLE = "定番11フレーバー 業務用卸（バルク・個食カップ）のご案内（要点版）";
+const PAGE_DESC =
+  "飲食店・カフェ・ベーカリー・ショップ様向け。定番11フレーバーを仕入れられる業務用バルク（最小4L〜）とSoyStoriesラベル付き100ml個食カップ（最小60個〜・翌月末請求書払い）の要点案内。";
+
 export const metadata: Metadata = {
-  title: "定番11フレーバー 業務用卸（バルク・個食カップ）のご案内（要点版）",
-  description:
-    "すでにSoyStoriesをご存知の飲食店・カフェ・ショップ様向け。定番11フレーバーをそのまま仕入れられる業務用バルク（最小4L〜）とSoyStoriesラベル付き100ml個食カップ（最小60個〜・翌月末請求書払い）の要点案内。",
+  title: PAGE_TITLE,
+  description: PAGE_DESC,
   robots: { index: false, follow: true },
+  alternates: { canonical: "https://soystories.cafe/wholesale" },
+  openGraph: {
+    title: `${PAGE_TITLE} | SoyStories`,
+    description: PAGE_DESC,
+    type: "website",
+    locale: "ja_JP",
+    url: "https://soystories.cafe/wholesale",
+    siteName: "SoyStories",
+    images: [
+      {
+        url: "/images/gelato_cup_tower.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SoyStories 業務用バルク・100ml個食カップ卸のご案内",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${PAGE_TITLE} | SoyStories`,
+    description: PAGE_DESC,
+    images: ["/images/gelato_cup_tower.jpg"],
+  },
 };
 
 const navItems: WholesaleNavItem[] = [
@@ -27,12 +53,12 @@ const navItems: WholesaleNavItem[] = [
 
 const standardFlavorGroups: WholesaleFlavorGroup[] = [
   {
-    title: "発酵コク・和洋定番系（6種）",
+    title: "コクあり・和洋定番系（6種）",
     subtitle:
-      "甘酒・白味噌の深いコクを活かした濃厚系。食後のデザートや焼き菓子の添えアイスにも人気",
+      "豆乳・アーモンドミルクに白味噌や甘酒のコクを重ねた濃厚系。食後のデザートや焼き菓子添えにも人気",
     items: [
       {
-        displayName: "バニラ",
+        displayName: "バニラココナッツ",
         image: "/images/flavors/vanilla_coconut.png",
         note: "どのメニューにも合わせやすいまろやかな定番",
       },
@@ -107,18 +133,24 @@ const termsRows = [
   },
   { label: "1Lあたりの杯数目安", value: WHOLESALE_FACTS.scoopsPerLiter },
   { label: "無料試食サンプル", value: WHOLESALE_FACTS.sampleTerms },
-  { label: "お支払い条件", value: "納品月の月末締め・翌月末払い（ご請求書払い・銀行振込）" },
+  { label: "お支払い条件", value: WHOLESALE_FACTS.payment },
   { label: "お届け目安", value: WHOLESALE_FACTS.leadTime },
   {
     label: "保存方法・食品分類",
-    value: `${WHOLESALE_FACTS.storage} ／ 氷菓（乳製品不使用のため賞味期限表示義務なし）`,
+    value: `${WHOLESALE_FACTS.storage} ／ 氷菓（食品表示基準上の賞味期限表示義務なし）`,
   },
   { label: "不使用素材", value: WHOLESALE_FACTS.freeFromAdditivesAndWhiteSugar },
   { label: "アレルゲン管理", value: WHOLESALE_FACTS.allergen },
 ] as const;
 
 interface WholesaleBriefPageProps {
-  searchParams: Promise<{ store?: string }>;
+  searchParams: Promise<{
+    store?: string;
+    name?: string;
+    email?: string;
+    phone?: string;
+    c?: string;
+  }>;
 }
 
 /**
@@ -129,6 +161,16 @@ interface WholesaleBriefPageProps {
 export default async function WholesaleBriefPage({ searchParams }: WholesaleBriefPageProps) {
   const params = await searchParams;
   const storeName = params.store?.trim() || null;
+
+  const oemForward = new URLSearchParams();
+  for (const key of ["store", "name", "email", "phone", "c"] as const) {
+    const val = params[key]?.trim();
+    if (val) {
+      oemForward.set(key, val);
+    }
+  }
+  oemForward.set("src", "wholesale");
+  const oemPlanHref = `/oem/plan?${oemForward.toString()}`;
 
   return (
     <>
@@ -151,7 +193,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
             )}
 
             <h1 className="text-ink text-2xl leading-snug font-bold sm:text-3xl">
-              開発費 ¥0 ですぐにお店へ導入できる、2つの仕入れスタイル
+              店内用の1L・2Lバルク（4L〜）と、販売用の100mlカップ（60個〜）
             </h1>
             <p className="text-ink-light mt-3 max-w-3xl font-sans text-sm leading-relaxed sm:text-[15px]">
               乳・卵・小麦を持ち込まない専用工房の定番全11フレーバーを、用途に合わせて
@@ -243,7 +285,10 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
                   アイスの製法・特徴も含めた詳しいページを見る
                 </Link>
               </div>
-              <Link href="/oem/plan" className="text-brand font-bold underline underline-offset-4">
+              <Link
+                href={oemPlanHref}
+                className="text-brand font-bold underline underline-offset-4"
+              >
                 お店ロゴシールやオリジナル味開発（OEM）はこちら →
               </Link>
             </div>
@@ -341,6 +386,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
           "個食カップ（60個〜）で手軽にお店へ。",
         ]}
         navItems={navItems}
+        oemSrc="wholesale_footer"
       />
       <WholesaleFloatingCTA />
     </>

@@ -2,12 +2,15 @@
 
 import {
   useActionState,
+  useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type ChangeEvent,
   type FocusEvent,
   type ReactNode,
 } from "react";
+import Link from "next/link";
 import { submitContact, type ContactState } from "../../actions/contact";
 import {
   lookupAddressByZipDigits,
@@ -27,6 +30,26 @@ type FormType = "sample" | "inquiry";
 
 const LINE_URL = "https://lin.ee/OnsWAWw2";
 
+const NOTE_CHIPS = [
+  { label: "＋ 食後のデザート検討", text: "ランチ・コースの食後デザートとして検討しています。" },
+  {
+    label: "＋ ドーナツ・焼き菓子に添えたい",
+    text: "ドーナツや焼き菓子に添える（挟む）アイスとして検討しています。",
+  },
+  {
+    label: "＋ カップ物販・ロゴOEMも知りたい",
+    text: "100ml個食カップでの販売や、お店ロゴシールOEMの条件も知りたいです。",
+  },
+  {
+    label: "＋ 原材料・基準の確認",
+    text: "ベースミルクの種類やアルコール有無など、原材料の詳細も確認したいです。",
+  },
+] as const;
+
+const emptySubscribe = () => () => {};
+const getLocationSearchSnapshot = () => window.location.search;
+const getServerLocationSearchSnapshot = () => "";
+
 const inputClasses =
   "w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-base text-ink placeholder:text-gray-300 transition-shadow focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
 const errorClasses = "border-red-300 focus:border-red-500 focus:ring-red-500";
@@ -35,11 +58,12 @@ interface FieldProps {
   id: string;
   label: string;
   required?: boolean;
+  hint?: string;
   error?: string[];
   children: ReactNode;
 }
 
-function Field({ id, label, required = false, error, children }: FieldProps) {
+function Field({ id, label, required = false, hint, error, children }: FieldProps) {
   return (
     <div>
       <label htmlFor={id} className="text-ink mb-1.5 flex items-center gap-2 text-sm font-bold">
@@ -50,6 +74,7 @@ function Field({ id, label, required = false, error, children }: FieldProps) {
           <span className="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] text-gray-500">任意</span>
         )}
       </label>
+      {hint && <p className="text-ink-muted mb-1.5 text-xs leading-relaxed">{hint}</p>}
       {children}
       {error && <p className="mt-1 text-xs text-red-500">{error[0]}</p>}
     </div>
@@ -68,8 +93,27 @@ function LineIcon() {
 export default function DessertContactForm() {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
   const [activeTab, setActiveTab] = useState<FormType>("sample");
+  const [notesValue, setNotesValue] = useState("");
   const addressInputRef = useRef<HTMLInputElement>(null);
+  const errorBannerRef = useRef<HTMLDivElement>(null);
   const lastLookedUpZip = useRef<string>("");
+
+  const searchString = useSyncExternalStore(
+    emptySubscribe,
+    getLocationSearchSnapshot,
+    getServerLocationSearchSnapshot
+  );
+  const queryParams = new URLSearchParams(searchString);
+  const customerToken = queryParams.get("c") ?? "";
+  const prefillStore = queryParams.get("store") ?? "";
+  const channelTag = queryParams.get("s") ?? "";
+  const resolvedSource = channelTag ? `dessert:${channelTag}`.slice(0, 50) : "dessert";
+
+  useEffect(() => {
+    if (!state.success && state.message && errorBannerRef.current) {
+      errorBannerRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [state]);
 
   const handlePhoneBlur = (e: FocusEvent<HTMLInputElement>) => {
     const normalized = normalizeDomesticPhone(e.target.value);
@@ -100,9 +144,19 @@ export default function DessertContactForm() {
     );
   };
 
+  const appendNoteChip = (snippet: string) => {
+    setNotesValue((prev) => {
+      if (prev.includes(snippet)) return prev;
+      return prev.trim() ? `${prev.trim()}\n${snippet}` : snippet;
+    });
+  };
+
   if (state.success) {
     return (
-      <div className="rounded-3xl bg-white p-8 text-center shadow-sm sm:p-12">
+      <div
+        id="sample-form-card"
+        className="scroll-mt-20 rounded-3xl bg-white p-8 text-center shadow-sm sm:p-10"
+      >
         <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-2xl text-emerald-600">
           ✓
         </div>
@@ -112,17 +166,38 @@ export default function DessertContactForm() {
         <p className="text-ink-light mt-3 text-[15px] leading-relaxed whitespace-pre-line">
           {state.message}
         </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-2.5 border-t border-gray-100 pt-5 text-xs font-bold">
+          <Link
+            href="/wholesale"
+            className="text-ink hover:text-brand rounded-full border border-gray-200 bg-[#fafaf8] px-4 py-2 transition-colors"
+          >
+            業務用バルク・100mlカップの条件一覧を見る →
+          </Link>
+          <Link
+            href="/oem/plan?src=dessert_thanks"
+            className="text-brand hover:bg-brand/10 rounded-full border border-emerald-200 bg-emerald-50/50 px-4 py-2 transition-colors"
+          >
+            お店ロゴシール・オリジナルOEM案内を見る →
+          </Link>
+        </div>
       </div>
     );
   }
 
   const tabClass = (tab: FormType) =>
-    `flex-1 rounded-full py-2.5 text-sm font-bold transition-colors ${
-      activeTab === tab ? "bg-white text-ink shadow-sm" : "text-ink-muted"
+    `flex-1 cursor-pointer rounded-full py-2.5 text-sm font-bold transition-colors ${
+      activeTab === tab ? "bg-white text-ink shadow-sm" : "text-ink-muted hover:text-ink"
     }`;
 
   return (
-    <div className="rounded-3xl bg-white p-5 shadow-sm sm:p-10">
+    <div id="sample-form-card" className="scroll-mt-20 rounded-3xl bg-white p-5 shadow-sm sm:p-8">
+      {(prefillStore || customerToken) && (
+        <div className="bg-brand/10 text-brand mb-4 rounded-2xl px-4 py-3 text-xs leading-relaxed font-bold">
+          {prefillStore ? `${prefillStore} 様、` : ""}
+          ご連絡ありがとうございます。お届け先をご入力いただくだけでサンプル（6個・商品代無料）を手配いたします。
+        </div>
+      )}
+
       {/* 切り替え */}
       <div className="flex rounded-full bg-gray-100 p-1" role="tablist">
         <button
@@ -145,11 +220,15 @@ export default function DessertContactForm() {
         </button>
       </div>
 
-      <form action={formAction} aria-label="お問い合わせフォーム" className="mt-6 space-y-5">
+      <form action={formAction} aria-label="お問い合わせフォーム" className="mt-5 space-y-4">
         <input type="hidden" name="formType" value={activeTab} />
+        <input type="hidden" name="source" value={resolvedSource} />
+        {customerToken && <input type="hidden" name="customerToken" value={customerToken} />}
 
         {state.message && !state.success && (
-          <div className="rounded-xl bg-red-50 p-4 text-sm text-red-600">{state.message}</div>
+          <div ref={errorBannerRef} className="rounded-xl bg-red-50 p-4 text-sm text-red-600">
+            {state.message}
+          </div>
         )}
 
         <Field id="companyName" label="お店の名前" required error={state.errors?.companyName}>
@@ -157,99 +236,127 @@ export default function DessertContactForm() {
             type="text"
             id="companyName"
             name="companyName"
+            defaultValue={state.fields?.companyName ?? prefillStore}
             autoComplete="organization"
             disabled={isPending}
             className={`${inputClasses} ${state.errors?.companyName ? errorClasses : ""}`}
-            placeholder="例：ヴィーガンラーメン〇〇 / BURGER STAND 〇〇 / カフェ〇〇"
+            placeholder="例：〇〇食堂 ／ カフェ〇〇 ／ 米粉ドーナツ〇〇"
           />
         </Field>
 
-        <Field id="contactName" label="お名前" required error={state.errors?.contactName}>
-          <input
-            type="text"
-            id="contactName"
-            name="contactName"
-            autoComplete="name"
-            disabled={isPending}
-            className={`${inputClasses} ${state.errors?.contactName ? errorClasses : ""}`}
-            placeholder="山田 太郎"
-          />
-        </Field>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <Field id="contactName" label="ご担当者名" required error={state.errors?.contactName}>
+            <input
+              type="text"
+              id="contactName"
+              name="contactName"
+              defaultValue={state.fields?.contactName ?? ""}
+              autoComplete="name"
+              disabled={isPending}
+              className={`${inputClasses} ${state.errors?.contactName ? errorClasses : ""}`}
+              placeholder="山田 太郎"
+            />
+          </Field>
+
+          <Field
+            id="phone"
+            label="電話番号（配送伝票用）"
+            required={activeTab === "sample"}
+            error={state.errors?.phone}
+          >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              defaultValue={state.fields?.phone ?? ""}
+              autoComplete="tel"
+              inputMode="tel"
+              onBlur={handlePhoneBlur}
+              disabled={isPending}
+              className={`${inputClasses} ${state.errors?.phone ? errorClasses : ""}`}
+              placeholder="090-1234-5678"
+            />
+          </Field>
+        </div>
 
         <Field id="email" label="メールアドレス" required error={state.errors?.email}>
           <input
             type="email"
             id="email"
             name="email"
+            defaultValue={state.fields?.email ?? ""}
             autoComplete="email"
             inputMode="email"
             disabled={isPending}
             className={`${inputClasses} ${state.errors?.email ? errorClasses : ""}`}
-            placeholder="example@restaurant.jp"
-          />
-        </Field>
-
-        <Field
-          id="phone"
-          label="電話番号"
-          required={activeTab === "sample"}
-          error={state.errors?.phone}
-        >
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            autoComplete="tel"
-            inputMode="tel"
-            onBlur={handlePhoneBlur}
-            disabled={isPending}
-            className={`${inputClasses} ${state.errors?.phone ? errorClasses : ""}`}
-            placeholder="090-1234-5678"
+            placeholder="example@shop.jp"
           />
         </Field>
 
         {activeTab === "sample" && (
           <>
-            <Field id="postalCode" label="郵便番号" required error={state.errors?.postalCode}>
-              <input
-                type="text"
-                id="postalCode"
-                name="postalCode"
-                autoComplete="postal-code"
-                inputMode="numeric"
-                onChange={handlePostalCodeChange}
-                onBlur={handlePostalCodeBlur}
-                disabled={isPending}
-                className={`${inputClasses} max-w-[12rem] ${state.errors?.postalCode ? errorClasses : ""}`}
-                placeholder="810-0022"
-              />
-            </Field>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-[10rem_1fr]">
+              <Field id="postalCode" label="郵便番号" required error={state.errors?.postalCode}>
+                <input
+                  type="text"
+                  id="postalCode"
+                  name="postalCode"
+                  defaultValue={state.fields?.postalCode ?? ""}
+                  autoComplete="postal-code"
+                  inputMode="numeric"
+                  onChange={handlePostalCodeChange}
+                  onBlur={handlePostalCodeBlur}
+                  disabled={isPending}
+                  className={`${inputClasses} ${state.errors?.postalCode ? errorClasses : ""}`}
+                  placeholder="810-0022"
+                />
+              </Field>
 
-            <Field id="address" label="お届け先の住所" required error={state.errors?.address}>
-              <input
-                ref={addressInputRef}
-                type="text"
-                id="address"
-                name="address"
-                autoComplete="street-address"
-                disabled={isPending}
-                className={`${inputClasses} ${state.errors?.address ? errorClasses : ""}`}
-                placeholder="福岡県福岡市中央区薬院1-2-3 〇〇ビル1F"
-              />
-            </Field>
-
-            <DeliveryPreferencePicker disabled={isPending} />
+              <Field id="address" label="お届け先の住所" required error={state.errors?.address}>
+                <input
+                  ref={addressInputRef}
+                  type="text"
+                  id="address"
+                  name="address"
+                  defaultValue={state.fields?.address ?? ""}
+                  autoComplete="street-address"
+                  disabled={isPending}
+                  className={`${inputClasses} ${state.errors?.address ? errorClasses : ""}`}
+                  placeholder="福岡県福岡市中央区薬院1-2-3 〇〇ビル1F"
+                />
+              </Field>
+            </div>
 
             <SampleFlavorPicker disabled={isPending} error={state.errors?.sampleFlavors} />
 
-            <Field id="notes" label="お店の業態・試したい味など">
+            <DeliveryPreferencePicker disabled={isPending} />
+
+            <Field
+              id="notes"
+              label="お店の業態・試したい使い方・確認したい点"
+              hint="タップで記入例が入ります。原材料や基準のご質問もこちらへどうぞ。"
+            >
+              <div className="mb-2 flex flex-wrap gap-1.5">
+                {NOTE_CHIPS.map((chip) => (
+                  <button
+                    key={chip.label}
+                    type="button"
+                    onClick={() => appendNoteChip(chip.text)}
+                    className="hover:border-brand hover:text-brand cursor-pointer rounded-full border border-gray-200 bg-[#fafaf8] px-2.5 py-1 text-[11px] font-bold text-gray-600 transition-colors"
+                  >
+                    {chip.label}
+                  </button>
+                ))}
+              </div>
               <textarea
                 id="notes"
                 name="notes"
-                rows={3}
+                rows={2}
+                value={notesValue}
+                onChange={(e) => setNotesValue(e.target.value)}
                 disabled={isPending}
                 className={`${inputClasses} resize-none`}
-                placeholder="例：ヴィーガンラーメン / バーガー / カフェなどを営業しています。食後のデザートとして試したいです。"
+                placeholder="例：定食とカフェのお店です。食後のデザートや100mlカップ販売も検討しています。"
               />
             </Field>
           </>
@@ -261,9 +368,10 @@ export default function DessertContactForm() {
               id="message"
               name="message"
               rows={5}
+              defaultValue={state.fields?.message ?? ""}
               disabled={isPending}
               className={`${inputClasses} resize-none ${state.errors?.message ? errorClasses : ""}`}
-              placeholder="卸価格や取引ロット、納期、メニュー導入のご相談など、お気軽にご記入ください。"
+              placeholder="卸価格や最小ロット、100mlカップ販売・ロゴシールOEM、原材料のご質問などお気軽にご記入ください。"
             />
           </Field>
         )}
@@ -272,27 +380,33 @@ export default function DessertContactForm() {
           <button
             type="submit"
             disabled={isPending}
-            className={`bg-cta hover:bg-cta-hover w-full rounded-full py-4 text-base font-bold text-white shadow-[0_6px_20px_rgba(212,112,143,0.35)] transition-colors ${
+            className={`bg-cta hover:bg-cta-hover w-full cursor-pointer rounded-full py-4 text-base font-bold text-white shadow-[0_6px_20px_rgba(212,112,143,0.35)] transition-colors ${
               isPending ? "cursor-wait opacity-70" : ""
             }`}
           >
-            {isPending ? "送信中…" : activeTab === "sample" ? "無料サンプルを申し込む" : "送信する"}
+            {isPending
+              ? "送信中…"
+              : activeTab === "sample"
+                ? "無料サンプル（6個）を申し込む →"
+                : "送信する →"}
           </button>
-          <p className="text-ink-muted mt-2.5 text-center text-xs">
+          <p className="text-ink-muted mt-2.5 text-center text-xs leading-relaxed">
             {activeTab === "sample"
-              ? "2営業日以内に発送します（送料のみ着払い）"
-              : "2営業日以内にご連絡します"}
+              ? "商品代は無料・クール便送料のみ着払い（通常2営業日以内に発送）／営業電話は一切いたしません"
+              : "通常2営業日以内にメールにてご返信いたします"}
           </p>
         </div>
       </form>
 
-      <div className="mt-6 border-t border-gray-100 pt-6 text-center">
-        <p className="text-ink-light text-xs">フォームが面倒なら、LINEでもOKです</p>
+      <div className="mt-5 border-t border-gray-100 pt-5 text-center">
+        <p className="text-ink-light text-xs">
+          フォーム入力のお時間がない場合は、LINEから一言でも承ります
+        </p>
         <a
           href={LINE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#06C755] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-[#05b34c]"
+          className="mt-2.5 inline-flex items-center gap-2 rounded-full bg-[#06C755] px-6 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#05b34c]"
         >
           <LineIcon />
           LINEで申し込む・相談する

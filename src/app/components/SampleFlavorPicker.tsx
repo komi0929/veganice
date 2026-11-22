@@ -11,7 +11,7 @@ export const SAMPLE_FLAVORS = [
   "ショコラ",
   "抹茶",
   "ほうじ茶",
-  "バニラ",
+  "バニラココナッツ",
   "UMAMIバニラ",
   "アールグレイ",
 ] as const;

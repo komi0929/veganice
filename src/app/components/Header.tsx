@@ -28,12 +28,13 @@ export default function Header() {
   }, [isTransparentHeroPage]);
 
   const prefix = isDessert ? "/dessert#" : isHome ? "#" : "/#";
+  const logoHref = isDessert ? "/dessert" : "/";
   const navLinks = isDessert
     ? [
         { label: "どんなアイス？", href: `${prefix}about` },
+        { label: "11種の味・価格", href: `${prefix}products` },
+        { label: "無料サンプル", href: `${prefix}contact-form` },
         { label: "3つの製法", href: `${prefix}reasons` },
-        { label: "想い・ストーリー", href: `${prefix}story` },
-        { label: "フレーバー", href: `${prefix}products` },
         { label: "よくある質問", href: `${prefix}faq` },
       ]
     : [
@@ -52,7 +53,7 @@ export default function Header() {
       >
         <div className="container mx-auto flex items-center justify-between px-6 md:px-12">
           {/* Logo */}
-          <Link href="/" className="relative flex h-8 items-center sm:h-9">
+          <Link href={logoHref} className="relative flex h-8 items-center sm:h-9">
             {/* Transparent Header / Dark background (White text + Green accent) */}
             <img
               src="/images/logo_horizontal_white.png"

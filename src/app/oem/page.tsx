@@ -74,7 +74,7 @@ export default function OemFullPage() {
         </Suspense>
 
         {/* 定番フレーバー通常卸へのご案内 */}
-        <section className="border-t border-gray-200 bg-[#f7f3ec] py-14 pb-24 md:pb-14">
+        <section className="border-t border-gray-200 bg-[#f7f3ec] py-14">
           <div className="mx-auto max-w-4xl px-6">
             <div className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-white p-6 shadow-2xs sm:flex-row sm:items-center sm:p-8">
               <div>

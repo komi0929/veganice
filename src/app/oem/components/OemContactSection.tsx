@@ -6,10 +6,9 @@ import {
   useRef,
   useState,
   type ChangeEvent,
-  type FocusEvent,
   type ReactNode,
 } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Check, Sparkles, ShieldCheck, ChevronDown } from "lucide-react";
 import { submitContact, type ContactState } from "@/app/actions/contact";
 import {
@@ -32,6 +31,7 @@ const initialState: ContactState = {
 };
 
 type OemTab = "oem" | "sample";
+type AllergenStatus = "checking" | "free_confirmed" | "contains_or_unknown" | "none_seal_only";
 
 const LINE_URL = "https://lin.ee/OnsWAWw2";
 
@@ -40,8 +40,8 @@ const COURSE_CHOICES: {
   title: string;
   badge: string;
 }[] = [
-  { id: "custom_recipe", title: "② オリジナル開発（おすすめ）", badge: "試作費 ¥3万" },
-  { id: "seal_only", title: "① フタだけお店ロゴ", badge: "開発費 ¥0" },
+  { id: "seal_only", title: "① フタだけお店ロゴ", badge: "開発費 ¥0・60個〜" },
+  { id: "custom_recipe", title: "② オリジナル味開発", badge: "試作費 税別¥3万" },
   { id: "undecided", title: "まだ迷っている・相談したい", badge: "ご提案希望" },
 ];
 
@@ -77,6 +77,13 @@ const inputClasses =
   "w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-base text-ink placeholder:text-gray-300 transition-shadow focus:border-brand focus:ring-1 focus:ring-brand focus:outline-none disabled:cursor-not-allowed disabled:opacity-50";
 const errorClasses = "border-red-300 focus:border-red-500 focus:ring-red-500";
 
+function createRequestId(): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `req_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 10)}`;
+}
+
 interface FieldProps {
   id: string;
   label: string;
@@ -106,52 +113,73 @@ function Field({ id, label, required = false, error, hint, children }: FieldProp
 
 /**
  * 最短60秒・視覚カード選択＋ワンタップ記入例チップつきの高反響OEM相談＆試食申込フォーム
- * コースカードや利益シミュレーターからの1タップ条件引き継ぎに対応
+ * React 19 useActionState 差し戻し・エラー時でも入力が一切消えない完全制御フォーム
  */
 export default function OemContactSection() {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const prefillStore = searchParams.get("store") ?? "";
   const prefillName = searchParams.get("name") ?? "";
   const prefillEmail = searchParams.get("email") ?? "";
   const prefillPhone = searchParams.get("phone") ?? "";
   const customerToken = searchParams.get("c") ?? "";
+  const rawSrcParam = (searchParams.get("src") || searchParams.get("s") || "").trim();
 
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
   const [activeTab, setActiveTab] = useState<OemTab>("oem");
-  const [selectedCourse, setSelectedCourse] = useState<OemSelectableCourse>("custom_recipe");
+  const [selectedCourse, setSelectedCourse] = useState<OemSelectableCourse>("undecided");
   const [selectedFormat, setSelectedFormat] = useState<OemSelectableFormat>("both");
+
+  // 全入力項目を制御 state で保持（差し戻し・通信エラー・タブ切替でも1文字も消えない）
+  const [companyName, setCompanyName] = useState<string>(prefillStore);
+  const [contactName, setContactName] = useState<string>(prefillName);
+  const [email, setEmail] = useState<string>(prefillEmail);
+  const [phone, setPhone] = useState<string>(
+    () => normalizeDomesticPhone(prefillPhone) || prefillPhone
+  );
+  const [postalCode, setPostalCode] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [ingredientName, setIngredientName] = useState<string>("");
+  const [ingredientState, setIngredientState] = useState<string>("");
+  const [desiredTiming, setDesiredTiming] = useState<string>("");
+  const [allergenStatus, setAllergenStatus] = useState<AllergenStatus>("checking");
   const [tasteMemo, setTasteMemo] = useState<string>("");
+
+  const requestIdRef = useRef<string>("");
   const [syncedNotice, setSyncedNotice] = useState<boolean>(false);
-  const addressInputRef = useRef<HTMLInputElement>(null);
+  const errorBannerRef = useRef<HTMLDivElement>(null);
   const lastLookedUpZip = useRef<string>("");
 
-  const handlePhoneBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const normalized = normalizeDomesticPhone(e.target.value);
-    if (normalized && normalized !== e.target.value) {
-      e.target.value = normalized;
+  useEffect(() => {
+    if (state.success) {
+      requestIdRef.current = "";
+    } else if (state.message && errorBannerRef.current) {
+      errorBannerRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
     }
+  }, [state]);
+
+  const handleFormAction = (fd: FormData) => {
+    if (!requestIdRef.current) {
+      requestIdRef.current = createRequestId();
+    }
+    fd.set("requestId", requestIdRef.current);
+    formAction(fd);
   };
 
-  const handlePostalCodeBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const { formatted } = normalizePostalCode(e.target.value);
-    if (formatted && formatted !== e.target.value) {
-      e.target.value = formatted;
+  const applyCourseSelection = (
+    nextCourse: OemSelectableCourse,
+    explicitFormat?: OemSelectableFormat
+  ) => {
+    setSelectedCourse(nextCourse);
+    if (nextCourse === "seal_only") {
+      setAllergenStatus("none_seal_only");
+      setSelectedFormat((prev) => explicitFormat ?? (prev === "bulk" ? "cup" : "cup"));
+    } else {
+      setAllergenStatus((prev) => (prev === "none_seal_only" ? "checking" : prev));
+      if (explicitFormat) {
+        setSelectedFormat(explicitFormat);
+      }
     }
-  };
-
-  const handlePostalCodeChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const { digits } = normalizePostalCode(e.target.value);
-    if (digits.length !== 7 || digits === lastLookedUpZip.current) return;
-    lastLookedUpZip.current = digits;
-
-    const hit = await lookupAddressByZipDigits(digits);
-    if (!hit || !addressInputRef.current) return;
-    addressInputRef.current.value = mergeZipPrefixIntoAddress(
-      addressInputRef.current.value,
-      hit.prefecture,
-      hit.city,
-      hit.town
-    );
   };
 
   useEffect(() => {
@@ -161,12 +189,8 @@ export default function OemContactSection() {
         setActiveTab(detail.tab);
       }
       if (detail.courseId) {
-        setSelectedCourse(detail.courseId);
-        if (detail.courseId === "seal_only") {
-          setSelectedFormat("cup");
-        }
-      }
-      if (detail.formatId) {
+        applyCourseSelection(detail.courseId, detail.formatId);
+      } else if (detail.formatId) {
         setSelectedFormat(detail.formatId);
       }
       setSyncedNotice(true);
@@ -175,11 +199,31 @@ export default function OemContactSection() {
     });
   }, []);
 
-  const handleCourseTap = (course: OemSelectableCourse) => {
-    setSelectedCourse(course);
-    if (course === "seal_only" && selectedFormat === "bulk") {
-      setSelectedFormat("cup");
+  const handlePhoneBlur = () => {
+    const normalized = normalizeDomesticPhone(phone);
+    if (normalized && normalized !== phone) {
+      setPhone(normalized);
     }
+  };
+
+  const handlePostalCodeBlur = () => {
+    const { formatted } = normalizePostalCode(postalCode);
+    if (formatted && formatted !== postalCode) {
+      setPostalCode(formatted);
+    }
+  };
+
+  const handlePostalCodeChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const nextValue = e.target.value;
+    setPostalCode(nextValue);
+
+    const { digits } = normalizePostalCode(nextValue);
+    if (digits.length !== 7 || digits === lastLookedUpZip.current) return;
+    lastLookedUpZip.current = digits;
+
+    const hit = await lookupAddressByZipDigits(digits);
+    if (!hit) return;
+    setAddress((prev) => mergeZipPrefixIntoAddress(prev, hit.prefecture, hit.city, hit.town));
   };
 
   const appendMemoChip = (snippet: string) => {
@@ -188,6 +232,34 @@ export default function OemContactSection() {
       return prev.trim() ? `${prev.trim()}\n${snippet}` : snippet;
     });
   };
+
+  const defaultOrigin = pathname?.startsWith("/oem/plan") ? "oem_plan" : "oem_lp";
+  const originSource = rawSrcParam || defaultOrigin;
+  const resolvedSource = `${originSource}:${activeTab}`.slice(0, 100);
+
+  const benefitBoxContent =
+    activeTab === "sample"
+      ? {
+          lead: "試食サンプルをお申し込みの方へ、通常2営業日以内にクール冷凍便で発送します",
+          items: [
+            "定番11種から選べる6カップ",
+            "商品代無料（送料のみ着払い）",
+            "卸価格表・OEMご案内も確認可",
+          ],
+        }
+      : selectedCourse === "seal_only"
+        ? {
+            lead: "無料相談をお送りいただいた方へ、通常2〜3営業日以内にメールでお届けします",
+            items: [
+              "シール用 .aiテンプレート",
+              "概算お見積り・納期目安",
+              "定番フレーバー試食のご案内",
+            ],
+          }
+        : {
+            lead: "無料相談をお送りいただいた方へ、通常2〜3営業日以内にメールでお届けします",
+            items: ["3つの味の方向性シート", "概算お見積り・納期目安", "シール用 .aiテンプレート"],
+          };
 
   return (
     <section id="contact-form" className="bg-bg-white scroll-mt-16 py-16 sm:py-24">
@@ -205,24 +277,19 @@ export default function OemContactSection() {
           </p>
         </div>
 
-        {/* 「無料相談を送ると何がもらえるか」を明示して送信ハードルを下げる特典ボックス */}
+        {/* 選択中タブ・コースに応じた特典案内ボックス */}
         <div className="mt-7 rounded-2xl border border-[#3e6044]/20 bg-[#f7f3ec] p-4 sm:p-5">
-          <p className="text-brand text-center text-xs font-bold">
-            無料相談をお送りいただいた方へ、2〜3営業日以内にメールでお届けします
-          </p>
+          <p className="text-brand text-center text-xs font-bold">{benefitBoxContent.lead}</p>
           <div className="mt-3 grid grid-cols-1 gap-2 text-xs sm:grid-cols-3">
-            <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 shadow-2xs">
-              <Check className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
-              <span className="text-ink font-bold">3つの味の方向性シート</span>
-            </div>
-            <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 shadow-2xs">
-              <Check className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
-              <span className="text-ink font-bold">概算費用・お届け時期目安</span>
-            </div>
-            <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 shadow-2xs">
-              <Check className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
-              <span className="text-ink font-bold">シール用 .aiテンプレート</span>
-            </div>
+            {benefitBoxContent.items.map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 shadow-2xs"
+              >
+                <Check className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
+                <span className="text-ink font-bold">{item}</span>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -267,18 +334,38 @@ export default function OemContactSection() {
 
               {syncedNotice && (
                 <div className="bg-brand/10 text-brand mt-4 rounded-xl px-4 py-2.5 text-center text-xs font-bold">
-                  ✓ 選択いただいたコース・条件をフォームに反映しました
+                  ✓ 選択いただいたプラン・条件をフォームに反映しました
                 </div>
               )}
 
-              <form action={formAction} className="mt-6 space-y-5">
+              <form action={handleFormAction} className="relative mt-6 space-y-5">
                 <input type="hidden" name="formType" value={activeTab} />
+                <input type="hidden" name="source" value={resolvedSource} />
                 {customerToken && (
                   <input type="hidden" name="customerToken" value={customerToken} />
                 )}
 
+                {/* スパムボット対策の不可視 Honeypot */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none fixed -top-[9999px] -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+                >
+                  <label htmlFor="oem-website-url">Website</label>
+                  <input
+                    type="text"
+                    id="oem-website-url"
+                    name="websiteUrl"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    defaultValue=""
+                  />
+                </div>
+
                 {state.message && !state.success && (
-                  <div className="rounded-xl bg-red-50 p-4 text-sm text-red-600">
+                  <div
+                    ref={errorBannerRef}
+                    className="rounded-xl bg-red-50 p-4 text-sm text-red-600"
+                  >
                     {state.message}
                   </div>
                 )}
@@ -298,7 +385,7 @@ export default function OemContactSection() {
                             <button
                               key={c.id}
                               type="button"
-                              onClick={() => handleCourseTap(c.id)}
+                              onClick={() => applyCourseSelection(c.id)}
                               className={`flex min-h-12 cursor-pointer flex-col justify-center rounded-xl border px-3.5 py-2 text-left transition-all ${
                                 active
                                   ? "border-brand bg-brand/8 text-ink ring-brand/20 ring-2"
@@ -348,7 +435,7 @@ export default function OemContactSection() {
                   </>
                 )}
 
-                {/* 必須入力は最小3項目（店名・担当者・メール）に絞って離脱を防ぐ */}
+                {/* 共通メイン項目：店名・担当者名 */}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Field
                     id="companyName"
@@ -360,7 +447,9 @@ export default function OemContactSection() {
                       type="text"
                       id="companyName"
                       name="companyName"
-                      defaultValue={prefillStore}
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                      autoComplete="organization"
                       disabled={isPending}
                       placeholder="例：レストラン〇〇 ／ カフェ〇〇"
                       className={`${inputClasses} ${state.errors?.companyName ? errorClasses : ""}`}
@@ -377,7 +466,9 @@ export default function OemContactSection() {
                       type="text"
                       id="contactName"
                       name="contactName"
-                      defaultValue={prefillName}
+                      value={contactName}
+                      onChange={(e) => setContactName(e.target.value)}
+                      autoComplete="name"
                       disabled={isPending}
                       placeholder="山田 花子"
                       className={`${inputClasses} ${state.errors?.contactName ? errorClasses : ""}`}
@@ -385,62 +476,103 @@ export default function OemContactSection() {
                   </Field>
                 </div>
 
+                {/* 共通メイン項目：メールアドレス・お電話番号（1か所に統合、タブ切替でも保持） */}
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Field id="email" label="メールアドレス" required error={state.errors?.email}>
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      defaultValue={prefillEmail}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      autoComplete="email"
+                      inputMode="email"
                       disabled={isPending}
                       placeholder="info@example.jp"
                       className={`${inputClasses} ${state.errors?.email ? errorClasses : ""}`}
                     />
                   </Field>
 
-                  {activeTab === "sample" ? (
-                    <Field
+                  <Field
+                    id="phone"
+                    label={activeTab === "sample" ? "お電話番号（配送伝票用）" : "お電話番号"}
+                    required={activeTab === "sample"}
+                    error={state.errors?.phone}
+                  >
+                    <input
+                      type="tel"
                       id="phone"
-                      label="お電話番号（配送伝票用）"
-                      required
-                      error={state.errors?.phone}
-                    >
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        defaultValue={prefillPhone}
-                        autoComplete="tel"
-                        inputMode="tel"
-                        onBlur={handlePhoneBlur}
-                        disabled={isPending}
-                        placeholder="092-000-0000"
-                        className={`${inputClasses} ${state.errors?.phone ? errorClasses : ""}`}
-                      />
-                    </Field>
-                  ) : (
-                    selectedCourse !== "seal_only" && (
-                      <Field id="ingredientName" label="使いたい素材（ざっくりでOK）">
-                        <input
-                          type="text"
-                          id="ingredientName"
-                          name="ingredientName"
-                          disabled={isPending}
-                          placeholder="例：ゆず果汁、焙煎ほうじ茶、いちご等"
-                          className={inputClasses}
-                        />
-                      </Field>
-                    )
-                  )}
+                      name="phone"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      onBlur={handlePhoneBlur}
+                      autoComplete="tel"
+                      inputMode="tel"
+                      disabled={isPending}
+                      placeholder="092-000-0000"
+                      className={`${inputClasses} ${state.errors?.phone ? errorClasses : ""}`}
+                    />
+                  </Field>
                 </div>
 
                 {activeTab === "oem" ? (
                   <>
+                    {/* オリジナル開発・未定時は「使いたい素材」と「卵・乳・小麦の混入有無」をメイン領域に常時表示 */}
+                    {selectedCourse === "seal_only" ? (
+                      <input type="hidden" name="allergenStatus" value="none_seal_only" />
+                    ) : (
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <Field
+                          id="ingredientName"
+                          label="使いたい素材（ざっくりでOK）"
+                          error={state.errors?.ingredientName}
+                        >
+                          <input
+                            type="text"
+                            id="ingredientName"
+                            name="ingredientName"
+                            value={ingredientName}
+                            onChange={(e) => setIngredientName(e.target.value)}
+                            disabled={isPending}
+                            placeholder="例：ゆず果汁、焙煎ほうじ茶、いちご等"
+                            className={inputClasses}
+                          />
+                        </Field>
+
+                        <Field
+                          id="allergenStatus"
+                          label="素材の「卵・乳・小麦」混入有無"
+                          error={state.errors?.allergenStatus}
+                        >
+                          <select
+                            id="allergenStatus"
+                            name="allergenStatus"
+                            value={allergenStatus}
+                            onChange={(e) => setAllergenStatus(e.target.value as AllergenStatus)}
+                            disabled={isPending}
+                            className={inputClasses}
+                          >
+                            <option value="checking">後ほど原材料表・規格書で確認したい</option>
+                            <option value="free_confirmed">
+                              素材・加工場所ともに卵・乳・小麦を含まない
+                            </option>
+                            <option value="contains_or_unknown">
+                              卵・乳・小麦を含む可能性がある／不明（要相談）
+                            </option>
+                            <option value="none_seal_only">
+                              素材の持ち込みなし（シール変更のみ）
+                            </option>
+                          </select>
+                        </Field>
+                      </div>
+                    )}
+
                     {/* ワンタップで下書きが入る相談メモ欄 */}
                     <Field
                       id="tasteImage"
                       label="ご相談メモ・作りたいイメージ"
                       hint="下のボタンをタップすると記入例が入ります。1行だけでも大丈夫です。"
+                      error={state.errors?.tasteImage}
                     >
                       <div className="mb-2.5 flex flex-wrap gap-1.5">
                         {QUICK_MEMO_CHIPS.map((chip) => (
@@ -466,7 +598,7 @@ export default function OemContactSection() {
                       />
                     </Field>
 
-                    {/* 詳細項目（保管温度・アレルゲン・時期・電話番号）は任意アコーディオンに収納 */}
+                    {/* 詳細項目（保管温度・ご希望時期）は任意アコーディオンに収納 */}
                     <details className="group rounded-2xl border border-gray-200/80 bg-white px-4 py-3.5">
                       <summary className="text-ink-light flex cursor-pointer list-none items-center justify-between text-xs font-bold [&::-webkit-details-marker]:hidden">
                         <span>＋ お決まりの詳細情報もあわせて伝える（任意・あとからでもOK）</span>
@@ -478,61 +610,38 @@ export default function OemContactSection() {
 
                       <div className="mt-4 space-y-4 border-t border-gray-100 pt-4">
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          <Field id="ingredientState" label="素材の状態・保管温度">
-                            <input
-                              type="text"
+                          {selectedCourse !== "seal_only" && (
+                            <Field
                               id="ingredientState"
-                              name="ingredientState"
-                              disabled={isPending}
-                              placeholder="例：冷凍ピューレ、常温パウダーなど"
-                              className={inputClasses}
-                            />
-                          </Field>
+                              label="素材の状態・保管温度"
+                              error={state.errors?.ingredientState}
+                            >
+                              <input
+                                type="text"
+                                id="ingredientState"
+                                name="ingredientState"
+                                value={ingredientState}
+                                onChange={(e) => setIngredientState(e.target.value)}
+                                disabled={isPending}
+                                placeholder="例：冷凍ピューレ、常温パウダーなど"
+                                className={inputClasses}
+                              />
+                            </Field>
+                          )}
 
-                          <Field id="desiredTiming" label="販売開始のご希望時期">
+                          <Field
+                            id="desiredTiming"
+                            label="販売開始のご希望時期"
+                            error={state.errors?.desiredTiming}
+                          >
                             <input
                               type="text"
                               id="desiredTiming"
                               name="desiredTiming"
+                              value={desiredTiming}
+                              onChange={(e) => setDesiredTiming(e.target.value)}
                               disabled={isPending}
                               placeholder="例：来月下旬ごろ ／ 時期は未定"
-                              className={inputClasses}
-                            />
-                          </Field>
-                        </div>
-
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          <Field id="allergenStatus" label="素材の「卵・乳・小麦」混入有無">
-                            <select
-                              id="allergenStatus"
-                              name="allergenStatus"
-                              disabled={isPending}
-                              defaultValue={
-                                selectedCourse === "seal_only" ? "none_seal_only" : "checking"
-                              }
-                              className={inputClasses}
-                            >
-                              <option value="checking">後ほど原材料表・規格書で確認したい</option>
-                              <option value="free_confirmed">
-                                素材・加工場所ともに卵・乳・小麦を含まない
-                              </option>
-                              <option value="none_seal_only">
-                                素材の持ち込みなし（シール変更のみ）
-                              </option>
-                            </select>
-                          </Field>
-
-                          <Field id="phone" label="お電話番号" error={state.errors?.phone}>
-                            <input
-                              type="tel"
-                              id="phone"
-                              name="phone"
-                              defaultValue={prefillPhone}
-                              autoComplete="tel"
-                              inputMode="tel"
-                              onBlur={handlePhoneBlur}
-                              disabled={isPending}
-                              placeholder="092-000-0000"
                               className={inputClasses}
                             />
                           </Field>
@@ -548,7 +657,7 @@ export default function OemContactSection() {
                       ）で米粉×発酵製法のなめらかさをお確かめいただけます。
                     </div>
 
-                    <SampleFlavorPicker disabled={isPending} />
+                    <SampleFlavorPicker disabled={isPending} error={state.errors?.sampleFlavors} />
 
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                       <Field
@@ -561,10 +670,11 @@ export default function OemContactSection() {
                           type="text"
                           id="postalCode"
                           name="postalCode"
-                          autoComplete="postal-code"
-                          inputMode="numeric"
+                          value={postalCode}
                           onChange={handlePostalCodeChange}
                           onBlur={handlePostalCodeBlur}
+                          autoComplete="postal-code"
+                          inputMode="numeric"
                           disabled={isPending}
                           placeholder="810-0022"
                           className={`${inputClasses} ${state.errors?.postalCode ? errorClasses : ""}`}
@@ -578,10 +688,11 @@ export default function OemContactSection() {
                           error={state.errors?.address}
                         >
                           <input
-                            ref={addressInputRef}
                             type="text"
                             id="address"
                             name="address"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
                             autoComplete="street-address"
                             disabled={isPending}
                             placeholder="福岡県福岡市中央区薬院1-2-3"
@@ -603,14 +714,18 @@ export default function OemContactSection() {
                   {isPending
                     ? "送信しています..."
                     : activeTab === "oem"
-                      ? "無料で事前相談・方向性シートを受け取る →"
+                      ? selectedCourse === "seal_only"
+                        ? "無料で事前相談・テンプレートを受け取る →"
+                        : "無料で事前相談・方向性シートを受け取る →"
                       : "試食サンプル（6個・商品代無料）を申し込む →"}
                 </button>
 
                 <div className="text-ink-muted flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center text-xs">
                   <span className="inline-flex items-center gap-1">
                     <ShieldCheck className="text-brand h-3.5 w-3.5" aria-hidden="true" />
-                    費用は一切発生しません
+                    {activeTab === "oem"
+                      ? "相談に費用は一切発生しません"
+                      : "商品代無料（クール便送料のみ着払い）"}
                   </span>
                   <span>・</span>
                   <span>しつこい営業電話はいたしません</span>

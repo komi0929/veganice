@@ -5,9 +5,9 @@ import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 const HERO_CAFE_PLATE_PHOTO_SRC: string | null = "/images/hero_flagship.jpg";
 
 const summaryPoints = [
-  "卵・乳・小麦を持ち込まない専用工房",
-  "4L（1L×4など）から味を組み合わせて",
-  "盛るだけ・仕込みなし",
+  "卵・乳・小麦を持ち込まない専用工房製",
+  "最小4L（1L×4本など）から味を組み合わせて",
+  "100ml個食カップ（60個〜）・店名ロゴOEMにも対応",
 ] as const;
 
 export default function CafeHeroSection() {
@@ -24,14 +24,14 @@ export default function CafeHeroSection() {
             <span>業務用 植物性クラフトアイス（1L・2L）</span>
           </p>
 
-          <h1 className="text-ink mt-2.5 font-serif text-[22px] leading-[1.42] font-bold tracking-tight sm:mt-3.5 sm:text-4xl sm:leading-[1.38] lg:text-[42px]">
-            <span className="block">ケーキやワッフルの横に、</span>
+          <h1 className="text-ink mt-2.5 font-serif text-[22px] leading-[1.42] font-bold tracking-tight sm:mt-3.5 sm:text-4xl sm:leading-[1.38] lg:text-[40px]">
+            <span className="block">焼き菓子やドーナツ、カフェの一皿に、</span>
             <span className="block">
               <span className="bg-[linear-gradient(transparent_68%,#f9d9e3_68%)]">
                 乳・卵・小麦を使わない
               </span>
             </span>
-            <span className="block">アイスを。</span>
+            <span className="block">クラフトアイスを。</span>
           </h1>
 
           <ul className="mt-4 space-y-2 rounded-2xl border border-stone-200/80 bg-[#fafaf8] px-4 py-3.5 sm:mt-5 sm:space-y-2.5 sm:px-5 sm:py-4">
@@ -86,10 +86,10 @@ export default function CafeHeroSection() {
               </div>
               <div className="shrink-0 border-l border-stone-200 pl-3 text-right">
                 <p className="text-brand font-sans text-[11px] leading-tight font-bold whitespace-nowrap">
-                  白砂糖・添加物不使用
+                  乳卵小麦・白砂糖不使用
                 </p>
                 <p className="text-ink-muted mt-0.5 font-sans text-[10px] leading-tight whitespace-nowrap">
-                  全11種・冷凍保管
+                  全11種・100mlカップも可
                 </p>
               </div>
             </div>

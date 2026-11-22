@@ -68,7 +68,7 @@ interface CtaButtonProps {
 export function CtaButton({
   label = "無料でサンプルを試す",
   caption = "6個のおためしセット・味は選べる・商品代0円（送料のみ着払い）",
-  href = "#contact-form",
+  href = "#sample-form-card",
   fullWidthOnMobile = true,
 }: CtaButtonProps) {
   return (

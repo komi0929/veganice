@@ -4,7 +4,7 @@ import type { SampleFlavorName } from "@/app/components/SampleFlavorPicker";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 const CAFE_PRESET_FLAVORS: readonly SampleFlavorName[] = [
-  "バニラ",
+  "バニラココナッツ",
   "UMAMIバニラ",
   "アールグレイ",
   "抹茶",
@@ -97,28 +97,20 @@ export default function CafeSampleSection() {
         </div>
 
         <div className="md:pt-2">
-          <p className="text-ink-light mb-3 text-center font-sans text-xs sm:text-sm">
-            <a
-              href="#flavors"
-              className="text-brand font-medium underline underline-offset-4 hover:opacity-80"
-            >
-              各味の原材料・アレルゲンは、上の味のカードからご確認いただけます
-            </a>
-          </p>
           <WholesaleContactCard
             source="cafe"
             companyLabel="店舗名"
             contactNameLabel="ご担当者名"
-            companyPlaceholder="例：カフェ〇〇 ／ ベーカリー〇〇 ／ 焼菓子店〇〇"
+            companyPlaceholder="例：カフェ〇〇 ／ 米粉ドーナツ〇〇 ／ 焼菓子店〇〇"
             emailPlaceholder="example@cafe.jp"
             addressPlaceholder="福岡市中央区薬院2-2-24 〇〇ビル1F"
             deliveryDescription="お店にどなたかいらっしゃる曜日と時間を教えてください。サンプルとご注文を、その時間にお届けします。"
             deliveryNotePlaceholder="例：搬入口は裏手です／火曜定休・15時以降は不在など"
-            notesLabel="備考（お店の業態・合わせたいお菓子やドリンクなど）"
-            notesPlaceholder="例：米粉ケーキやワッフルの横に添えるアイス、ソーダフロートとして試したいです。"
-            inquiryPlaceholder="お取引条件やロット、メニューへの添え方のご相談など、お気軽にご記入ください。"
+            notesLabel="お店の業態・試したい使い方・確認したい点"
+            notesPlaceholder="例：焼きドーナツや米粉ケーキの添えアイス、100mlカップ販売を検討しています。"
+            inquiryPlaceholder="お取引条件やロット、100mlカップ物販・ロゴシールOEM、メニューへの添え方のご相談などお気軽にご記入ください。"
             presetTitle="おすすめ6種"
-            presetDescription="焼き菓子への添え盛りとフロートで人気の定番6種をお届けします（バニラ・UMAMIバニラ・アールグレイ・抹茶・マンゴー・ミックスベリー 各1個）"
+            presetDescription="焼き菓子への添え盛りとフロートで人気の定番6種をお届けします（バニラココナッツ・UMAMIバニラ・アールグレイ・抹茶・マンゴー・ミックスベリー 各1個）"
             presetFlavors={CAFE_PRESET_FLAVORS}
           />
         </div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import PhotoSlot from "@/app/components/wholesale/PhotoSlot";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
@@ -8,9 +9,9 @@ const PARFAIT_PHOTO_SRC: string | null = null;
 
 const usageCards = [
   {
-    badge: "01｜ケーキ・焼き菓子の皿盛りに",
-    title: "焼き菓子・タルト・ワッフルの横に添える",
-    body: "ガトーショコラ、タルト、シフォン、パウンドケーキ、スコーン、パンケーキ、ワッフルの横に。温かい焼き菓子に冷たいバニラやアールグレイを添える一皿にそのまま使えます。",
+    badge: "01｜ドーナツ・焼き菓子・ケーキに",
+    title: "ドーナツに挟む／焼き菓子・ガレット・ワッフルに添える",
+    body: "焼きドーナツや米粉パンのアイスサンド、ガレット、タルト、ガトーショコラ、スコーン、ワッフルの横に。温かいお菓子に冷たいバニラやアールグレイを合わせる一皿にそのまま使えます。",
     photoSrc: BAKED_SWEETS_SIDE_PHOTO_SRC,
     photoAlt: "焼き菓子やタルトの横にバニラアイスを添えたプレート",
   },
@@ -67,10 +68,10 @@ export default function CafeServingSection() {
           お店での使い方
         </p>
         <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
-          焼き菓子の横添えから、フロート・ランチ後のひと皿まで。
+          ドーナツ・焼き菓子の添えから、フロート・持ち帰りカップまで。
         </h2>
         <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
-          冷凍庫から盛り付けるだけで、仕込みの手間やロスを増やさずメニューを広げられます。1Lあたり50ml（#18）なら約20杯・1杯
+          仕込みの手間や日持ちによるロスを増やさず、カフェ・ベーカリーのメニューを広げられます。1Lあたり50ml（#18）なら約20杯・1杯
           約100円（税別）、80ml（#12）なら約12杯・1杯 約167円（税別）が目安です。
         </p>
 
@@ -134,6 +135,24 @@ export default function CafeServingSection() {
                 </figcaption>
               </figure>
             ))}
+          </div>
+
+          <div className="mt-5 flex flex-col justify-between gap-3 rounded-2xl bg-white px-4 py-3.5 sm:flex-row sm:items-center sm:px-5">
+            <p className="text-ink font-sans text-xs leading-relaxed sm:text-sm">
+              <strong>テイクアウト専門・ベーカリー店様へ：</strong>
+              そのまま店頭販売できる「100ml個食カップ（税別¥300・60個〜）」や「フタ丸シールOEM（開発費¥0）」も選べます。
+            </p>
+            <div className="flex shrink-0 flex-wrap gap-3 font-sans text-xs font-bold">
+              <Link href="/wholesale" className="text-brand underline underline-offset-4">
+                100mlカップ案内 →
+              </Link>
+              <Link
+                href="/oem/plan?src=cafe_serving"
+                className="text-brand underline underline-offset-4"
+              >
+                店名ロゴOEM案内 →
+              </Link>
+            </div>
           </div>
         </div>
       </div>

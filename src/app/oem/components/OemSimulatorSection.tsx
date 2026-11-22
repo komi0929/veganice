@@ -94,7 +94,9 @@ export default function OemSimulatorSection() {
                     >
                       <p className="text-xs font-bold">{course.shortTitle}</p>
                       <p className="text-brand mt-1 text-xs font-bold">
-                        初期開発費 ¥{course.devFeeExTax.toLocaleString("ja-JP")}
+                        {course.devFeeExTax > 0
+                          ? `初期開発費 税別 ¥${course.devFeeExTax.toLocaleString("ja-JP")}`
+                          : "初期開発費 ¥0"}
                       </p>
                     </button>
                   );
@@ -201,7 +203,9 @@ export default function OemSimulatorSection() {
                       onChange={(e) => setBundleTrial(e.target.checked)}
                       className="h-4 w-4 shrink-0 rounded accent-[#3e6044]"
                     />
-                    <span className="text-ink-light">通常納品と試作を同梱する（試作送料 ¥0）</span>
+                    <span className="text-ink-light">
+                      定番卸をご利用中の方：通常納品と試作を同梱する（試作送料 ¥0）
+                    </span>
                   </label>
                 </div>
               )}
@@ -237,9 +241,9 @@ export default function OemSimulatorSection() {
                   </motion.div>
                 </div>
                 <div className="text-ink-light mt-2 flex justify-between text-xs">
-                  <span>送料込仕入：約¥{result.unitCostExTaxRecommended}</span>
+                  <span>送料込仕入（税抜）：約¥{result.unitCostExTaxRecommended}</span>
                   <span className="text-brand font-bold">
-                    1{result.servingUnitLabel}の利益：約¥{result.unitGrossProfitExTax}
+                    1{result.servingUnitLabel}の利益（税抜）：約¥{result.unitGrossProfitExTax}
                   </span>
                 </div>
               </div>
@@ -247,7 +251,7 @@ export default function OemSimulatorSection() {
               {/* リピート1箱あたりの利益（一番知りたい数字を大きく） */}
               <div className="border-brand/25 bg-brand/5 rounded-2xl border p-4 text-center">
                 <p className="text-brand text-xs font-bold">
-                  リピート1回・{result.recommendedLotLabel}のお店利益目安
+                  リピート1回・{result.recommendedLotLabel}のお店利益目安（税抜）
                 </p>
                 <p className="text-brand mt-1.5 text-3xl font-bold">
                   約 ¥{result.recommendedLotProfitExTax.toLocaleString("ja-JP")}
@@ -257,14 +261,14 @@ export default function OemSimulatorSection() {
               {/* 初回ご負担となじむ目安 */}
               <div className="space-y-2.5 rounded-2xl bg-[#faf8f4] p-4 text-xs">
                 <div className="flex items-baseline justify-between">
-                  <span className="text-ink-light">初回ご試作のご負担（送料・実費込）</span>
+                  <span className="text-ink-light">初回ご試作のご負担（税込・送料実費込）</span>
                   <span className="text-ink text-base font-bold">
                     ¥{result.initialTrialTotalTaxIncl.toLocaleString("ja-JP")}
                   </span>
                 </div>
                 <div className="flex items-baseline justify-between">
                   <span className="text-ink-light">
-                    初回最小ロット（{formatId === "cup" ? "60個" : "6L"}・送料込）
+                    初回最小ロット（{formatId === "cup" ? "60個" : "6L"}・税込・送料込）
                   </span>
                   <span className="text-ink text-base font-bold">
                     ¥{result.firstLotTotalTaxIncl.toLocaleString("ja-JP")}
@@ -300,7 +304,7 @@ export default function OemSimulatorSection() {
                 ）で無料相談する →
               </button>
               <p className="text-ink-muted mt-2.5 text-[11px] leading-relaxed">
-                ※税抜会計ベースの概算目安です。ご支給素材の原価・工房への素材送料・天面シールの印刷費は別途となります。
+                ※お店の利益・仕入単価は税抜、初回ご試作・初回最小ロットのご負担合計は税込の概算目安です。ご支給素材の原価・工房への素材送料・天面シールの印刷費は別途となります。
               </p>
             </div>
           </div>

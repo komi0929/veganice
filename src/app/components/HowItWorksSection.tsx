@@ -17,7 +17,7 @@ export default function HowItWorksSection() {
       number: "02",
       title: "フレーバー・数量を決定",
       description:
-        "11種から自由に組み合わせ。季節のおすすめもご提案します。最小4L（2L×2本）から、お店のペースに合わせて。",
+        "11種から自由に組み合わせ。最小4L（1L×4本 または 2L×2本）から、持ち帰り用100ml個食カップは60個から、お店のペースに合わせてご注文いただけます。",
       icon: <ClipboardList className="text-brand h-8 w-8" />,
     },
     {

@@ -12,8 +12,7 @@ const MIZUGASHI_FRUIT_PHOTO_SRC: string | null = null;
 const hotelFlavorGroups: WholesaleFlavorGroup[] = [
   {
     title: "和の献立に（5種）",
-    subtitle:
-      "会席・懐石・精進料理の締めくくりや、季節の果物・水菓子に添えやすい和素材・国産果実の味",
+    subtitle: "会席・懐石・精進料理の締めくくりや、季節の果物・水菓子に添えやすい和素材・果実の味",
     items: [
       {
         displayName: "抹茶",
@@ -48,7 +47,7 @@ const hotelFlavorGroups: WholesaleFlavorGroup[] = [
     subtitle: "ホテルやオーベルジュのコースドルチェ、ケーキ・果物への添え盛り、朝食ビュッフェに",
     items: [
       {
-        displayName: "バニラ",
+        displayName: "バニラココナッツ",
         image: "/images/flavors/vanilla_coconut.png",
         note: "果物やケーキに添えやすいまろやかな定番",
       },
@@ -107,7 +106,7 @@ export default function HotelFlavorsSection() {
             単体の一皿にも、ケーキや季節の果物への添えにも
           </h3>
           <p className="text-ink-light mt-2 font-sans text-sm leading-relaxed">
-            そのまま器に盛るだけでなく、コースのデザート皿の添えや水菓子としても幅広くお使いいただけます。
+            単体の水菓子としてはもちろん、コースのデザート皿の添えとしても幅広くお使いいただけます。
           </p>
 
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">

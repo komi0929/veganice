@@ -36,12 +36,20 @@ const COPY_BY_CONTEXT: Record<
   },
 };
 
+const SRC_BY_CONTEXT: Record<OemBannerContext, string> = {
+  general: "home_banner",
+  dessert: "dessert_banner",
+  hotel: "hotel_banner",
+  cafe: "cafe_banner",
+};
+
 /**
  * 既存の業務用卸LP（/ , /dessert , /hotel , /cafe）の最下部に配置するOEM要点ページ（/oem/plan）への導線
  * メインの試食サンプル申込フォームより下に配置することで、通常卸のCVを妨げずにOEMニーズを拾い上げる
  */
 export default function OemCrossLinkBanner({ context = "general" }: OemCrossLinkBannerProps) {
   const copy = COPY_BY_CONTEXT[context];
+  const src = SRC_BY_CONTEXT[context];
 
   return (
     <section className="border-t border-gray-200 bg-[#f7f3ec] py-12 sm:py-14">
@@ -57,7 +65,7 @@ export default function OemCrossLinkBanner({ context = "general" }: OemCrossLink
             </p>
           </div>
           <Link
-            href="/oem/plan"
+            href={`/oem/plan?src=${src}`}
             className="bg-brand hover:bg-brand-dark inline-flex min-h-12 shrink-0 items-center justify-center rounded-full px-6 py-3 text-sm font-bold whitespace-nowrap text-white transition-colors"
           >
             OEMの料金・プランを見る →

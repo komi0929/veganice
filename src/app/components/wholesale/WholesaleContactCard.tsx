@@ -2,6 +2,7 @@
 
 import {
   useActionState,
+  useEffect,
   useRef,
   useState,
   useSyncExternalStore,
@@ -9,6 +10,7 @@ import {
   type FocusEvent,
   type ReactNode,
 } from "react";
+import Link from "next/link";
 import { submitContact, type ContactState } from "@/app/actions/contact";
 import type { SampleFlavorName } from "@/app/components/SampleFlavorPicker";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
@@ -109,7 +111,9 @@ export default function WholesaleContactCard({
 }: WholesaleContactCardProps) {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
   const [activeTab, setActiveTab] = useState<FormTab>("sample");
+  const [notesValue, setNotesValue] = useState("");
   const addressInputRef = useRef<HTMLInputElement>(null);
+  const errorBannerRef = useRef<HTMLDivElement>(null);
   const lastLookedUpZip = useRef<string>("");
 
   const searchString = useSyncExternalStore(
@@ -120,9 +124,64 @@ export default function WholesaleContactCard({
   const queryParams = new URLSearchParams(searchString);
   const customerToken = queryParams.get("c") ?? "";
   const prefillStore = queryParams.get("store") ?? "";
-  const prefillName = queryParams.get("name") ?? "";
-  const prefillEmail = queryParams.get("email") ?? "";
-  const prefillPhone = queryParams.get("phone") ?? "";
+  const channelTag = queryParams.get("s") ?? "";
+  const resolvedSource = channelTag ? `${source}:${channelTag}`.slice(0, 50) : source;
+
+  const noteChips =
+    source === "cafe"
+      ? [
+          {
+            label: "＋ ドーナツ・焼き菓子に添えたい",
+            text: "ドーナツや焼き菓子に添える（挟む）アイスとして検討しています。",
+          },
+          {
+            label: "＋ フロート・パフェに",
+            text: "ドリンクフロートやパフェ用のアイスとして検討しています。",
+          },
+          {
+            label: "＋ 100mlカップ物販・ロゴOEMも知りたい",
+            text: "持ち帰り用の100ml個食カップや、お店ロゴシールOEMも知りたいです。",
+          },
+          {
+            label: "＋ 原材料・基準の確認",
+            text: "ベースミルクの種類やアルコール有無など、原材料の詳細も確認したいです。",
+          },
+        ]
+      : source === "hotel"
+        ? [
+            {
+              label: "＋ 会席・コースの甘味に",
+              text: "会席やコース料理の締めくくりの甘味・ドルチェとして検討しています。",
+            },
+            {
+              label: "＋ 海外ゲスト・食制限対応に",
+              text: "海外宿泊客のヴィーガン・グルテンフリー・乳卵小麦不使用対応として検討しています。",
+            },
+            {
+              label: "＋ 売店・部屋菓子用カップも知りたい",
+              text: "100ml個食カップ（60個〜）や屋号ロゴ入りOEMの条件も知りたいです。",
+            },
+          ]
+        : [
+            {
+              label: "＋ 業務用バルク（4L〜）検討",
+              text: "店内提供用の1L・2Lバルクを検討しています。",
+            },
+            {
+              label: "＋ 100mlカップ（60個〜）検討",
+              text: "テイクアウト・物販用の100ml個食カップを検討しています。",
+            },
+            {
+              label: "＋ ロゴシールOEMも知りたい",
+              text: "開発費0円のお店ロゴ丸シールOEMについても知りたいです。",
+            },
+          ];
+
+  useEffect(() => {
+    if (!state.success && state.message && errorBannerRef.current) {
+      errorBannerRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [state]);
 
   const handlePhoneBlur = (e: FocusEvent<HTMLInputElement>) => {
     const normalized = normalizeDomesticPhone(e.target.value);
@@ -153,9 +212,19 @@ export default function WholesaleContactCard({
     );
   };
 
+  const appendNoteChip = (snippet: string) => {
+    setNotesValue((prev) => {
+      if (prev.includes(snippet)) return prev;
+      return prev.trim() ? `${prev.trim()}\n${snippet}` : snippet;
+    });
+  };
+
   if (state.success) {
     return (
-      <div className="rounded-3xl border border-stone-200/80 bg-white p-8 text-center shadow-xs sm:p-12">
+      <div
+        id="sample-form-card"
+        className="scroll-mt-20 rounded-3xl border border-stone-200/80 bg-white p-8 text-center shadow-xs sm:p-10"
+      >
         <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-2xl text-emerald-600">
           ✓
         </div>
@@ -165,6 +234,22 @@ export default function WholesaleContactCard({
         <p className="text-ink-light mt-3 font-sans text-[15px] leading-relaxed whitespace-pre-line">
           {state.message}
         </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-2.5 border-t border-gray-100 pt-5 font-sans text-xs font-bold">
+          {source !== "wholesale" && (
+            <Link
+              href="/wholesale"
+              className="text-ink hover:text-brand rounded-full border border-gray-200 bg-[#fafaf8] px-4 py-2 transition-colors"
+            >
+              業務用バルク・100mlカップの要点一覧を見る →
+            </Link>
+          )}
+          <Link
+            href={`/oem/plan?src=${source}_thanks`}
+            className="text-brand hover:bg-brand/10 rounded-full border border-emerald-200 bg-emerald-50/50 px-4 py-2 transition-colors"
+          >
+            お店ロゴシール・オリジナルOEM案内を見る →
+          </Link>
+        </div>
       </div>
     );
   }
@@ -175,7 +260,17 @@ export default function WholesaleContactCard({
     }`;
 
   return (
-    <div className="rounded-3xl border border-stone-200/80 bg-white p-5 shadow-xs sm:p-8">
+    <div
+      id="sample-form-card"
+      className="scroll-mt-20 rounded-3xl border border-stone-200/80 bg-white p-5 shadow-xs sm:p-8"
+    >
+      {(prefillStore || customerToken) && (
+        <div className="bg-brand/10 text-brand mb-4 rounded-2xl px-4 py-3 font-sans text-xs leading-relaxed font-bold">
+          {prefillStore ? `${prefillStore} 様、` : ""}
+          ご連絡ありがとうございます。お届け先をご入力いただくだけでサンプル（6個・商品代無料）を手配いたします。
+        </div>
+      )}
+
       <div className="flex rounded-full bg-gray-100 p-1" role="tablist">
         <button
           type="button"
@@ -197,18 +292,16 @@ export default function WholesaleContactCard({
         </button>
       </div>
 
-      <form
-        key={searchString || "default"}
-        action={formAction}
-        aria-label="お問い合わせフォーム"
-        className="mt-5 space-y-4"
-      >
+      <form action={formAction} aria-label="お問い合わせフォーム" className="mt-5 space-y-4">
         <input type="hidden" name="formType" value={activeTab} />
-        <input type="hidden" name="source" value={source} />
+        <input type="hidden" name="source" value={resolvedSource} />
         {customerToken ? <input type="hidden" name="customerToken" value={customerToken} /> : null}
 
         {state.message && !state.success ? (
-          <div className="rounded-xl bg-red-50 p-4 font-sans text-sm text-red-600">
+          <div
+            ref={errorBannerRef}
+            className="rounded-xl bg-red-50 p-4 font-sans text-sm text-red-600"
+          >
             {state.message}
           </div>
         ) : null}
@@ -218,7 +311,7 @@ export default function WholesaleContactCard({
             type="text"
             id="companyName"
             name="companyName"
-            defaultValue={prefillStore}
+            defaultValue={state.fields?.companyName ?? prefillStore}
             autoComplete="organization"
             disabled={isPending}
             className={`${inputClasses} ${state.errors?.companyName ? errorClasses : ""}`}
@@ -237,7 +330,7 @@ export default function WholesaleContactCard({
               type="text"
               id="contactName"
               name="contactName"
-              defaultValue={prefillName}
+              defaultValue={state.fields?.contactName ?? ""}
               autoComplete="name"
               disabled={isPending}
               className={`${inputClasses} ${state.errors?.contactName ? errorClasses : ""}`}
@@ -247,7 +340,7 @@ export default function WholesaleContactCard({
 
           <Field
             id="phone"
-            label="電話番号"
+            label="電話番号（配送伝票用）"
             required={activeTab === "sample"}
             error={state.errors?.phone}
           >
@@ -255,7 +348,7 @@ export default function WholesaleContactCard({
               type="tel"
               id="phone"
               name="phone"
-              defaultValue={prefillPhone}
+              defaultValue={state.fields?.phone ?? ""}
               autoComplete="tel"
               inputMode="tel"
               onBlur={handlePhoneBlur}
@@ -271,7 +364,7 @@ export default function WholesaleContactCard({
             type="email"
             id="email"
             name="email"
-            defaultValue={prefillEmail}
+            defaultValue={state.fields?.email ?? ""}
             autoComplete="email"
             inputMode="email"
             disabled={isPending}
@@ -288,6 +381,7 @@ export default function WholesaleContactCard({
                   type="text"
                   id="postalCode"
                   name="postalCode"
+                  defaultValue={state.fields?.postalCode ?? ""}
                   autoComplete="postal-code"
                   inputMode="numeric"
                   onChange={handlePostalCodeChange}
@@ -304,6 +398,7 @@ export default function WholesaleContactCard({
                   type="text"
                   id="address"
                   name="address"
+                  defaultValue={state.fields?.address ?? ""}
                   autoComplete="street-address"
                   disabled={isPending}
                   className={`${inputClasses} ${state.errors?.address ? errorClasses : ""}`}
@@ -326,11 +421,29 @@ export default function WholesaleContactCard({
               notePlaceholder={deliveryNotePlaceholder}
             />
 
-            <Field id="notes" label={notesLabel}>
+            <Field
+              id="notes"
+              label={notesLabel}
+              hint="タップで記入例が入ります。原材料や基準のご質問もこちらへどうぞ。"
+            >
+              <div className="mb-2 flex flex-wrap gap-1.5">
+                {noteChips.map((chip) => (
+                  <button
+                    key={chip.label}
+                    type="button"
+                    onClick={() => appendNoteChip(chip.text)}
+                    className="hover:border-brand hover:text-brand cursor-pointer rounded-full border border-gray-200 bg-[#fafaf8] px-2.5 py-1 font-sans text-[11px] font-bold text-gray-600 transition-colors"
+                  >
+                    {chip.label}
+                  </button>
+                ))}
+              </div>
               <textarea
                 id="notes"
                 name="notes"
                 rows={2}
+                value={notesValue}
+                onChange={(e) => setNotesValue(e.target.value)}
                 disabled={isPending}
                 className={`${inputClasses} resize-none`}
                 placeholder={notesPlaceholder}
@@ -345,6 +458,7 @@ export default function WholesaleContactCard({
               id="message"
               name="message"
               rows={5}
+              defaultValue={state.fields?.message ?? ""}
               disabled={isPending}
               className={`${inputClasses} resize-none ${state.errors?.message ? errorClasses : ""}`}
               placeholder={inquiryPlaceholder}

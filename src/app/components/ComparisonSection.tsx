@@ -34,9 +34,9 @@ const comparisonRows = [
   },
   {
     label: "原材料のこだわり",
-    cheap: "乳化剤や安定剤で食感を補正している",
+    cheap: "乳・卵・小麦や白砂糖を含み、食制限のある方にそのまま出しにくい",
     cheapStatus: "negative" as const,
-    soyStories: "乳化安定剤・増粘剤・着色料はすべて不使用",
+    soyStories: "全11種が乳・卵・小麦・白砂糖不使用。味ごとに全原材料を公開",
     soyStoriesStatus: "positive" as const,
   },
   {

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import { SectionHeader } from "./ui";
 
 const GOOGLE_MAPS_REVIEWS_URL =
@@ -62,7 +63,7 @@ const reviews: ReviewItem[] = [
   {
     quote: ["豆乳で作られているなんて全く気づかない。", "絶品すぎて2回も食べてしまいました。"],
     who: "Poonam Parekh さん",
-    tag: "グルテン不耐症・リピート来店",
+    tag: "グルテンを控えているお客様・再来店",
     image: "/images/reviews/google_review_poonam_parekh.png",
     width: 402,
     height: 539,
@@ -115,23 +116,27 @@ export default function DessertReviewsSection() {
           eyebrow="実店舗での評判"
           lines={["「今まで食べたアイスで一番美味しい」", "世界中から届く本物の声。"]}
           lead={[
-            "Google ★4.7（250件以上）、ヴィーガンガイドHappyCowで満点5.0を獲得。",
-            "海外からのヴィーガンのお客様はもちろん、ノンヴィーガンの人でも「どんな乳製品のアイスより美味しい」「今までで一番バランスが良い」と絶賛されています。",
+            `Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）、ヴィーガンガイドHappyCowで満点${WHOLESALE_FACTS.happyCowRating}を獲得。`,
+            "海外からのヴィーガンのお客様はもちろん、ノンヴィーガンのお客様からも「世界中で食べたどんな乳製品よりも美味しい」「今まで食べたアイスの中で一番バランスが良い」と高く評価されています。",
           ]}
         />
 
         {/* 評価スコア */}
         <div className="mt-8 grid grid-cols-2 gap-3">
           <div className="rounded-2xl bg-white/10 px-4 py-5 text-center">
-            <p className="text-3xl font-bold text-white sm:text-4xl">★4.7</p>
+            <p className="text-3xl font-bold text-white sm:text-4xl">
+              {WHOLESALE_FACTS.googleRating}
+            </p>
             <p className="mt-1 text-xs leading-snug text-white/75">
               Googleの口コミ
               <br />
-              250件以上
+              {WHOLESALE_FACTS.googleReviewCount}
             </p>
           </div>
           <div className="rounded-2xl bg-white/10 px-4 py-5 text-center">
-            <p className="text-3xl font-bold text-white sm:text-4xl">5.0</p>
+            <p className="text-3xl font-bold text-white sm:text-4xl">
+              {WHOLESALE_FACTS.happyCowRating}
+            </p>
             <p className="mt-1 text-xs leading-snug text-white/75">
               HappyCow
               <br />
@@ -215,7 +220,7 @@ export default function DessertReviewsSection() {
           rel="noopener noreferrer"
           className="text-xs font-bold text-white underline underline-offset-4 hover:text-white/80"
         >
-          Googleマップで全250件以上の口コミを見る ↗
+          Googleマップで全{WHOLESALE_FACTS.googleReviewCount}の口コミを見る ↗
         </a>
       </div>
     </section>

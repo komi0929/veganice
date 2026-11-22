@@ -8,10 +8,20 @@ export default function Footer() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isDessert = pathname.startsWith("/dessert");
+  const isOem = pathname.startsWith("/oem");
   const prefix = isDessert ? "/dessert#" : isHome ? "#" : "/#";
+  const contactHref = isOem ? `${pathname}#contact-form` : `${prefix}contact-form`;
+  const faqHref = isOem ? `${pathname}#faq` : `${prefix}faq`;
+  const flowHref = isOem
+    ? `${pathname}#timeline`
+    : isDessert
+      ? "/dessert#contact-form"
+      : `${prefix}flow`;
+
+  const oemFooterSrc = isDessert ? "dessert_footer" : isHome ? "home_footer" : "lp_footer";
 
   return (
-    <footer className="bg-ink border-t border-white/10 px-5 pt-16 pb-12 text-white md:px-8">
+    <footer className="bg-ink border-t border-white/10 px-5 pt-16 pb-24 text-white md:px-8 md:pb-12">
       <div className="container mx-auto max-w-6xl">
         <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
           {/* Column 1: Brand & Philosophy */}
@@ -33,41 +43,43 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <h3 className="mb-2 text-sm font-bold tracking-wider text-white/50">メニュー</h3>
               <Link
-                href={`${prefix}products`}
+                href={isOem ? "/wholesale" : `${prefix}products`}
                 className="hover:text-cta text-base text-white transition-colors"
               >
-                商品ラインナップ
+                {isOem ? "定番11フレーバー卸" : "商品ラインナップ"}
               </Link>
+              {!isOem && (
+                <Link
+                  href={`${prefix}story`}
+                  className="hover:text-cta text-base text-white transition-colors"
+                >
+                  私たちの想い
+                </Link>
+              )}
               <Link
-                href={`${prefix}story`}
+                href={flowHref}
                 className="hover:text-cta text-base text-white transition-colors"
               >
-                私たちの想い
+                {isOem ? "お届けまでの流れ" : "導入・サンプルの流れ"}
               </Link>
               <Link
-                href={`${prefix}flow`}
-                className="hover:text-cta text-base text-white transition-colors"
-              >
-                導入の流れ
-              </Link>
-              <Link
-                href={`${prefix}faq`}
+                href={faqHref}
                 className="hover:text-cta text-base text-white transition-colors"
               >
                 よくあるご質問
               </Link>
               <Link
-                href={`${prefix}contact-form`}
+                href={contactHref}
                 className="hover:text-cta text-base text-white transition-colors"
               >
-                お問い合わせ
+                無料サンプル・ご相談
               </Link>
-              {!pathname.startsWith("/oem") && (
+              {!isOem && (
                 <Link
-                  href="/oem/plan"
+                  href={`/oem/plan?src=${oemFooterSrc}`}
                   className="hover:text-cta text-base text-white transition-colors"
                 >
-                  OEM・オリジナル製造
+                  OEM・ロゴカップ製造（60個〜）
                 </Link>
               )}
             </div>

@@ -4,44 +4,43 @@ import { SectionHeader } from "./ui";
 const features = [
   {
     tag: "安心",
-    title: "100%植物性・専用工房",
-    body: "乳・卵・小麦を持ち込まない専用工房で手作り。混入の心配がなく、どなたにも安心です。",
+    title: "乳・卵・小麦フリーの専用工房",
+    body: "卵・乳・小麦を一切持ち込まない専用工房で手づくり。乳・卵・小麦アレルギーの方や海外のお客様にも安心してお出しいただけます。",
     image: "/images/factory_kitchen_craft.webp",
     alt: "SoyStoriesの専用工房でアイスを仕込む様子",
   },
   {
-    tag: "規格",
-    title: "1L・2Lの角型バルク",
-    body: "お店の冷凍ストッカーに入るサイズ。最小4L（1L×4個など）から注文できます。",
-    image: "/images/bulk_2l.jpg",
-    alt: "業務用の2Lバルク容器に入ったアイス",
+    tag: "省スペース規格",
+    title: "1L角型×4本から・個食カップも対応",
+    body: "コールドテーブルや小型冷凍庫にも収まりやすい1L・2Lの角型バルク（最小4L〜）。持ち帰り・物販用の100ml個食カップ（60個〜）も選べます。",
+    image: "/images/bulk_1l.jpg",
+    alt: "省スペースで保管しやすい1L角型バルク容器",
   },
   {
     tag: "食感",
     title: "出し入れしても滑らかさが続く",
-    body: "米粉を使った独自製法で、植物性アイスにありがちなシャリシャリ感（シャーベット感）がなく、業務用で冷凍庫を出し入れしても滑らかな舌触りが続きます。",
+    body: "米粉を使った独自製法により、植物性アイスにありがちな氷のシャリシャリ感がなく、営業中の出し入れでも最後まで滑らかな舌触りが続きます。",
     image: "/images/bulk_scoop.jpg",
     alt: "米粉の独自製法による滑らかなクラフトアイス",
   },
 ];
 
-/** 「これは何？」に答えるセクション。ヒーロー直後に置き、以降の各論の前提をつくる */
+/** 「これは何？」に答えるセクション。ヒーロー直後に置き、どんな業態でも導入しやすい規格を伝える */
 export default function DessertAboutSection() {
   return (
-    <section id="about" className="bg-[#f7f3ec] py-16 sm:py-24">
+    <section id="about" className="scroll-mt-16 bg-[#f7f3ec] py-14 sm:py-20">
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
           eyebrow="スイーツ専門店のクラフトアイス"
-          lines={["自慢のお料理の最後に、", "専門店のデザートをプラス。"]}
+          lines={["お料理やお菓子の魅力を引き立てる、", "お店の新しいデザートに。"]}
           lead={[
             "私たちSoyStoriesは、福岡・薬院のヴィーガン＆グルテンフリー スイーツ専門店です。",
-            "ラーメンやバーガーなど自慢の食事を提供する飲食店様と競合するのではなく、",
-            "食後の満足度を最高に引き上げるスイーツ専門のパートナーとしてお手伝いします。",
-            "ヴィーガンの方はもちろんノンヴィーガンの人でも大満足。乳・卵・小麦不使用の業務用バルクでお届けします。",
+            "定食・専門料理やカフェのランチ、手づくりのパン・ドーナツ・焼き菓子など、",
+            "お店の看板メニューを引き立てるスイーツ専門のパートナーとして、少量4Lからお届けします。",
           ]}
         />
 
-        <ol className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+        <ol className="mt-9 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
           {features.map((item, index) => (
             <li
               key={item.tag}

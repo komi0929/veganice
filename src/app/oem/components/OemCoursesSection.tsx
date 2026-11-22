@@ -31,7 +31,7 @@ export default function OemCoursesSection() {
             "「フタだけ変える」か「オリジナル味をつくる」の2択。",
           ]}
           lead={[
-            "一番手軽なのは開発費0円のシール変更。おすすめは、3万円でお店だけのオリジナルアイスを開発し、店内用バルクや物販用カップで自由に展開するプランです。",
+            "一番手軽なのは開発費0円のシール変更。おすすめは、初期試作費3万円（税別）でお店の素材を使った専用レシピを開発し、店内用バルクや物販用カップで自由に展開するプランです。",
           ]}
         />
 
@@ -98,7 +98,7 @@ export default function OemCoursesSection() {
               </div>
 
               <p className="text-ink-light mt-4 text-[13.5px] leading-relaxed">
-                薬院店で人気の定番11フレーバー（抹茶・ほうじ茶・ショコラ・バニラ・フルーツ系など）から味を選び、
+                薬院店で人気の定番11フレーバー（抹茶・ほうじ茶・ショコラ・バニラココナッツ・フルーツ系など）から味を選び、
                 <strong>フタの丸シールだけお店のロゴデザイン</strong>にするプランです。
               </p>
 
@@ -120,6 +120,9 @@ export default function OemCoursesSection() {
                       100ml 個食カップ：税込 ¥{PRICING_CONSTANTS.cupOemPriceTaxIncl}／個
                     </p>
                     <p className="text-ink-light mt-0.5">最小ロット：1味 60個〜（120個で1箱）</p>
+                    <p className="text-ink-muted mt-0.5 text-[10.5px]">
+                      ※ご請求は税別286円基準（税込目安309円）
+                    </p>
                   </div>
                 </div>
               </div>
@@ -176,10 +179,10 @@ export default function OemCoursesSection() {
               </div>
 
               <span className="bg-cta absolute top-3 left-3 rounded-full px-3.5 py-1 text-xs font-bold text-white shadow-2xs">
-                おすすめ｜一番人気のプラン
+                おすすめ｜カップもバルクも両方OK
               </span>
               <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-gray-800 shadow-2xs">
-                地域の食材・果物・お茶・珈琲・発酵素材など何でも対応
+                地域の食材・果物・お茶・珈琲・発酵素材など幅広く対応
               </span>
             </div>
 
@@ -196,7 +199,7 @@ export default function OemCoursesSection() {
               <div className="mt-3.5 rounded-2xl bg-[#f7f3ec] px-4 py-3.5 sm:flex sm:items-baseline sm:justify-between">
                 <div>
                   <span className="text-ink-muted block text-xs font-bold">
-                    初期の試作開発費（どんな素材でも一律）
+                    初期の試作開発費（対象素材すべて一律）
                   </span>
                   <p className="text-brand mt-0.5 text-3xl font-bold">税別 ¥30,000</p>
                 </div>
@@ -208,8 +211,10 @@ export default function OemCoursesSection() {
               </div>
 
               <p className="text-ink-light mt-4 text-sm leading-relaxed">
-                <strong>3万円かけていただくだけで、お店だけの専用レシピが完成します。</strong>
-                素材の水分や糖度・香りにあわせて一から配合を組むため、どんな食材でも滑らかな口どけに仕上がります。
+                <strong>
+                  初期試作費3万円（税別）で、お店の素材を使った専用レシピを開発します。
+                </strong>
+                乳・卵・小麦を含まない幅広い食材で、素材の水分・糖度・香りにあわせた滑らかな口どけに仕上げます。
               </p>
 
               {/* 最大の魅力：完成したオリジナル味は「バルク」でも「カップ」でもどちらでもOK！ */}
@@ -261,6 +266,7 @@ export default function OemCoursesSection() {
                         100mlカップ：税込 ¥{PRICING_CONSTANTS.cupOemPriceTaxIncl}／個
                       </p>
                       <p className="text-ink-muted text-[11px]">最小 60個〜・お店シール貼付</p>
+                      <p className="text-ink-muted text-[10px]">※税別286円基準</p>
                     </div>
                   </div>
                 </div>
@@ -298,7 +304,7 @@ export default function OemCoursesSection() {
               当社より規定サイズの<strong>テンプレート（Illustrator .aiデータ）を支給</strong>
               いたします。そちらをもとにお客様にてデザイン制作・シール印刷までご手配いただき、当工房へご納品いただく形となります。お客様にてシールをご手配いただく分、カップ単価を基準価格（税込324円）から
               <strong>税込15円引きの「税込309円」</strong>
-              にしております（底面の原材料ラベルは当社で貼付）。
+              にしております（底面の法定一括表示ラベルは当社で貼付。※ご請求は税別286円基準（税込目安309円））。
             </p>
           </div>
 

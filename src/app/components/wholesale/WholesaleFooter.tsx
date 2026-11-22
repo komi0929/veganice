@@ -6,9 +6,14 @@ import type { WholesaleNavItem } from "./WholesaleHeader";
 export interface WholesaleFooterProps {
   taglineLines: string[];
   navItems: WholesaleNavItem[];
+  oemSrc?: string;
 }
 
-export default function WholesaleFooter({ taglineLines, navItems }: WholesaleFooterProps) {
+export default function WholesaleFooter({
+  taglineLines,
+  navItems,
+  oemSrc = "wholesale_footer",
+}: WholesaleFooterProps) {
   const { store, lineUrl } = WHOLESALE_FACTS;
 
   return (
@@ -53,7 +58,7 @@ export default function WholesaleFooter({ taglineLines, navItems }: WholesaleFoo
                 無料試食サンプル・お問い合わせ
               </a>
               <Link
-                href="/oem/plan"
+                href={`/oem/plan?src=${oemSrc}`}
                 className="hover:text-cta font-sans text-sm text-white transition-colors sm:text-base"
               >
                 OEM・オリジナル製造

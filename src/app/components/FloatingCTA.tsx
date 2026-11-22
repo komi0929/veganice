@@ -7,30 +7,32 @@ export default function FloatingCTA() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const contactForm = document.getElementById("contact-form");
-
     const handleScroll = () => {
-      const pastHero = window.scrollY > 500;
+      const contactForm =
+        document.getElementById("sample-form-card") ?? document.getElementById("contact-form");
+      const pastHero = window.scrollY > 320;
 
-      // contact-form が画面内に見えていたらCTAを隠す
+      // フォーム本体が画面内に見えていたらCTAを隠す
       let contactVisible = false;
       if (contactForm) {
         const rect = contactForm.getBoundingClientRect();
-        contactVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        contactVisible = rect.top < window.innerHeight - 80 && rect.bottom > 80;
       }
 
       setIsVisible(pastHero && !contactVisible);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    const contactSection = document.getElementById("contact-form");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
+    const target =
+      document.getElementById("sample-form-card") ?? document.getElementById("contact-form");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 

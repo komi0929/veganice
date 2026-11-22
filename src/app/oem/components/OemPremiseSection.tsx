@@ -32,6 +32,7 @@ const QUALITY_POINTS = [
 export default function OemPremiseSection() {
   return (
     <section id="about-oem" className="scroll-mt-16 bg-[#f7f3ec] py-16 sm:py-20">
+      <span id="premise" className="-mt-16 block pt-16" aria-hidden="true" />
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
           eyebrow="アイスの特徴"

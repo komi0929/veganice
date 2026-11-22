@@ -207,6 +207,13 @@ export function simulateCustomerEconomics(input: SimulationInput): SimulationRes
   const initialTrialTotalTaxIncl =
     devFeeTaxIncl + trialIngredientTaxIncl + trialMaterialTaxIncl + trialShippingTaxIncl;
 
+  const trialBurdenExTax = hasTrial
+    ? course.devFeeExTax +
+      PRICING_CONSTANTS.trialIngredientFeeExTax +
+      PRICING_CONSTANTS.trialMaterialFeeExTax +
+      Math.round(trialShippingTaxIncl / (1 + PRICING_CONSTANTS.standardTaxRate))
+    : 0;
+
   if (input.formatId === "cup") {
     // カップ物販（軽減税率8%想定）
     const sellingExTax = input.sellingPriceTaxIncl / (1 + PRICING_CONSTANTS.foodTaxRate);
@@ -231,7 +238,6 @@ export function simulateCustomerEconomics(input: SimulationInput): SimulationRes
       unitGrossProfitExTax * PRICING_CONSTANTS.cupRecommendedLot
     );
 
-    const trialBurdenExTax = initialTrialTotalTaxIncl / (1 + PRICING_CONSTANTS.standardTaxRate);
     const familiarizeUnits =
       hasTrial && unitGrossProfitExTax > 0 ? Math.ceil(trialBurdenExTax / unitGrossProfitExTax) : 0;
     const familiarizeWeeksAt3PerDay =
@@ -273,7 +279,6 @@ export function simulateCustomerEconomics(input: SimulationInput): SimulationRes
     sellingExTax > 0 ? Math.round((unitGrossProfitExTax / sellingExTax) * 100) : 0;
   const recommendedLotProfitExTax = Math.round(unitGrossProfitExTax * recServings);
 
-  const trialBurdenExTax = initialTrialTotalTaxIncl / (1 + PRICING_CONSTANTS.standardTaxRate);
   const familiarizeUnits =
     hasTrial && unitGrossProfitExTax > 0 ? Math.ceil(trialBurdenExTax / unitGrossProfitExTax) : 0;
   const familiarizeWeeksAt3PerDay =

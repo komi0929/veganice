@@ -11,7 +11,7 @@ const cafeFlavorGroups: WholesaleFlavorGroup[] = [
       "ガトーショコラ、タルト、ワッフル、パンケーキ、スコーン、最中など焼き菓子の横に添えやすい濃厚・お茶系",
     items: [
       {
-        displayName: "バニラ",
+        displayName: "バニラココナッツ",
         image: "/images/flavors/vanilla_coconut.png",
         note: "どの焼き菓子にも寄り添うまろやかな定番",
       },

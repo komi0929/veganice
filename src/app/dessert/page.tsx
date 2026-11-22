@@ -13,9 +13,9 @@ import DessertStorySection from "./components/DessertStorySection";
 import DessertSampleSection from "./components/DessertSampleSection";
 import OemCrossLinkBanner from "../components/OemCrossLinkBanner";
 
-const TITLE = "ヴィーガン対応・食後デザートの業務用クラフトアイス｜乳・卵・小麦不使用 SoyStories";
+const TITLE = "飲食店・カフェ・菓子店の業務用クラフトアイス｜乳・卵・小麦・白砂糖不使用 SoyStories";
 const DESCRIPTION =
-  "福岡・薬院のヴィーガン＆グルテンフリー専門店SoyStoriesのアイスを業務用1L・2Lでお届け。100%植物性・乳卵小麦不使用。米粉と発酵の独自製法でシャリシャリ感のない滑らかな舌触りが冷凍庫を出し入れしても続く。乳・卵・小麦を持ち込まない専用工房製造。全11種から選べる無料サンプル（6個）受付中。";
+  "福岡・薬院のヴィーガン＆グルテンフリー専門店SoyStoriesのクラフトアイスを業務用1L・2Lバルク（4L〜）および100ml個食カップ（60個〜）でお届け。定食・レストランの食後デザートや、カフェのフロート、ドーナツ・焼き菓子の添えアイスに。全11種から選べる無料サンプル（6個）受付中。";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -23,13 +23,14 @@ export const metadata: Metadata = {
   keywords: [
     "ヴィーガンアイス 業務用",
     "プラントベース デザート",
-    "食後デザート",
-    "業務用アイス",
-    "飲食店 デザート 導入",
+    "食後デザート 業務用",
+    "焼き菓子 添えアイス 卸",
+    "業務用アイス 小ロット",
     "バルクアイス",
     "乳卵小麦不使用",
+    "白砂糖不使用 アイス",
     "グルテンフリー アイス",
-    "アレルギー対応 デザート",
+    "乳・卵・小麦不使用 デザート",
     "福岡",
     "SoyStories",
     "ソイストーリーズ",
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
         url: "/images/hero_flagship.jpg",
         width: 1200,
         height: 630,
-        alt: "SoyStories 食後のデザートにぴったりの業務用アイス",
+        alt: "SoyStories 飲食店・カフェ・菓子店向け 業務用植物性クラフトアイス",
       },
     ],
   },
@@ -62,40 +63,41 @@ export const metadata: Metadata = {
 };
 
 /**
- * 食後デザート・ヴィーガン対応 業務用LP
- * 構成：何か → 届く流れ → 3つの製法 → 創業ストーリー＆エピソード → 評判 → お店の手間 → フレーバー → 質問 → 無料サンプル
+ * 飲食店・カフェ・ベーカリー／菓子店向け 定番卸フラッグシップLP
+ * 構成：FV → 3秒概要（1L×4本省スペース＆カップ併記） → 全11種の味＆価格 → 無料サンプル申込フォーム
+ *     → 実店舗の口コミ → 3つの独自製法 → 現場メリット・提供例 → 創業ストーリー → よくある質問 → OEM案内
  */
 export default function DessertPage() {
   return (
     <>
       <Header />
       <main className="lp-friendly flex-1">
-        {/* ① 3秒で伝わるファーストビュー（100%植物性・米粉クラフトアイス） */}
+        {/* ① 3秒で伝わるファーストビュー（食後デザートにも、カフェ・焼き菓子の一品にも） */}
         <DessertHeroSection />
 
-        {/* ② どんなアイス？（専門店の味をお店へ：安心・規格・現場） */}
+        {/* ② どんなアイス？（専用工房・1L角型×4本からの省スペース規格・滑らかな食感） */}
         <DessertAboutSection />
 
-        {/* ③ 3つの独自製法（米粉製法・発酵素材・専用工房） */}
-        <DessertReasonsSection />
-
-        {/* ④ 創業の想いと感動のエピソード */}
-        <DessertStorySection />
-
-        {/* ⑤ 実店舗の評価・海外のお客様の口コミ */}
-        <DessertReviewsSection />
-
-        {/* ⑥ お店の手間・メニュー例 */}
-        <DessertOperationsSection />
-
-        {/* ⑦ フレーバー・商品仕様 */}
+        {/* ③ 全11フレーバー・原材料モーダル・卸価格＆100mlカップ案内 */}
         <DessertProductsSection />
 
-        {/* ⑧ よくある質問 */}
-        <DessertFAQSection />
-
-        {/* ⑨ 無料サンプル・申込フォーム */}
+        {/* ④ 無料試食サンプル（6個）申込フォーム（最短距離で到達できる中盤配置） */}
         <DessertSampleSection />
+
+        {/* ⑤ 実店舗の評価・国内外のお客様の口コミ */}
+        <DessertReviewsSection />
+
+        {/* ⑥ 選ばれる3つの技術的裏付け（米粉製法・発酵素材・専用工房） */}
+        <DessertReasonsSection />
+
+        {/* ⑦ お店の収益メリット・業態別の提供メニュー例 */}
+        <DessertOperationsSection />
+
+        {/* ⑧ 創業の想いとエピソード */}
+        <DessertStorySection />
+
+        {/* ⑨ よくある質問（ベースミルク・アルコール/基準確認・カップ/OEM含む） */}
+        <DessertFAQSection />
 
         {/* ⑩ OEM・オリジナル製造のご案内（要点版 /oem/plan へ直結） */}
         <OemCrossLinkBanner context="dessert" />

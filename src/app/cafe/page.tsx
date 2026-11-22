@@ -13,10 +13,10 @@ import CafeFAQSection from "./components/CafeFAQSection";
 import CafeSampleSection from "./components/CafeSampleSection";
 import OemCrossLinkBanner from "@/app/components/OemCrossLinkBanner";
 
-const PAGE_TITLE = "カフェ・菓子店の添えアイスに｜乳・卵・小麦・白砂糖不使用の業務用アイス";
+const PAGE_TITLE = "カフェ・ベーカリー・焼き菓子店の業務用アイス｜乳・卵・小麦・白砂糖不使用";
 const OG_TITLE = `${PAGE_TITLE} | SoyStories`;
 const DESCRIPTION =
-  "ケーキ・タルト・ワッフル・焼き菓子に添えるアイスやフロート・パフェ・アフォガートに。乳・卵・小麦を持ち込まない専用工房製造、乳化安定剤・増粘剤・着色料・白砂糖不使用。最小4L（1L×4など）から味を組み合わせて仕入れ可能。無料試食サンプル（6個）受付中。";
+  "ドーナツ・米粉パン・タルト・ワッフル・焼き菓子に添える（挟む）アイスや、フロート・パフェ・アフォガートに。乳・卵・小麦を持ち込まない専用工房製造、白砂糖不使用。最小4L（1L×4本など）から味を組み合わせて仕入れ可能。100ml個食カップ（60個〜）にも対応。無料試食サンプル（6個）受付中。";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -80,7 +80,7 @@ export default function CafePage() {
         {/* 1. 最初の画面 */}
         <CafeHeroSection />
 
-        {/* 2. どんなアイス？（専門店の紹介・無添加＆白砂糖不使用・米粉製法・専用工房） */}
+        {/* 2. どんなアイス？（専門店の紹介・白砂糖不使用＆発酵のコク・米粉製法・専用工房） */}
         <CafePolicySection />
 
         {/* 3. お店での使い方（焼き菓子横添え・フロート・パフェ・ランチ後＋盛り付け写真） */}
@@ -115,6 +115,7 @@ export default function CafePage() {
           "乳・卵・小麦・白砂糖不使用のアイスを。",
         ]}
         navItems={navItems}
+        oemSrc="cafe_footer"
       />
       <WholesaleFloatingCTA />
     </>

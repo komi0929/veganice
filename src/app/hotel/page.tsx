@@ -16,7 +16,7 @@ import OemCrossLinkBanner from "@/app/components/OemCrossLinkBanner";
 const PAGE_TITLE = "ホテル・旅館のインバウンド・多様な食対応に｜業務用 植物性クラフトアイス";
 const OG_TITLE = `${PAGE_TITLE} | SoyStories`;
 const DESCRIPTION =
-  "海外からのお客様（ヴィーガン・グルテンフリー・乳製品不使用）やアレルギーをお持ちの方にも、会席やコースの最後にみんなと同じ一皿を。HappyCow 5.0満点・Google ★4.7（250件以上）と海外ゲストから絶賛される業務用植物性クラフトアイス。1L 2,000円・2L 4,000円（税別）、最小4L〜、無料試食サンプル（6個）受付中。";
+  "海外からのお客様（ヴィーガン・グルテンフリー・乳製品不使用）や乳・卵・小麦アレルギーをお持ちの方にも、会席やコースの最後にみんなと同じ一皿を。HappyCow 5.0満点・Google ★4.7（270件以上）と海外ゲストから高く評価される業務用植物性クラフトアイス。1L 2,000円・2L 4,000円（税別）、最小4L〜、無料試食サンプル（6個）受付中。";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -89,7 +89,7 @@ export default function HotelPage() {
         <WholesaleReviewsSlider
           eyebrow="HappyCow 5.0満点・Google ★4.7の実績"
           heading="海外からのヴィーガンのお客様の声"
-          lead={`私たちの直営スイーツ店（福岡・薬院）には欧米・豪州・アジアから多くの旅行者が訪れ、世界最大のヴィーガンガイドHappyCowで満点 ${WHOLESALE_FACTS.happyCowRating}、Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）を獲得しています。ヴィーガンやグルテンフリーの方はもちろん、ヴィーガンではないお客様からも「世界中で食べたどんな乳製品よりも美味しい」と高い評価をいただいています。`}
+          lead={`私たちの直営スイーツ店（福岡・薬院）には欧米・豪州・アジアから多くの旅行者が訪れ、海外旅行者向けヴィーガンガイドHappyCowで満点 ${WHOLESALE_FACTS.happyCowRating}、Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）を獲得しています。ヴィーガンやグルテンフリーの方はもちろん、ヴィーガンではないお客様からも「世界中で食べたどんな乳製品よりも美味しい」と高い評価をいただいています。`}
           variant="dark"
         />
 
@@ -117,6 +117,7 @@ export default function HotelPage() {
           "会席・コースの最後に同じデザートを。",
         ]}
         navItems={navItems}
+        oemSrc="hotel_footer"
       />
       <WholesaleFloatingCTA />
     </>

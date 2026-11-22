@@ -12,10 +12,10 @@ export const metadata: Metadata = {
     "乳・卵・小麦・白砂糖不使用のプラントベース クラフトアイスクリーム。乳・卵・小麦を持ち込まない専用工房製造、仕込み不要、4Lの小ロットから仕入れ可能。飲食店のアレルギー・ヴィーガン対応に。福岡・薬院のSoyStoriesが製造・卸売。",
   keywords: [
     "クラフトアイス",
-    "クラフトアイス",
     "業務用プラントベース クラフトアイスクリーム",
-    "アレルゲンフリー",
+    "乳卵小麦不使用デザート",
     "乳卵小麦不使用",
+    "白砂糖不使用",
     "グルテンフリー",
     "SoyStories",
     "ソイストーリーズ",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SoyStories | 業務用プラントベース クラフトアイスクリーム",
     description:
-      "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。薬院のお店HappyCow 5.0・Google ★4.7（250件以上）の実証済みクラフトアイスを、あなたのお店に。",
+      "乳・卵・小麦・白砂糖不使用。4Lの小ロットから。薬院の直営店HappyCow 5.0・Google ★4.7（270件以上）の実証済みクラフトアイスを、あなたのお店に。",
     type: "website",
     locale: "ja_JP",
     url: "https://soystories.cafe",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         url: "/images/soystories_icecream02358icecream.jpg",
         width: 1200,
         height: 630,
-        alt: "Soy stories プラントベース クラフトアイスクリーム",
+        alt: "SoyStories プラントベース クラフトアイスクリーム",
       },
     ],
   },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SoyStories | 業務用プラントベース クラフトアイスクリーム",
     description:
-      "乳・卵・小麦フリー。仕込み不要、4Lの小ロットから。飲食店のアレルギー・ヴィーガン対応に。",
+      "乳・卵・小麦・白砂糖不使用。4Lの小ロットから。レストラン・カフェ・菓子店・宿泊施設のデザート対応に。",
     images: ["/images/soystories_icecream02358icecream.jpg"],
   },
   alternates: {
@@ -89,11 +89,11 @@ const jsonLd = {
         "https://www.happycow.net/reviews/soystories-fukuoka-289915",
       ],
       description:
-        "福岡・薬院発のプラントベース クラフトアイスクリーム専門店。乳・卵・小麦・白砂糖不使用、専用工房で製造。薬院のお店舗の販売と業務用卸売を展開。",
+        "福岡・薬院発のヴィーガン＆グルテンフリー スイーツ専門店。乳・卵・小麦・白砂糖不使用のクラフトアイスを専用工房で製造し、薬院の実店舗販売と全国の飲食店向け業務用卸・小ロットOEMを展開。",
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+81-92-231-0677",
-        email: "soystoriesyakuin@gmail.com",
+        email: "y.kominami@hitokoto1.co.jp",
         contactType: "sales",
         availableLanguage: ["Japanese", "English"],
       },
@@ -103,10 +103,11 @@ const jsonLd = {
       "@id": "https://soystories.cafe/#store",
       name: "SoyStories 薬院店",
       image: "https://soystories.cafe/images/store_actual.png",
-      url: "https://soystories.cafe",
+      url: "https://www.soystories.jp/",
       telephone: "+81-92-231-0677",
       address: {
         "@type": "PostalAddress",
+        streetAddress: "薬院2丁目2-24 チサンマンション第3博多 1F",
         addressLocality: "福岡市中央区",
         addressRegion: "福岡県",
         postalCode: "810-0022",
@@ -114,15 +115,8 @@ const jsonLd = {
       },
       geo: {
         "@type": "GeoCoordinates",
-        latitude: 33.5764,
-        longitude: 130.3952,
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        reviewCount: "250",
-        bestRating: "5",
-        worstRating: "1",
+        latitude: 33.5818,
+        longitude: 130.3967,
       },
       parentOrganization: {
         "@id": "https://soystories.cafe/#organization",
@@ -133,7 +127,7 @@ const jsonLd = {
       "@id": "https://soystories.cafe/#product",
       name: "SoyStories プラントベース クラフトアイスクリーム（業務用卸売）",
       description:
-        "乳・卵・小麦・白砂糖不使用の植物性クラフトアイス（氷菓）。乳化剤・安定剤・増粘剤・合成着色料も不使用。乳・卵・小麦を持ち込まない専用工房で製造。11フレーバー、冷凍1Lまたは2L容器、最小4Lから卸売対応。",
+        "乳・卵・小麦・白砂糖不使用の植物性クラフトアイス（氷菓）。乳脂肪ゼロで後味が軽く、卵・乳・小麦を持ち込まない専用工房で製造。全11フレーバー、冷凍1L・2Lバルク容器（最小4L〜）および100ml個食カップ（最小60個〜）で卸売対応。",
       brand: { "@id": "https://soystories.cafe/#organization" },
       category: "業務用氷菓・クラフトアイス",
       offers: {
@@ -156,7 +150,7 @@ const jsonLd = {
           name: "ヴィーガンでないお客様にも喜ばれますか？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "はい。薬院のお店では「こっちのアイスのほうが好き」とおっしゃるノンビーガンのお客様が多数いらっしゃいます。米粉を使った独自の製法で、植物性アイスにありがちなシャリシャリ感（シャーベット感）のない滑らかな舌触りとコクを実現しており、HappyCow 5.0・Googleレビュー250件以上（★4.7）という評価がその証拠です。",
+            text: "はい。薬院の実店舗では「普通のアイスより好き」とおっしゃるヴィーガンではないお客様が多数いらっしゃいます。米粉を使った独自製法でシャリシャリ感のない滑らかな舌触りとコクを実現しており、HappyCow 5.0・Google口コミ270件以上（★4.7）という評価がその裏付けです。",
           },
         },
         {
@@ -164,7 +158,15 @@ const jsonLd = {
           name: "アレルゲン対応の詳細を教えてください",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "全商品、乳・卵・小麦・白砂糖不使用です。乳化剤・安定剤・増粘剤・合成着色料も使用していません。乳・卵・小麦を一切持ち込まない専用工房で製造しており、乳・卵・小麦のコンタミネーション（混入）リスクはありません。なお、フレーバーにより大豆・アーモンド・もも・りんごを含むほか、工房内ではナッツ類（落花生・くるみ・カシューナッツ・アーモンド）を取り扱う場合があります。",
+            text: "全商品、乳・卵・小麦・白砂糖不使用です。卵・乳・小麦を一切持ち込まない専用の工房で製造しているため、乳・卵・小麦のアレルギーの方にも安心してお召し上がりいただけます。工房への持ち込みがあるのはナッツ類（アーモンド・くるみ・カシューナッツ・落花生等）のみで、フレーバーにより大豆・アーモンド（ナッツ使用）・もも・りんごを含みます。",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "ベースの植物性ミルクは何を使っていますか？",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "抹茶・ほうじ茶・バニラ・UMAMIバニラ・アールグレイは豆乳ベース、ショコラはアーモンドミルクベース、フルーツ系5種（マンゴー・ミックスベリー・もも・りんご・ドラゴンフルーツ）は果実とココナッツがベースです。豆乳不使用の味もお選びいただけます。",
           },
         },
         {
@@ -172,7 +174,7 @@ const jsonLd = {
           name: "最小ロットと発注単位は？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "最小4リットル分（1L×4本 または 2L×2本）からご注文いただけます。フレーバーは11種から自由に組み合わせ可能です。",
+            text: "業務用バルクは最小4リットル分（1L×4本 または 2L×2本）から、100ml個食カップは最小60個からご注文いただけます。フレーバーは11種から自由に組み合わせ可能です。",
           },
         },
         {
@@ -180,7 +182,7 @@ const jsonLd = {
           name: "保管条件を教えてください",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "−18℃以下で冷凍保存してください。冷凍食品であるため、食品表示基準上、賞味期限の表示義務がありません。適切な温度管理のもとでは品質が長期間維持され、廃棄ロスの心配がありません。",
+            text: "−18℃以下で冷凍保存してください。アイスクリーム類（氷菓）は食品表示基準上、賞味期限の表示義務がない冷凍品です。適切な温度管理のもとで品質が長期間維持され、日持ちによる廃棄ロスが出ません。",
           },
         },
         {
@@ -188,7 +190,7 @@ const jsonLd = {
           name: "注文から届くまでどのくらいですか？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "ご注文確定後、通常5営業日以内にクール冷凍便（ヤマト運輸）で全国発送いたします。初回のサンプルご注文もお気軽にどうぞ。",
+            text: "ご注文確定後、通常5営業日前後でクール冷凍便（ヤマト運輸）にて全国発送いたします。初回の無料試食サンプル（6個）は通常2営業日以内に発送いたします。",
           },
         },
         {
@@ -196,7 +198,7 @@ const jsonLd = {
           name: "支払い方法は？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "ご請求は納品月の月末締め、翌月末払いです。指定の口座への銀行振込をお願いしております。",
+            text: "納品月の月末締め・翌月末払い（請求書による銀行振込）、または専用発注ポータルでのクレジットカード決済に対応しております。",
           },
         },
         {
@@ -204,7 +206,7 @@ const jsonLd = {
           name: "OEMや専用フレーバーの開発は可能ですか？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "ご相談いただけます。お店のコンセプトに合わせたオリジナルフレーバーの開発や、専用パッケージでのOEM製造もお問い合わせください。",
+            text: "はい。定番フレーバーにお店のロゴ丸シールを貼るプラン（開発費0円・1味60個〜）や、お店の食材を使ったオリジナル味開発（1味60個／6L〜）を承っております。",
           },
         },
       ],
@@ -213,6 +215,7 @@ const jsonLd = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
   return (
     <html lang="ja" className="antialiased">
       <head>
@@ -229,7 +232,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-bg text-ink flex min-h-screen flex-col">
         {children}
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || "GTM-XXXXXXX"} />
+        {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
         {process.env.NEXT_PUBLIC_CLARITY_ID && (
           <script
             dangerouslySetInnerHTML={{

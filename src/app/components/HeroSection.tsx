@@ -52,6 +52,15 @@ export default function HeroSection() {
           animate="visible"
           className="mx-auto flex max-w-7xl flex-col items-start gap-6"
         >
+          <motion.p
+            variants={itemVariants}
+            className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full bg-white/15 px-3.5 py-1 font-sans text-[11px] font-bold tracking-wide text-white backdrop-blur-xs sm:text-xs"
+          >
+            <span>レストラン・カフェ・菓子店・宿泊施設向け</span>
+            <span className="opacity-50">｜</span>
+            <span>業務用 植物性クラフトアイス</span>
+          </motion.p>
+
           <motion.h1
             variants={itemVariants}
             className="font-serif leading-[1.4] font-bold tracking-wider text-white sm:leading-[1.3]"
@@ -73,13 +82,13 @@ export default function HeroSection() {
             <br className="sm:hidden" />
             プラントベース クラフトアイスクリーム。
             <br />
-            乳・卵・小麦フリー。増粘剤や着色料も不使用。
+            乳・卵・小麦・白砂糖不使用。乳脂肪ゼロで食後もすっきり。
           </motion.p>
 
           {/* CTA */}
-          <motion.div variants={itemVariants} className="mt-2">
+          <motion.div variants={itemVariants} className="mt-2 flex flex-wrap items-center gap-3">
             <motion.a
-              href="#contact-form"
+              href="#sample-form-card"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="bg-cta hover:bg-cta-hover inline-block cursor-pointer rounded-full px-10 py-4 text-center text-base font-bold text-white shadow-lg transition-colors sm:text-lg"
@@ -98,13 +107,13 @@ export default function HeroSection() {
               ·
             </span>
             <span className="font-sans text-xs text-white/70 sm:text-sm">
-              Google ★4.7（250件以上）
+              Google ★4.7（270件以上）
             </span>
             <span className="text-white/30" aria-hidden="true">
               ·
             </span>
             <span className="font-sans text-xs text-white/70 sm:text-sm">
-              最小ロット 4L〜（例: 2L×2個）
+              最小ロット 4L〜（例: 1L×4本）／100mlカップ 60個〜
             </span>
           </motion.div>
         </motion.div>

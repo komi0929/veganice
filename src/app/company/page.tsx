@@ -16,7 +16,15 @@ export default function CompanyPage() {
           <table className="w-full border-collapse text-left text-sm md:text-base">
             <tbody>
               <tr className="border-b border-gray-100">
-                <th className="text-ink w-1/3 bg-gray-50 px-6 py-4 font-bold">屋号 / 運営</th>
+                <th className="text-ink w-1/3 bg-gray-50 px-6 py-4 font-bold">運営会社</th>
+                <td className="text-ink-light px-6 py-4">株式会社ヒトコト</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <th className="text-ink w-1/3 bg-gray-50 px-6 py-4 font-bold">代表者</th>
+                <td className="text-ink-light px-6 py-4">代表取締役　小南 優作</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <th className="text-ink w-1/3 bg-gray-50 px-6 py-4 font-bold">ブランド / 屋号</th>
                 <td className="text-ink-light px-6 py-4">SoyStories（ソイストーリーズ）</td>
               </tr>
               <tr className="border-b border-gray-100">
@@ -24,23 +32,26 @@ export default function CompanyPage() {
                 <td className="text-ink-light px-6 py-4">
                   〒810-0022
                   <br />
-                  福岡県福岡市中央区薬院（※詳細は取引時に開示）
+                  福岡県福岡市中央区薬院2丁目2-24 チサンマンション第3博多 1F
                 </td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <th className="text-ink w-1/3 bg-gray-50 px-6 py-4 font-bold">電話番号</th>
+                <td className="text-ink-light px-6 py-4">092-231-0677</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <th className="text-ink w-1/3 bg-gray-50 px-6 py-4 font-bold">事業内容</th>
                 <td className="text-ink-light px-6 py-4">
                   <ul className="list-disc space-y-1 pl-5">
-                    <li>プラントベース クラフトアイスクリームの製造・販売</li>
-                    <li>飲食店向け卸売事業</li>
-                    <li>アレルギー対応メニューの開発支援</li>
+                    <li>ヴィーガン＆グルテンフリー スイーツ・クラフトアイスの製造・販売</li>
+                    <li>飲食店・宿泊施設向け業務用卸売および小ロットOEM製造</li>
                   </ul>
                 </td>
               </tr>
               <tr className="border-b border-gray-100">
                 <th className="text-ink w-1/3 bg-gray-50 px-6 py-4 font-bold">お問い合わせ先</th>
                 <td className="text-ink-light px-6 py-4">
-                  本サイトの「お問い合わせフォーム」よりご連絡ください。
+                  各ページの「お問い合わせフォーム」または公式LINEよりご連絡ください。
                 </td>
               </tr>
             </tbody>

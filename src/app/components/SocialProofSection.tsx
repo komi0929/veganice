@@ -87,7 +87,7 @@ const reviews: ReviewItem[] = [
   {
     quote: ["豆乳で作られているなんて全く気づかない。", "絶品すぎて2回も食べてしまいました。"],
     who: "Poonam Parekh さん",
-    tag: "グルテン不耐症・リピート来店",
+    tag: "グルテンを控えているお客様・再来店",
     image: "/images/reviews/google_review_poonam_parekh.png",
     width: 402,
     height: 539,
@@ -106,11 +106,12 @@ const reviews: ReviewItem[] = [
   {
     quote: ["乳製品なしとは思えない", "クリーミーさ。"],
     who: "Jodi Clay さん",
-    tag: "ご家族連れ・セリアック病",
+    tag: "ご家族で来店・グルテンフリー",
     image: "/images/reviews/google_review_jodi_clay.png",
     width: 402,
     height: 570,
-    summary: "セリアック病をお持ちの方も、そうでないご家族も、全員が同じテーブルで笑顔になれる味。",
+    summary:
+      "小麦や乳製品を控えている方も、そうでないご家族も、全員が同じテーブルで笑顔になれる味。",
   },
   {
     quote: ["今まで食べた抹茶で、", "いちばんおいしい！"],
@@ -180,7 +181,7 @@ export default function SocialProofSection() {
                 「みんなで一緒に食べられる幸せ」をカタチにするため、福岡・薬院の小さなお店でお客様をお迎えしてきました。そこで生まれた手作りのクラフトアイスは、アレルギーをお持ちの方だけでなく、ノンビーガンのお客様からも「こっちのほうが好き！」「美味しい！」とたくさんの笑顔をいただくようになりました。
                 <br />
                 <br />
-                この「ユメミタイ」な体験を福岡のみならず、もっと多くのエリアで広げていくために、私たちは小さなお店のキッチンを飛び出し、コンタミネーションのないアイスファクトリー（専用製造所）を立ち上げました。
+                この「ユメミタイ」な体験を福岡のみならず、もっと多くのエリアで広げていくために、私たちは小さなお店のキッチンを飛び出し、乳・卵・小麦を一切持ち込まない専用アイスファクトリーを立ち上げました。
               </p>
             </div>
           </div>
@@ -245,7 +246,7 @@ export default function SocialProofSection() {
           <div>
             <span className="text-ink block font-serif text-5xl font-bold md:text-7xl">★4.7</span>
             <span className="text-ink-muted mt-3 block font-sans text-sm tracking-wider">
-              Google マップ クチコミ評価（250件以上）
+              Google マップ クチコミ評価（270件以上）
             </span>
           </div>
           <div className="flex flex-col items-center">
@@ -370,7 +371,7 @@ export default function SocialProofSection() {
               rel="noopener noreferrer"
               className="text-brand inline-flex items-center gap-1.5 text-xs font-semibold hover:underline"
             >
-              <span>Google マップで全250件以上のクチコミを見る</span>
+              <span>Google マップで全270件以上のクチコミを見る</span>
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"

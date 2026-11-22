@@ -52,8 +52,7 @@ const flavors: {
   },
   {
     name: "抹茶",
-    story:
-      "上質な抹茶の香りと深いほろ苦さ。自家製甘酒と白味噌のうまみが調和する、奥深い和の味わい。",
+    story: "上質な抹茶の香りと深いほろ苦さ。甘酒と白味噌のうまみが調和する、奥深い和の味わい。",
     image: "/images/flavors/matcha.png",
   },
   {
@@ -63,7 +62,7 @@ const flavors: {
     image: "/images/flavors/houjicha.png",
   },
   {
-    name: "バニラ",
+    name: "バニラココナッツ",
     story:
       "芳醇なバニラの香りにココナッツのまろやかさ。白味噌の隠し味が上品な深みを添える、王道の味わい。",
     image: "/images/flavors/vanilla_coconut.png",
@@ -90,7 +89,7 @@ const b2bTerms = [
   },
   {
     label: "提供形態",
-    value: "冷凍（1Lまたは2L）/ 最小4Lから",
+    value: "業務用バルク 1L・2L（最小4L〜） ／ 定番100ml個食カップ（最小60個〜）",
   },
   {
     label: "1Lあたり提供杯数",
@@ -102,8 +101,8 @@ const b2bTerms = [
       "卵・乳・小麦を持ち込まない専用の工房で製造（乳・卵・小麦のアレルギーの方にも安心してお出しいただけます）。工房への持ち込みがあるのはナッツ類（アーモンド・くるみ・カシューナッツ・落花生等）のみ。フレーバーにより大豆・アーモンド（ナッツ使用）・もも・りんごを含む",
   },
   {
-    label: "添加物",
-    value: "乳化安定剤・増粘剤・着色料 すべて不使用",
+    label: "不使用素材",
+    value: "乳・卵・小麦・白砂糖 不使用（全11種共通）",
   },
   {
     label: "保管",
@@ -111,11 +110,11 @@ const b2bTerms = [
   },
   {
     label: "配送",
-    value: "クール冷凍便で全国対応",
+    value: "通常5営業日前後でヤマトクール冷凍便にて全国発送",
   },
   {
-    label: "価格",
-    value: "1L ¥2,000／2L ¥4,000（税別）。全11種同価格・最小4L",
+    label: "卸価格",
+    value: "バルク：1L ¥2,000／2L ¥4,000（税別）・100mlカップ：¥300（税別）。全11種同価格",
   },
 ];
 
@@ -166,9 +165,9 @@ export default function ProductsSection() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-ink-light mt-6 text-base leading-relaxed sm:text-lg"
           >
-            すべて乳・卵・小麦・白砂糖不使用。乳化安定剤・増粘剤・着色料も不使用。
+            すべて乳・卵・小麦・白砂糖不使用。乳脂肪ゼロで食後も軽やかな後味です。
             <br className="hidden sm:block" />
-            11種から自由に組み合わせ。和食・洋食・カフェ、どの業態にも合うラインナップです。
+            レストラン・定食の食後、カフェのフロート、ドーナツ・焼き菓子添えまで自由に組み合わせられます。
           </motion.p>
         </div>
 
@@ -298,9 +297,9 @@ export default function ProductsSection() {
               少量から始められます。
             </h3>
             <p className="text-ink-light mb-8 text-base leading-relaxed">
-              お店の冷蔵庫のスペースに合わせて、1Lと2Lの2サイズをご用意しています。
+              お店の冷凍庫のスペースに合わせて、1Lと2Lの角型バルクをご用意しています。
               <br />
-              最小ロット4L（2L×2個、または1L×4個など）から、フレーバーを自由に組み合わせてご注文いただけます。
+              最小ロット4L（1L×4本、または2L×2本など）から組み合わせ自由。持ち帰り販売用の100ml個食カップ（60個〜）にも対応しています。
             </p>
 
             <div className="bg-bg rounded-xl border border-gray-100 p-6 sm:p-8">

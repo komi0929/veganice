@@ -30,14 +30,14 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
   ショコラ: {
     name: "ショコラ",
     ingredients:
-      "アーモンドミルク（アメリカ産）、甜菜糖、ココナッツクリーム、ターベルチュールチョコレート、ココアパウダー、米粉、白みそ、バニラオイル（一部に大豆・アーモンドを含む）",
-    allergens: "大豆・アーモンド",
+      "アーモンドミルク（アメリカ産）、甜菜糖、ココナッツクリーム、クーベルチュールチョコレート、ココアパウダー、米粉、白みそ、バニラオイル（一部に大豆・アーモンドを含む）",
+    allergens: "大豆・アーモンド（ナッツ使用）",
     nutrition: {
       calories: "162.7kcal",
-      protein: "2.1g",
-      fat: "6.3g",
-      carbs: "23.69g",
-      salt: "0.23g",
+      protein: "2.3g",
+      fat: "7.9g",
+      carbs: "21.8g",
+      salt: "0.1g",
     },
     storageMethod: FLAVOR_STORAGE_METHOD,
   },
@@ -47,7 +47,7 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
       "豆乳（国産・非遺伝子組換え）、甘酒、きび砂糖、米油、豆乳ホイップ、抹茶、白みそ、米粉、バニラオイル、クロレラ（一部に大豆を含む）",
     allergens: "大豆",
     nutrition: {
-      calories: "223kcal",
+      calories: "223.0kcal",
       protein: "2.4g",
       fat: "12.8g",
       carbs: "24.9g",
@@ -69,8 +69,8 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
     },
     storageMethod: FLAVOR_STORAGE_METHOD,
   },
-  バニラ: {
-    name: "バニラ",
+  バニラココナッツ: {
+    name: "バニラココナッツ",
     ingredients:
       "豆乳（国産・遺伝子組換えではない）、甜菜糖、ココナッツミルクパウダー、米粉、白みそ、バニラオイル（一部に大豆を含む）",
     allergens: "大豆",
@@ -89,11 +89,11 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
       "豆乳（国内製造・非遺伝子組換え）、甘酒、米油、きび糖、甜菜糖、玄米粉、白みそ、りんごピューレ、バニラビーンズ、塩／バニラエキストラクト（原材料の一部に大豆、りんごを含む）",
     allergens: "大豆・りんご",
     nutrition: {
-      calories: "194kcal",
+      calories: "176.2kcal",
       protein: "2.1g",
-      fat: "6.9g",
-      carbs: "31.0g",
-      salt: "0.1g",
+      fat: "8.8g",
+      carbs: "21.8g",
+      salt: "0.2g",
     },
     storageMethod: FLAVOR_STORAGE_METHOD,
   },
@@ -103,10 +103,10 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
       "豆乳（国産・遺伝子組換えではない）、甜菜糖、紅茶、米油、米粉、白みそ、香料（ベルガモット）、バニラオイル（一部に大豆を含む）",
     allergens: "大豆",
     nutrition: {
-      calories: "168.8kcal",
-      protein: "2.3g",
-      fat: "7.6g",
-      carbs: "23.2g",
+      calories: "175.5kcal",
+      protein: "2.0g",
+      fat: "8.7g",
+      carbs: "21.9g",
       salt: "0.2g",
     },
     storageMethod: FLAVOR_STORAGE_METHOD,
@@ -174,9 +174,9 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
     allergens: "—",
     nutrition: {
       calories: "134.8kcal",
-      protein: "0.9g",
-      fat: "2.5g",
-      carbs: "28.6g",
+      protein: "0.6g",
+      fat: "3.7g",
+      carbs: "25.4g",
       salt: "0.0g",
     },
     storageMethod: FLAVOR_STORAGE_METHOD,
@@ -185,8 +185,10 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
 
 const FLAVOR_NAME_ALIASES: Record<string, string> = {
   ほうじ: "ほうじ茶",
-  "バニラ（ココナッツ）": "バニラ",
-  "バニラ(ココナッツ)": "バニラ",
+  バニラ: "バニラココナッツ",
+  "バニラ（ココナッツ）": "バニラココナッツ",
+  "バニラ(ココナッツ)": "バニラココナッツ",
+  ココナッツバニラ: "バニラココナッツ",
 };
 
 /**

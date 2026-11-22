@@ -11,11 +11,11 @@ export const WHOLESALE_FACTS = {
   sampleTerms:
     "全11種から6個（おまかせ可）、商品代無料、クール便送料は着払い、通常2営業日以内に発送",
   leadTime: "通常5営業日前後、ヤマトのクール冷凍便で全国",
-  payment: "月末締め・翌月末払いの請求書",
+  payment: "月末締め・翌月末払いの請求書（銀行振込、または発注ページでのカード決済）",
   allergen:
     "卵・乳・小麦を持ち込まない専用の工房で製造。工房への持ち込みがあるのはナッツ類（アーモンド・くるみ・カシューナッツ・落花生等）のみ。味によって大豆・アーモンド（ナッツ使用）・もも・りんごを含む",
   allergenAssurance: "乳・卵・小麦アレルギーの方にも安心して出せる",
-  freeFromAdditivesAndWhiteSugar: "乳化安定剤・増粘剤・着色料・白砂糖は使っていない",
+  freeFromAdditivesAndWhiteSugar: "乳・卵・小麦・白砂糖は使っていない",
   storage: "冷凍（−18℃以下）で保存",
   googleRating: "★4.7",
   googleReviewCount: "270件以上",
