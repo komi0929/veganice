@@ -1,9 +1,23 @@
 "use client";
 
-import { useActionState, useEffect, useState, type ReactNode } from "react";
+import {
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FocusEvent,
+  type ReactNode,
+} from "react";
 import { useSearchParams } from "next/navigation";
 import { Check, Sparkles, ShieldCheck, ChevronDown } from "lucide-react";
 import { submitContact, type ContactState } from "@/app/actions/contact";
+import {
+  lookupAddressByZipDigits,
+  mergeZipPrefixIntoAddress,
+  normalizeDomesticPhone,
+  normalizePostalCode,
+} from "@/app/lib/addressPhoneHelper";
 import SampleFlavorPicker from "@/app/components/SampleFlavorPicker";
 import DeliveryPreferencePicker from "@/app/components/DeliveryPreferencePicker";
 import {
@@ -108,6 +122,37 @@ export default function OemContactSection() {
   const [selectedFormat, setSelectedFormat] = useState<OemSelectableFormat>("both");
   const [tasteMemo, setTasteMemo] = useState<string>("");
   const [syncedNotice, setSyncedNotice] = useState<boolean>(false);
+  const addressInputRef = useRef<HTMLInputElement>(null);
+  const lastLookedUpZip = useRef<string>("");
+
+  const handlePhoneBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const normalized = normalizeDomesticPhone(e.target.value);
+    if (normalized && normalized !== e.target.value) {
+      e.target.value = normalized;
+    }
+  };
+
+  const handlePostalCodeBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const { formatted } = normalizePostalCode(e.target.value);
+    if (formatted && formatted !== e.target.value) {
+      e.target.value = formatted;
+    }
+  };
+
+  const handlePostalCodeChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const { digits } = normalizePostalCode(e.target.value);
+    if (digits.length !== 7 || digits === lastLookedUpZip.current) return;
+    lastLookedUpZip.current = digits;
+
+    const hit = await lookupAddressByZipDigits(digits);
+    if (!hit || !addressInputRef.current) return;
+    addressInputRef.current.value = mergeZipPrefixIntoAddress(
+      addressInputRef.current.value,
+      hit.prefecture,
+      hit.city,
+      hit.town
+    );
+  };
 
   useEffect(() => {
     return subscribeOemIntent((detail) => {
@@ -365,6 +410,9 @@ export default function OemContactSection() {
                         id="phone"
                         name="phone"
                         defaultValue={prefillPhone}
+                        autoComplete="tel"
+                        inputMode="tel"
+                        onBlur={handlePhoneBlur}
                         disabled={isPending}
                         placeholder="092-000-0000"
                         className={`${inputClasses} ${state.errors?.phone ? errorClasses : ""}`}
@@ -480,6 +528,9 @@ export default function OemContactSection() {
                               id="phone"
                               name="phone"
                               defaultValue={prefillPhone}
+                              autoComplete="tel"
+                              inputMode="tel"
+                              onBlur={handlePhoneBlur}
                               disabled={isPending}
                               placeholder="092-000-0000"
                               className={inputClasses}
@@ -510,6 +561,10 @@ export default function OemContactSection() {
                           type="text"
                           id="postalCode"
                           name="postalCode"
+                          autoComplete="postal-code"
+                          inputMode="numeric"
+                          onChange={handlePostalCodeChange}
+                          onBlur={handlePostalCodeBlur}
                           disabled={isPending}
                           placeholder="810-0022"
                           className={`${inputClasses} ${state.errors?.postalCode ? errorClasses : ""}`}
@@ -523,11 +578,13 @@ export default function OemContactSection() {
                           error={state.errors?.address}
                         >
                           <input
+                            ref={addressInputRef}
                             type="text"
                             id="address"
                             name="address"
+                            autoComplete="street-address"
                             disabled={isPending}
-                            placeholder="福岡県福岡市中央区薬院..."
+                            placeholder="福岡県福岡市中央区薬院1-2-3"
                             className={`${inputClasses} ${state.errors?.address ? errorClasses : ""}`}
                           />
                         </Field>

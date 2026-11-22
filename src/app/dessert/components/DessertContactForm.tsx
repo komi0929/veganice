@@ -1,7 +1,20 @@
 "use client";
 
-import { useActionState, useState, type ReactNode } from "react";
+import {
+  useActionState,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FocusEvent,
+  type ReactNode,
+} from "react";
 import { submitContact, type ContactState } from "../../actions/contact";
+import {
+  lookupAddressByZipDigits,
+  mergeZipPrefixIntoAddress,
+  normalizeDomesticPhone,
+  normalizePostalCode,
+} from "@/app/lib/addressPhoneHelper";
 import SampleFlavorPicker from "../../components/SampleFlavorPicker";
 import DeliveryPreferencePicker from "../../components/DeliveryPreferencePicker";
 
@@ -55,6 +68,37 @@ function LineIcon() {
 export default function DessertContactForm() {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
   const [activeTab, setActiveTab] = useState<FormType>("sample");
+  const addressInputRef = useRef<HTMLInputElement>(null);
+  const lastLookedUpZip = useRef<string>("");
+
+  const handlePhoneBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const normalized = normalizeDomesticPhone(e.target.value);
+    if (normalized && normalized !== e.target.value) {
+      e.target.value = normalized;
+    }
+  };
+
+  const handlePostalCodeBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const { formatted } = normalizePostalCode(e.target.value);
+    if (formatted && formatted !== e.target.value) {
+      e.target.value = formatted;
+    }
+  };
+
+  const handlePostalCodeChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const { digits } = normalizePostalCode(e.target.value);
+    if (digits.length !== 7 || digits === lastLookedUpZip.current) return;
+    lastLookedUpZip.current = digits;
+
+    const hit = await lookupAddressByZipDigits(digits);
+    if (!hit || !addressInputRef.current) return;
+    addressInputRef.current.value = mergeZipPrefixIntoAddress(
+      addressInputRef.current.value,
+      hit.prefecture,
+      hit.city,
+      hit.town
+    );
+  };
 
   if (state.success) {
     return (
@@ -157,6 +201,7 @@ export default function DessertContactForm() {
             name="phone"
             autoComplete="tel"
             inputMode="tel"
+            onBlur={handlePhoneBlur}
             disabled={isPending}
             className={`${inputClasses} ${state.errors?.phone ? errorClasses : ""}`}
             placeholder="090-1234-5678"
@@ -172,6 +217,8 @@ export default function DessertContactForm() {
                 name="postalCode"
                 autoComplete="postal-code"
                 inputMode="numeric"
+                onChange={handlePostalCodeChange}
+                onBlur={handlePostalCodeBlur}
                 disabled={isPending}
                 className={`${inputClasses} max-w-[12rem] ${state.errors?.postalCode ? errorClasses : ""}`}
                 placeholder="810-0022"
@@ -180,13 +227,14 @@ export default function DessertContactForm() {
 
             <Field id="address" label="お届け先の住所" required error={state.errors?.address}>
               <input
+                ref={addressInputRef}
                 type="text"
                 id="address"
                 name="address"
                 autoComplete="street-address"
                 disabled={isPending}
                 className={`${inputClasses} ${state.errors?.address ? errorClasses : ""}`}
-                placeholder="福岡市中央区薬院1-2-3 〇〇ビル1F"
+                placeholder="福岡県福岡市中央区薬院1-2-3 〇〇ビル1F"
               />
             </Field>
 

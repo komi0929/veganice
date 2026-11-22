@@ -1,8 +1,14 @@
 "use client";
 
-import React, { useActionState, useState } from "react";
+import React, { useActionState, useRef, useState, type ChangeEvent, type FocusEvent } from "react";
 import { motion } from "framer-motion";
 import { submitContact, type ContactState } from "../actions/contact";
+import {
+  lookupAddressByZipDigits,
+  mergeZipPrefixIntoAddress,
+  normalizeDomesticPhone,
+  normalizePostalCode,
+} from "@/app/lib/addressPhoneHelper";
 import SampleFlavorPicker from "./SampleFlavorPicker";
 import DeliveryPreferencePicker from "./DeliveryPreferencePicker";
 
@@ -16,6 +22,37 @@ type FormType = "sample" | "inquiry";
 export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
   const [activeTab, setActiveTab] = useState<FormType>("sample");
+  const addressInputRef = useRef<HTMLInputElement>(null);
+  const lastLookedUpZip = useRef<string>("");
+
+  const handlePhoneBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const normalized = normalizeDomesticPhone(e.target.value);
+    if (normalized && normalized !== e.target.value) {
+      e.target.value = normalized;
+    }
+  };
+
+  const handlePostalCodeBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const { formatted } = normalizePostalCode(e.target.value);
+    if (formatted && formatted !== e.target.value) {
+      e.target.value = formatted;
+    }
+  };
+
+  const handlePostalCodeChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const { digits } = normalizePostalCode(e.target.value);
+    if (digits.length !== 7 || digits === lastLookedUpZip.current) return;
+    lastLookedUpZip.current = digits;
+
+    const hit = await lookupAddressByZipDigits(digits);
+    if (!hit || !addressInputRef.current) return;
+    addressInputRef.current.value = mergeZipPrefixIntoAddress(
+      addressInputRef.current.value,
+      hit.prefecture,
+      hit.city,
+      hit.town
+    );
+  };
 
   const inputClasses =
     "w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand transition-shadow font-sans text-ink placeholder:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed";
@@ -258,6 +295,9 @@ export default function ContactForm() {
                   type="tel"
                   id="phone"
                   name="phone"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  onBlur={handlePhoneBlur}
                   disabled={isPending}
                   className={`${inputClasses} ${state.errors?.phone ? errorClass : ""}`}
                   placeholder="090-1234-5678"
@@ -287,6 +327,9 @@ export default function ContactForm() {
                       type="text"
                       id="postalCode"
                       name="postalCode"
+                      autoComplete="postal-code"
+                      onChange={handlePostalCodeChange}
+                      onBlur={handlePostalCodeBlur}
                       disabled={isPending}
                       className={`${inputClasses} ${state.errors?.postalCode ? errorClass : ""}`}
                       placeholder="810-0022"
@@ -308,9 +351,11 @@ export default function ContactForm() {
                     </span>
                   </label>
                   <input
+                    ref={addressInputRef}
                     type="text"
                     id="address"
                     name="address"
+                    autoComplete="street-address"
                     disabled={isPending}
                     className={`${inputClasses} ${state.errors?.address ? errorClass : ""}`}
                     placeholder="福岡県福岡市中央区薬院 1-2-3 ○○ビル 1F"

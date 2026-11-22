@@ -1,6 +1,13 @@
 "use server";
 
 import { z } from "zod";
+import {
+  hasPrefecture,
+  lookupAddressByZipDigits,
+  mergeZipPrefixIntoAddress,
+  normalizeDomesticPhone,
+  normalizePostalCode,
+} from "@/app/lib/addressPhoneHelper";
 
 const ALLOWED_FLAVORS = [
   "もも",
@@ -12,6 +19,7 @@ const ALLOWED_FLAVORS = [
   "抹茶",
   "ほうじ茶",
   "バニラ",
+  "バニラココナッツ",
   "UMAMIバニラ",
   "アールグレイ",
 ] as const;
@@ -35,9 +43,27 @@ const baseSchema = z.object({
 const sampleSchema = baseSchema
   .extend({
     formType: z.literal("sample"),
-    phone: z.string().min(1, "電話番号は必須です"),
-    postalCode: z.string().min(1, "郵便番号は必須です"),
-    address: z.string().min(1, "ご住所は必須です"),
+    phone: z
+      .string()
+      .min(1, "電話番号は必須です")
+      .refine((v) => /^0\d{9,10}$/.test(v.replace(/-/g, "")), {
+        message: "0から始まる10〜11桁の電話番号を入力してください（+81は自動変換されます）",
+      }),
+    postalCode: z
+      .string()
+      .min(1, "郵便番号は必須です")
+      .refine((v) => /^\d{7}$/.test(v.replace(/[^\d]/g, "")), {
+        message: "郵便番号は7桁の数字で入力してください（例：810-0022）",
+      }),
+    address: z
+      .string()
+      .min(1, "ご住所は必須です")
+      .refine((v) => hasPrefecture(v), {
+        message: "都道府県・市区町村からご入力ください",
+      })
+      .refine((v) => /[\d０-９一二三四五六七八九十]/.test(v), {
+        message: "番地までご入力ください（例：1-2-3 〇〇ビル1F）",
+      }),
     receiveDays: z.string().max(100).optional(),
     receiveSlots: z.string().max(100).optional(),
     receiveNote: z.string().max(100).optional(),
@@ -190,6 +216,26 @@ export async function submitContact(
   const formType: ContactFormType = rawType === "sample" || rawType === "oem" ? rawType : "inquiry";
 
   const rawSource = ((formData.get("source") as string) || "").trim() || undefined;
+  const normalizedPhone = normalizeDomesticPhone(String(formData.get("phone") ?? ""));
+  const normalizedZip = normalizePostalCode(String(formData.get("postalCode") ?? ""));
+  let resolvedAddress = String(formData.get("address") ?? "").trim();
+
+  if (
+    formType === "sample" &&
+    resolvedAddress &&
+    !hasPrefecture(resolvedAddress) &&
+    normalizedZip.digits.length === 7
+  ) {
+    const lookedUp = await lookupAddressByZipDigits(normalizedZip.digits);
+    if (lookedUp) {
+      resolvedAddress = mergeZipPrefixIntoAddress(
+        resolvedAddress,
+        lookedUp.prefecture,
+        lookedUp.city,
+        lookedUp.town
+      );
+    }
+  }
 
   const rawData =
     formType === "sample"
@@ -199,9 +245,9 @@ export async function submitContact(
           contactName: formData.get("contactName"),
           email: formData.get("email"),
           source: rawSource,
-          phone: formData.get("phone"),
-          postalCode: formData.get("postalCode"),
-          address: formData.get("address"),
+          phone: normalizedPhone,
+          postalCode: normalizedZip.formatted,
+          address: resolvedAddress,
           receiveDays: (formData.get("receiveDays") as string) || "",
           receiveSlots: (formData.get("receiveSlots") as string) || "",
           receiveNote: (formData.get("receiveNote") as string) || "",
@@ -217,7 +263,7 @@ export async function submitContact(
             contactName: formData.get("contactName"),
             email: formData.get("email"),
             source: rawSource,
-            phone: (formData.get("phone") as string) || undefined,
+            phone: normalizedPhone || undefined,
             customerToken: (formData.get("customerToken") as string) || undefined,
             oemCourse: (formData.get("oemCourse") as string) || "undecided",
             packageFormat: (formData.get("packageFormat") as string) || "cup",
@@ -233,7 +279,7 @@ export async function submitContact(
             contactName: formData.get("contactName"),
             email: formData.get("email"),
             source: rawSource,
-            phone: (formData.get("phone") as string) || undefined,
+            phone: normalizedPhone || undefined,
             customerToken: (formData.get("customerToken") as string) || undefined,
             message: formData.get("message"),
           };

@@ -6,11 +6,18 @@ import {
   useState,
   useSyncExternalStore,
   type ChangeEvent,
+  type FocusEvent,
   type ReactNode,
 } from "react";
 import { submitContact, type ContactState } from "@/app/actions/contact";
 import type { SampleFlavorName } from "@/app/components/SampleFlavorPicker";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
+import {
+  lookupAddressByZipDigits,
+  mergeZipPrefixIntoAddress,
+  normalizeDomesticPhone,
+  normalizePostalCode,
+} from "@/app/lib/addressPhoneHelper";
 import WholesaleDeliveryPicker from "./WholesaleDeliveryPicker";
 import WholesaleSamplePicker from "./WholesaleSamplePicker";
 
@@ -117,25 +124,33 @@ export default function WholesaleContactCard({
   const prefillEmail = queryParams.get("email") ?? "";
   const prefillPhone = queryParams.get("phone") ?? "";
 
+  const handlePhoneBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const normalized = normalizeDomesticPhone(e.target.value);
+    if (normalized && normalized !== e.target.value) {
+      e.target.value = normalized;
+    }
+  };
+
+  const handlePostalCodeBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const { formatted } = normalizePostalCode(e.target.value);
+    if (formatted && formatted !== e.target.value) {
+      e.target.value = formatted;
+    }
+  };
+
   const handlePostalCodeChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const digits = e.target.value.replace(/[^\d]/g, "");
+    const { digits } = normalizePostalCode(e.target.value);
     if (digits.length !== 7 || digits === lastLookedUpZip.current) return;
     lastLookedUpZip.current = digits;
 
-    try {
-      const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${digits}`);
-      if (!res.ok) return;
-      const json = (await res.json()) as {
-        results?: { address1: string; address2: string; address3: string }[] | null;
-      };
-      const hit = json.results?.[0];
-      if (!hit || !addressInputRef.current) return;
-      if (!addressInputRef.current.value.trim()) {
-        addressInputRef.current.value = `${hit.address1}${hit.address2}${hit.address3}`;
-      }
-    } catch {
-      // ネットワーク制限環境等では手動入力のまま継続
-    }
+    const hit = await lookupAddressByZipDigits(digits);
+    if (!hit || !addressInputRef.current) return;
+    addressInputRef.current.value = mergeZipPrefixIntoAddress(
+      addressInputRef.current.value,
+      hit.prefecture,
+      hit.city,
+      hit.town
+    );
   };
 
   if (state.success) {
@@ -243,6 +258,7 @@ export default function WholesaleContactCard({
               defaultValue={prefillPhone}
               autoComplete="tel"
               inputMode="tel"
+              onBlur={handlePhoneBlur}
               disabled={isPending}
               className={`${inputClasses} ${state.errors?.phone ? errorClasses : ""}`}
               placeholder="092-231-0677"
@@ -275,6 +291,7 @@ export default function WholesaleContactCard({
                   autoComplete="postal-code"
                   inputMode="numeric"
                   onChange={handlePostalCodeChange}
+                  onBlur={handlePostalCodeBlur}
                   disabled={isPending}
                   className={`${inputClasses} ${state.errors?.postalCode ? errorClasses : ""}`}
                   placeholder="810-0022"
