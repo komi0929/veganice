@@ -11,6 +11,7 @@ import DessertProductsSection from "./components/DessertProductsSection";
 import DessertFAQSection from "./components/DessertFAQSection";
 import DessertStorySection from "./components/DessertStorySection";
 import DessertSampleSection from "./components/DessertSampleSection";
+import OemCrossLinkBanner from "../components/OemCrossLinkBanner";
 
 const TITLE = "ヴィーガン対応・食後デザートの業務用クラフトアイス｜乳・卵・小麦不使用 SoyStories";
 const DESCRIPTION =
@@ -95,6 +96,9 @@ export default function DessertPage() {
 
         {/* ⑨ 無料サンプル・申込フォーム */}
         <DessertSampleSection />
+
+        {/* ⑩ OEM・オリジナル製造のご案内（要点版 /oem/plan へ直結） */}
+        <OemCrossLinkBanner context="dessert" />
       </main>
       <Footer />
       <FloatingCTA />

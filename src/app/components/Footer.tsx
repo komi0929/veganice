@@ -62,6 +62,14 @@ export default function Footer() {
               >
                 お問い合わせ
               </Link>
+              {!pathname.startsWith("/oem") && (
+                <Link
+                  href="/oem/plan"
+                  className="hover:text-cta text-base text-white transition-colors"
+                >
+                  OEM・オリジナル製造
+                </Link>
+              )}
             </div>
           </div>
 

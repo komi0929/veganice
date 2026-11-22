@@ -12,6 +12,7 @@ import HotelBanquetSection from "./components/HotelBanquetSection";
 import HotelTermsSection from "./components/HotelTermsSection";
 import HotelFAQSection from "./components/HotelFAQSection";
 import HotelSampleSection from "./components/HotelSampleSection";
+import OemCrossLinkBanner from "@/app/components/OemCrossLinkBanner";
 
 const PAGE_TITLE = "ホテル・旅館のインバウンド・多様な食対応に｜業務用 植物性クラフトアイス";
 const OG_TITLE = `${PAGE_TITLE} | SoyStories`;
@@ -103,6 +104,9 @@ export default function HotelPage() {
 
         {/* 9. サンプルの申込フォーム */}
         <HotelSampleSection />
+
+        {/* 10. OEM・オリジナル水菓子／売店カップ製造のご案内 */}
+        <OemCrossLinkBanner context="hotel" />
       </main>
       <WholesaleFooter
         taglineLines={[

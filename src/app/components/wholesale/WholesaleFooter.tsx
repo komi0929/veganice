@@ -52,6 +52,12 @@ export default function WholesaleFooter({ taglineLines, navItems }: WholesaleFoo
               >
                 無料試食サンプル・お問い合わせ
               </a>
+              <Link
+                href="/oem/plan"
+                className="hover:text-cta font-sans text-sm text-white transition-colors sm:text-base"
+              >
+                OEM・オリジナル製造
+              </Link>
             </div>
           </div>
 

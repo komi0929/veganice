@@ -8,6 +8,7 @@ import EconomicsSection from "./components/EconomicsSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import FAQSection from "./components/FAQSection";
 import ContactForm from "./components/ContactForm";
+import OemCrossLinkBanner from "./components/OemCrossLinkBanner";
 import FloatingCTA from "./components/FloatingCTA";
 import Footer from "./components/Footer";
 
@@ -42,6 +43,9 @@ export default function Home() {
 
         {/* ⑨ お問い合わせ */}
         <ContactForm />
+
+        {/* ⑩ OEM・オリジナル製造のご案内（要点版 /oem/plan へ直結） */}
+        <OemCrossLinkBanner context="general" />
       </main>
       <Footer />
       <FloatingCTA />
