@@ -9,12 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://soystories.cafe/wholesale",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
       url: "https://soystories.cafe/dessert",
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -37,12 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.95,
-    },
-    {
-      url: "https://soystories.cafe/oem/plan",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
     },
     {
       url: "https://soystories.cafe/company",
