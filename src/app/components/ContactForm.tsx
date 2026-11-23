@@ -162,27 +162,31 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact-form" className="bg-bg-white scroll-mt-20 px-5 py-20 md:px-8">
-      <div className="mx-auto mb-10 max-w-4xl md:text-center">
+    <section id="contact-form" className="bg-bg-white scroll-mt-20 px-5 py-14 md:px-8 md:py-20">
+      <span id="flow" className="-mt-20 block pt-20" aria-hidden="true" />
+      <div className="mx-auto mb-7 max-w-3xl md:text-center">
+        <p className="text-brand mb-2 font-sans text-xs font-bold tracking-wider uppercase">
+          Free Sample
+        </p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-ink mb-4 font-serif text-2xl font-bold sm:text-3xl md:text-5xl"
+          className="text-ink mb-3 font-serif text-2xl font-bold sm:text-3xl md:text-4xl"
         >
           まずは6個、お店で味をお確かめください。
         </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-ink-light font-sans text-sm leading-relaxed md:text-base"
-        >
-          全11種から6個お選びいただけます（商品代金は無料・クール冷凍便の送料のみ着払い）。
-          <br className="hidden sm:block" />
-          ご契約義務やお申し込み後の電話営業は一切ございません。
-        </motion.p>
+        <div className="mt-3 flex flex-wrap gap-2 md:justify-center">
+          <span className="text-ink inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-[#fafaf8] px-3 py-1 font-sans text-xs font-bold">
+            <span className="text-brand">①</span> 6個無料サンプルをご試食（送料のみ着払い）
+          </span>
+          <span className="text-ink inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-[#fafaf8] px-3 py-1 font-sans text-xs font-bold">
+            <span className="text-brand">②</span> ご納得後に4L〜味を選んで注文
+          </span>
+          <span className="text-ink inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-[#fafaf8] px-3 py-1 font-sans text-xs font-bold">
+            <span className="text-brand">✓</span> 電話営業なし
+          </span>
+        </div>
       </div>
 
       <motion.div

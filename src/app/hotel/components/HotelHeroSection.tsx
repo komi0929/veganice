@@ -2,32 +2,22 @@ import Image from "next/image";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 const summaryPoints = [
-  {
-    main: "ヴィーガン・グルテンフリーに1つで対応",
-    sub: "乳・卵・小麦フリーの専用工房製（乳・卵・小麦アレルギーも安心）",
-  },
-  {
-    main: "日本の茶葉・発酵素材・厳選果実の全11種",
-    sub: "会席やコースのあともすっと軽やかに食べきれる抹茶や国産白桃・濃厚ショコラ",
-  },
-  {
-    main: "別仕込み不要・冷凍保存・1人分 約100円〜",
-    sub: "50mlで提供した場合・税別（1L 2,000円÷約20杯）",
-  },
+  "ヴィーガン・グルテンフリー・乳卵小麦アレルギーに1つで対応",
+  "会席やコース後も軽やかに締まる抹茶・国産白桃・濃厚ショコラなど全11種",
+  "別仕込み不要・冷凍常備OK・1人分 約100円〜（50ml・税別）",
 ] as const;
 
 export default function HotelHeroSection() {
   return (
-    <section className="bg-bg-white border-b border-stone-200/70 pt-14 pb-10 sm:pt-20 sm:pb-16">
+    <section className="bg-bg-white border-b border-stone-200/70 pt-14 pb-10 sm:pt-20 sm:pb-14">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-6 px-5 md:grid-cols-12 md:gap-10 md:px-8">
-        {/* テキスト・3行・CTA（スマホ375pxの最初の1画面に収まる構成） */}
         <div className="md:col-span-7">
           <p className="text-brand inline-flex flex-wrap items-center gap-x-2 gap-y-0.5 font-sans text-[11.5px] font-bold tracking-wide sm:text-xs">
             <span>ホテル・旅館・婚礼宴会・コース料理店向け</span>
             <span className="opacity-40" aria-hidden="true">
               ｜
             </span>
-            <span>業務用 植物性クラフトアイス（1L・2L）</span>
+            <span>業務用 植物性クラフトアイス</span>
           </p>
 
           <h1 className="text-ink mt-2.5 font-serif text-[22px] leading-[1.4] font-bold tracking-tight sm:mt-3.5 sm:text-4xl sm:leading-[1.38] lg:text-[40px]">
@@ -41,26 +31,23 @@ export default function HotelHeroSection() {
             </span>
           </h1>
 
-          <ul className="mt-3.5 space-y-2 rounded-2xl border border-stone-200/80 bg-[#fafaf8] px-3.5 py-3 sm:mt-5 sm:space-y-2.5 sm:px-5 sm:py-4">
+          <ul className="mt-4 space-y-2 rounded-2xl border border-stone-200/80 bg-[#fafaf8] px-4 py-3 sm:mt-5 sm:px-5 sm:py-3.5">
             {summaryPoints.map((point) => (
-              <li key={point.main} className="flex items-start gap-2">
+              <li key={point} className="flex items-baseline gap-2.5">
                 <span
-                  className="bg-brand mt-[3px] inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full font-sans text-[10px] font-bold text-white"
+                  className="bg-brand relative top-[-1px] inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full font-sans text-[10px] font-bold text-white"
                   aria-hidden="true"
                 >
                   ✓
                 </span>
-                <span className="font-sans text-[13px] leading-snug text-stone-800 sm:text-[15px]">
-                  <strong className="text-ink block font-bold">{point.main}</strong>
-                  <span className="text-ink-muted mt-0.5 block text-[11px] font-normal sm:text-xs">
-                    {point.sub}
-                  </span>
-                </span>
+                <strong className="text-ink font-sans text-[13.5px] leading-snug font-bold sm:text-[15px]">
+                  {point}
+                </strong>
               </li>
             ))}
           </ul>
 
-          <div className="mt-4 flex flex-col items-center sm:mt-6 md:items-start">
+          <div className="mt-5 flex flex-col items-center sm:mt-6 md:items-start">
             <a
               href="#contact-form"
               className="bg-cta hover:bg-cta-hover inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 font-sans text-[15px] font-bold text-white shadow-[0_6px_20px_rgba(212,112,143,0.32)] transition-colors sm:w-auto sm:px-10 sm:py-4 sm:text-base"
@@ -74,7 +61,6 @@ export default function HotelHeroSection() {
           </div>
         </div>
 
-        {/* 右ビジュアル：洋コース盛り＆和食会席盛りの実写2点＋お届け形態＆直営店評価 */}
         <div className="md:col-span-5">
           <div className="overflow-hidden rounded-3xl border border-stone-200/80 bg-[#f7f3ec] p-2.5 shadow-2xs sm:p-3">
             <div className="grid grid-cols-2 gap-2">
@@ -107,20 +93,20 @@ export default function HotelHeroSection() {
               </div>
             </div>
 
-            <div className="mt-2.5 flex items-center justify-between gap-2.5 rounded-2xl bg-white px-3.5 py-2.5">
+            <div className="mt-2.5 flex flex-col gap-1.5 rounded-2xl bg-white px-3.5 py-2.5 sm:flex-row sm:items-center sm:justify-between md:flex-col md:items-start lg:flex-row lg:items-center">
               <div className="min-w-0">
-                <p className="text-ink font-sans text-xs leading-tight font-bold whitespace-nowrap">
-                  業務用 1L・2L 角型容器
+                <p className="text-ink font-sans text-xs leading-tight font-bold">
+                  1L・2L 角型バルク
                 </p>
-                <p className="text-ink-muted mt-0.5 font-sans text-[11px] leading-tight whitespace-nowrap">
-                  最小4L〜・組み合わせ自由
+                <p className="text-ink-muted mt-0.5 font-sans text-[11px] leading-tight">
+                  最小4L〜・味ミックス自由
                 </p>
               </div>
-              <div className="shrink-0 border-l border-stone-200 pl-3 text-right">
-                <p className="text-brand font-sans text-[11px] leading-tight font-bold whitespace-nowrap">
-                  直営店 HappyCow {WHOLESALE_FACTS.happyCowRating}
+              <div className="border-t border-stone-200 pt-1.5 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-3 sm:text-right md:border-t md:border-l-0 md:pt-1.5 md:pl-0 md:text-left lg:border-t-0 lg:border-l lg:pt-0 lg:pl-3 lg:text-right">
+                <p className="text-brand font-sans text-[11px] leading-tight font-bold">
+                  HappyCow {WHOLESALE_FACTS.happyCowRating}満点
                 </p>
-                <p className="text-ink-muted mt-0.5 font-sans text-[10px] leading-tight whitespace-nowrap">
+                <p className="text-ink-muted mt-0.5 font-sans text-[10px] leading-tight">
                   Google {WHOLESALE_FACTS.googleRating}（{WHOLESALE_FACTS.googleReviewCount}）
                 </p>
               </div>

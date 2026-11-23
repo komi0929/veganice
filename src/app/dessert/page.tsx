@@ -5,12 +5,10 @@ import FloatingCTA from "../components/FloatingCTA";
 import DessertHeroSection from "./components/DessertHeroSection";
 import DessertAboutSection from "./components/DessertAboutSection";
 import DessertReasonsSection from "./components/DessertReasonsSection";
-import DessertReviewsSection from "./components/DessertReviewsSection";
-import DessertOperationsSection from "./components/DessertOperationsSection";
 import DessertProductsSection from "./components/DessertProductsSection";
-import DessertFAQSection from "./components/DessertFAQSection";
-import DessertStorySection from "./components/DessertStorySection";
 import DessertSampleSection from "./components/DessertSampleSection";
+import DessertReviewsSection from "./components/DessertReviewsSection";
+import DessertFAQSection from "./components/DessertFAQSection";
 import OemCrossLinkBanner from "../components/OemCrossLinkBanner";
 
 const TITLE = "飲食店・カフェ・菓子店の業務用クラフトアイス｜乳・卵・小麦・白砂糖不使用 SoyStories";
@@ -63,43 +61,22 @@ export const metadata: Metadata = {
 };
 
 /**
- * 飲食店・カフェ・ベーカリー／菓子店向け 定番卸フラッグシップLP
- * 構成：FV → 3秒概要（1L×4本省スペース＆カップ併記） → 全11種の味＆価格 → 無料サンプル申込フォーム
- *     → 実店舗の口コミ → 3つの独自製法 → 現場メリット・提供例 → 創業ストーリー → よくある質問 → OEM案内
+ * 飲食店・カフェ・ベーカリー／菓子店向け 定番卸フラッグシップLP（6段ビジュアルカタログ構成）
+ * 1. FV → 2. 一皿のイメージ（写真4枚＋省スペース規格） → 3. 選ばれる3つの理由 → 4. 全11種の味＋価格・取引条件
+ * → 5. 無料6個サンプル申込 → 6. 実物口コミ＋折りたたみFAQ＆創業背景＋OEM案内
  */
 export default function DessertPage() {
   return (
     <>
       <Header />
       <main className="lp-friendly flex-1">
-        {/* ① 3秒で伝わるファーストビュー（食後デザートにも、カフェ・焼き菓子の一品にも） */}
         <DessertHeroSection />
-
-        {/* ② どんなアイス？（専用工房・1L角型×4本からの省スペース規格・滑らかな食感） */}
         <DessertAboutSection />
-
-        {/* ③ 全11フレーバー・原材料モーダル・卸価格＆100mlカップ案内 */}
-        <DessertProductsSection />
-
-        {/* ④ 無料試食サンプル（6個）申込フォーム（最短距離で到達できる中盤配置） */}
-        <DessertSampleSection />
-
-        {/* ⑤ 実店舗の評価・国内外のお客様の口コミ */}
-        <DessertReviewsSection />
-
-        {/* ⑥ 選ばれる3つの技術的裏付け（米粉製法・発酵素材・専用工房） */}
         <DessertReasonsSection />
-
-        {/* ⑦ お店の収益メリット・業態別の提供メニュー例 */}
-        <DessertOperationsSection />
-
-        {/* ⑧ 創業の想いとエピソード */}
-        <DessertStorySection />
-
-        {/* ⑨ よくある質問（ベースミルク・アルコール/基準確認・カップ/OEM含む） */}
+        <DessertProductsSection />
+        <DessertSampleSection />
+        <DessertReviewsSection />
         <DessertFAQSection />
-
-        {/* ⑩ OEM・オリジナル製造のご案内（要点版 /oem/plan へ直結） */}
         <OemCrossLinkBanner context="dessert" />
       </main>
       <Footer />

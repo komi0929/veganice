@@ -42,15 +42,17 @@ export default function WholesaleFooter({
               <h2 className="mb-1 font-sans text-xs font-bold tracking-wider text-white/50">
                 ページ内メニュー
               </h2>
-              {navItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="hover:text-cta font-sans text-sm text-white transition-colors sm:text-base"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems
+                .filter((item) => item.href !== "#contact-form")
+                .map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="hover:text-cta font-sans text-sm text-white transition-colors sm:text-base"
+                  >
+                    {item.label}
+                  </a>
+                ))}
               <a
                 href="#contact-form"
                 className="hover:text-cta font-sans text-sm text-white transition-colors sm:text-base"

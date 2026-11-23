@@ -116,8 +116,7 @@ export default function DessertReviewsSection() {
           eyebrow="実店舗での評判"
           lines={["「今まで食べたアイスで一番美味しい」", "世界中から届く本物の声。"]}
           lead={[
-            `Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）、ヴィーガンガイドHappyCowで満点${WHOLESALE_FACTS.happyCowRating}を獲得。`,
-            "海外からのヴィーガンのお客様はもちろん、ノンヴィーガンのお客様からも「世界中で食べたどんな乳製品よりも美味しい」「今まで食べたアイスの中で一番バランスが良い」と高く評価されています。",
+            `Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）・HappyCow満点 ${WHOLESALE_FACTS.happyCowRating}。ノンヴィーガンのお客様からも「世界中で食べたどんな乳製品よりも美味しい」と評価されています。`,
           ]}
         />
 

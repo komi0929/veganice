@@ -1,167 +1,112 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
-/* 手描き風SVGアイコン */
-const StarIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-brand"
-  >
-    <path d="M12 2L14.5 9H22L16 13.5L18 21L12 16.5L6 21L8 13.5L2 9H9.5L12 2Z" />
-  </svg>
-);
-
-const HandsIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-brand"
-  >
-    <path d="M7 12C7 12 5 8 5 6C5 4 7 4 7 6C7 8 7 12 7 12Z" />
-    <path d="M17 12C17 12 19 8 19 6C19 4 17 4 17 6C17 8 17 12 17 12Z" />
-    <path d="M7 12C7 12 9 14 12 14C15 14 17 12 17 12" />
-    <path d="M8 16C8 16 10 20 12 20C14 20 16 16 16 16" />
-  </svg>
-);
-
-const CycleIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-brand"
-  >
-    <path d="M17 2L21 6L17 10" />
-    <path d="M3 6H21" />
-    <path d="M7 22L3 18L7 14" />
-    <path d="M21 18H3" />
-  </svg>
-);
-
-const SpoonIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-brand"
-  >
-    <path d="M12 3C8 3 5 5.5 5 9C5 12 8 13 12 13C16 13 19 12 19 9C19 5.5 16 3 12 3Z" />
-    <line x1="12" y1="13" x2="12" y2="22" />
-  </svg>
-);
-
-const valuePoints = [
+const servingScenes = [
   {
-    icon: StarIcon,
-    title: "焼き菓子の横にも、会席やスパイス料理の締めにも",
-    body: "温かいタルトにとろりと絡む添えアイスや、深煎り珈琲と溶け合うアフォガート、コースや定食のあとに甘酒と白みそのコクがありながらすっと軽やかに締まるひと皿まで、記憶に残る余韻をつくります。",
+    badge: "カフェ・菓子店に",
+    title: "温かいタルトや焼き菓子の添えに",
+    caption: "焼きたてのお菓子にとろりと絡む濃厚バニラやアールグレイ。",
+    image: "/images/serving/serving_waffle_cup.jpg",
+    objectPosition: "object-[center_45%]",
+    href: "/cafe",
   },
   {
-    icon: HandsIcon,
-    title: "「みんなと同じ一皿」を気兼ねなく",
-    body: "乳・卵・小麦のアレルギーがある方も、ヴィーガンの方も、一緒に来店されたノンヴィーガンの方も。同じテーブルで同じデザートを笑顔で囲める時間をひと皿からつくれます。",
+    badge: "レストラン・コースに",
+    title: "食後の小皿・アフォガートに",
+    caption: "スパイス料理やコースのあとにも軽やかに締まる一皿。",
+    image: "/images/serving/serving_affogato.jpg",
+    objectPosition: "object-center",
+    href: "/dessert",
   },
   {
-    icon: CycleIcon,
-    title: "日持ちロスが出ない、冷凍保管の安心",
-    body: "−18℃以下の冷凍保存のため、生ケーキのような賞味期限による廃棄ロスが出ません。ご注文が入った分だけ無駄なくお出しいただけます。",
+    badge: "ドリンク・パフェに",
+    title: "自家製ソーダや珈琲のフロートに",
+    caption: "完熟マンゴーやミックスベリーでグラスが華やぐ一杯。",
+    image: "/images/serving/serving_float.jpg",
+    objectPosition: "object-[center_35%]",
+    href: "/cafe",
   },
   {
-    icon: SpoonIcon,
-    title: "1L角型×4本から・個食カップやロゴOEMも",
-    body: "小型冷凍庫にも収まりやすい1L・2Lバルク（最小4L〜）のほか、持ち帰り用の100ml個食カップ（60個〜）や開発費0円のお店ロゴシールOEMにも対応しています。",
+    badge: "和食・宿泊施設に",
+    title: "会席の水菓子・インバウンド対応に",
+    caption: "お濃茶仕立ての抹茶や白桃。海外客にも同じ一皿で。",
+    image: "/images/serving/serving_monaka.jpg",
+    objectPosition: "object-[center_70%]",
+    href: "/hotel",
   },
-];
+] as const;
 
 export default function EconomicsSection() {
   return (
-    <section id="value" className="bg-bg-white relative overflow-hidden py-24">
-      <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-12">
-        {/* ── ヘッダー ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 md:mb-16 md:text-center"
-        >
-          <span className="text-brand mb-4 block text-sm font-semibold tracking-widest uppercase">
-            Value for you
-          </span>
-          <h2 className="text-ink mb-6 font-serif text-2xl sm:text-3xl md:text-5xl">
-            ひとくちのデザートが、
-            <br className="md:hidden" />
-            お客様の記憶に残る。
-          </h2>
-          <p className="text-ink-light mx-auto max-w-2xl font-sans text-base leading-relaxed md:text-lg">
-            クラフトアイスをきっかけに、
-            <br className="hidden md:block" />
-            あなたのお店の「思い遣り」が、お客様にそっと伝わりますように。
+    <section id="value" className="bg-bg scroll-mt-20 py-14 md:py-20">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="text-brand mb-2 block font-sans text-xs font-semibold tracking-widest uppercase">
+              Serving Ideas
+            </span>
+            <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
+              焼き菓子の横から、会席やコースの締めくくりまで。
+            </h2>
+          </div>
+          <p className="text-ink-muted font-sans text-xs font-medium">
+            1皿 50ml（#18）約100円〜 ／ 冷凍保管で廃棄ロスゼロ
           </p>
-        </motion.div>
+        </div>
 
-        {/* ── バリューポイント ── */}
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2">
-          {valuePoints.map((point, index) => (
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {servingScenes.map((scene, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+              key={scene.title}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-shadow hover:shadow-md"
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-3 shadow-2xs"
             >
-              <div className="border-brand/20 mb-5 flex h-12 w-12 items-center justify-center rounded-xl border bg-white">
-                <point.icon />
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-stone-100">
+                <Image
+                  src={scene.image}
+                  alt={scene.title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className={`object-cover ${scene.objectPosition}`}
+                />
+                <span className="absolute top-2.5 left-2.5 rounded-full bg-white/95 px-2.5 py-0.5 font-sans text-[11px] font-bold text-stone-800 shadow-2xs">
+                  {scene.badge}
+                </span>
               </div>
-              <h3 className="text-ink mb-3 font-serif text-lg font-bold">{point.title}</h3>
-              <p className="text-ink-light text-sm leading-relaxed">{point.body}</p>
+              <div className="mt-3 flex flex-1 flex-col px-1 pb-1">
+                <h3 className="text-ink font-serif text-sm leading-snug font-bold sm:text-[15px]">
+                  {scene.title}
+                </h3>
+                <p className="text-ink-light mt-1 font-sans text-xs leading-relaxed">
+                  {scene.caption}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* ── CTA ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-14 text-center"
-        >
-          <p className="text-ink-muted mb-6 text-sm">
-            価格や納品のペースなど、お店のスタイルに合わせてご相談に乗ります。
-          </p>
-          <a
-            href="#contact-form"
-            className="bg-cta hover:bg-cta-hover inline-block rounded-full px-10 py-4 text-base font-bold text-white shadow-sm transition-all hover:shadow-md md:text-lg"
-          >
-            まずは気軽に相談してみる
-          </a>
-        </motion.div>
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-stone-200/70 bg-white px-4 py-3 font-sans text-xs sm:px-5">
+          <span className="text-ink-light font-medium">
+            業態別の詳しいご案内ページもご用意しています：
+          </span>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 font-bold">
+            <Link href="/cafe" className="text-brand hover:underline">
+              カフェ・菓子店向け →
+            </Link>
+            <Link href="/dessert" className="text-brand hover:underline">
+              レストラン・飲食店向け →
+            </Link>
+            <Link href="/hotel" className="text-brand hover:underline">
+              ホテル・旅館向け →
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

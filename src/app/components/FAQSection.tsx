@@ -7,86 +7,47 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   {
     q: "ヴィーガンでないお客様にも喜ばれますか？",
-    a: "はい。薬院のお店では「普通のアイスより好き」とおっしゃるノンヴィーガンのお客様が多数いらっしゃいます。米粉を使った独自の製法で、植物性アイスにありがちなシャリシャリ感（シャーベット感）のない滑らかな舌触りとコクを実現しており、HappyCow 5.0・Googleレビュー270件以上（★4.7）という評価がその証拠です。",
+    a: "はい。薬院の直営店（Google ★4.7・HappyCow 5.0）でも「普通のアイスより好き」とおっしゃるノンヴィーガンのお客様が多数いらっしゃいます。米粉を炊き上げる独自製法で、シャリシャリ感のない濃密な口どけに仕上げています。",
   },
   {
-    q: "アレルゲン対応の詳細を教えてください",
-    a: "全商品、乳・卵・小麦・白砂糖不使用です。卵・乳・小麦を一切持ち込まない専用の工房で製造しているため、乳・卵・小麦のアレルギーの方にも安心してお召し上がりいただけます。工房への持ち込みがあるのはナッツ類（落花生・くるみ・カシューナッツ・アーモンド等）のみで、フレーバーにより大豆・アーモンド（ナッツ使用）・もも・りんごを含みます。",
+    q: "アレルゲン対応・専用工房の管理体制は？",
+    a: "全11種が乳・卵・小麦・白砂糖不使用です。卵・乳・小麦を一切持ち込まない専用工房で製造しているため、乳・卵・小麦アレルギーの方にも安心してお出しいただけます（工房持ち込みがある特定原材料等はナッツ類のみ。味により大豆・アーモンド・もも・りんごを含みます）。",
   },
   {
-    q: "ベースの植物性ミルクは何を使っていますか？",
-    a: "抹茶・ほうじ茶・バニラココナッツ・UMAMIバニラ・アールグレイは豆乳ベース、ショコラはアーモンドミルクベース、フルーツ系5種（マンゴー・ミックスベリー・もも・りんご・ドラゴンフルーツ）は果実とココナッツがベースです。豆乳不使用のフレーバーもお選びいただけます。",
+    q: "ベースの植物性ミルクや、ハラール・五葷等の基準確認はできますか？",
+    a: "抹茶・ほうじ茶・バニラ2種・アールグレイは豆乳、ショコラはアーモンドミルク、フルーツ系5種は果実×ココナッツがベースです。各カードから全原材料をご確認いただけるほか、個別基準に合う選定もフォーム備考欄でご案内します。",
   },
   {
-    q: "原材料の詳細や、ハラール・五葷などお店の基準に合うか確認できますか？",
-    a: "上の商品ラインナップの各フレーバーカードをタップすると全原材料をご確認いただけます。アルコール由来原料や特定素材の有無など、お店の基準に合わせたフレーバー選定も個別にご案内いたしますので、フォームの備考欄にてお気軽にお尋ねください。",
+    q: "最小ロットや、100ml個食カップ・お店ロゴOEMの条件は？",
+    a: "業務用バルクは最小4L（1L×4本・2L×2本など）から、物販用100ml個食カップ（税別300円）は60個から味自由でご注文いただけます。フタ丸シールをお店ロゴにするOEM（開発費0円・1味60個〜）やお店食材での専用開発（6L／60個〜）にも対応しています。",
   },
   {
-    q: "最小ロットと発注単位は？",
-    a: "業務用バルクは最小4リットル分（1L×4本 または 2L×2本）から、持ち帰り・物販用の100ml個食カップ（税別300円）は最小60個からご注文いただけます。フレーバーは11種から自由に組み合わせ可能です。",
+    q: "保管条件・納期・お支払い方法は？",
+    a: "−18℃以下の冷凍保存（氷菓・賞味期限表示義務なし）で廃棄ロスが出ません。通常5営業日前後でクール冷凍便発送（無料サンプル6個は通常2営業日以内）。お支払いは納品月の月末締め・翌月末請求書払い（銀行振込）です。",
   },
   {
-    q: "保管条件を教えてください",
-    a: "−18℃以下で冷凍保存してください。アイスクリーム類（氷菓）は食品表示基準上、賞味期限の表示義務がない冷凍品です。適切な温度管理のもとで品質が長期間維持され、日持ちによる廃棄ロスが出ません。",
-  },
-  {
-    q: "注文から届くまでどのくらいですか？",
-    a: "ご注文確定後、通常5営業日前後でクール冷凍便（ヤマト運輸）にて全国発送いたします。初回の無料試食サンプル（6個）は通常2営業日以内に発送いたします。",
-  },
-  {
-    q: "支払い方法は？",
-    a: "納品月の月末締め・翌月末払い（請求書による銀行振込）、または専用発注ページでのクレジットカード決済に対応しております。",
-  },
-  {
-    q: "OEMや専用フレーバーの開発は可能ですか？",
-    a: "はい。定番フレーバーにお店のロゴ丸シールを貼るプラン（開発費0円・1味60個〜）や、お店の食材を使ったオリジナルフレーバー開発（1味60個／6L〜）も承っております。",
-  },
-  {
-    q: "メニューにはどう記載すればいいですか？",
-    a: "たとえば「クラフトアイス（乳・卵・小麦・白砂糖不使用）¥○○○」のように、素材の特徴を明記するのがおすすめです。「プラントベース」「植物性クラフトアイス」といった表現も好評です。",
-  },
-  {
-    q: "お客様にどう説明すればいいですか？",
-    a: "「植物性の素材でつくった手づくりのクラフトアイスです。乳製品・卵・小麦を使っていないので、乳・卵・小麦のアレルギーをお持ちの方も安心してお召し上がりいただけます」——これだけで十分伝わります。",
+    q: "メニュー表にはどう記載すればいいですか？",
+    a: "「クラフトアイス（乳・卵・小麦・白砂糖不使用）」や「植物性クラフトアイス添え」など、お店のお料理・お菓子のトーンに合わせて素材の特徴を添える表記が好評です。",
   },
 ];
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.08,
-      duration: 0.6,
-      ease: "easeOut" as const,
-    },
-  }),
-};
-
-function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
+function FAQItem({ q, a }: { q: string; a: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <motion.div
-      custom={index}
-      variants={itemVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      className="border-b border-gray-100 last:border-b-0"
-    >
+    <div className="border-b border-gray-200/80 last:border-b-0">
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="group flex w-full items-center justify-between py-8 text-left focus:outline-none"
+        className="group flex w-full cursor-pointer items-center justify-between py-5 text-left focus:outline-none"
       >
-        <span className="text-ink pr-8 font-sans text-base font-bold md:text-lg">{q}</span>
+        <span className="text-ink pr-6 font-sans text-sm font-bold sm:text-base">{q}</span>
         <span
-          className={`text-brand flex-shrink-0 transition-transform duration-300 ease-out ${
+          className={`text-brand flex-shrink-0 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
         >
-          <ChevronDown size={20} strokeWidth={1.5} />
+          <ChevronDown size={18} strokeWidth={1.8} />
         </span>
       </button>
       <AnimatePresence>
@@ -95,38 +56,30 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" as const }}
+            transition={{ duration: 0.25, ease: "easeInOut" as const }}
             className="overflow-hidden"
           >
-            <div className="text-ink-light pr-8 pb-8 font-sans text-sm leading-relaxed font-light md:text-base">
+            <div className="text-ink-light pr-6 pb-5 font-sans text-xs leading-[1.85] sm:text-sm">
               {a}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="bg-bg py-16 md:py-28">
+    <section id="faq" className="bg-bg-white scroll-mt-20 py-14 md:py-20">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
-        <div className="mb-12 md:mb-20 md:text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" as const }}
-            className="text-ink font-serif text-2xl sm:text-3xl md:text-4xl"
-          >
-            よくいただくご質問
-          </motion.h2>
+        <div className="mb-8 md:text-center">
+          <h2 className="text-ink font-serif text-2xl font-bold sm:text-3xl">よくいただくご質問</h2>
         </div>
 
-        <div className="w-full">
-          {faqs.map((faq, index) => (
-            <FAQItem key={index} q={faq.q} a={faq.a} index={index} />
+        <div className="rounded-2xl border border-stone-200/80 bg-[#fafaf8] px-5 sm:px-7">
+          {faqs.map((faq) => (
+            <FAQItem key={faq.q} q={faq.q} a={faq.a} />
           ))}
         </div>
       </div>

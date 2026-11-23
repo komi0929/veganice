@@ -69,7 +69,7 @@ export default function CompanyPage() {
                   お支払い方法・時期
                 </th>
                 <td className="text-ink-light px-6 py-4">
-                  納品月の月末締め・翌月末払い（ご請求書払い・銀行振込）、または専用発注ポータルでのクレジットカード決済。
+                  納品月の月末締め・翌月末払い（ご請求書払い・銀行振込）。
                 </td>
               </tr>
               <tr className="border-b border-gray-100">

@@ -7,9 +7,8 @@ import OemHeader from "./components/OemHeader";
 import OemHeroSection from "./components/OemHeroSection";
 import OemPremiseSection from "./components/OemPremiseSection";
 import OemCoursesSection from "./components/OemCoursesSection";
-import OemMidCtaBanner from "./components/OemMidCtaBanner";
-import OemTimelineSection from "./components/OemTimelineSection";
 import OemSimulatorSection from "./components/OemSimulatorSection";
+import OemTimelineSection from "./components/OemTimelineSection";
 import OemFAQSection from "./components/OemFAQSection";
 import OemContactSection from "./components/OemContactSection";
 import OemFloatingCTA from "./components/OemFloatingCTA";
@@ -43,16 +42,9 @@ export const metadata: Metadata = {
 };
 
 /**
- * 【LP-B】完全版 OEM LP（シンプル2プラン確定版）
- * 1. 何屋さんで何ができる？（Hero）
- * 2. どんな品質のアイス？（Premise：専用工房・米粉製法・発酵素材の3つの特徴）
- * 3. シンプルな2つのプラン（Courses：①フタだけ0円 vs ②3万円でオリジナル開発［カップもバルクも両方OK］）
- * 4. 実店舗での味の評価（Reviews：Google ★4.7）
- * 5. 検討フェーズ別の入り口（MidCta：無料3案相談 or 6個試食サンプル）
- * 6. ご相談から約1か月の流れ（Timeline）
- * 7. お店の利益シミュレーター（Simulator）
- * 8. よくあるご質問（FAQ）
- * 9. 無料相談・試食申込フォーム（Contact）
+ * 完全版 OEM LP（シンプル2プラン・コンパクト構成）
+ * 1. FV → 2. 3つの品質土台 → 3. 選べる2プラン（¥0 vs ¥30,000） → 4. 利益シミュレーター＆1か月工程
+ * → 5. 無料相談・試食申込フォーム → 6. 実店舗の評価＋折りたたみFAQ＋定番卸案内
  */
 export default function OemFullPage() {
   return (
@@ -62,37 +54,33 @@ export default function OemFullPage() {
         <OemHeroSection />
         <OemPremiseSection />
         <OemCoursesSection />
-        <DessertReviewsSection />
-        <OemMidCtaBanner />
-        <OemTimelineSection />
         <OemSimulatorSection />
-        <OemFAQSection />
+        <OemTimelineSection />
         <Suspense
           fallback={<div className="py-16 text-center text-sm text-gray-500">読み込み中...</div>}
         >
           <OemContactSection />
         </Suspense>
+        <DessertReviewsSection />
+        <OemFAQSection />
 
         {/* 定番フレーバー通常卸へのご案内 */}
-        <section className="border-t border-gray-200 bg-[#f7f3ec] py-14">
+        <section className="border-t border-gray-200 bg-[#f7f3ec] py-12">
           <div className="mx-auto max-w-4xl px-6">
-            <div className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-white p-6 shadow-2xs sm:flex-row sm:items-center sm:p-8">
+            <div className="flex flex-col items-start justify-between gap-5 rounded-3xl bg-white p-6 shadow-2xs sm:flex-row sm:items-center sm:p-7">
               <div>
                 <p className="text-brand text-xs font-bold">
                   オリジナル開発の前に、定番品の導入をご検討の方へ
                 </p>
-                <h2 className="text-ink mt-1 text-lg font-bold sm:text-xl">
-                  完成された定番11フレーバーの業務用卸（最小4L〜）もございます
+                <h2 className="text-ink mt-1 text-base font-bold sm:text-lg">
+                  定番11フレーバーの業務用卸（最小4L〜／個食カップ60個〜）もございます
                 </h2>
-                <p className="text-ink-light mt-2 text-sm leading-relaxed">
-                  開発費0円ですぐにお店のデザートメニューへ導入いただける定番ラインナップをご覧いただけます。
-                </p>
               </div>
               <Link
                 href="/wholesale"
-                className="bg-brand hover:bg-brand-dark shrink-0 rounded-full px-6 py-3.5 text-sm font-bold text-white transition-colors"
+                className="bg-brand hover:bg-brand-dark shrink-0 rounded-full px-6 py-3 text-sm font-bold text-white transition-colors"
               >
-                定番フレーバーの卸案内を見る →
+                定番フレーバー卸を見る →
               </Link>
             </div>
           </div>

@@ -5,12 +5,11 @@ import WholesaleFloatingCTA from "@/app/components/wholesale/WholesaleFloatingCT
 import WholesaleReviewsSlider from "@/app/components/wholesale/WholesaleReviewsSlider";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import HotelHeroSection from "./components/HotelHeroSection";
+import HotelPortionSection from "./components/HotelPortionSection";
 import HotelNoExtraPrepSection from "./components/HotelNoExtraPrepSection";
 import HotelFlavorsSection from "./components/HotelFlavorsSection";
-import HotelPortionSection from "./components/HotelPortionSection";
-import HotelTermsSection from "./components/HotelTermsSection";
-import HotelFAQSection from "./components/HotelFAQSection";
 import HotelSampleSection from "./components/HotelSampleSection";
+import HotelFAQSection from "./components/HotelFAQSection";
 import OemCrossLinkBanner from "@/app/components/OemCrossLinkBanner";
 
 const PAGE_TITLE = "ホテル・旅館のインバウンド・多様な食対応に｜業務用 植物性クラフトアイス";
@@ -60,55 +59,36 @@ export const metadata: Metadata = {
 };
 
 const navItems: WholesaleNavItem[] = [
-  { label: "どんなアイス？", href: "#no-extra-prep" },
+  { label: "一皿と分量", href: "#portion" },
+  { label: "3つの理由", href: "#no-extra-prep" },
+  { label: "11種の味・条件", href: "#flavors" },
+  { label: "無料サンプル", href: "#contact-form" },
   { label: "海外からの声", href: "#reviews" },
-  { label: "11種の味", href: "#flavors" },
-  { label: "分量・大人数対応", href: "#portion" },
-  { label: "注文の決まり", href: "#terms" },
   { label: "よくある質問", href: "#faq" },
 ];
 
 /**
- * ホテル・旅館・婚礼宴会・コース料理店向け 業務用卸LP
- * 構成：何の提案か（Hero） → どこの誰がつくるどんなアイスか＆4つの現場メリット（NoExtraPrep）
- *     → 海外旅行者からの実証口コミ（Reviews） → 会席・コースに合う11種の味と盛り付け方（Flavors）
- *     → 1人分の分量・容器・団体ビュッフェ対応（Portion） → 注文の決まり（Terms） → FAQ → 無料サンプル申込
+ * ホテル・旅館・婚礼宴会・コース料理店向け 業務用卸LP（6段ビジュアルカタログ構成）
+ * 1. FV → 2. 一皿のイメージと1人分目安 → 3. 選ばれる3つの理由 → 4. 全11種の味＋お取引条件
+ * → 5. 無料6個サンプル申込 → 6. 海外からの口コミ＋折りたたみFAQ＋OEM案内
  */
 export default function HotelPage() {
   return (
     <>
       <WholesaleHeader pageHref="/hotel" navItems={navItems} />
       <main className="flex-1">
-        {/* 1. 最初の画面 */}
         <HotelHeroSection />
-
-        {/* 2. どんなアイス？｜専門店の紹介・海外ゲストに必要な4要素・専用工房＆製法 */}
+        <HotelPortionSection />
         <HotelNoExtraPrepSection />
-
-        {/* 3. 海外からのヴィーガンのお客様の声（直営スイーツ店での実証評価） */}
+        <HotelFlavorsSection />
+        <HotelSampleSection />
         <WholesaleReviewsSlider
           eyebrow="HappyCow 5.0満点・Google ★4.7の実績"
           heading="海外からのヴィーガンのお客様の声"
-          lead={`私たちの直営スイーツ店（福岡・薬院）には欧米・豪州・アジアから多くの旅行者が訪れ、海外旅行者向けヴィーガンガイドHappyCowで満点 ${WHOLESALE_FACTS.happyCowRating}、Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）を獲得しています。ヴィーガンやグルテンフリーの方はもちろん、ヴィーガンではないお客様からも「世界中で食べたどんな乳製品よりも美味しい」と高い評価をいただいています。`}
+          lead={`福岡・薬院の直営店には欧米・豪州・アジアから多くの旅行者が訪れ、HappyCow満点 ${WHOLESALE_FACTS.happyCowRating}・Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）を獲得。「世界中で食べたどんな乳製品よりも美味しい」と評価されています。`}
           variant="dark"
         />
-
-        {/* 4. 会席・コースに合う全11種の味と盛り付け方 */}
-        <HotelFlavorsSection />
-
-        {/* 5. 盛り付け量の目安・1L/2L容器・国際会議／婚礼／朝食ビュッフェ対応 */}
-        <HotelPortionSection />
-
-        {/* 6. 注文の決まり */}
-        <HotelTermsSection />
-
-        {/* 7. よくある質問 */}
         <HotelFAQSection />
-
-        {/* 8. 無料試食サンプル6個のお申し込み */}
-        <HotelSampleSection />
-
-        {/* 9. OEM・オリジナル水菓子／売店カップ製造のご案内 */}
         <OemCrossLinkBanner context="hotel" />
       </main>
       <WholesaleFooter

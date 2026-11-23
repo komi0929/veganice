@@ -5,12 +5,11 @@ import WholesaleFloatingCTA from "@/app/components/wholesale/WholesaleFloatingCT
 import WholesaleReviewsSlider from "@/app/components/wholesale/WholesaleReviewsSlider";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import CafeHeroSection from "./components/CafeHeroSection";
-import CafePolicySection from "./components/CafePolicySection";
 import CafeServingSection from "./components/CafeServingSection";
+import CafePolicySection from "./components/CafePolicySection";
 import CafeFlavorsSection from "./components/CafeFlavorsSection";
-import CafeTermsSection from "./components/CafeTermsSection";
-import CafeFAQSection from "./components/CafeFAQSection";
 import CafeSampleSection from "./components/CafeSampleSection";
+import CafeFAQSection from "./components/CafeFAQSection";
 import OemCrossLinkBanner from "@/app/components/OemCrossLinkBanner";
 
 const PAGE_TITLE = "カフェ・ベーカリー・焼き菓子店の業務用アイス｜乳・卵・小麦・白砂糖不使用";
@@ -59,54 +58,36 @@ export const metadata: Metadata = {
 };
 
 const navItems: WholesaleNavItem[] = [
-  { label: "どんなアイス？", href: "#policy" },
-  { label: "お店での使い方", href: "#serving" },
-  { label: "11種の味", href: "#flavors" },
+  { label: "一皿のイメージ", href: "#serving" },
+  { label: "3つの理由", href: "#policy" },
+  { label: "11種の味・条件", href: "#flavors" },
+  { label: "無料サンプル", href: "#contact-form" },
   { label: "お客様の声", href: "#reviews" },
-  { label: "仕入れ条件", href: "#terms" },
   { label: "よくある質問", href: "#faq" },
 ];
 
 /**
- * カフェ・ベーカリー・菓子店向け 業務用卸LP
- * 構成：何の提案か（Hero） → どこの誰がつくるどんなアイスか（Policy） → お店での4つの使い方（Serving）
- *     → 11種の味（Flavors） → 実際に食べたお客様の声（Reviews） → 仕入れ条件・容器（Terms） → FAQ → 無料サンプル申込
+ * カフェ・ベーカリー・菓子店向け 業務用卸LP（6段ビジュアルカタログ構成）
+ * 1. FV → 2. 一皿のイメージ（写真4枚） → 3. 選ばれる3つの理由 → 4. 全11種の味＋取引条件
+ * → 5. 無料6個サンプル申込 → 6. お客様の声＋折りたたみFAQ＋OEM案内
  */
 export default function CafePage() {
   return (
     <>
       <WholesaleHeader pageHref="/cafe" navItems={navItems} />
       <main className="flex-1">
-        {/* 1. 最初の画面 */}
         <CafeHeroSection />
-
-        {/* 2. どんなアイス？（専門店の紹介・白砂糖不使用＆発酵のコク・米粉製法・専用工房） */}
-        <CafePolicySection />
-
-        {/* 3. お店での使い方（焼き菓子横添え・フロート・パフェ・ランチ後＋盛り付け写真） */}
         <CafeServingSection />
-
-        {/* 4. フレーバー全11種（ケーキ・焼き菓子に／ドリンク・フロートに） */}
+        <CafePolicySection />
         <CafeFlavorsSection />
-
-        {/* 5. 直営スイーツ店に寄せられたお客様の声（味の確かな裏づけ） */}
+        <CafeSampleSection />
         <WholesaleReviewsSlider
-          eyebrow="直営スイーツ店に届くお客様の声"
+          eyebrow="直営スイーツ店に届く声"
           heading="「乳製品のアイスより美味しい」国内外から届く評価"
-          lead={`私たちの直営スイーツ店（福岡・薬院）では、Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）・HappyCow ${WHOLESALE_FACTS.happyCowRating}の評価をいただいています。アレルギーやヴィーガンの方はもちろん、普段は乳製品のお菓子を召し上がるヴィーガンではないお客様からも「言われなければ植物性だと気づかない」「後味が軽やかで一番好き」と喜ばれています。`}
+          lead={`福岡・薬院の直営店ではGoogle ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）・HappyCow ${WHOLESALE_FACTS.happyCowRating}を獲得。普段は乳製品のお菓子を召し上がるお客様からも「言われなければ植物性だと気づかない」と喜ばれています。`}
           variant="dark"
         />
-
-        {/* 6. 仕入れ条件・容器サイズ */}
-        <CafeTermsSection />
-
-        {/* 7. よくあるご質問 */}
         <CafeFAQSection />
-
-        {/* 8. 無料試食サンプル6個のお申し込み */}
-        <CafeSampleSection />
-
-        {/* 9. OEM・オリジナル味／店名ロゴ展開のご案内 */}
         <OemCrossLinkBanner context="cafe" />
       </main>
       <WholesaleFooter

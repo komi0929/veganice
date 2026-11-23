@@ -31,17 +31,18 @@ export default function Header() {
   const logoHref = isDessert ? "/dessert" : "/";
   const navLinks = isDessert
     ? [
-        { label: "どんなアイス？", href: `${prefix}about` },
-        { label: "11種の味・価格", href: `${prefix}products` },
-        { label: "無料サンプル", href: `${prefix}contact-form` },
-        { label: "3つの製法", href: `${prefix}reasons` },
+        { label: "一皿のイメージ", href: `${prefix}about` },
+        { label: "3つの理由", href: `${prefix}reasons` },
+        { label: "11種の味・条件", href: `${prefix}products` },
+        { label: "お客様の声", href: `${prefix}reviews` },
         { label: "よくある質問", href: `${prefix}faq` },
       ]
     : [
-        { label: "商品ラインナップ", href: `${prefix}products` },
-        { label: "私たちの想い", href: `${prefix}story` },
-        { label: "導入の流れ", href: `${prefix}flow` },
-        { label: "よくあるご質問", href: `${prefix}faq` },
+        { label: "一皿のイメージ", href: `${prefix}value` },
+        { label: "3つの理由", href: `${prefix}benefits` },
+        { label: "11種の味・条件", href: `${prefix}products` },
+        { label: "お客様の声", href: `${prefix}story` },
+        { label: "よくある質問", href: `${prefix}faq` },
       ];
 
   return (

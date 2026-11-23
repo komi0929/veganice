@@ -12,20 +12,16 @@ const trustStats = [
 ];
 
 const sceneTags = [
-  "100%植物性（乳・卵・小麦・白砂糖不使用）",
-  "定食・コースの食後デザートに",
-  "カフェのフロート・パフェに",
-  "ドーナツ・焼き菓子の一品に",
+  "乳・卵・小麦・白砂糖不使用",
+  "定食・コースの食後に",
+  "フロート・パフェに",
+  "ドーナツ・焼き菓子添えに",
 ];
 
-/**
- * ファーストビュー
- * スマホでも最初の画面からすぐCTAが見え、レストラン・定食・カフェ・焼き菓子店のどれでも自分事化できる構成
- */
 export default function DessertHeroSection() {
   return (
     <section className="bg-bg-white w-full pt-16 sm:pt-[72px]">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 md:grid-cols-2 md:items-center md:gap-12 md:px-8 md:py-14">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 md:grid-cols-2 md:items-center md:gap-12 md:px-8 md:py-12">
         {/* 写真 */}
         <div className="relative md:order-2">
           <div className="relative aspect-[16/10] w-full overflow-hidden md:aspect-[4/5] md:rounded-3xl">
@@ -38,7 +34,6 @@ export default function DessertHeroSection() {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
-          {/* 業務用バルク＆100mlカップの両対応を写真上で明示 */}
           <div className="absolute right-4 -bottom-5 flex items-center gap-2.5 rounded-2xl bg-white p-2 pr-4 shadow-lg md:right-auto md:-bottom-5 md:-left-6">
             <div className="relative h-11 w-11 overflow-hidden rounded-xl">
               <Image
@@ -83,7 +78,7 @@ export default function DessertHeroSection() {
             </span>
           </h1>
 
-          <div className="mt-3.5 flex flex-wrap gap-1.5">
+          <div className="mt-3 flex flex-wrap gap-1.5">
             {sceneTags.map((tag, idx) => (
               <span
                 key={tag}
@@ -98,25 +93,17 @@ export default function DessertHeroSection() {
             ))}
           </div>
 
-          <div className="text-ink-light mt-4 space-y-2 text-[14.5px] leading-[1.78] sm:text-[15.5px]">
-            <p>
-              スパイス料理や定食のあとに甘酒と白みそのコクがありながら軽やかに締まるひと皿や、温かいタルト・焼き菓子にとろりと絡む濃厚なバニラとして。ヴィーガンの方はもちろん
-              <strong className="text-ink">
-                ノンヴィーガンのお客様からも「普通のアイスより好き」と喜ばれる専門店の味
-              </strong>
-              を、専用工房からお届けします。
-            </p>
-            <p className="text-ink text-[13.5px] font-bold sm:text-[14.5px]">
-              国産米粉をじっくり炊き上げる独自製法でシャリシャリ感がなく、営業中に冷凍庫を出し入れしても濃密でなめらかな口どけが続きます。
-            </p>
-          </div>
+          <p className="text-ink-light mt-3.5 text-[14px] leading-[1.78] sm:text-[15px]">
+            スパイス料理や定食のあとに軽やかに締まる抹茶や白桃、温かい焼き菓子にとろりと絡む濃厚バニラ。
+            <strong className="text-ink">ノンヴィーガンのお客様からも選ばれる専門店の味</strong>
+            をお届けします。
+          </p>
 
           <div className="mt-5 md:flex md:justify-start">
-            <CtaButton />
+            <CtaButton href="#contact-form" />
           </div>
 
-          {/* 実績（数字で一目で） */}
-          <dl className="mt-7 grid grid-cols-3 divide-x divide-gray-200 border-t border-gray-100 pt-5">
+          <dl className="mt-6 grid grid-cols-3 divide-x divide-gray-200 border-t border-gray-100 pt-4">
             {trustStats.map((stat) => (
               <div key={stat.value} className="px-2 text-center first:pl-0 last:pr-0">
                 <dt className="sr-only">{stat.label}</dt>

@@ -1,117 +1,90 @@
 import Image from "next/image";
-import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
+import Link from "next/link";
+
+const servingCards = [
+  {
+    badge: "会席の小鉢・水菓子に",
+    metric: "約50ml（#18）＝ 1人分 約100円",
+    subMetric: "1Lあたり 約20人分（税別）",
+    caption: "品数の多い会席の締めくくりや、旬の果物・最中皮と合わせる上品な一玉に。",
+    image: "/images/serving/serving_monaka.jpg",
+    objectPosition: "object-[center_70%]",
+  },
+  {
+    badge: "洋コース・婚礼ドルチェに",
+    metric: "約80ml（#12）＝ 1人分 約167円",
+    subMetric: "1Lあたり 約12人分（税別）",
+    caption: "温かいガトーへの添え盛りや、珈琲ゼリー・ジュレと重ねるメイン甘味に。",
+    image: "/images/serving/serving_affogato.jpg",
+    objectPosition: "object-center",
+  },
+  {
+    badge: "団体・朝食ビュッフェ・常備に",
+    metric: "1L・2L角型で省スペース常備",
+    subMetric: "2L容器1本で約40人分（50ml）",
+    caption: "MICEや訪日団体でも1名だけ別皿に差し替えず、全員に同じ一皿を出せます。",
+    image: "/images/bulk_2l.jpg",
+    objectPosition: "object-cover",
+  },
+] as const;
 
 export default function HotelPortionSection() {
   return (
-    <section id="portion" className="scroll-mt-14 bg-[#f7f3ec] py-16 sm:py-24">
+    <section id="portion" className="bg-bg-white scroll-mt-14 py-12 sm:py-18">
+      <span id="banquet" className="-mt-16 block pt-16" aria-hidden="true" />
       <div className="mx-auto max-w-5xl px-6">
-        <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
+        <p className="text-brand mb-2 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
           <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
-          分量と原価・大人数対応
+          一皿のイメージと1人分目安
         </p>
-        <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
-          小鉢なら1Lで約20人分、ドルチェ皿なら約12人分。宴会やビュッフェにも。
+        <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
+          会席の小鉢なら1Lで約20人分、コース皿なら約12人分。
         </h2>
-        <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
-          {WHOLESALE_FACTS.scoopsPerLiter}
-          。コースの構成や器の大きさに合わせて、1人あたりの提供量を無駄なく調整いただけます。
-        </p>
 
-        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
-          {/* 50ml 目安 */}
-          <div className="rounded-3xl border border-stone-200/80 bg-white p-6 shadow-2xs sm:p-7">
-            <span className="bg-brand/10 text-brand inline-block rounded-full px-3 py-1 font-sans text-xs font-bold">
-              会席の小鉢・水菓子・ケーキ添え・朝食ビュッフェに
-            </span>
-            <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <p className="text-ink font-serif text-2xl font-bold sm:text-3xl">約50ml（#18）</p>
-              <p className="text-brand font-sans text-base font-bold">1Lあたり 約20人分</p>
+        <div className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+          {servingCards.map((card) => (
+            <div
+              key={card.badge}
+              className="flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-[#fafaf8] p-3.5"
+            >
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-stone-100">
+                <Image
+                  src={card.image}
+                  alt={card.badge}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className={`object-cover ${card.objectPosition}`}
+                />
+                <span className="absolute top-2.5 left-2.5 rounded-full bg-white/95 px-2.5 py-0.5 font-sans text-[11px] font-bold text-stone-800 shadow-2xs">
+                  {card.badge}
+                </span>
+              </div>
+              <div className="mt-3 px-0.5">
+                <p className="text-ink font-sans text-sm font-bold sm:text-[15px]">{card.metric}</p>
+                <p className="text-brand mt-0.5 font-sans text-xs font-bold">{card.subMetric}</p>
+                <p className="text-ink-light mt-1.5 font-sans text-xs leading-relaxed">
+                  {card.caption}
+                </p>
+              </div>
             </div>
-            <p className="text-ink mt-3 font-sans text-lg font-bold">
-              1人分 約100円
-              <span className="text-ink-muted ml-2 text-xs font-normal">
-                （税別。1L 2,000円÷20杯）
-              </span>
-            </p>
-            <p className="text-ink-light mt-3 font-sans text-sm leading-[1.8]">
-              品数の多い会席・懐石の小鉢や、季節の果物・ケーキの横に添える一玉に収まりのよい上品な量です。2L容器（4,000円・税別）なら約40人分とれます。
-            </p>
-          </div>
-
-          {/* 80ml 目安 */}
-          <div className="rounded-3xl border border-stone-200/80 bg-white p-6 shadow-2xs sm:p-7">
-            <span className="inline-block rounded-full bg-stone-100 px-3 py-1 font-sans text-xs font-bold text-stone-700">
-              洋食コースのドルチェ・婚礼宴会のメイン甘味に
-            </span>
-            <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <p className="text-ink font-serif text-2xl font-bold sm:text-3xl">約80ml（#12）</p>
-              <p className="text-brand font-sans text-base font-bold">1Lあたり 約12人分</p>
-            </div>
-            <p className="text-ink mt-3 font-sans text-lg font-bold">
-              1人分 約167円
-              <span className="text-ink-muted ml-2 text-xs font-normal">
-                （税別。1L 2,000円÷12杯）
-              </span>
-            </p>
-            <p className="text-ink-light mt-3 font-sans text-sm leading-[1.8]">
-              ホテル・オーベルジュのコースドルチェ皿や、お子さま夕食のデザートとしてしっかり一皿でお出ししたい時に適した量です。2L容器なら約24人分とれます。
-            </p>
-          </div>
+          ))}
         </div>
 
-        <p className="text-ink-muted mt-3 font-sans text-xs">
-          ※1杯あたりの計算：{WHOLESALE_FACTS.costPerScoop}
-        </p>
-
-        {/* 容器サイズ写真＋国際会議・婚礼・宴会・朝食ビュッフェ対応（一体構成） */}
-        <div
-          id="banquet"
-          className="mt-8 grid grid-cols-1 items-center gap-6 rounded-3xl border border-stone-200/80 bg-white p-6 shadow-2xs sm:p-8 lg:grid-cols-12"
-        >
-          <div className="grid grid-cols-2 gap-3 lg:col-span-5">
-            <div className="overflow-hidden rounded-2xl border border-stone-200/70 bg-[#fafaf8] p-2.5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-                <Image
-                  src="/images/bulk_1l.jpg"
-                  alt="業務用 1L角型バルク容器"
-                  fill
-                  sizes="(max-width: 1024px) 45vw, 20vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-ink mt-2 text-center font-sans text-xs font-bold">
-                1L 角型容器（約20人分）
-              </p>
-            </div>
-
-            <div className="overflow-hidden rounded-2xl border border-stone-200/70 bg-[#fafaf8] p-2.5">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-                <Image
-                  src="/images/bulk_2l.jpg"
-                  alt="業務用 2L角型バルク容器"
-                  fill
-                  sizes="(max-width: 1024px) 45vw, 20vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="text-ink mt-2 text-center font-sans text-xs font-bold">
-                2L 角型容器（約40人分）
-              </p>
-            </div>
-          </div>
-
-          <div className="lg:col-span-7">
-            <span className="bg-brand/10 text-brand inline-block rounded-full px-3 py-1 font-sans text-xs font-bold">
-              国際会議・訪日団体・婚礼・朝食ビュッフェにも
-            </span>
-            <h3 className="text-ink mt-3 font-serif text-lg leading-snug font-bold sm:text-xl">
-              人数の多い席でも全員に同じデザートを出せ、冷凍庫に常備しておける。
-            </h3>
-            <p className="text-ink-light mt-2.5 font-sans text-sm leading-[1.85]">
-              国際会議（MICE）や訪日インバウンド団体の会食、婚礼披露宴・ご宴会・ケータリングなど人数の多いお席でも、菜食やアレルギーの方だけ別皿に差し替えることなく皆様に同じ一皿をお出しいただけます。省スペースな1L・2Lの角型容器のまま
-              {WHOLESALE_FACTS.storage}
-              しておけるため、朝食ビュッフェや急なリクエスト対応の常備品としても重宝します。
-            </p>
+        <div className="mt-5 flex flex-col justify-between gap-2.5 rounded-2xl border border-stone-200/70 bg-[#f7f3ec] px-4 py-3 sm:flex-row sm:items-center sm:px-5">
+          <p className="text-ink font-sans text-xs leading-relaxed">
+            <strong>売店・お部屋菓子・個別予約日のお守り常備にも：</strong>
+            「100ml個食カップ（税別¥300・60個〜）」や「屋号ロゴOEM（開発費¥0）」も選べます。
+          </p>
+          <div className="flex shrink-0 flex-wrap gap-3 font-sans text-xs font-bold">
+            <Link href="/wholesale" className="text-brand underline underline-offset-4">
+              100mlカップ案内 →
+            </Link>
+            <Link
+              href="/oem/plan?src=hotel_portion"
+              className="text-brand underline underline-offset-4"
+            >
+              屋号ロゴOEM →
+            </Link>
           </div>
         </div>
       </div>

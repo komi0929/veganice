@@ -48,11 +48,11 @@ function OemHeaderContent() {
           <a href="#courses" className="hover:text-brand transition-colors">
             2つのプラン・料金
           </a>
-          <a href="#timeline" className="hover:text-brand transition-colors">
-            お届けの流れ
-          </a>
           <a href="#simulator" className="hover:text-brand transition-colors">
             利益試算
+          </a>
+          <a href="#timeline" className="hover:text-brand transition-colors">
+            お届けの流れ
           </a>
           <a href="#faq" className="hover:text-brand transition-colors">
             よくある質問
@@ -95,11 +95,11 @@ function OemHeaderFallback() {
           <a href="#courses" className="hover:text-brand transition-colors">
             2つのプラン・料金
           </a>
-          <a href="#timeline" className="hover:text-brand transition-colors">
-            お届けの流れ
-          </a>
           <a href="#simulator" className="hover:text-brand transition-colors">
             利益試算
+          </a>
+          <a href="#timeline" className="hover:text-brand transition-colors">
+            お届けの流れ
           </a>
           <a href="#faq" className="hover:text-brand transition-colors">
             よくある質問

@@ -1,50 +1,32 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import CoreValueSection from "./components/CoreValueSection";
-import SocialProofSection from "./components/SocialProofSection";
-import ProductsSection from "./components/ProductsSection";
-import ComparisonSection from "./components/ComparisonSection";
 import EconomicsSection from "./components/EconomicsSection";
-import HowItWorksSection from "./components/HowItWorksSection";
-import FAQSection from "./components/FAQSection";
+import CoreValueSection from "./components/CoreValueSection";
+import ProductsSection from "./components/ProductsSection";
 import ContactForm from "./components/ContactForm";
+import SocialProofSection from "./components/SocialProofSection";
+import FAQSection from "./components/FAQSection";
 import OemCrossLinkBanner from "./components/OemCrossLinkBanner";
 import FloatingCTA from "./components/FloatingCTA";
 import Footer from "./components/Footer";
 
+/**
+ * 総合トップLP（6段ビジュアルカタログ構成）
+ * 1. FV → 2. 一皿のイメージ（写真4枚） → 3. 選ばれる3つの理由 → 4. 全11種の味＋取引条件
+ * → 5. 無料6個サンプル申込 → 6. 実物口コミ＋折りたたみ創業背景＋FAQ＋OEM案内
+ */
 export default function Home() {
   return (
     <>
       <Header />
       <main className="flex-1">
-        {/* ① ファーストビュー */}
         <HeroSection />
-
-        {/* ② 3つの「問題→解決」— 米粉製法・発酵素材・専用工房 */}
-        <CoreValueSection />
-
-        {/* ③ 導入実績・お客様の声 */}
-        <SocialProofSection />
-
-        {/* ④ プロダクト情報（フレーバー・仕様） */}
-        <ProductsSection />
-
-        {/* ⑤ 競合比較 */}
-        <ComparisonSection />
-
-        {/* ⑥ 導入価値 */}
         <EconomicsSection />
-
-        {/* ⑦ 導入フロー */}
-        <HowItWorksSection />
-
-        {/* ⑧ FAQ */}
-        <FAQSection />
-
-        {/* ⑨ お問い合わせ */}
+        <CoreValueSection />
+        <ProductsSection />
         <ContactForm />
-
-        {/* ⑩ OEM・オリジナル製造のご案内（要点版 /oem/plan へ直結） */}
+        <SocialProofSection />
+        <FAQSection />
         <OemCrossLinkBanner context="general" />
       </main>
       <Footer />

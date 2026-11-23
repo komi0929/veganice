@@ -54,70 +54,68 @@ const navItems: WholesaleNavItem[] = [
 const standardFlavorGroups: WholesaleFlavorGroup[] = [
   {
     title: "濃厚ミルク・カカオ・茶葉系（6種）",
-    subtitle:
-      "クーベルチュールやココナッツ、濃縮甘酒・白みその旨みを重ねた、スプーンに吸い付く濃密仕立て",
+    subtitle: "クーベルチュールやココナッツ、濃縮甘酒・白みその濃密仕立て",
     items: [
       {
         displayName: "バニラココナッツ",
         image: "/images/flavors/vanilla_coconut.png",
-        note: "国産豆乳にココナッツミルクの甘いコクと隠し味の白みそを重ねた、ミルキーな王道バニラ",
+        note: "ココナッツと白みそが香る王道バニラ",
       },
       {
         displayName: "UMAMIバニラ",
         image: "/images/flavors/umami_vanilla.png",
-        note: "玄米粉と甘酒・白みそ・りんごの旨みにバニラビーンズが香る、塩キャラメルのように奥深い一玉",
+        note: "甘酒と白みその塩キャラメル様のコク",
       },
       {
         displayName: "抹茶",
         image: "/images/flavors/matcha.png",
-        note: "低温殺菌で守った鮮やかな茶葉のほろ苦さを、濃縮甘酒と白みその旨みが支えるお濃茶仕立て",
+        note: "濃縮甘酒と白みそが支えるお濃茶仕立て",
       },
       {
         displayName: "ほうじ茶",
         image: "/images/flavors/houjicha.png",
-        note: "香ばしく焙煎した茶葉の立ち上る薫香と、濃縮甘酒のまろやかな甘みが重なる芳醇な味わい",
+        note: "焙煎茶葉の立ち上る薫香と甘酒のコク",
       },
       {
         displayName: "ショコラ",
         image: "/images/flavors/chocolate.png",
-        note: "クーベルチュールチョコと純ココアを贅沢に溶かし込んだ、冷たい生チョコのような濃密さ",
+        note: "冷たい生チョコのような濃密カカオ",
       },
       {
         displayName: "アールグレイ",
         image: "/images/flavors/earl_gray.png",
-        note: "ベルガモットと紅茶葉の気品ある香りが華やかに広がる、焼き菓子やタルトの相棒",
+        note: "ベルガモットと紅茶葉が華やかに立つ一玉",
       },
     ],
   },
   {
-    title: "完熟ピューレ・国産ストレート果汁系（5種）",
-    subtitle:
-      "氷っぽいシャーベットではなく、ココナッツクリームや米粉で果肉のようなとろみに仕立てた果実系（豆乳不使用）",
+    title: "完熟ピューレ・国産ストレート果汁系（5種・豆乳不使用）",
+    subtitle: "ココナッツや米粉で果肉のようなとろみに仕立てた果実系",
     items: [
       {
         displayName: "マンゴー",
         image: "/images/flavors/mango.png",
-        note: "完熟アップルマンゴーピューレを贅沢に使い、熟れた果肉を裏ごししたようなとろりと濃密な甘み",
+        note: "完熟果肉を裏ごししたような濃密な甘み",
       },
       {
         displayName: "ミックスベリー",
         image: "/images/flavors/berry_mix.png",
-        note: "甘酸っぱい苺と華やかな木苺ピューレにココナッツクリームを重ねた、鮮やかな果実味",
+        note: "苺と木苺ピューレの鮮やかな果実味",
       },
       {
         displayName: "もも",
         image: "/images/flavors/peach.png",
-        note: "国産ももストレート果汁をベースに、白桃をかじった瞬間のみずみずしい香りを閉じ込めた一玉",
+        note: "国産白桃をかじったような瑞々しい香り",
       },
       {
         displayName: "りんご",
         image: "/images/flavors/apple.png",
-        note: "国産りんご果汁の蜜のような甘みとキュッと締まった酸味で、食後の口の中をさらりと整える味わい",
+        note: "国産りんご果汁の蜜感と爽やかな酸味",
       },
       {
         displayName: "ドラゴンフルーツ",
         image: "/images/flavors/dragon_fruit.png",
-        note: "鮮やかなルビー色の果実にパインアップルとココナッツミルクを合わせた、器が華やぐ南国仕立て",
+        note: "ルビー色にパインが香る華やかな南国味",
       },
     ],
   },

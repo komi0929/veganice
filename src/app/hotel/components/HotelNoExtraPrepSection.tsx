@@ -1,48 +1,28 @@
 import Image from "next/image";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
-const inboundElements = [
+const hotelReasons = [
   {
-    badge: "01｜食の条件を1つでカバー",
-    title: "海外のお客様に多い「ヴィーガン・グルテンフリー・乳卵不使用」にこれ1つで対応",
-    body: "欧米・豪州・アジアからのご宿泊や訪日団体では、ヴィーガン・ベジタリアン、グルテンフリー（小麦不使用）、乳製品を控える食習慣、乳・卵・小麦アレルギーが日常的に重なります。全11種が100%植物性・乳卵小麦不使用のため、複数のリクエストにもお子さまの夕食にも同じアイス1つで対応できます。",
-  },
-  {
-    badge: "02｜和洋に合う11種",
-    title: "同席の皆様と同じ一皿でお出しできる、抹茶・ほうじ茶・ショコラ・国産果実",
-    body: "抹茶・ほうじ茶・UMAMIバニラ（白味噌）や、クーベルチュールを使ったショコラ、国産もも・りんごなど全11種をご用意。食事制限のあるお客様にも同席のご家族にも、同じデザートとしてそのままお出しいただけます。",
-  },
-  {
-    badge: "03｜厨房の省力化・無ロス",
-    title: "事前申告の日も、当日のリクエストも、別メニューの仕込み・廃棄ロスゼロ",
-    body: "1名分だけ別の甘味を仕込む手間が減り、冷凍保管のため廃棄ロスも出ません。濃厚なコクがありながら後口は軽やかで、品数の多い会席やコースの締めくくりにも馴染みます。",
-  },
-  {
-    badge: "04｜スタッフも案内しやすい",
-    title: "乳・卵・小麦・白砂糖不使用。原材料が明確で英語でも案内しやすい",
-    body: "海外のお客様は原材料（Ingredients）を細かく確認されます。全11種が乳・卵・小麦・白砂糖不使用で、味ごとの全原材料・アレルゲンを一覧公開しているため、フロントやホールでも迷わずご案内いただけます。",
-  },
-] as const;
-
-const craftProofs = [
-  {
-    tag: "専用工房",
-    title: "乳・卵・小麦 持ち込みゼロ",
-    caption: "コンタミリスクを抑えた専用環境で手づくり製造",
+    step: "01",
+    empathy: "「1名だけ別甘味を仕込む手間・コンタミ不安」に",
+    title: "ヴィーガン・GF・乳卵不使用を1つでカバー",
+    body: `乳・卵・小麦を一切持ち込まない専用工房製。海外ゲストの食制限やお子さまのアレルギー対応も、皆様と同じ一皿でお出しいただけます（${WHOLESALE_FACTS.allergenAssurance}）。`,
     image: "/images/factory_kitchen_craft.webp",
     alt: "乳・卵・小麦を持ち込まない専用工房での製造風景",
   },
   {
-    tag: "日本の発酵素材",
-    title: "甘酒・白味噌が生む深いコク",
-    caption: "植物性でも物足りなさのない奥行きある味わい",
+    step: "02",
+    empathy: "「植物性アイスは味が薄くて物足りない」という印象に",
+    title: "甘酒と白みその深いコクと、食後の軽やかな余韻",
+    body: "米麹の甘酒と白みそで厚みのある旨みを支えつつ、乳脂肪が口に重たく残らないため、品数の多い会席やコースのあともすっと食べきれます。",
     image: "/images/ingredient_miso_amazake.jpg",
     alt: "甘酒と白味噌など日本の伝統発酵素材",
   },
   {
-    tag: "米粉の独自製法",
-    title: "出し入れしても滑らかさが続く",
-    caption: "シャリシャリ感がなく営業中もクリーミーな舌触り",
+    step: "03",
+    empathy: "「シャリシャリ感や、出し入れによる食感劣化」の悩みに",
+    title: "じっくり炊く米粉製法で、滑らかな舌触りが続く",
+    body: "国産米粉を豆乳や果汁と火にかけて炊き上げる独自製法。氷っぽさがなく、冷凍保管で廃棄ロスもゼロのまま上質な口どけを保てます。",
     image: "/images/bulk_scoop.jpg",
     alt: "米粉の独自製法による滑らかな植物性クラフトアイス",
   },
@@ -50,77 +30,48 @@ const craftProofs = [
 
 export default function HotelNoExtraPrepSection() {
   return (
-    <section id="no-extra-prep" className="scroll-mt-14 bg-[#f7f3ec] py-16 sm:py-24">
+    <section id="no-extra-prep" className="scroll-mt-14 bg-[#f7f3ec] py-12 sm:py-18">
       <div className="mx-auto max-w-5xl px-6">
-        <p className="text-brand mb-3 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
+        <p className="text-brand mb-2 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
           <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
-          どんなアイス？｜海外ゲスト対応と厨房のメリット
+          選ばれる3つの理由
         </p>
-        <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
-          「1人だけ別メニュー」の手間をなくし、
-          <br className="hidden sm:inline" />
-          全員に同じ本格デザートを。
+        <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
+          「1人だけ別メニュー」の手間をなくし、全員に同じ本格デザートを。
         </h2>
-        <div className="text-ink-light mt-4 max-w-3xl space-y-2.5 font-sans text-[15px] leading-[1.85] sm:text-base">
-          <p>
-            私たちSoyStories（ソイストーリーズ）は、100%植物性・グルテンフリーのお菓子とアイスを手づくりしている福岡・薬院のスイーツ専門店です。
-          </p>
-          <p>
-            乳・卵・小麦を持ち込まない専用工房で仕込んだクラフトアイスを、全国のホテル・旅館・コース料理店様へ業務用の1L・2L容器でお届けしています。海外からのご宿泊客や食の制限の申告がある日も、別メニューを仕込むことなく皆様に同じ一皿をお出しいただけます。
-          </p>
-        </div>
 
-        {/* 海外のお客様が増える現場に必要な4つの要素（2×2グリッド） */}
-        <div className="mt-9 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
-          {inboundElements.map((item) => (
-            <div
-              key={item.badge}
-              className="flex flex-col rounded-2xl border border-stone-200/80 bg-white p-5 shadow-2xs sm:p-6"
+        <ol className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+          {hotelReasons.map((item) => (
+            <li
+              key={item.step}
+              className="flex flex-col overflow-hidden rounded-3xl border border-stone-200/80 bg-white shadow-2xs"
             >
-              <span className="bg-brand/10 text-brand inline-block self-start rounded-full px-3 py-1 font-sans text-xs font-bold">
-                {item.badge}
-              </span>
-              <h3 className="text-ink mt-3 font-serif text-base leading-snug font-bold sm:text-lg">
-                {item.title}
-              </h3>
-              <p className="text-ink-light mt-2 font-sans text-sm leading-[1.85]">{item.body}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* 品質を支える3つの製法・環境（写真付き） */}
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {craftProofs.map((proof) => (
-            <div
-              key={proof.tag}
-              className="flex items-center gap-3.5 rounded-2xl border border-stone-200/80 bg-white p-3.5 shadow-2xs sm:flex-col sm:items-stretch sm:p-4"
-            >
-              <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-stone-100 sm:aspect-[16/10] sm:h-auto sm:w-full">
+              <div className="relative aspect-[16/10] w-full bg-stone-100">
                 <Image
-                  src={proof.image}
-                  alt={proof.alt}
+                  src={item.image}
+                  alt={item.alt}
                   fill
-                  sizes="(max-width: 640px) 96px, 33vw"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
                 />
+                <span className="bg-brand absolute top-2.5 left-2.5 rounded-full px-2.5 py-0.5 font-sans text-[11px] font-bold text-white">
+                  {item.step}
+                </span>
               </div>
-              <div>
-                <p className="text-brand font-sans text-[11px] font-bold">{proof.tag}</p>
-                <p className="text-ink mt-0.5 font-sans text-sm font-bold">{proof.title}</p>
-                <p className="text-ink-muted mt-1 font-sans text-xs leading-relaxed">
-                  {proof.caption}
+              <div className="flex flex-1 flex-col p-5">
+                <p className="text-brand font-sans text-[11.5px] leading-snug font-bold">
+                  {item.empathy}
+                </p>
+                <h3 className="text-ink mt-1.5 font-serif text-base leading-snug font-bold">
+                  {item.title}
+                </h3>
+                <p className="text-ink-light mt-2 font-sans text-xs leading-[1.75] sm:text-[13px]">
+                  {item.body}
                 </p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
-
-        <div className="mt-5 rounded-2xl border border-stone-200/80 bg-white px-5 py-4 sm:px-6">
-          <p className="text-ink font-sans text-xs leading-relaxed sm:text-sm">
-            <strong className="text-brand mr-2 font-bold">アレルゲン管理（専用工房）：</strong>
-            {WHOLESALE_FACTS.allergenAssurance}製造環境です。{WHOLESALE_FACTS.allergen}。
-          </p>
-        </div>
+        </ol>
       </div>
     </section>
   );
