@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESC,
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://soystories.cafe/wholesale" },
+  alternates: { canonical: "https://www.soystories.cafe/wholesale" },
   openGraph: {
     title: `${PAGE_TITLE} | SoyStories`,
     description: PAGE_DESC,
     type: "website",
     locale: "ja_JP",
-    url: "https://soystories.cafe/wholesale",
+    url: "https://www.soystories.cafe/wholesale",
     siteName: "SoyStories",
     images: [
       {
@@ -130,7 +130,7 @@ const termsRows = [
   },
   {
     label: "定番カップ価格",
-    value: `100mlカップ 税別 ¥${PRICING_CONSTANTS.cupBasePriceExTax}（税込 ¥${PRICING_CONSTANTS.cupBasePriceTaxIncl}・SoyStoriesラベル付・最小60個〜、味ミックス自由）`,
+    value: `100mlカップ 税別 ¥${PRICING_CONSTANTS.cupBasePriceExTax}（税込 ¥${PRICING_CONSTANTS.cupBasePriceTaxIncl}・SoyStoriesラベル付・最小60個〜、120個推奨）`,
   },
   { label: "1Lあたりの杯数目安", value: WHOLESALE_FACTS.scoopsPerLiter },
   { label: "無料試食サンプル", value: WHOLESALE_FACTS.sampleTerms },
@@ -151,6 +151,7 @@ interface WholesaleBriefPageProps {
     email?: string;
     phone?: string;
     c?: string;
+    s?: string;
   }>;
 }
 
@@ -164,7 +165,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
   const storeName = params.store?.trim() || null;
 
   const oemForward = new URLSearchParams();
-  for (const key of ["store", "name", "email", "phone", "c"] as const) {
+  for (const key of ["store", "name", "email", "phone", "c", "s"] as const) {
     const val = params[key]?.trim();
     if (val) {
       oemForward.set(key, val);
@@ -198,9 +199,9 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
             </h1>
             <p className="text-ink-light mt-3 max-w-3xl font-sans text-sm leading-relaxed sm:text-[15px]">
               乳・卵・小麦を持ち込まない専用工房の定番全11フレーバーを、用途に合わせて
-              <strong>「店内盛り付け用の業務用バルク（4L〜）」</strong>または
+              <strong>「店内盛り付け用の業務用バルク（4L〜・味ミックス自由）」</strong>または
               <strong>「そのまま販売できるSoyStoriesラベル付き100mlカップ（60個〜）」</strong>
-              からお選びいただけます。どちらも味の組み合わせは自由で、お支払いは
+              からお選びいただけます。お支払いは
               <strong>「納品月の月末締め・翌月末ご請求書払い」</strong>です。
             </p>
 
@@ -264,7 +265,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
                     SoyStoriesのカラーデザイン丸シール＆底面法定表示ラベル貼付済みでお届け。シールの手配なしで届いたその日から店頭販売いただけます。
                   </p>
                   <p className="text-ink mt-3 rounded-xl bg-[#faf8f4] px-3.5 py-2 font-sans text-xs font-bold">
-                    最小ロット：60個〜（120個で1箱ぴったり・11種ミックス自由）
+                    最小ロット：60個〜（120個で1箱ぴったり）
                   </p>
                 </div>
               </div>

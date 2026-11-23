@@ -115,6 +115,12 @@ export default function WholesaleFooter({
             &copy; {new Date().getFullYear()} SoyStories / 株式会社ヒトコト. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-6 font-sans text-xs text-white/40">
+            <a
+              href="https://www.soystories.jp/b2b.html"
+              className="hover:text-cta transition-colors"
+            >
+              法人・業務用総合案内（soystories.jp）
+            </a>
             <Link href="/company" className="hover:text-cta transition-colors">
               運営会社・特定商取引法に基づく表記
             </Link>

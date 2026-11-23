@@ -20,6 +20,9 @@ function buildCorsHeaders(origin: string | null): Record<string, string> {
 
 export async function OPTIONS(request: NextRequest): Promise<NextResponse> {
   const origin = request.headers.get("origin");
+  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+    return new NextResponse(null, { status: 403 });
+  }
   return new NextResponse(null, {
     status: 204,
     headers: buildCorsHeaders(origin),
@@ -28,6 +31,12 @@ export async function OPTIONS(request: NextRequest): Promise<NextResponse> {
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const origin = request.headers.get("origin");
+  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+    return NextResponse.json(
+      { success: false, message: "許可されていない送信元です。" } satisfies ContactState,
+      { status: 403 }
+    );
+  }
   const corsHeaders = buildCorsHeaders(origin);
 
   try {
