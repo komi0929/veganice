@@ -37,7 +37,7 @@ export default function HotelSampleSection() {
             まずは6個、厨房で味をお確かめください。
           </h2>
           <p className="text-ink-light mt-3 font-sans text-sm leading-[1.85] sm:text-[15px]">
-            海外からのお客様にも一般のお客様にも同じ一皿として出せる味わいか、食後のすっきり感や滑らかな口どけを実際の器に盛ってお確かめいただけます。
+            会席やコースのあとにもすっと軽やかに食べきれる抹茶や国産白桃、濃厚なバニラの口どけを、実際の器に盛って厨房でお確かめいただけます。
           </p>
 
           <div className="mt-7 overflow-hidden rounded-3xl border border-stone-200/80 bg-[#f7f3ec]">

@@ -31,8 +31,12 @@ export default function CafeHeroSection() {
                 乳・卵・小麦を使わない
               </span>
             </span>
-            <span className="block">クラフトアイスを。</span>
+            <span className="block">濃密なクラフトアイスを。</span>
           </h1>
+
+          <p className="text-ink-light mt-3 font-sans text-[13.5px] leading-[1.8] sm:mt-4 sm:text-[15px]">
+            温かいタルトやワッフルにとろりと絡む濃厚なバニラや、深煎り珈琲と溶け合うアフォガート、グラスに映える完熟果実のフロートまで、一皿を豊かに彩ります。
+          </p>
 
           <ul className="mt-4 space-y-2 rounded-2xl border border-stone-200/80 bg-[#fafaf8] px-4 py-3.5 sm:mt-5 sm:space-y-2.5 sm:px-5 sm:py-4">
             {summaryPoints.map((point) => (

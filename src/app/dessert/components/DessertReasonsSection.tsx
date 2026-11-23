@@ -5,6 +5,8 @@ const coreValues = [
   {
     num: "01",
     tag: "Velvety Rice-Flour Craft",
+    problem:
+      "「植物性アイスはシャリシャリして水っぽい」「冷凍庫を出し入れするうちに食感が落ちてしまう」——そんな飲食店の悩みを解消します。",
     title: "米粉をじっくり炊き上げる独自製法。スプーンに吸い付く濃密な口どけ。",
     body: [
       "国産米粉を豆乳や甘酒、果汁と一緒にじっくり火にかけ、とろりとしたベースに炊き上げてから冷やし固めることで、体温でなめらかにほどける濃密な舌触りに仕立てています。",
@@ -18,6 +20,8 @@ const coreValues = [
   {
     num: "02",
     tag: "Richness & Clean Finish",
+    problem:
+      "「ヴィーガンアイスは味気ない」「コクがなく、どれも似たような味になってしまう」という不満に。",
     title: "生チョコや濃茶のように濃厚なのに、あと口はすっと軽やか。",
     body: [
       "クーベルチュールチョコレートやココナッツクリームのリッチな口どけに、てんさい糖・きび砂糖のまろやかな甘み、そして米麹の甘酒と少量の白みそを重ねています。",
@@ -31,6 +35,8 @@ const coreValues = [
   {
     num: "03",
     tag: "Dedicated Workshop",
+    problem:
+      "「本当に安心して出せる？ 製造ラインでの乳や小麦のコンタミ（混入）が心配」というお店の不安に。",
     title: "乳・卵・小麦を一切持ち込まない専用工房で製造。",
     body: [
       "SoyStoriesの専用アイス工房では、乳製品・卵・小麦を一切持ち込みません（※ナッツ類を使用した製品は製造しています）。",
@@ -43,17 +49,17 @@ const coreValues = [
   },
 ];
 
-/** 全国の飲食店・カフェ・菓子店に選ばれる3つの製法・環境（米粉製法・発酵素材・専用工房） */
+/** 全国の飲食店・カフェ・菓子店に選ばれる3つの技術的裏付け（米粉製法・発酵素材・専用工房） */
 export default function DessertReasonsSection() {
   return (
     <section id="reasons" className="bg-bg-white scroll-mt-16 py-16 sm:py-24">
       <div className="mx-auto max-w-5xl px-6">
         <SectionHeader
-          eyebrow="製法と製造環境"
-          lines={["素材と手仕事で仕立てる、", "SoyStoriesの3つの特徴。"]}
+          eyebrow="3つの独自製法"
+          lines={["レストラン・カフェ・菓子店、", "プロの現場で選ばれる3つの理由。"]}
           lead={[
-            "乳・卵・小麦・白砂糖を使わず、直営店でも「普通のアイスより好き」と選ばれる味わいを、",
-            "専用工房からそのまま全国のお店へお届けします。",
+            "「植物性アイスはシャリシャリして物足りない」「出し入れで食感が落ちる」というこれまでの常識を覆す、",
+            "SoyStoriesならではの3つのこだわりです。",
           ]}
         />
 
@@ -71,8 +77,15 @@ export default function DessertReasonsSection() {
                   {item.num} — {item.tag}
                 </p>
 
-                {/* 見出し */}
-                <h3 className="text-ink mt-3 text-xl leading-snug font-bold sm:text-2xl">
+                {/* 課題提起 */}
+                <div className="mt-3 rounded-xl border-l-3 border-amber-300 bg-[#fdfbf7] p-3 pl-4">
+                  <p className="text-ink-light text-[13px] leading-relaxed italic">
+                    {item.problem}
+                  </p>
+                </div>
+
+                {/* 解決見出し */}
+                <h3 className="text-ink mt-4 text-xl leading-snug font-bold sm:text-2xl">
                   {item.title}
                 </h3>
 

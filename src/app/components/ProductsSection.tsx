@@ -166,9 +166,9 @@ export default function ProductsSection() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-ink-light mt-6 text-base leading-relaxed sm:text-lg"
           >
-            すべて乳・卵・小麦・白砂糖不使用。乳脂肪ゼロで食後も軽やかな後味です。
+            温かいタルトやドーナツにとろりと絡む濃厚なバニラやショコラ、
             <br className="hidden sm:block" />
-            レストラン・定食の食後、カフェのフロート、ドーナツ・焼き菓子添えまで自由に組み合わせられます。
+            会席やスパイス料理のあとにもすっと軽やかに食べきれる抹茶や国産白桃まで、11種を自由に組み合わせられます。
           </motion.p>
         </div>
 

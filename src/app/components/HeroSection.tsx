@@ -78,11 +78,11 @@ export default function HeroSection() {
             variants={itemVariants}
             className="max-w-xl font-sans text-[0.85rem] leading-[1.9] text-gray-100 sm:text-base md:text-lg"
           >
-            福岡・薬院の小さなお店から生まれた、
+            温かいタルトにとろりと絡む濃厚なバニラ、
             <br className="sm:hidden" />
-            プラントベース クラフトアイスクリーム。
+            会席やスパイス料理のあとに軽やかに香る抹茶や国産白桃。
             <br />
-            乳・卵・小麦・白砂糖不使用。乳脂肪ゼロで食後もすっきり。
+            福岡・薬院の専用工房から届ける、乳・卵・小麦・白砂糖不使用のクラフトアイス。
           </motion.p>
 
           {/* CTA */}

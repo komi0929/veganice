@@ -37,7 +37,7 @@ export default function CafeSampleSection() {
             まずは、味を確かめてみてください。
           </h2>
           <p className="text-ink-light mt-3 font-sans text-sm leading-[1.85] sm:text-[15px]">
-            お店のケーキや焼き菓子、珈琲・ソーダと実際に合わせて、滑らかな口どけと素材の香りをお確かめいただけます。
+            焼きたての温かいタルトやドーナツにとろりと絡む口どけや、深煎り珈琲・自家製ソーダと合わせたときの香りの広がりを、ぜひお店でお確かめください。
           </p>
 
           <div className="mt-7 overflow-hidden rounded-3xl border border-stone-200/80 bg-[#f7f3ec]">

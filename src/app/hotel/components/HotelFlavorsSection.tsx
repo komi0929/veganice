@@ -122,10 +122,10 @@ export default function HotelFlavorsSection() {
                 会席・和食に
               </span>
               <h4 className="text-ink mt-3 font-serif text-base font-bold">
-                会席の最後の甘味として
+                会席の締めくくりの甘味として
               </h4>
               <p className="text-ink-light mt-2 font-sans text-xs leading-[1.8] sm:text-[13px]">
-                和の小鉢や豆皿に50mlほど盛り付け、黒豆やきな粉、ミントを少し添えるだけで落ち着いた締めくくりの一皿になります。
+                旬の会席のあとにもすっと軽やかに食べきれるお濃茶仕立ての抹茶やほうじ茶を和の小鉢に。黒豆やきな粉、ミントを添えて、海外やアレルギーのお客様にも同じ一皿でお出しいただけます。
               </p>
             </div>
 
@@ -140,10 +140,10 @@ export default function HotelFlavorsSection() {
                 水菓子・ドルチェ添えに
               </span>
               <h4 className="text-ink mt-3 font-serif text-base font-bold">
-                季節の果物やケーキに添えて
+                季節の果物や温かいガトーに添えて
               </h4>
               <p className="text-ink-light mt-2 font-sans text-xs leading-[1.8] sm:text-[13px]">
-                旬の果物・コンポートの横にりんごやももを添える水菓子や、ホテルのガトー・タルトにバニラやアールグレイを添えるアシェットデセールに。
+                旬の果物・コンポートに国産白桃やりんごの瑞々しい甘味を添える水菓子や、温かいガトー・タルトにとろりと絡む濃厚なバニラやショコラのアシェットデセールに。
               </p>
             </div>
 
@@ -152,10 +152,10 @@ export default function HotelFlavorsSection() {
                 和甘味・洋コースに
               </span>
               <h4 className="text-ink mt-3 font-serif text-base font-bold">
-                最中・求肥やジュレと合わせて
+                最中・求肥や珈琲ゼリーと重ねて
               </h4>
               <p className="text-ink-light mt-2 font-sans text-xs leading-[1.8] sm:text-[13px]">
-                最中皮・求肥と合わせた和甘味や、ガラス器で珈琲ゼリー・ジュレに重ねるコースの締めくくりにもそのまま馴染みます。
+                香ばしい最中皮や求肥と合わせる和甘味や、ガラス器でほろ苦い珈琲ゼリー・季節のジュレと溶け合うコースの締めくくりにも美しく馴染みます。
               </p>
             </div>
           </div>

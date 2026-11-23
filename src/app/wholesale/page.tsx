@@ -18,7 +18,7 @@ const PAGE_DESC =
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: PAGE_DESC,
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
   alternates: { canonical: "https://soystories.cafe/wholesale" },
   openGraph: {
     title: `${PAGE_TITLE} | SoyStories`,

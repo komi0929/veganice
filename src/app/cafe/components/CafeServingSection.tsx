@@ -68,10 +68,10 @@ export default function CafeServingSection() {
           お店での使い方
         </p>
         <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
-          ドーナツ・焼き菓子の添えから、フロート・持ち帰りカップまで。
+          温かいタルトの添えから、深煎り珈琲のアフォガートまで。
         </h2>
         <p className="text-ink-light mt-4 max-w-3xl font-sans text-[15px] leading-[1.85] sm:text-base">
-          仕込みの手間や日持ちによるロスを増やさず、カフェ・ベーカリーのメニューを広げられます。1Lあたり50ml（#18）なら約20杯・1杯
+          焼きたてのお菓子にとろりと絡む濃厚なバニラやショコラ、グラスに映える完熟マンゴーのフロートなど、仕込みの手間や日持ちロスを増やさずメニューを広げられます。1Lあたり50ml（#18）なら約20杯・1杯
           約100円（税別）、80ml（#12）なら約12杯・1杯 約167円（税別）が目安です。
         </p>
 
