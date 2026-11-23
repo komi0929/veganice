@@ -20,8 +20,8 @@ const flavorGroups: {
   items: Flavor[];
 }[] = [
   {
-    title: "コクあり系（6種）",
-    note: "豆乳・アーモンドミルクに白みそや甘酒のコクを重ねた濃厚仕立て。焼き菓子添えや和甘味にも人気",
+    title: "濃厚ミルク・カカオ・茶葉系（6種）",
+    note: "クーベルチュールやココナッツ、濃縮甘酒・白みその旨みを重ねた、温かいお菓子にも合う濃密仕立て",
     gridColsClass: "grid-cols-3 sm:grid-cols-6",
     items: [
       { name: "バニラ\nココナッツ", image: "/images/flavors/vanilla_coconut.png" },
@@ -33,8 +33,8 @@ const flavorGroups: {
     ],
   },
   {
-    title: "さっぱり果実系（5種）",
-    note: "食後のお口直しやコースの締め、ソーダフロートに映える爽やかなフルーツ系（豆乳不使用）",
+    title: "完熟ピューレ・国産果汁系（5種）",
+    note: "氷っぽいシャーベットではなく、ココナッツクリームや米粉で果肉のようなとろみに仕立てた果実系（豆乳不使用）",
     gridColsClass: "grid-cols-3 sm:grid-cols-5",
     items: [
       { name: "マンゴー", image: "/images/flavors/mango.png" },

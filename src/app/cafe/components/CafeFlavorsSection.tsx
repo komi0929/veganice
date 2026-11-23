@@ -6,71 +6,70 @@ import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 const cafeFlavorGroups: WholesaleFlavorGroup[] = [
   {
-    title: "ケーキ・焼き菓子に（6種）",
-    subtitle:
-      "ガトーショコラ、タルト、ワッフル、パンケーキ、スコーン、最中など焼き菓子の横に添えやすい濃厚・お茶系",
+    title: "濃厚ミルク・カカオ・茶葉系（6種）",
+    subtitle: "温かいタルトやガトーショコラ、焼きドーナツの横でとろりと絡む、コクと余韻の深い6種",
     items: [
       {
         displayName: "バニラココナッツ",
         image: "/images/flavors/vanilla_coconut.png",
-        note: "どの焼き菓子にも寄り添うまろやかな定番",
+        note: "豆乳にココナッツミルクの甘いコクと隠し味の白みそを重ねた、ミルキーで王道のバニラ",
       },
       {
         displayName: "UMAMIバニラ",
         image: "/images/flavors/umami_vanilla.png",
-        note: "白味噌と甘酒の深いコク。アフォガートにも",
+        note: "玄米粉と甘酒・白みそ・りんごの旨みにバニラビーンズが香る、塩キャラメルのように奥深い一玉",
       },
       {
         displayName: "アールグレイ",
         image: "/images/flavors/earl_gray.png",
-        note: "ベルガモット香る紅茶アイス。シフォンやタルトに",
+        note: "ベルガモットと紅茶葉の華やかな香りが口いっぱいに広がる、タルトやスコーンの相棒",
       },
       {
         displayName: "ショコラ",
         image: "/images/flavors/chocolate.png",
-        note: "カカオの深みを白味噌が引き立てる濃厚ショコラ",
+        note: "クーベルチュールチョコと純ココアを贅沢に溶かし込んだ、冷たい生チョコのような濃密さ",
       },
       {
         displayName: "抹茶",
         image: "/images/flavors/matcha.png",
-        note: "甘酒と白味噌が調和するほろ苦い濃厚抹茶",
+        note: "低温殺菌で守った鮮やかな茶葉のほろ苦さを、たっぷりの濃縮甘酒と白みその旨みが支えるお濃茶仕立て",
       },
       {
         displayName: "ほうじ茶",
         image: "/images/flavors/houjicha.png",
-        note: "香ばしい焙煎茶葉の薫香。和パフェや米粉菓子に",
+        note: "焙煎茶葉の香ばしい薫香と濃縮甘酒のやさしい甘みが重なる、和洋どちらのお菓子にも合う芳醇な味",
       },
     ],
   },
   {
-    title: "ドリンク・フロートに（5種）",
+    title: "完熟ピューレ・国産ストレート果汁系（5種）",
     subtitle:
-      "ソーダフロート、ティーフロート、季節のグラスパフェやランチ後の小さなデザートに映える果実系",
+      "氷っぽいシャーベットではなく、ココナッツクリームや米粉で果肉そのもののようなとろみに仕立てた果実系（豆乳不使用）",
     items: [
       {
         displayName: "マンゴー",
         image: "/images/flavors/mango.png",
-        note: "ソーダフロートやパフェに映える濃厚果実味",
+        note: "完熟アップルマンゴーピューレを贅沢に使い、果肉をそのまま裏ごししたような濃密でとろける甘み",
       },
       {
         displayName: "ミックスベリー",
         image: "/images/flavors/berry_mix.png",
-        note: "苺と木苺の甘酸っぱさ。ワッフルや紅茶フロートに",
+        note: "甘酸っぱい苺と華やかな木苺ピューレにココナッツのまろやかさを重ねた、鮮やかな酸味",
       },
       {
         displayName: "もも",
         image: "/images/flavors/peach.png",
-        note: "国産もものみずみずしい果汁感と爽やかな後味",
+        note: "国産もものストレート果汁をベースに、白桃をかじった瞬間のみずみずしい香りを閉じ込めた一玉",
       },
       {
         displayName: "りんご",
         image: "/images/flavors/apple.png",
-        note: "国産りんごのやさしい甘みとすっきりした酸味",
+        note: "国産りんご果汁の蜜のような甘みとキュッと締まった酸味が、食後の口の中を心地よく整える味わい",
       },
       {
         displayName: "ドラゴンフルーツ",
         image: "/images/flavors/dragon_fruit.png",
-        note: "グラスに鮮やかなルビー色が映える爽快な甘さ",
+        note: "鮮やかなルビー色の果実にパインアップルとココナッツミルクを合わせた、華やかな南国仕立て",
       },
     ],
   },

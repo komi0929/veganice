@@ -51,6 +51,7 @@ interface OemPlanPageProps {
     phone?: string;
     c?: string;
     src?: string;
+    s?: string;
   }>;
 }
 
@@ -63,14 +64,16 @@ export default async function OemPlanPage({ searchParams }: OemPlanPageProps) {
   const storeName = params.store?.trim() || null;
 
   const forwardedQuery = new URLSearchParams();
-  for (const key of ["store", "name", "email", "phone", "c", "src"] as const) {
+  for (const key of ["store", "name", "email", "phone", "c"] as const) {
     const val = params[key]?.trim();
     if (val) {
       forwardedQuery.set(key, val);
     }
   }
-  if (!forwardedQuery.has("src")) {
-    forwardedQuery.set("src", "oem_plan");
+  const srcVal = params.src?.trim() || params.s?.trim() || "oem_plan";
+  forwardedQuery.set("src", srcVal);
+  if (params.s?.trim()) {
+    forwardedQuery.set("s", params.s.trim());
   }
   const fullOemHref = `/oem?${forwardedQuery.toString()}`;
 

@@ -11,70 +11,71 @@ const MIZUGASHI_FRUIT_PHOTO_SRC: string | null = null;
 
 const hotelFlavorGroups: WholesaleFlavorGroup[] = [
   {
-    title: "和の献立に（5種）",
-    subtitle: "会席・懐石・精進料理の締めくくりや、季節の果物・水菓子に添えやすい和素材・果実の味",
+    title: "和の献立・水菓子に（5種）",
+    subtitle:
+      "会席・懐石・精進料理の締めくくりに、品数のあとでも重たくならず深い余韻を残す和素材・国産果実の5種",
     items: [
       {
         displayName: "抹茶",
         image: "/images/flavors/matcha.png",
-        note: "甘酒と白味噌がうまみを支える奥深い抹茶",
+        note: "低温殺菌で守った鮮やかな抹茶のほろ苦さを、濃縮甘酒と白みその旨みが支えるお濃茶仕立て",
       },
       {
         displayName: "ほうじ茶",
         image: "/images/flavors/houjicha.png",
-        note: "焙煎茶葉の香ばしい薫香とすっきりした余韻",
+        note: "香ばしく焙煎した茶葉の立ち上る薫香に、濃縮甘酒のまろやかな甘みを重ねた芳醇な一玉",
       },
       {
         displayName: "UMAMIバニラ（白味噌）",
         specKey: "UMAMIバニラ",
         image: "/images/flavors/umami_vanilla.png",
-        note: "白味噌と甘酒が引き出す深いコクと香り",
+        note: "玄米粉と甘酒・白みそ・りんごの旨みにバニラビーンズが香る、和の献立にも馴染む奥深いバニラ",
       },
       {
         displayName: "りんご",
         image: "/images/flavors/apple.png",
-        note: "国産りんごのやさしい甘みと爽やかな酸味",
+        note: "国産りんごストレート果汁の蜜のような甘みとキュッと締まった酸味で、お口直しにも最適な味わい",
       },
       {
         displayName: "もも",
         image: "/images/flavors/peach.png",
-        note: "国産もものみずみずしい果汁感と上品な香り",
+        note: "国産ももストレート果汁をベースに、白桃のみずみずしい香りととろける甘みを閉じ込めた上品な一玉",
       },
     ],
   },
   {
-    title: "洋のコース・朝食に（6種）",
-    subtitle: "ホテルやオーベルジュのコースドルチェ、ケーキ・果物への添え盛り、朝食ビュッフェに",
+    title: "洋のコース・朝食ビュッフェに（6種）",
+    subtitle: "オーベルジュやホテルのアシェットデセール、ガトー添え、インバウンド朝食に華やぐ6種",
     items: [
       {
         displayName: "バニラココナッツ",
         image: "/images/flavors/vanilla_coconut.png",
-        note: "果物やケーキに添えやすいまろやかな定番",
+        note: "国産豆乳にココナッツミルクの甘いコクとほんのり白みそを重ねた、ケーキや果物に寄り添う定番",
       },
       {
         displayName: "アールグレイ",
         image: "/images/flavors/earl_gray.png",
-        note: "ベルガモット華やぐ上品な紅茶の余韻",
+        note: "ベルガモットと紅茶葉の気品ある香りが華やかに立ち上る、洋コースのドルチェに好相性な味わい",
       },
       {
         displayName: "ショコラ",
         image: "/images/flavors/chocolate.png",
-        note: "カカオの深みを白味噌が引き立てる濃厚仕立て",
+        note: "クーベルチュールチョコと純ココアを贅沢に溶かし込んだ、冷たいガナッシュのように濃密な一玉",
       },
       {
         displayName: "ミックスベリー",
         image: "/images/flavors/berry_mix.png",
-        note: "苺と木苺の重なる華やかな甘酸っぱさ",
+        note: "甘酸っぱい苺と木苺ピューレにココナッツクリームを重ねた、鮮やかな酸味と果実味",
       },
       {
         displayName: "マンゴー",
         image: "/images/flavors/mango.png",
-        note: "濃厚なアップルマンゴーの果実味",
+        note: "完熟アップルマンゴーピューレを贅沢に使い、熟れた果肉を裏ごししたようなとろりと濃厚な甘み",
       },
       {
         displayName: "ドラゴンフルーツ",
         image: "/images/flavors/dragon_fruit.png",
-        note: "器に鮮やかな彩りを添える爽やかな甘み",
+        note: "鮮やかなルビー色の果実にパインアップルとココナッツミルクを合わせた、器が華やぐ南国仕立て",
       },
     ],
   },
