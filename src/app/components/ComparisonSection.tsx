@@ -1,58 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Info } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
-const comparisonRows = [
+const signaturePoints = [
   {
-    label: "スプーンを入れた瞬間",
-    cheap: "氷の粒が立ち、シャリシャリ・水っぽくなりやすい",
-    cheapStatus: "negative" as const,
-    soyStories: "じっくり炊き上げた米粉ベースで、ねっとり吸い付くような密度",
-    soyStoriesStatus: "positive" as const,
+    label: "01｜口どけ",
+    title: "じっくり炊き上げた米粉が生む、スプーンに吸い付く濃密さ",
+    body: "国産米粉を豆乳や甘酒、果汁と一緒に火にかけてとろりと炊き上げてから冷やし固める独自製法。体温でなめらかにほどけるリッチな舌触りに仕立てています。",
   },
   {
-    label: "営業中の品質維持",
-    cheap: "冷凍庫の開け閉めで食感が痩せ、霜や氷が出やすい",
-    cheapStatus: "negative" as const,
-    soyStories: "出し入れを繰り返しても氷に戻らず、最後の一杯まで濃密な口どけ",
-    soyStoriesStatus: "positive" as const,
+    label: "02｜コクと余韻",
+    title: "甘酒と白みそを忍ばせた奥深いコクと、すっと軽やかな後口",
+    body: "てんさい糖やきび砂糖のまろやかな甘みに、米麹の甘酒とほんのり塩気のある白みそを重ねました。濃厚な満足感がありながら、食後でも重たくならず心地よく消える余韻が魅力です。",
   },
   {
-    label: "コクと後口のキレ",
-    cheap: "あっさりしすぎて物足りないか、逆に食後に重たく残る",
-    cheapStatus: "negative" as const,
-    soyStories: "甘酒・白みそ・カカオ等の深いコクと、舌に膜を残さずスッと消える余韻",
-    soyStoriesStatus: "positive" as const,
+    label: "03｜素材の輪郭",
+    title: "クーベルチュール、一番茶葉、完熟果実の鮮やかな香り",
+    body: "冷たい生チョコのように濃密なショコラ、お濃茶のように旨み深い抹茶、果肉をそのまま裏ごししたようなマンゴーや国産白桃など、主役の香りがまっすぐ立ち上がります。",
   },
   {
-    label: "アレルゲン管理",
-    cheap: "乳や小麦を扱う共用ラインが多く、アレルギー客に出しづらい",
-    cheapStatus: "negative" as const,
-    soyStories: "乳・卵・小麦を一切持ち込まない専用工房で一釜ずつ製造",
-    soyStoriesStatus: "positive" as const,
+    label: "04｜ボーダレスな美味しさ",
+    title: "普段乳製品を食べる方からも「このアイスが一番好き」と選ばれる味",
+    body: "全11種が乳・卵・小麦・白砂糖不使用でありながら、福岡・薬院の実店舗では国内外のアイス好きのお客様から高い評価（Google ★4.7・HappyCow ★5.0）をいただいています。",
   },
   {
-    label: "原材料の透明性",
-    cheap: "乳製品や白砂糖を含み、こだわりの焼き菓子や料理と基準が揃わない",
-    cheapStatus: "negative" as const,
-    soyStories: "全11種が乳・卵・小麦・白砂糖不使用。味ごとに全原材料を公開",
-    soyStoriesStatus: "positive" as const,
+    label: "05｜専用工房の手仕事",
+    title: "乳・卵・小麦を一切持ち込まない専用工房で、一釜ずつ丁寧に",
+    body: "アレルギーをお持ちのお子さまから海外のヴィーガンゲスト、一緒にテーブルを囲むご家族まで、全員が同じ一皿を気兼ねなく「おいしいね」と囲める時間をつくります。",
   },
   {
-    label: "お客様の反応",
-    cheap: "「アレルギー対応用だから仕方ない」という妥協の一皿になりがち",
-    cheapStatus: "negative" as const,
-    soyStories: "普段乳製品を食べる方から「こっちのアイスの方が好き」と選ばれる",
-    soyStoriesStatus: "positive" as const,
+    label: "06｜現場での美しさ",
+    title: "営業中の出し入れでも氷に戻らず、最後の一杯までなめらか",
+    body: "業務用の冷凍庫で開け閉めを繰り返しても食感が痩せにくく、温かい焼き菓子の横やコースの締めくくりに、いつでも美しい状態でお出しいただけます。",
   },
 ] as const;
-
-function StatusIcon({ status }: { status: "positive" | "negative" }) {
-  if (status === "positive")
-    return <Check className="text-brand h-4 w-4 flex-shrink-0" strokeWidth={3} />;
-  return <Info className="h-4 w-4 flex-shrink-0 text-gray-300" strokeWidth={2} />;
-}
 
 export default function ComparisonSection() {
   return (
@@ -66,13 +48,13 @@ export default function ComparisonSection() {
           className="mb-12 md:mb-16 md:text-center"
         >
           <span className="text-brand mb-4 block text-sm font-semibold tracking-widest uppercase">
-            Our Promise
+            Six Signatures
           </span>
           <h2 className="text-ink mb-6 font-serif text-2xl sm:text-3xl md:text-4xl">
-            「植物性だから仕方ない」——本当にそうでしょうか？
+            ひと口目で心をつかむ、6つの魅力。
           </h2>
           <p className="text-ink-light mx-auto max-w-2xl font-sans text-base leading-relaxed md:text-lg">
-            私たちも同じ悩みを抱えていました。だから、ひとつひとつ向き合ってきました。
+            植物性であること以上に、純粋に「もう一度食べたくなるクラフトアイス」であることを何より大切にしています。
           </p>
         </motion.div>
 
@@ -81,68 +63,25 @@ export default function ComparisonSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm"
+          className="grid grid-cols-1 gap-5 md:grid-cols-2"
         >
-          {/* ── デスクトップ: テーブル表示 ── */}
-          <div className="hidden md:block">
-            {/* テーブルヘッダー */}
-            <div className="grid grid-cols-[180px_1fr_1fr] border-b border-gray-100 bg-gray-50">
-              <div className="p-6" />
-              <div className="border-l border-gray-100 p-6 text-center">
-                <p className="text-ink-muted font-sans text-xs font-medium tracking-wider">
-                  よくあるクラフトアイスの印象
-                </p>
+          {signaturePoints.map((item) => (
+            <div
+              key={item.label}
+              className="rounded-2xl border border-stone-200/80 bg-white p-6 shadow-xs sm:p-7"
+            >
+              <div className="mb-2.5 flex items-center gap-2">
+                <Sparkles className="text-brand h-4 w-4 shrink-0" />
+                <span className="text-brand font-sans text-xs font-bold tracking-wider">
+                  {item.label}
+                </span>
               </div>
-              <div className="bg-brand/5 border-l border-gray-100 p-6 text-center">
-                <p className="text-brand font-serif text-sm font-bold tracking-wider">
-                  SoyStoriesのお約束
-                </p>
-              </div>
+              <h3 className="text-ink font-serif text-base leading-snug font-bold sm:text-lg">
+                {item.title}
+              </h3>
+              <p className="text-ink-light mt-2.5 font-sans text-sm leading-[1.85]">{item.body}</p>
             </div>
-
-            {/* テーブルボディ */}
-            {comparisonRows.map((row, index) => (
-              <div
-                key={index}
-                className={`grid grid-cols-[180px_1fr_1fr] ${
-                  index < comparisonRows.length - 1 ? "border-b border-gray-50" : ""
-                }`}
-              >
-                <div className="flex items-center p-5">
-                  <span className="text-ink font-serif text-sm font-bold">{row.label}</span>
-                </div>
-                <div className="flex items-center gap-2 border-l border-gray-50 p-5">
-                  <StatusIcon status={row.cheapStatus} />
-                  <span className="text-ink-light text-sm leading-snug">{row.cheap}</span>
-                </div>
-                <div className="bg-brand/[0.02] flex items-center gap-2 border-l border-gray-50 p-5">
-                  <StatusIcon status={row.soyStoriesStatus} />
-                  <span className="text-ink text-sm leading-snug font-medium">
-                    {row.soyStories}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ── モバイル: カード表示 ── */}
-          <div className="divide-y divide-gray-100 md:hidden">
-            {comparisonRows.map((row, index) => (
-              <div key={index} className="px-5 py-4">
-                <p className="text-ink mb-3 font-serif text-sm font-bold">{row.label}</p>
-                <div className="mb-2 flex items-start gap-2 rounded-lg bg-gray-50 p-3">
-                  <StatusIcon status={row.cheapStatus} />
-                  <span className="text-ink-light text-sm leading-relaxed">{row.cheap}</span>
-                </div>
-                <div className="bg-brand/5 flex items-start gap-2 rounded-lg p-3">
-                  <StatusIcon status={row.soyStoriesStatus} />
-                  <span className="text-ink text-sm leading-relaxed font-medium">
-                    {row.soyStories}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          ))}
         </motion.div>
 
         {/* CTA */}
@@ -154,7 +93,7 @@ export default function ComparisonSection() {
           className="mt-12 text-center"
         >
           <p className="text-ink-light mb-6 font-sans text-sm">
-            ぜひ、あなたの厨房でこの違いを確かめてみてください。
+            まずは6個の無料試食サンプルで、口どけと余韻をお確かめください。
           </p>
           <a
             href="#contact-form"

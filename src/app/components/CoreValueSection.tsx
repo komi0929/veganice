@@ -15,7 +15,6 @@ const fadeUp = {
 
 interface ValueBlockProps {
   label: string;
-  problem: string;
   solutionTitle: string;
   solutionBody: string;
   isMain?: boolean;
@@ -27,7 +26,6 @@ interface ValueBlockProps {
 
 function ValueBlock({
   label,
-  problem,
   solutionTitle,
   solutionBody,
   isMain = false,
@@ -47,19 +45,10 @@ function ValueBlock({
         {label}
       </motion.p>
 
-      {/* 問題提起 */}
-      <motion.div
-        variants={fadeUp}
-        custom={0.1}
-        className="mb-8 rounded-xl border-l-4 border-gray-300 bg-gray-50 py-4 pr-5 pl-6"
-      >
-        <p className="text-ink font-serif text-base leading-relaxed md:text-lg">{problem}</p>
-      </motion.div>
-
-      {/* 解決策 */}
+      {/* 見出し・本文 */}
       <motion.h3
         variants={fadeUp}
-        custom={0.2}
+        custom={0.1}
         className={`text-ink mb-4 font-serif leading-relaxed font-bold ${
           isMain ? "text-2xl sm:text-3xl md:text-4xl" : "text-xl sm:text-2xl md:text-3xl"
         }`}
@@ -68,7 +57,7 @@ function ValueBlock({
       </motion.h3>
       <motion.p
         variants={fadeUp}
-        custom={0.3}
+        custom={0.2}
         className="text-ink-light font-sans text-base leading-[1.9] md:text-lg"
       >
         {solutionBody}
@@ -133,12 +122,11 @@ export default function CoreValueSection() {
       <ValueBlock
         isMain
         label="01 — Velvety Rice-Flour Craft"
-        problem="植物性のアイスは氷っぽくてシャリシャリする。営業中に冷凍庫を開け閉めするうちに、どんどん食感が痩せてしまう。——多くの料理人が導入をためらってきた最大の理由です。"
-        solutionTitle="米粉をじっくり炊き上げる独自製法。スプーンに吸い付く濃密な口どけが続く。"
-        solutionBody="私たちが目指したのは、「植物性にしては美味しい」ではなく、本場のクラフトジェラートのようにみっちり詰まった密度と、体温でとろりとほどける贅沢な舌触りです。国産米粉を豆乳や甘酒、果汁と一緒に火にかけ、なめらかなベースに炊き上げてから冷やし固めることで、氷の粒が立たないねっとり濃厚な口どけを実現しました。業務用の冷凍庫で出し入れを繰り返しても食感が崩れず、最後の一杯まで美しい一皿をお出しいただけます。"
+        solutionTitle="米粉をじっくり炊き上げる独自製法。スプーンに吸い付く濃密な口どけ。"
+        solutionBody="国産米粉を豆乳や甘酒、果汁と一緒にじっくり火にかけ、とろりとしたベースに炊き上げてから冷やし固めることで、体温でなめらかにほどける濃密な口どけに仕立てました。業務用の冷凍庫で出し入れを繰り返しても氷に戻らず、最後の一杯まで豊かな舌触りが続きます。"
         imageSrc="/images/craft_scoop_cup.webp"
         imageAlt="米粉独自製法によるなめらかなクラフトアイスをカップへ盛り付ける風景"
-        imageBadge="スプーンに吸い付くような、ねっとり濃密な口どけ"
+        imageBadge="スプーンに吸い付くような、濃密でなめらかな口どけ"
         imagePosition="right"
       />
 
@@ -149,9 +137,8 @@ export default function CoreValueSection() {
       {/* ── 要素② 日本の発酵素材 ── */}
       <ValueBlock
         label="02 — Richness & Clean Finish"
-        problem="乳製品を抜くとあっさりしすぎて頼りない。かといって重たいクリームのデザートは、食後にはくどすぎる。"
-        solutionTitle="食べている最中は生チョコや濃茶のように濃厚。なのに、あと口は驚くほど軽やか。"
-        solutionBody="クーベルチュールチョコレートやココナッツクリームのリッチな口どけに、北海道産てんさい糖・きび砂糖のやさしい甘み、そして米麹の甘酒と少量の白みそを忍ばせました。発酵由来の旨みとほのかな塩気が、乳製品なしでも物足りなさのない奥行きのあるコクを生み出します。それでいて舌の上に重たい脂肪の膜を残さないため、茶葉や果実の鮮やかな香りがダイレクトに立ち上がり、コースや食事のあとでもすっと消える心地よい余韻が続きます。"
+        solutionTitle="生チョコや濃茶のように濃厚なのに、あと口は驚くほど軽やか。"
+        solutionBody="クーベルチュールチョコレートやココナッツクリームのリッチな口どけに、北海道産てんさい糖・きび砂糖のやさしい甘み、そして米麹の甘酒と少量の白みそを重ねました。発酵由来の旨みとほのかな塩気が奥深いコクを生み出しつつ、食後には茶葉や果実の鮮やかな香りだけを残してすっと消える、心地よい余韻を楽しめます。"
       />
 
       <div className="mx-auto max-w-4xl px-6">
@@ -161,9 +148,8 @@ export default function CoreValueSection() {
       {/* ── 要素③ 乳・卵・小麦フリーの専用工房 ── */}
       <ValueBlock
         label="03 — Dedicated Workshop"
-        problem="本当に安心して使える？ 製造ラインで乳や小麦を扱っていないか、正直不安。"
         solutionTitle="乳・卵・小麦を一切持ち込まない専用工房で製造。"
-        solutionBody="私たちの専用アイス工房では、乳製品・卵・小麦を一切持ち込みません（※ナッツ類を使用した製品は製造しています）。乳・卵・小麦の意図しない混入リスクを抑えた専用環境のため、乳・卵・小麦アレルギーをお持ちのお客様やヴィーガンの方にも、自信を持ってお出しいただけます。"
+        solutionBody="私たちの専用アイス工房では、乳製品・卵・小麦を一切持ち込みません（※ナッツ類を使用した製品は製造しています）。乳・卵・小麦の意図しない混入リスクを抑えた専用環境のため、乳・卵・小麦アレルギーをお持ちのお客様やヴィーガンの方にも、安心してお出しいただけます。"
         imageSrc="/images/factory_kitchen_craft.webp"
         imageAlt="乳・卵・小麦を持ち込まない専用アイスファクトリーでの仕込み風景"
         imageBadge="乳・卵・小麦フリーの専用工房で製造"
