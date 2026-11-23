@@ -3,7 +3,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://soystories.cafe"),
+  metadataBase: new URL("https://www.soystories.cafe"),
   title: {
     default: "SoyStories | 業務用プラントベース クラフトアイスクリーム — 福岡から全国へ",
     template: "%s | SoyStories",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
       "乳・卵・小麦・白砂糖不使用。4Lの小ロットから。薬院の直営店HappyCow 5.0・Google ★4.7（270件以上）の実証済みクラフトアイスを、あなたのお店に。",
     type: "website",
     locale: "ja_JP",
-    url: "https://soystories.cafe",
+    url: "https://www.soystories.cafe",
     siteName: "SoyStories",
     images: [
       {
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     images: ["/images/soystories_icecream02358icecream.jpg"],
   },
   alternates: {
-    canonical: "https://soystories.cafe",
+    canonical: "https://www.soystories.cafe",
   },
   robots: {
     index: true,

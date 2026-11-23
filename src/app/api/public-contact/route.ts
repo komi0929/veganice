@@ -8,6 +8,27 @@ const ALLOWED_ORIGINS = new Set([
   "https://soystories.cafe",
 ]);
 
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_MAX_HITS = 5;
+const ipHits = new Map<string, number[]>();
+
+function checkIpRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const recent = (ipHits.get(ip) ?? []).filter((ts) => now - ts < RATE_WINDOW_MS);
+  if (recent.length >= RATE_MAX_HITS) {
+    ipHits.set(ip, recent);
+    return false;
+  }
+  recent.push(now);
+  ipHits.set(ip, recent);
+  if (ipHits.size > 500) {
+    for (const [k, arr] of ipHits.entries()) {
+      if (arr.every((ts) => now - ts >= RATE_WINDOW_MS)) ipHits.delete(k);
+    }
+  }
+  return true;
+}
+
 function buildCorsHeaders(origin: string | null): Record<string, string> {
   const allowOrigin = origin && ALLOWED_ORIGINS.has(origin) ? origin : "https://www.soystories.jp";
   return {
@@ -38,6 +59,20 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     );
   }
   const corsHeaders = buildCorsHeaders(origin);
+  const clientIp =
+    (request.headers.get("x-forwarded-for") ?? "").split(",")[0]?.trim() ||
+    request.headers.get("x-real-ip") ||
+    "unknown";
+  if (!checkIpRateLimit(clientIp)) {
+    return NextResponse.json(
+      {
+        success: false,
+        message:
+          "短時間に複数回の送信が行われました。しばらく時間をおいてから再度お試しいただくか、公式LINEよりご連絡ください。",
+      } satisfies ContactState,
+      { status: 429, headers: corsHeaders }
+    );
+  }
 
   try {
     const contentType = request.headers.get("content-type") ?? "";

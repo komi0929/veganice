@@ -137,18 +137,29 @@ const inquirySchema = baseSchema.extend({
   message: z.string().min(1, "お問い合わせ内容は必須です"),
 });
 
-const oemSchema = baseSchema.extend({
-  formType: z.literal("oem"),
-  phone: z.string().optional(),
-  customerToken: z.string().max(120).optional(),
-  oemCourse: z.enum(["seal_only", "base_arrange", "custom_recipe", "undecided"]),
-  packageFormat: z.enum(["cup", "bulk", "both", "undecided"]),
-  ingredientName: z.string().max(200).optional(),
-  ingredientState: z.string().max(200).optional(),
-  allergenStatus: z.enum(["free_confirmed", "checking", "contains_or_unknown", "none_seal_only"]),
-  tasteImage: z.string().max(1000).optional(),
-  desiredTiming: z.string().max(200).optional(),
-});
+const oemSchema = baseSchema
+  .extend({
+    formType: z.literal("oem"),
+    phone: z.string().optional(),
+    customerToken: z.string().max(120).optional(),
+    oemCourse: z.enum(["seal_only", "base_arrange", "custom_recipe", "undecided"]),
+    packageFormat: z.enum(["cup", "bulk", "both", "undecided"]),
+    ingredientName: z.string().max(200).optional(),
+    ingredientState: z.string().max(200).optional(),
+    allergenStatus: z.enum(["free_confirmed", "checking", "contains_or_unknown", "none_seal_only"]),
+    tasteImage: z.string().max(1000).optional(),
+    desiredTiming: z.string().max(200).optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.oemCourse === "seal_only" && data.packageFormat === "bulk") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["packageFormat"],
+        message:
+          "プラン①（フタだけお店ロゴ）は100ml個食カップ専用プランです。2Lバルクをご希望の場合はプラン②または定番卸をお選びください",
+      });
+    }
+  });
 
 const contactSchema = z.discriminatedUnion("formType", [sampleSchema, inquirySchema, oemSchema]);
 
