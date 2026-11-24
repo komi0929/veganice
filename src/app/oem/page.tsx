@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import WholesaleOriginStorySection from "../components/wholesale/WholesaleOriginStorySection";
 import DessertReviewsSection from "../dessert/components/DessertReviewsSection";
 import OemHeader from "./components/OemHeader";
 import OemHeroSection from "./components/OemHeroSection";
@@ -54,6 +55,8 @@ export default function OemFullPage() {
         <OemHeroSection />
         <OemPremiseSection />
         <OemCoursesSection />
+        <WholesaleOriginStorySection variant="oem" />
+        <DessertReviewsSection />
         <OemSimulatorSection />
         <OemTimelineSection />
         <Suspense
@@ -61,7 +64,6 @@ export default function OemFullPage() {
         >
           <OemContactSection />
         </Suspense>
-        <DessertReviewsSection />
         <OemFAQSection />
 
         {/* 定番フレーバー通常卸へのご案内 */}

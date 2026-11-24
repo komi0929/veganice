@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 interface FAQItem {
@@ -90,64 +89,6 @@ export default function DessertFAQSection() {
               </div>
             </details>
           ))}
-        </div>
-
-        {/* 創業の想い・背景（読みたい方だけ開ける折りたたみ） */}
-        <div id="story" className="mt-6 scroll-mt-20">
-          <details className="group rounded-2xl border border-stone-200/80 bg-white shadow-2xs">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
-              <div className="flex items-center gap-3">
-                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                  <Image
-                    src="/images/owner_story.jpg"
-                    alt="SoyStories 代表 小南優作"
-                    fill
-                    sizes="40px"
-                    className="object-cover object-[center_15%]"
-                  />
-                </div>
-                <div>
-                  <p className="text-brand text-[11px] font-bold">Our Story</p>
-                  <p className="text-ink text-xs font-bold sm:text-sm">
-                    「はじめて子どもにアイスを食べさせることができた」——専用工房をつくった理由を読む
-                  </p>
-                </div>
-              </div>
-              <span
-                className="text-brand shrink-0 text-lg leading-none transition-transform duration-200 group-open:rotate-45"
-                aria-hidden="true"
-              >
-                ＋
-              </span>
-            </summary>
-            <div className="border-t border-gray-100 px-5 py-4">
-              <div className="grid grid-cols-1 items-center gap-4 sm:grid-cols-12">
-                <div className="grid grid-cols-2 gap-2.5 sm:col-span-5">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
-                    <Image
-                      src="/images/craft_moment.jpg"
-                      alt="SoyStoriesの専用工房"
-                      fill
-                      sizes="180px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
-                    <Image
-                      src="/images/child_first_icecream.jpg"
-                      alt="初めてクラフトアイスを食べる子どもの様子"
-                      fill
-                      sizes="180px"
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-                <p className="text-ink-light text-xs leading-[1.85] sm:col-span-7">
-                  薬院の小さなお店で「はじめて子どもにアイスを食べさせることができた」と涙されたお母さんや、ノンヴィーガンのお客様からの「普通のアイスより好き！」という声をきっかけに、乳・卵・小麦を持ち込まない専用工房を立ち上げました。お料理やお菓子に全力を注ぐお店の一皿を、専門店の私たちが支えます。
-                </p>
-              </div>
-            </div>
-          </details>
         </div>
       </div>
     </section>

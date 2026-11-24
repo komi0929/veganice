@@ -53,7 +53,7 @@ export default function EconomicsSection() {
             </h2>
           </div>
           <p className="text-ink-muted font-sans text-xs font-medium">
-            1皿 50ml（#18）約100円〜 ／ 冷凍保管で廃棄ロスゼロ
+            1皿 50ml（#18）約100円〜 ／ 賞味期限表示義務なし・長期冷凍で廃棄が出にくい
           </p>
         </div>
 

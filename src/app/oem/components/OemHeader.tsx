@@ -48,6 +48,11 @@ function OemHeaderContent() {
           <a href="#courses" className="hover:text-brand transition-colors">
             2つのプラン・料金
           </a>
+          {!isPlanPage && (
+            <a href="#story" className="hover:text-brand transition-colors">
+              薬院店と想い
+            </a>
+          )}
           <a href="#simulator" className="hover:text-brand transition-colors">
             利益試算
           </a>

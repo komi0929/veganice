@@ -14,9 +14,9 @@ const flavors: {
   color?: string;
 }[] = [
   {
-    name: "バニラココナッツ",
-    story: "ココナッツと白みそが香る王道バニラ",
-    image: "/images/flavors/vanilla_coconut.png",
+    name: "UMAMIバニラ",
+    story: "【人気No.1】甘酒と白みそが香る王道バニラ",
+    image: "/images/flavors/umami_vanilla.png",
   },
   {
     name: "抹茶",
@@ -24,9 +24,9 @@ const flavors: {
     image: "/images/flavors/matcha.png",
   },
   {
-    name: "ショコラ",
-    story: "冷たい生チョコのような濃密カカオ",
-    image: "/images/flavors/chocolate.png",
+    name: "バニラココナッツ",
+    story: "ココナッツが香るさっぱりとした味わい",
+    image: "/images/flavors/vanilla_coconut.png",
   },
   {
     name: "ほうじ茶",
@@ -34,14 +34,14 @@ const flavors: {
     image: "/images/flavors/houjicha.png",
   },
   {
-    name: "UMAMIバニラ",
-    story: "甘酒と白みその塩キャラメル様の奥行き",
-    image: "/images/flavors/umami_vanilla.png",
-  },
-  {
     name: "アールグレイ",
     story: "ベルガモットと紅茶葉が気品高く香る一玉",
     image: "/images/flavors/earl_gray.png",
+  },
+  {
+    name: "ショコラ",
+    story: "冷たい生チョコのような濃密カカオ",
+    image: "/images/flavors/chocolate.png",
   },
   {
     name: "マンゴー",

@@ -3,8 +3,8 @@ import DessertContactForm from "./DessertContactForm";
 
 const badges = [
   "全11種から6個無料（クール便送料のみ着払い）",
-  "通常2営業日以内に専用工房から発送",
-  "契約義務・お申し込み後の電話営業なし",
+  "原則お申し込みの翌日に専用工房から発送",
+  "初期登録費・月間ノルマすべて0円",
 ] as const;
 
 export default function DessertSampleSection() {

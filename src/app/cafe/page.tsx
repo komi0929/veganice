@@ -3,6 +3,7 @@ import WholesaleHeader, { type WholesaleNavItem } from "@/app/components/wholesa
 import WholesaleFooter from "@/app/components/wholesale/WholesaleFooter";
 import WholesaleFloatingCTA from "@/app/components/wholesale/WholesaleFloatingCTA";
 import WholesaleReviewsSlider from "@/app/components/wholesale/WholesaleReviewsSlider";
+import WholesaleOriginStorySection from "@/app/components/wholesale/WholesaleOriginStorySection";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import CafeHeroSection from "./components/CafeHeroSection";
 import CafeServingSection from "./components/CafeServingSection";
@@ -59,17 +60,15 @@ export const metadata: Metadata = {
 
 const navItems: WholesaleNavItem[] = [
   { label: "一皿のイメージ", href: "#serving" },
-  { label: "3つの理由", href: "#policy" },
+  { label: "3つのこだわり", href: "#policy" },
+  { label: "薬院店と想い", href: "#story" },
+  { label: "お客様の声", href: "#reviews" },
   { label: "11種の味・条件", href: "#flavors" },
   { label: "無料サンプル", href: "#contact-form" },
-  { label: "お客様の声", href: "#reviews" },
-  { label: "よくある質問", href: "#faq" },
 ];
 
 /**
- * カフェ・ベーカリー・菓子店向け 業務用卸LP（6段ビジュアルカタログ構成）
- * 1. FV → 2. 一皿のイメージ（写真4枚） → 3. 選ばれる3つの理由 → 4. 全11種の味＋取引条件
- * → 5. 無料6個サンプル申込 → 6. お客様の声＋折りたたみFAQ＋OEM案内
+ * カフェ・ベーカリー・菓子店向け 業務用卸LP
  */
 export default function CafePage() {
   return (
@@ -79,14 +78,15 @@ export default function CafePage() {
         <CafeHeroSection />
         <CafeServingSection />
         <CafePolicySection />
-        <CafeFlavorsSection />
-        <CafeSampleSection />
+        <WholesaleOriginStorySection variant="cafe" />
         <WholesaleReviewsSlider
           eyebrow="直営スイーツ店に届く声"
           heading="「乳製品のアイスより美味しい」国内外から届く評価"
           lead={`福岡・薬院の直営店ではGoogle ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）・HappyCow ${WHOLESALE_FACTS.happyCowRating}を獲得。普段は乳製品のお菓子を召し上がるお客様からも「言われなければ植物性だと気づかない」と喜ばれています。`}
           variant="dark"
         />
+        <CafeFlavorsSection />
+        <CafeSampleSection />
         <CafeFAQSection />
         <OemCrossLinkBanner context="cafe" />
       </main>

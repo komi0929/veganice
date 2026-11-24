@@ -25,26 +25,26 @@ const flavorGroups: {
     gridColsClass: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6",
     items: [
       {
-        name: "バニラココナッツ",
-        note: "ココナッツ香る王道バニラ",
-        image: "/images/flavors/vanilla_coconut.png",
+        name: "UMAMIバニラ",
+        note: "【人気No.1】白みそと甘酒の王道バニラ",
+        image: "/images/flavors/umami_vanilla.png",
       },
       { name: "抹茶", note: "甘酒が支えるお濃茶仕立て", image: "/images/flavors/matcha.png" },
       {
-        name: "ショコラ",
-        note: "生チョコのような濃密カカオ",
-        image: "/images/flavors/chocolate.png",
+        name: "バニラココナッツ",
+        note: "ココナッツが香るさっぱりとした味わい",
+        image: "/images/flavors/vanilla_coconut.png",
       },
       { name: "ほうじ茶", note: "焙煎茶葉の香ばしい薫香", image: "/images/flavors/houjicha.png" },
-      {
-        name: "UMAMIバニラ",
-        note: "甘酒と白みその深いコク",
-        image: "/images/flavors/umami_vanilla.png",
-      },
       {
         name: "アールグレイ",
         note: "ベルガモット華やぐ紅茶味",
         image: "/images/flavors/earl_gray.png",
+      },
+      {
+        name: "ショコラ",
+        note: "生チョコのような濃密カカオ",
+        image: "/images/flavors/chocolate.png",
       },
     ],
   },

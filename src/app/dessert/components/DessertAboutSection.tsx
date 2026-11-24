@@ -34,7 +34,7 @@ const servingExamples = [
 const meritPills = [
   "1皿（50ml）原価 約100円（税別）",
   "小型冷凍庫に収まる1L角型×4本〜",
-  "冷凍保管で仕込み・廃棄ロスゼロ",
+  "賞味期限表示義務なし・長期冷凍で廃棄が出にくい",
 ] as const;
 
 export default function DessertAboutSection() {

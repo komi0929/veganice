@@ -10,6 +10,12 @@ const hotelFlavorGroups: WholesaleFlavorGroup[] = [
     subtitle: "会席・懐石・精進料理の締めくくりに余韻を残す和素材・国産果実",
     items: [
       {
+        displayName: "UMAMIバニラ（白味噌）",
+        specKey: "UMAMIバニラ",
+        image: "/images/flavors/umami_vanilla.png",
+        note: "【人気No.1】甘酒・白みそが香る王道バニラ",
+      },
+      {
         displayName: "抹茶",
         image: "/images/flavors/matcha.png",
         note: "濃縮甘酒と白みそが支えるお濃茶仕立て",
@@ -18,12 +24,6 @@ const hotelFlavorGroups: WholesaleFlavorGroup[] = [
         displayName: "ほうじ茶",
         image: "/images/flavors/houjicha.png",
         note: "焙煎茶葉の立ち上る薫香と甘酒のコク",
-      },
-      {
-        displayName: "UMAMIバニラ（白味噌）",
-        specKey: "UMAMIバニラ",
-        image: "/images/flavors/umami_vanilla.png",
-        note: "甘酒・白みそが香る和食にも合うバニラ",
       },
       {
         displayName: "りんご",
@@ -44,7 +44,7 @@ const hotelFlavorGroups: WholesaleFlavorGroup[] = [
       {
         displayName: "バニラココナッツ",
         image: "/images/flavors/vanilla_coconut.png",
-        note: "ココナッツと白みそが香る王道バニラ",
+        note: "ココナッツが香るさっぱりとした味わい",
       },
       {
         displayName: "アールグレイ",

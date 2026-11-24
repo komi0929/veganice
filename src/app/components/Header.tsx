@@ -33,16 +33,16 @@ export default function Header() {
     ? [
         { label: "一皿のイメージ", href: `${prefix}about` },
         { label: "3つの理由", href: `${prefix}reasons` },
-        { label: "11種の味・条件", href: `${prefix}products` },
+        { label: "薬院店と想い", href: `${prefix}story` },
         { label: "お客様の声", href: `${prefix}reviews` },
-        { label: "よくある質問", href: `${prefix}faq` },
+        { label: "11種の味・条件", href: `${prefix}products` },
       ]
     : [
         { label: "一皿のイメージ", href: `${prefix}value` },
         { label: "3つの理由", href: `${prefix}benefits` },
+        { label: "薬院店と想い", href: `${prefix}story` },
+        { label: "お客様の声", href: `${prefix}reviews` },
         { label: "11種の味・条件", href: `${prefix}products` },
-        { label: "お客様の声", href: `${prefix}story` },
-        { label: "よくある質問", href: `${prefix}faq` },
       ];
 
   return (

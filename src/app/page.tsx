@@ -11,9 +11,10 @@ import FloatingCTA from "./components/FloatingCTA";
 import Footer from "./components/Footer";
 
 /**
- * 総合トップLP（6段ビジュアルカタログ構成）
- * 1. FV → 2. 一皿のイメージ（写真4枚） → 3. 選ばれる3つの理由 → 4. 全11種の味＋取引条件
- * → 5. 無料6個サンプル申込 → 6. 実物口コミ＋折りたたみ創業背景＋FAQ＋OEM案内
+ * 総合トップLP
+ * 1. FV → 2. 一皿のイメージ → 3. 選ばれる3つの理由
+ * → 4. 薬院実店舗の物語・子どものエピソード・実物口コミ → 5. 全11種の味＋取引条件
+ * → 6. 無料6個サンプル申込 → 7. よくある質問＋OEM案内
  */
 export default function Home() {
   return (
@@ -23,9 +24,9 @@ export default function Home() {
         <HeroSection />
         <EconomicsSection />
         <CoreValueSection />
+        <SocialProofSection />
         <ProductsSection />
         <ContactForm />
-        <SocialProofSection />
         <FAQSection />
         <OemCrossLinkBanner context="general" />
       </main>

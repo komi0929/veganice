@@ -12,7 +12,7 @@ const servingScenes = [
   {
     badge: "ドリンクメニューに",
     title: "自家製ソーダや水出し珈琲のフロートに",
-    caption: "完熟マンゴーやミックスベリー、王道バニラで華やかな一杯に。",
+    caption: "完熟マンゴーやミックスベリー、濃厚バニラで華やかな一杯に。",
     image: "/images/serving/serving_float.jpg",
     objectPosition: "object-[center_35%]",
   },
@@ -26,7 +26,7 @@ const servingScenes = [
   {
     badge: "ランチ後・和素材に",
     title: "最中・米粉菓子のアレンジや食後の小皿に",
-    caption: "お濃茶仕立ての抹茶やほうじ茶。食後も軽やかで廃棄ロスも出ません。",
+    caption: "お濃茶仕立ての抹茶やほうじ茶。食後も軽やかで長期冷凍保管にも向いています。",
     image: "/images/serving/serving_monaka.jpg",
     objectPosition: "object-[center_70%]",
   },

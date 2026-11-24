@@ -10,14 +10,24 @@ const cafeFlavorGroups: WholesaleFlavorGroup[] = [
     subtitle: "温かいタルトや焼きドーナツにとろりと絡む濃密仕立て",
     items: [
       {
-        displayName: "バニラココナッツ",
-        image: "/images/flavors/vanilla_coconut.png",
-        note: "ココナッツと白みそが香る王道バニラ",
-      },
-      {
         displayName: "UMAMIバニラ",
         image: "/images/flavors/umami_vanilla.png",
-        note: "甘酒と白みその塩キャラメル様のコク",
+        note: "【人気No.1】甘酒と白みそが香る王道バニラ",
+      },
+      {
+        displayName: "抹茶",
+        image: "/images/flavors/matcha.png",
+        note: "濃縮甘酒と白みそが支えるお濃茶仕立て",
+      },
+      {
+        displayName: "バニラココナッツ",
+        image: "/images/flavors/vanilla_coconut.png",
+        note: "ココナッツが香るさっぱりとした味わい",
+      },
+      {
+        displayName: "ほうじ茶",
+        image: "/images/flavors/houjicha.png",
+        note: "焙煎茶葉の香ばしい薫香と甘酒のコク",
       },
       {
         displayName: "アールグレイ",
@@ -28,16 +38,6 @@ const cafeFlavorGroups: WholesaleFlavorGroup[] = [
         displayName: "ショコラ",
         image: "/images/flavors/chocolate.png",
         note: "冷たい生チョコのような濃密カカオ",
-      },
-      {
-        displayName: "抹茶",
-        image: "/images/flavors/matcha.png",
-        note: "濃縮甘酒と白みそが支えるお濃茶仕立て",
-      },
-      {
-        displayName: "ほうじ茶",
-        image: "/images/flavors/houjicha.png",
-        note: "焙煎茶葉の香ばしい薫香と甘酒のコク",
       },
     ],
   },

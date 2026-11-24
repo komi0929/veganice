@@ -3,6 +3,7 @@ import WholesaleHeader, { type WholesaleNavItem } from "@/app/components/wholesa
 import WholesaleFooter from "@/app/components/wholesale/WholesaleFooter";
 import WholesaleFloatingCTA from "@/app/components/wholesale/WholesaleFloatingCTA";
 import WholesaleReviewsSlider from "@/app/components/wholesale/WholesaleReviewsSlider";
+import WholesaleOriginStorySection from "@/app/components/wholesale/WholesaleOriginStorySection";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import HotelHeroSection from "./components/HotelHeroSection";
 import HotelPortionSection from "./components/HotelPortionSection";
@@ -61,16 +62,14 @@ export const metadata: Metadata = {
 const navItems: WholesaleNavItem[] = [
   { label: "一皿と分量", href: "#portion" },
   { label: "3つの理由", href: "#no-extra-prep" },
+  { label: "薬院店と想い", href: "#story" },
+  { label: "海外からの声", href: "#reviews" },
   { label: "11種の味・条件", href: "#flavors" },
   { label: "無料サンプル", href: "#contact-form" },
-  { label: "海外からの声", href: "#reviews" },
-  { label: "よくある質問", href: "#faq" },
 ];
 
 /**
- * ホテル・旅館・婚礼宴会・コース料理店向け 業務用卸LP（6段ビジュアルカタログ構成）
- * 1. FV → 2. 一皿のイメージと1人分目安 → 3. 選ばれる3つの理由 → 4. 全11種の味＋お取引条件
- * → 5. 無料6個サンプル申込 → 6. 海外からの口コミ＋折りたたみFAQ＋OEM案内
+ * ホテル・旅館・婚礼宴会・コース料理店向け 業務用卸LP
  */
 export default function HotelPage() {
   return (
@@ -80,14 +79,15 @@ export default function HotelPage() {
         <HotelHeroSection />
         <HotelPortionSection />
         <HotelNoExtraPrepSection />
-        <HotelFlavorsSection />
-        <HotelSampleSection />
+        <WholesaleOriginStorySection variant="hotel" />
         <WholesaleReviewsSlider
           eyebrow="HappyCow 5.0満点・Google ★4.7の実績"
           heading="海外からのヴィーガンのお客様の声"
           lead={`福岡・薬院の直営店には欧米・豪州・アジアから多くの旅行者が訪れ、HappyCow満点 ${WHOLESALE_FACTS.happyCowRating}・Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）を獲得。「世界中で食べたどんな乳製品よりも美味しい」と評価されています。`}
           variant="dark"
         />
+        <HotelFlavorsSection />
+        <HotelSampleSection />
         <HotelFAQSection />
         <OemCrossLinkBanner context="hotel" />
       </main>

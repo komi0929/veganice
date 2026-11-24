@@ -7,6 +7,7 @@ import DessertAboutSection from "./components/DessertAboutSection";
 import DessertReasonsSection from "./components/DessertReasonsSection";
 import DessertProductsSection from "./components/DessertProductsSection";
 import DessertSampleSection from "./components/DessertSampleSection";
+import DessertStorySection from "./components/DessertStorySection";
 import DessertReviewsSection from "./components/DessertReviewsSection";
 import DessertFAQSection from "./components/DessertFAQSection";
 import OemCrossLinkBanner from "../components/OemCrossLinkBanner";
@@ -61,9 +62,10 @@ export const metadata: Metadata = {
 };
 
 /**
- * 飲食店・カフェ・ベーカリー／菓子店向け 定番卸フラッグシップLP（6段ビジュアルカタログ構成）
- * 1. FV → 2. 一皿のイメージ（写真4枚＋省スペース規格） → 3. 選ばれる3つの理由 → 4. 全11種の味＋価格・取引条件
- * → 5. 無料6個サンプル申込 → 6. 実物口コミ＋折りたたみFAQ＆創業背景＋OEM案内
+ * 飲食店・カフェ・ベーカリー／菓子店向け 定番卸フラッグシップLP
+ * 1. FV → 2. 一皿のイメージ → 3. 選ばれる3つの理由
+ * → 4. 薬院店の原点＆子どものエピソード → 5. 実店舗の口コミ → 6. 全11種の味＋取引条件
+ * → 7. 無料6個サンプル申込 → 8. よくある質問＋OEM案内
  */
 export default function DessertPage() {
   return (
@@ -73,9 +75,10 @@ export default function DessertPage() {
         <DessertHeroSection />
         <DessertAboutSection />
         <DessertReasonsSection />
+        <DessertStorySection />
+        <DessertReviewsSection />
         <DessertProductsSection />
         <DessertSampleSection />
-        <DessertReviewsSection />
         <DessertFAQSection />
         <OemCrossLinkBanner context="dessert" />
       </main>

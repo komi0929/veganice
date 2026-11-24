@@ -39,6 +39,9 @@ export default function CafePolicySection() {
         <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
           素材を選ぶお店のお菓子に寄り添う、3つのこだわり。
         </h2>
+        <p className="text-ink-light mt-3 max-w-3xl font-sans text-sm leading-[1.85] sm:text-[15px]">
+          私たちSoyStories（ソイストーリーズ）は、福岡・薬院で100%植物性・グルテンフリーのお菓子とアイスを手づくりしているスイーツ専門店です。乳・卵・小麦を持ち込まない専用工房から、全国のカフェ・ベーカリー・菓子店様へお届けしています。
+        </p>
 
         <ol className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
           {policyPillars.map((item) => (

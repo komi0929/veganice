@@ -22,7 +22,7 @@ const hotelReasons = [
     step: "03",
     empathy: "「シャリシャリ感や、出し入れによる食感劣化」の悩みに",
     title: "じっくり炊く米粉製法で、滑らかな舌触りが続く",
-    body: "国産米粉を豆乳や果汁と火にかけて炊き上げる独自製法。氷っぽさがなく、冷凍保管で廃棄ロスもゼロのまま上質な口どけを保てます。",
+    body: "国産米粉を豆乳や果汁と火にかけて炊き上げる独自製法。氷っぽさがなく、賞味期限表示義務もないため期限切れによる廃棄が出にくい設計です。",
     image: "/images/bulk_scoop.jpg",
     alt: "米粉の独自製法による滑らかな植物性クラフトアイス",
   },
@@ -39,6 +39,9 @@ export default function HotelNoExtraPrepSection() {
         <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
           「1人だけ別メニュー」の手間をなくし、全員に同じ本格デザートを。
         </h2>
+        <p className="text-ink-light mt-3 max-w-3xl font-sans text-sm leading-[1.85] sm:text-[15px]">
+          私たちSoyStories（ソイストーリーズ）は、欧米・豪州・アジアからも多くの旅行者が訪れる福岡・薬院の植物性＆グルテンフリースイーツ専門店です。乳・卵・小麦を持ち込まない専用工房から、全国のホテル・旅館・婚礼会場様へお届けしています。
+        </p>
 
         <ol className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
           {hotelReasons.map((item) => (
