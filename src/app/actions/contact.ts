@@ -254,7 +254,7 @@ export async function submitContact(
   if (
     formType === "sample" &&
     resolvedAddress &&
-    !hasPrefecture(resolvedAddress) &&
+    (!hasPrefecture(resolvedAddress) || !/[市区町村郡]/.test(resolvedAddress)) &&
     normalizedZip.digits.length === 7
   ) {
     const lookedUp = await lookupAddressByZipDigits(normalizedZip.digits);

@@ -67,7 +67,12 @@ export function mergeZipPrefixIntoAddress(
     return prefix;
   }
   if (hasPrefecture(trimmed)) {
-    return trimmed;
+    if (/[市区町村郡]/.test(trimmed)) {
+      return trimmed;
+    }
+    const stripped = trimmed.replace(PREFECTURE_REGEX, "").trim();
+    if (!stripped) return prefix;
+    return `${prefix}${stripped}`;
   }
   if (city && trimmed.startsWith(city)) {
     return `${prefecture}${trimmed}`;
