@@ -72,7 +72,7 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
   バニラココナッツ: {
     name: "バニラココナッツ",
     ingredients:
-      "豆乳（国産・遺伝子組換えではない）、甜菜糖、ココナッツミルクパウダー、米粉、白みそ、バニラオイル（一部に大豆を含む）",
+      "豆乳（国産・遺伝子組換えではない）、甜菜糖、豆乳ホイップ、米粉、ココナッツミルクパウダー、白みそ、バニラオイル（一部に大豆を含む）",
     allergens: "大豆",
     nutrition: {
       calories: "179.3kcal",
