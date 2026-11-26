@@ -156,7 +156,7 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
   ドラゴンフルーツ: {
     name: "ドラゴンフルーツ",
     ingredients:
-      "ドラゴンフルーツ、甜菜糖、パインアップル、米油、ココナッツミルク、レモン果汁、米粉、バニラオイル",
+      "ドラゴンフルーツ、甜菜糖、パインアップル、米油、ココナッツクリーム、レモン果汁、米粉、ココナッツミルクパウダー、バニラオイル",
     allergens: "—",
     nutrition: {
       calories: "212.2kcal",
