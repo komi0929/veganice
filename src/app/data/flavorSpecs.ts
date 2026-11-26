@@ -114,7 +114,7 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
   もも: {
     name: "もも",
     ingredients:
-      "もも（国産）、甜菜糖、ココナッツクリーム、レモン果汁、バニラオイル（一部にももを含む）",
+      "もも（国産）、甜菜糖、ココナッツクリーム、レモン果汁、米粉、バニラオイル（一部にももを含む）",
     allergens: "もも",
     nutrition: {
       calories: "131.4kcal",
@@ -156,8 +156,8 @@ export const FLAVOR_SPECS: Record<string, FlavorSpec> = {
   ドラゴンフルーツ: {
     name: "ドラゴンフルーツ",
     ingredients:
-      "ドラゴンフルーツ、甜菜糖、パインアップル、米油、ココナッツミルク、レモン果汁、米粉、バニラオイル（一部にりんごを含む）",
-    allergens: "りんご",
+      "ドラゴンフルーツ、甜菜糖、パインアップル、米油、ココナッツミルク、レモン果汁、米粉、バニラオイル",
+    allergens: "—",
     nutrition: {
       calories: "212.2kcal",
       protein: "1.2g",
