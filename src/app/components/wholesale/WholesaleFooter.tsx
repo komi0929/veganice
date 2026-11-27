@@ -60,7 +60,7 @@ export default function WholesaleFooter({
                 無料試食サンプル・お問い合わせ
               </a>
               <Link
-                href={`/oem/plan?src=${oemSrc}`}
+                href={`/oem?src=${oemSrc}`}
                 className="hover:text-cta font-sans text-sm text-white transition-colors sm:text-base"
               >
                 OEM・オリジナル製造

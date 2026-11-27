@@ -18,13 +18,13 @@ export const metadata: Metadata = {
   title: PLAN_TITLE,
   description: PLAN_DESC,
   robots: { index: false, follow: true },
-  alternates: { canonical: "https://soystories.cafe/oem/plan" },
+  alternates: { canonical: "https://www.soystories.cafe/oem/plan" },
   openGraph: {
     title: PLAN_TITLE,
     description: PLAN_DESC,
     type: "website",
     locale: "ja_JP",
-    url: "https://soystories.cafe/oem/plan",
+    url: "https://www.soystories.cafe/oem/plan",
     siteName: "SoyStories",
     images: [
       {

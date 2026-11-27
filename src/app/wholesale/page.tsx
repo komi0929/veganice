@@ -170,7 +170,8 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
     }
   }
   oemForward.set("src", "wholesale");
-  const oemPlanHref = `/oem/plan?${oemForward.toString()}`;
+  const hasCustomerContext = Boolean(params.store?.trim() || params.c?.trim());
+  const oemPlanHref = `${hasCustomerContext ? "/oem/plan" : "/oem"}?${oemForward.toString()}`;
 
   return (
     <>

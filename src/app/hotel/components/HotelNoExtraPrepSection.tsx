@@ -4,8 +4,8 @@ const hotelReasons = [
   {
     title: "氷っぽくない、なめらかな口どけ",
     body: "国産米粉を豆乳や果汁とじっくり炊く独自製法。出し入れしてもシャリシャリになりません。",
-    image: "/images/bulk_scoop.jpg",
-    alt: "米粉製法によるなめらかなクラフトアイス",
+    image: "/images/gelato_spoon_moment.jpg",
+    alt: "米粉製法によるなめらかなクラフトアイス実物",
   },
   {
     title: "濃厚なのに、食後はすっきり",
@@ -15,9 +15,9 @@ const hotelReasons = [
   },
   {
     title: "乳・卵・小麦を持ち込まない工房",
-    body: "福岡・薬院の専用工房で手づくり。乳化剤・安定剤・増粘剤・着色料も使っていません。",
-    image: "/images/factory_kitchen_craft.webp",
-    alt: "乳・卵・小麦を持ち込まない専用工房",
+    body: "福岡・薬院の専用工房で手づくり。北海道産てんさい糖・奄美産きび砂糖を使い、白砂糖も不使用です。",
+    image: "/images/store_actual.png",
+    alt: "福岡・薬院の実店舗 SoyStories",
   },
 ] as const;
 

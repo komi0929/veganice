@@ -11,6 +11,7 @@ import HotelPortionSection from "./components/HotelPortionSection";
 import HotelFlavorsSection from "./components/HotelFlavorsSection";
 import HotelSampleSection from "./components/HotelSampleSection";
 import HotelFAQSection from "./components/HotelFAQSection";
+import OemCrossLinkBanner from "@/app/components/OemCrossLinkBanner";
 
 const PAGE_TITLE = "ホテル・旅館の食後デザート・インバウンド対応に｜業務用 クラフトアイス";
 const OG_TITLE = `${PAGE_TITLE} | SoyStories`;
@@ -83,6 +84,7 @@ export default function HotelPage() {
         />
         <HotelSampleSection />
         <HotelFAQSection />
+        <OemCrossLinkBanner context="hotel" />
       </main>
       <WholesaleFooter
         taglineLines={[

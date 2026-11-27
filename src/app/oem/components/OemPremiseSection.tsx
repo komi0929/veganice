@@ -5,14 +5,14 @@ const QUALITY_POINTS = [
     tag: "専用工房",
     title: "乳・卵・小麦「持ち込みゼロ」",
     body: "乳・卵・小麦を持ち込まない専用工房製（※ナッツ類使用製品はあり）。アレルギーをお持ちの方や海外のお客様にも安心です。",
-    image: "/images/factory_kitchen_craft.webp",
-    alt: "SoyStoriesの専用工房でアイスを仕込む様子",
+    image: "/images/workshop_real.png",
+    alt: "SoyStories自社専用工房での手作り風景",
   },
   {
     tag: "なめらかな食感",
     title: "じっくり炊く米粉製法で氷っぽくならない",
     body: "国産米粉を豆乳や果汁と炊き上げる独自製法。冷凍庫で出し入れしてもシャリシャリにならず、なめらかさが続きます。",
-    image: "/images/bulk_scoop.jpg",
+    image: "/images/gelato_spoon_moment.jpg",
     alt: "米粉製法によるなめらかなクラフトアイス",
   },
   {

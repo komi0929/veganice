@@ -76,7 +76,7 @@ export default function Footer() {
               </Link>
               {!isOem && (
                 <Link
-                  href={`/oem/plan?src=${oemFooterSrc}`}
+                  href={`/oem?src=${oemFooterSrc}`}
                   className="hover:text-cta text-base text-white transition-colors"
                 >
                   OEM・ロゴカップ製造（60個〜）

@@ -14,22 +14,22 @@ import OemFAQSection from "./components/OemFAQSection";
 import OemContactSection from "./components/OemContactSection";
 import OemFloatingCTA from "./components/OemFloatingCTA";
 
-const TITLE = "オリジナル植物性アイスOEM・PB製造｜小ロット60個・最短1か月｜乳・卵・小麦不使用";
+const TITLE = "飲食店・カフェ・宿のオリジナルアイスOEM｜60個・6Lの小ロットから｜SoyStories";
 const DESCRIPTION =
-  "卵・乳・小麦を持ち込まない専用工房（福岡・薬院 SoyStories）で、お店の素材やロゴシールを使ったオリジナル植物性クラフトアイスを60個／6Lの小ロットからOEM製造。米粉と発酵素材の独自製法で滑らかな口どけ。最短約1か月でお届け。";
+  "福岡・薬院のヴィーガン＆GFスイーツ専門店SoyStories（Google★4.7・HappyCow★5.0）の専用工房で、お店のロゴ入りカップ（開発費0円・60個〜）や自家焙煎珈琲・お茶・果物を使ったオリジナルアイス（60個／6L〜）を製造。乳・卵・小麦・白砂糖不使用。";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: {
-    canonical: "https://soystories.cafe/oem",
+    canonical: "https://www.soystories.cafe/oem",
   },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
     type: "website",
     locale: "ja_JP",
-    url: "https://soystories.cafe/oem",
+    url: "https://www.soystories.cafe/oem",
     siteName: "SoyStories",
     images: [
       {
@@ -42,6 +42,41 @@ export const metadata: Metadata = {
   },
 };
 
+const oemJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.soystories.cafe/oem#service",
+      name: "飲食店・カフェ・宿泊施設向け クラフトアイス小ロットOEM（60個・6L〜）",
+      provider: {
+        "@type": "Organization",
+        name: "株式会社ヒトコト",
+        url: "https://www.soystories.jp/company.html",
+      },
+      areaServed: "JP",
+      description: DESCRIPTION,
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "業務用卸トップ",
+          item: "https://www.soystories.cafe/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "小ロットOEM",
+          item: "https://www.soystories.cafe/oem",
+        },
+      ],
+    },
+  ],
+};
+
 /**
  * 完全版 OEM LP（シンプル2プラン・コンパクト構成）
  * 1. FV → 2. 3つの品質土台 → 3. 選べる2プラン（¥0 vs ¥30,000） → 4. 利益シミュレーター＆1か月工程
@@ -50,6 +85,10 @@ export const metadata: Metadata = {
 export default function OemFullPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(oemJsonLd) }}
+      />
       <OemHeader />
       <main className="lp-friendly flex-1 pt-14 sm:pt-16">
         <OemHeroSection />

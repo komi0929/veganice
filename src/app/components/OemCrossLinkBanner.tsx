@@ -65,7 +65,7 @@ export default function OemCrossLinkBanner({ context = "general" }: OemCrossLink
             </p>
           </div>
           <Link
-            href={`/oem/plan?src=${src}`}
+            href={`/oem?src=${src}`}
             className="bg-brand hover:bg-brand-dark inline-flex min-h-12 shrink-0 items-center justify-center rounded-full px-6 py-3 text-sm font-bold whitespace-nowrap text-white transition-colors"
           >
             OEMの料金・プランを見る →
