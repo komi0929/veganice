@@ -185,7 +185,7 @@ export default function WholesaleReviewsSlider({
 
       <div className="mx-auto mt-3 flex max-w-5xl flex-col justify-between gap-2 px-6 sm:flex-row sm:items-center">
         <p className={`font-sans text-xs ${isDark ? "text-white/65" : "text-ink-muted"}`}>
-          ※すべて直営スイーツ店（福岡・薬院 SoyStories）に投稿された実際のGoogleマップ口コミ画面です
+          ※すべて福岡の直営スイーツ店「SoyStories」に投稿された実際のGoogleマップ口コミ画面です
         </p>
         <a
           href={WHOLESALE_FACTS.googleMapsReviewsUrl}

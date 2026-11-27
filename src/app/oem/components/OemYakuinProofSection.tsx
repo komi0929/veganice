@@ -39,7 +39,7 @@ export default function OemYakuinProofSection() {
           <div>
             <p className="text-brand mb-2 inline-flex items-center gap-2 text-xs font-bold tracking-wide">
               <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
-              福岡・薬院の直営店実績と原点
+              福岡の直営店実績と原点
             </p>
             <h2 className="text-ink text-xl leading-snug font-bold tracking-tight sm:text-2xl">
               「制限がある方もない方も、同じテーブルで同じデザートを」
@@ -64,20 +64,20 @@ export default function OemYakuinProofSection() {
             <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gray-100">
               <Image
                 src="/images/store_actual.png"
-                alt="福岡・薬院の実店舗 SoyStories"
+                alt="福岡の実店舗 SoyStories"
                 fill
                 sizes="(max-width: 768px) 100vw, 380px"
                 className="object-cover"
               />
               <span className="absolute bottom-2 left-2 rounded-md bg-black/65 px-2 py-0.5 text-[11px] font-bold text-white">
-                福岡・薬院の実店舗
+                福岡の実店舗「SoyStories」
               </span>
             </div>
             <div className="grid grid-cols-2 gap-2.5">
               <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
                 <Image
                   src="/images/craft_moment.jpg"
-                  alt="薬院店での仕込みと接客の様子"
+                  alt="福岡の直営店での仕込みと接客の様子"
                   fill
                   sizes="(max-width: 768px) 48vw, 180px"
                   className="object-cover object-[center_35%]"
@@ -97,7 +97,7 @@ export default function OemYakuinProofSection() {
 
           <div className="space-y-3 md:col-span-7">
             <p className="text-ink-light text-xs leading-relaxed sm:text-sm">
-              福岡・薬院の直営店で磨いた乳・卵・小麦・白砂糖不使用の製法を、全国のお店向けに専用工房から小ロットでお届けしています。ヴィーガンではないお客様からも「普通のアイスより好き」と支持され、「はじめて子どもにアイスを食べさせることができた」というお母さんの笑顔が原点です。
+              福岡の直営店で磨いた乳・卵・小麦・白砂糖不使用の製法を、全国のお店向けに専用工房から小ロットでお届けしています。ヴィーガンではないお客様からも「普通のアイスより好き」と支持され、「はじめて子どもにアイスを食べさせることができた」というお母さんの笑顔が原点です。
             </p>
             <div className="flex items-center gap-3.5 rounded-xl bg-[#f7f3ec] p-3.5">
               <div className="ring-brand/20 relative h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2">
@@ -111,7 +111,7 @@ export default function OemYakuinProofSection() {
               </div>
               <div className="text-xs leading-relaxed">
                 <p className="text-ink font-bold">
-                  「お店こだわりの素材の魅力を引き出し、誰もが同じテーブルで楽しめるアイスを一釜ずつ丁寧にお作りします。」
+                  「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める。福岡の小さなお店で見てきたその光景を、全国のお店と一緒に広げていきたいと思っています。」
                 </p>
                 <p className="text-ink-muted mt-1">株式会社ヒトコト（SoyStories）代表 小南優作</p>
               </div>
@@ -123,7 +123,7 @@ export default function OemYakuinProofSection() {
         <div className="mt-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="text-ink text-xs font-bold sm:text-sm">
-              薬院店のGoogleマップ実物口コミ（食事制限の有無を問わず高評価）
+              福岡の直営店に届いたGoogleマップ実物口コミ（食事制限の有無を問わず高評価）
             </p>
             <a
               href={WHOLESALE_FACTS.googleMapsReviewsUrl}

@@ -22,7 +22,7 @@ export default function OemHeroSection() {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
             <span className="absolute top-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-gray-800 shadow-2xs">
-              薬院直営店 Google ★4.7・HappyCow 5.0
+              福岡の直営店 Google ★4.7・HappyCow 5.0
             </span>
           </div>
 
@@ -46,24 +46,25 @@ export default function OemHeroSection() {
 
         <div className="md:order-1 md:col-span-6">
           <p className="text-brand text-xs font-bold tracking-wide">
-            福岡・薬院の専門店 SoyStories｜乳・卵・小麦を持ち込まない専用工房
+            福岡の専門店 SoyStories｜乳・卵・小麦を持ち込まない専用工房
           </p>
 
           <h1 className="text-ink mt-3 text-[22px] leading-[1.42] font-bold tracking-tight sm:text-3xl lg:text-[34px]">
-            植物性・米粉クラフトアイスを、
+            お店の食材やロゴでつくる、
             <span className="mt-1 block">
+              「
               <span className="bg-[linear-gradient(transparent_62%,#f9d9e3_62%)]">
-                60個・6Lから
+                お店だけのクラフトアイス
               </span>
-              貴店のブランドに。
+              」
             </span>
           </h1>
 
           <p className="text-ink-light mt-3.5 text-[14.5px] leading-[1.8] sm:text-[15.5px]">
-            乳・卵・小麦・白砂糖不使用。定番の味にロゴシールを貼る
-            <strong className="text-ink">①開発費¥0</strong>と、お茶・珈琲・果物で作る
-            <strong className="text-ink">②オリジナル開発（税別¥30,000）</strong>
-            の2プランで、100mlカップ・2Lバルクを製造します。
+            乳・卵・小麦・白砂糖不使用。国産米粉のなめらかな口どけと甘酒・白みそのコクがある植物性アイスを、定番の味にロゴシールを貼る
+            <strong className="text-ink">①開発費¥0（60個〜）</strong>と、お茶・珈琲・果物で作る
+            <strong className="text-ink">②オリジナル開発（税別¥30,000・60個／6L〜）</strong>
+            の2プランで製造します。
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">

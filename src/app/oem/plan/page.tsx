@@ -92,10 +92,10 @@ export default async function OemPlanPage({ searchParams }: OemPlanPageProps) {
               </p>
             )}
             <h1 className="text-ink text-2xl leading-snug font-bold sm:text-3xl">
-              植物性・米粉クラフトアイスの小ロットOEMのご案内
+              お店仕様のカップ製造・オリジナル味開発（OEM）のご案内
             </h1>
             <p className="text-ink-light mt-3 text-sm leading-relaxed sm:text-[15px]">
-              乳・卵・小麦・白砂糖不使用（専用工房製）。
+              乳・卵・小麦・白砂糖を使わず、国産米粉でなめらかな口どけに仕上げた植物性クラフトアイスです。
               <strong>①「フタだけお店ロゴ（開発費¥0・60個〜）」</strong>と
               <strong>②「お店の素材でオリジナル開発（税別¥30,000・60個／6L〜）」</strong>
               の2プランをご用意しています。お支払いは

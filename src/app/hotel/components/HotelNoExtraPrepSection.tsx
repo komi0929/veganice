@@ -3,7 +3,7 @@ import Image from "next/image";
 const hotelReasons = [
   {
     title: "氷っぽくない、なめらかな口どけ",
-    body: "国産米粉を豆乳や果汁とじっくり炊く独自製法。出し入れしてもシャリシャリになりません。",
+    body: "国産米粉を使った独自製法。出し入れしてもシャリシャリになりません。",
     image: "/images/gelato_spoon_moment.jpg",
     alt: "米粉製法によるなめらかなクラフトアイス実物",
   },
@@ -15,7 +15,7 @@ const hotelReasons = [
   },
   {
     title: "乳・卵・小麦を持ち込まない工房",
-    body: "福岡・薬院の専用工房で手づくり。北海道産てんさい糖・奄美産きび砂糖を使い、白砂糖も不使用です。",
+    body: "福岡の専用工房で手づくり。北海道産てんさい糖・奄美産きび砂糖を使い、白砂糖も不使用です。",
     image: "/images/hero_craft_gelato.jpg",
     alt: "乳・卵・小麦を持ち込まない専用工房で作るクラフトアイス全種",
   },

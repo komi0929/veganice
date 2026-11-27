@@ -723,7 +723,7 @@ export default function OemContactSection() {
                             onChange={(e) => setAddress(e.target.value)}
                             autoComplete="street-address"
                             disabled={isPending}
-                            placeholder="福岡県福岡市中央区薬院1-2-3"
+                            placeholder="都道府県・市区町村・番地"
                             className={`${inputClasses} ${state.errors?.address ? errorClasses : ""}`}
                           />
                         </Field>

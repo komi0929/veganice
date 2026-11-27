@@ -27,7 +27,7 @@ export default function HotelHeroSection() {
           </h1>
 
           <p className="text-ink-light mt-3 font-sans text-[13.5px] leading-[1.7] sm:text-[15px]">
-            国産米粉の炊き上げと甘酒・白みそでコクを出し、乳脂肪ゼロで食後もすっきりとした後味の植物性クラフトアイス。コースや会席のデザートとしてそのままお出しいただけます。
+            夕食の最後が果物だけになりがちな日に。国産米粉のなめらかな口どけと甘酒・白みそのコクがありながら、乳脂肪ゼロで会席やコースの後でもさっぱり召し上がれる植物性クラフトアイスです。
           </p>
 
           <ul className="mt-3.5 space-y-1.5 sm:mt-4">
@@ -73,7 +73,7 @@ export default function HotelHeroSection() {
               />
             </div>
             <p className="text-ink-muted mt-2 px-2 py-1 text-center font-sans text-xs">
-              福岡・薬院の直営店：
+              福岡の直営店：
               <strong className="text-ink ml-1">
                 HappyCow {WHOLESALE_FACTS.happyCowRating} ・ Google {WHOLESALE_FACTS.googleRating}（
                 {WHOLESALE_FACTS.googleReviewCount}）

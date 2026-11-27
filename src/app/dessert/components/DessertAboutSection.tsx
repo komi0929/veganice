@@ -49,7 +49,7 @@ export default function DessertAboutSection() {
               食後の小皿から、フロート、焼き菓子添えまで。
             </h2>
           </div>
-          <p className="text-ink-muted text-xs">※直営店（福岡・薬院）での提供実例</p>
+          <p className="text-ink-muted text-xs">※福岡の直営店での提供実例</p>
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-3.5 sm:gap-5 md:grid-cols-4">

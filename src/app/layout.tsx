@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | SoyStories",
   },
   description:
-    "乳・卵・小麦・白砂糖不使用のプラントベース クラフトアイスクリーム。乳・卵・小麦を持ち込まない専用工房製造、仕込み不要、4Lの小ロットから仕入れ可能。飲食店のアレルギー・ヴィーガン対応に。福岡・薬院のSoyStoriesが製造・卸売。",
+    "乳・卵・小麦・白砂糖不使用のプラントベース クラフトアイスクリーム。乳・卵・小麦を持ち込まない専用工房製造、仕込み不要、4Lの小ロットから仕入れ可能。飲食店のアレルギー・ヴィーガン対応に。福岡のSoyStoriesが製造・卸売。",
   keywords: [
     "クラフトアイス",
     "業務用プラントベース クラフトアイスクリーム",
@@ -20,7 +20,6 @@ export const metadata: Metadata = {
     "SoyStories",
     "ソイストーリーズ",
     "福岡",
-    "薬院",
     "飲食店向け",
     "卸売",
     "プラントベース",
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SoyStories | 業務用プラントベース クラフトアイスクリーム",
     description:
-      "乳・卵・小麦・白砂糖不使用。4Lの小ロットから。薬院の直営店HappyCow 5.0・Google ★4.7（270件以上）の実証済みクラフトアイスを、あなたのお店に。",
+      "乳・卵・小麦・白砂糖不使用。4Lの小ロットから。福岡の直営店HappyCow 5.0・Google ★4.7（270件以上）の実証済みクラフトアイスを、あなたのお店に。",
     type: "website",
     locale: "ja_JP",
     url: "https://www.soystories.cafe",
@@ -89,7 +88,7 @@ const jsonLd = {
         "https://www.happycow.net/reviews/soystories-fukuoka-289915",
       ],
       description:
-        "福岡・薬院発のヴィーガン＆グルテンフリー スイーツ専門店。乳・卵・小麦・白砂糖不使用のクラフトアイスを専用工房で製造し、薬院の実店舗販売と全国の飲食店向け業務用卸・小ロットOEMを展開。",
+        "福岡発のヴィーガン＆グルテンフリー スイーツ専門店。乳・卵・小麦・白砂糖不使用のクラフトアイスを専用工房で製造し、福岡の実店舗販売と全国の飲食店向け業務用卸・小ロットOEMを展開。",
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+81-92-231-0677",
@@ -101,7 +100,7 @@ const jsonLd = {
     {
       "@type": "LocalBusiness",
       "@id": "https://soystories.cafe/#store",
-      name: "SoyStories 薬院店",
+      name: "SoyStories",
       image: "https://soystories.cafe/images/store_actual.png",
       url: "https://www.soystories.jp/",
       telephone: "+81-92-231-0677",
@@ -150,7 +149,7 @@ const jsonLd = {
           name: "ヴィーガンでないお客様にも喜ばれますか？",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "はい。薬院の実店舗では「普通のアイスより好き」とおっしゃるヴィーガンではないお客様が多数いらっしゃいます。米粉を使った独自製法でシャリシャリ感のない滑らかな舌触りとコクを実現しており、HappyCow 5.0・Google口コミ270件以上（★4.7）という評価がその裏付けです。",
+            text: "はい。福岡の実店舗では「普通のアイスより好き」とおっしゃるヴィーガンではないお客様が多数いらっしゃいます。米粉を使った独自製法でシャリシャリ感のない滑らかな舌触りとコクを実現しており、HappyCow 5.0・Google口コミ270件以上（★4.7）という評価がその裏付けです。",
           },
         },
         {

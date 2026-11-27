@@ -3,7 +3,7 @@ import Image from "next/image";
 const policyPillars = [
   {
     title: "氷っぽくない、なめらかな口どけ",
-    body: "国産米粉を炊き上げる独自製法。出し入れでもシャリシャリになりません。",
+    body: "国産米粉を使った独自製法。出し入れでもシャリシャリになりません。",
     image: "/images/gelato_spoon_moment.jpg",
     alt: "米粉製法によるなめらかなクラフトアイス",
   },
@@ -15,7 +15,7 @@ const policyPillars = [
   },
   {
     title: "乳・卵・小麦を持ち込まない専用工房",
-    body: "福岡・薬院の専用工房製造。グルテンフリーや植物性のお菓子と揃えて出せます。",
+    body: "福岡の専用工房製造。グルテンフリーや植物性のお菓子と揃えて出せます。",
     image: "/images/cup_seal_houjicha_real.jpg",
     alt: "専用工房で作るクラフトアイス",
   },

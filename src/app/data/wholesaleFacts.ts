@@ -26,7 +26,7 @@ export const WHOLESALE_FACTS = {
   googleMapsReviewsUrl:
     "https://www.google.com/maps/place/%E3%82%B0%E3%83%AB%E3%83%86%E3%83%B3%E3%83%95%E3%83%AA%E3%83%BC%EF%BC%86100%EF%BC%85%E6%A4%8D%E7%89%A9%E6%80%A7%E3%82%B9%E3%82%A4%E3%83%BC%E3%83%84+Soy+Stories%EF%BC%88vegan%EF%BC%86gluten+free%EF%BC%89/@33.5818211,130.3966611,17z/data=!4m8!3m7!1s0x354191585d44c62f:0xa127c6cfc075e381!8m2!3d33.5818211!4d130.3966611!9m1!1b1!16s%2Fg%2F11r783v2pc?hl=ja",
   store: {
-    name: "SoyStories 薬院店",
+    name: "SoyStories（福岡直営店）",
     postalCode: "〒810-0022",
     address: "福岡市中央区薬院2丁目2-24 チサンマンション第3博多 1F",
     phone: "092-231-0677",
@@ -45,7 +45,7 @@ export interface WholesaleReviewItem {
 }
 
 /**
- * 薬院の実店舗に寄せられたGoogleマップ実物クチコミ9件
+ * 福岡の実店舗に寄せられたGoogleマップ実物クチコミ9件
  * （宿の料理長・女将にもそのまま伝わるよう「ヴィーガンではないお客様」で表記統一）
  */
 export const WHOLESALE_REVIEWS: WholesaleReviewItem[] = [

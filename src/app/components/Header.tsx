@@ -34,14 +34,14 @@ export default function Header() {
         { label: "3つの理由", href: `${prefix}reasons` },
         { label: "お店での出し方", href: `${prefix}about` },
         { label: "11種の味・条件", href: `${prefix}products` },
-        { label: "薬院店と想い", href: `${prefix}story` },
+        { label: "直営店と想い", href: `${prefix}story` },
         { label: "お客様の声", href: `${prefix}reviews` },
       ]
     : [
         { label: "3つの理由", href: `${prefix}benefits` },
         { label: "お店での出し方", href: `${prefix}value` },
         { label: "11種の味・条件", href: `${prefix}products` },
-        { label: "薬院店と想い", href: `${prefix}story` },
+        { label: "直営店と想い", href: `${prefix}story` },
         { label: "お客様の声", href: `${prefix}reviews` },
       ];
 

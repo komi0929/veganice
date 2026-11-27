@@ -78,9 +78,9 @@ export default function HeroSection() {
             variants={itemVariants}
             className="max-w-xl font-sans text-[0.88rem] leading-[1.8] text-gray-100 sm:text-base md:text-lg"
           >
-            国産米粉を炊き上げて甘酒・白みそでコクを出した、乳脂肪ゼロで後味すっきりの植物性クラフトアイス。
+            乳・卵・小麦・白砂糖を使わない植物性クラフトアイスです。国産米粉でシャリシャリ感のないなめらかな口どけに仕上げ、甘酒や白みそでコクを出しつつ、乳脂肪ゼロなので食後もすっきりと軽く食べきれます。
             <br />
-            乳・卵・小麦・白砂糖不使用。食後のデザートや焼き菓子の添え、フロートにそのままお使いいただけます。
+            食後のデザートや焼き菓子の添え、フロートにそのままお使いいただけます。
           </motion.p>
 
           {/* CTA */}

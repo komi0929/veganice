@@ -62,7 +62,7 @@ const navItems: WholesaleNavItem[] = [
   { label: "3つの理由", href: "#policy" },
   { label: "お店での出し方", href: "#serving" },
   { label: "11種の味・条件", href: "#flavors" },
-  { label: "薬院店と想い", href: "#story" },
+  { label: "直営店と想い", href: "#story" },
   { label: "無料サンプル", href: "#contact-form" },
 ];
 
@@ -79,7 +79,7 @@ export default function CafePage() {
         <WholesaleReviewsSlider
           eyebrow="HappyCow 5.0・Google ★4.7"
           heading="直営店に寄せられたお客様の声"
-          lead={`福岡・薬院の直営店（Google ${WHOLESALE_FACTS.googleRating}・${WHOLESALE_FACTS.googleReviewCount}）では、普段は乳製品のお菓子を召し上がるお客様からも「普通のアイスより好き」と選ばれています。`}
+          lead={`福岡の直営店（Google ${WHOLESALE_FACTS.googleRating}・${WHOLESALE_FACTS.googleReviewCount}）では、普段は乳製品のお菓子を召し上がるお客様からも「普通のアイスより好き」と選ばれています。`}
           variant="dark"
         />
         <CafeSampleSection />

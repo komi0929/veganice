@@ -322,7 +322,7 @@ export default function DessertContactForm() {
                   autoComplete="street-address"
                   disabled={isPending}
                   className={`${inputClasses} ${state.errors?.address ? errorClasses : ""}`}
-                  placeholder="福岡県福岡市中央区薬院1-2-3 〇〇ビル1F"
+                  placeholder="都道府県・市区町村・番地・建物名"
                 />
               </Field>
             </div>

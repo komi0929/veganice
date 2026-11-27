@@ -15,7 +15,7 @@ import OemFloatingCTA from "./components/OemFloatingCTA";
 
 const TITLE = "飲食店・カフェ・宿のオリジナルアイスOEM｜60個・6Lの小ロットから｜SoyStories";
 const DESCRIPTION =
-  "福岡・薬院のヴィーガン＆GFスイーツ専門店SoyStories（Google★4.7・HappyCow★5.0）の専用工房で、お店のロゴ入りカップ（開発費0円・60個〜）や自家焙煎珈琲・お茶・果物を使ったオリジナルアイス（60個／6L〜）を製造。乳・卵・小麦・白砂糖不使用。";
+  "福岡のヴィーガン＆GFスイーツ専門店SoyStories（Google★4.7・HappyCow★5.0）の専用工房で、お店のロゴ入りカップ（開発費0円・60個〜）や自家焙煎珈琲・お茶・果物を使ったオリジナルアイス（60個／6L〜）を製造。乳・卵・小麦・白砂糖不使用。";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -78,7 +78,7 @@ const oemJsonLd = {
 
 /**
  * 完全版 OEM LP（シンプル2プラン・一気通貫構成）
- * 1. FV → 2. アイスの特徴 → 3. 薬院直営店の実績と原点 → 4. 選べる2プラン（¥0 vs 税別¥30,000）
+ * 1. FV → 2. アイスの特徴 → 3. 福岡直営店の実績と原点 → 4. 選べる2プラン（¥0 vs 税別¥30,000）
  * → 5. 利益シミュレーター → 6. 1か月工程 → 7. 無料相談・試食申込フォーム → 8. 折りたたみFAQ＋定番卸案内
  */
 export default function OemFullPage() {

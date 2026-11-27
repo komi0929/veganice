@@ -17,7 +17,7 @@ const cafeFlavorGroups: WholesaleFlavorGroup[] = [
       {
         displayName: "抹茶",
         image: "/images/flavors/matcha.png",
-        note: "宇治抹茶に甘酒を合わせた濃厚味",
+        note: "抹茶のほろ苦さに甘酒のコク",
       },
       {
         displayName: "バニラココナッツ",
@@ -68,7 +68,7 @@ const cafeFlavorGroups: WholesaleFlavorGroup[] = [
       {
         displayName: "ドラゴンフルーツ",
         image: "/images/flavors/dragon_fruit.png",
-        note: "グラスが華やぐパイン＆ピタヤ味",
+        note: "パインとココナッツを合わせた果実味",
       },
     ],
   },

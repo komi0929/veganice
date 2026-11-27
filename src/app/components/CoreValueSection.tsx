@@ -3,7 +3,7 @@ import Image from "next/image";
 const VALUE_ITEMS = [
   {
     title: "氷っぽくない、なめらかな口どけ",
-    body: "国産米粉を豆乳や果汁とじっくり炊き上げる独自製法。営業中の出し入れでもシャリシャリになりません。",
+    body: "国産米粉を使った独自製法。営業中の出し入れでもシャリシャリになりません。",
     imageSrc: "/images/gelato_spoon_moment.jpg",
     imageAlt: "米粉独自製法によるなめらかなSoyStoriesのクラフトアイス実物",
   },
@@ -15,7 +15,7 @@ const VALUE_ITEMS = [
   },
   {
     title: "乳・卵・小麦を持ち込まない専用工房",
-    body: "福岡・薬院の専用工房で手づくり（※ナッツ類使用製品はあり）。アレルギーをお持ちの方や海外のお客様にも安心です。",
+    body: "福岡の専用工房で手づくり（※ナッツ類使用製品はあり）。アレルギーをお持ちの方や海外のお客様にも安心です。",
     imageSrc: "/images/gelato_cup_tower.jpg",
     imageAlt: "専用工房で作るSoyStoriesの100mlクラフトアイス実物",
   },

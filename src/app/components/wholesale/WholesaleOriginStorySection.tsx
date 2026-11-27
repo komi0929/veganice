@@ -8,14 +8,14 @@ interface WholesaleOriginStorySectionProps {
 
 const VARIANT_COPY = {
   dessert: {
-    eyebrow: "私たちの原点（福岡・薬院 SoyStories）",
+    eyebrow: "私たちの原点（福岡の実店舗 SoyStories）",
     headingLines: ["「全部食べれるなんて夢みたい！」", "その一言が、私たちの原点です。"],
     subHeading: "お料理やお菓子に心を込めるお店へ。アイスの一品は、専門店の私たちが担います。",
     closingLine:
       "食の制限がある方も、一緒にテーブルを囲むご家族やご友人も、全員が同じ一皿を楽しめるデザートとしてお役立てください。",
   },
   cafe: {
-    eyebrow: "私たちの原点（福岡・薬院 SoyStories）",
+    eyebrow: "私たちの原点（福岡の実店舗 SoyStories）",
     headingLines: [
       "「全部食べれるなんて夢みたい！」",
       "小さなお店で生まれた笑顔から始まりました。",
@@ -26,21 +26,21 @@ const VARIANT_COPY = {
       "ドーナツや焼き菓子、パフェを楽しみに来店されるすべてのお客様が、同じテーブルで気兼ねなく「おいしいね」と笑い合える一皿をお届けできれば幸いです。",
   },
   hotel: {
-    eyebrow: "私たちの原点（福岡・薬院 SoyStories）",
+    eyebrow: "私たちの原点（福岡の実店舗 SoyStories）",
     headingLines: [
       "「同じテーブルで、みんなと同じデザートを」",
-      "福岡・薬院の小さなお店から始まりました。",
+      "福岡の小さなお店から始まりました。",
     ],
     subHeading: "料理に心を込めるお宿へ。デザートのひと皿は専門店の私たちが担います。",
     closingLine:
       "ご宿泊やご婚礼の大切な席で、1人だけ別メニューにすることなく、テーブルの皆様が同じデザートを囲める時間をお手伝いできれば幸いです。",
   },
   oem: {
-    eyebrow: "私たちの原点（福岡・薬院 SoyStories）",
+    eyebrow: "私たちの原点（福岡の実店舗 SoyStories）",
     headingLines: ["なぜ私たちが、専用工房をつくり", "小ロットOEMをお引き受けしているのか。"],
-    subHeading: "福岡・薬院の直営店で磨いた製法を、貴店だけのオリジナル商品としてお届けします。",
+    subHeading: "福岡の直営店で磨いた製法を、貴店だけのオリジナル商品としてお届けします。",
     closingLine:
-      "農家様が育てた大切な果物や、お店こだわりの茶葉・素材の魅力をまっすぐ引き出し、誰もが安心して笑顔になれるアイスを一釜ずつ丁寧にお作りします。",
+      "農家様が育てた大切な果物や、お店こだわりの茶葉・素材そのものの風味を活かし、誰もが同じテーブルで笑顔になれるアイスを丁寧にお作りします。",
   },
 } as const;
 
@@ -57,7 +57,7 @@ export default function WholesaleOriginStorySection({
       className="scroll-mt-16 border-t border-stone-200/70 bg-[#fdfbf7] py-16 sm:py-24"
     >
       <div className="mx-auto max-w-5xl px-6">
-        {/* ── 1. 福岡・薬院の実店舗と専用工房設立の背景 ── */}
+        {/* ── 1. 福岡の実店舗と専用工房設立の背景 ── */}
         <div>
           <p className="text-brand mb-2.5 inline-flex items-center gap-2 font-sans text-xs font-bold tracking-wider">
             <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
@@ -78,20 +78,20 @@ export default function WholesaleOriginStorySection({
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-stone-200/80 bg-stone-100 shadow-xs">
                 <Image
                   src="/images/store_actual.png"
-                  alt="福岡・薬院の実店舗 SoyStories"
+                  alt="福岡の実店舗 SoyStories"
                   fill
                   sizes="(max-width: 768px) 100vw, 420px"
                   className="object-cover"
                 />
                 <span className="absolute bottom-2.5 left-2.5 rounded-lg bg-black/65 px-2.5 py-1 font-sans text-[11px] font-bold text-white backdrop-blur-xs">
-                  福岡・薬院の実店舗「SoyStories」
+                  福岡の実店舗「SoyStories」
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-stone-200/80 bg-stone-100">
                   <Image
                     src="/images/craft_moment.jpg"
-                    alt="福岡・薬院店 SoyStories の店内"
+                    alt="福岡の直営店 SoyStories の店内"
                     fill
                     sizes="(max-width: 768px) 48vw, 200px"
                     className="object-cover object-[center_35%]"
@@ -117,7 +117,7 @@ export default function WholesaleOriginStorySection({
               </h3>
               <div className="text-ink-light space-y-3.5 font-sans text-sm leading-[1.9] sm:text-[15px]">
                 <p>
-                  私たちSoyStories（ソイストーリーズ）は、アレルギーやヴィーガンなど食に制限がある方も気兼ねなく選べる場所をつくりたいという想いから、福岡・薬院の小さなお店でスタートしました。
+                  私たちSoyStories（ソイストーリーズ）は、アレルギーやヴィーガンなど食に制限がある方も気兼ねなく選べる場所をつくりたいという想いから、福岡の小さなお店でスタートしました。
                 </p>
                 <p>
                   乳・卵・小麦・白砂糖を使わずに作るクラフトアイスは、制限のある方だけでなくヴィーガンではないお客様からも
@@ -179,7 +179,7 @@ export default function WholesaleOriginStorySection({
           </div>
           <blockquote className="text-center sm:text-left">
             <p className={`text-ink ${headingFont} text-sm leading-relaxed font-bold sm:text-base`}>
-              「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める。薬院の小さなお店で日々見てきたその光景を、全国のお店と一緒に広げていきたいと思っています。まずはご試食サンプルで、貴店のお料理やお菓子との相性をお確かめください。」
+              「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める。福岡の小さなお店で日々見てきたその光景を、全国のお店と一緒に広げていきたいと思っています。まずはご試食サンプルで、貴店のお料理やお菓子との相性をお確かめください。」
             </p>
             <footer className="text-ink-muted mt-2 font-sans text-xs font-medium">
               株式会社ヒトコト（店舗 SoyStories） 代表　小南 優作

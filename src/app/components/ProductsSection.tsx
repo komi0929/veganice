@@ -20,7 +20,7 @@ const flavors: {
   },
   {
     name: "抹茶",
-    story: "宇治抹茶に甘酒を合わせた濃厚味",
+    story: "抹茶のほろ苦さに甘酒のコク",
     image: "/images/flavors/matcha.png",
   },
   {
@@ -65,7 +65,7 @@ const flavors: {
   },
   {
     name: "ドラゴンフルーツ",
-    story: "器が華やぐパイン＆ピタヤ味",
+    story: "パインとココナッツを合わせた果実味",
     image: "/images/flavors/dragon_fruit.png",
   },
 ];

@@ -3,7 +3,7 @@ import Image from "next/image";
 const coreValues = [
   {
     title: "氷っぽくない、なめらかな口どけ",
-    body: "国産米粉を豆乳や果汁とじっくり炊く独自製法。営業中の出し入れでもシャリシャリになりません。",
+    body: "国産米粉を使った独自製法。営業中の出し入れでもシャリシャリになりません。",
     image: "/images/gelato_spoon_moment.jpg",
     alt: "米粉製法によるなめらかなSoyStoriesのクラフトアイス実物",
   },

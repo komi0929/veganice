@@ -29,7 +29,7 @@ const flavorGroups: {
         note: "人気No.1。甘酒と白みそのコク",
         image: "/images/flavors/umami_vanilla.png",
       },
-      { name: "抹茶", note: "宇治抹茶に甘酒を合わせた濃厚味", image: "/images/flavors/matcha.png" },
+      { name: "抹茶", note: "抹茶のほろ苦さに甘酒のコク", image: "/images/flavors/matcha.png" },
       {
         name: "バニラココナッツ",
         note: "ココナッツが香るさっぱりした甘さ",
@@ -75,7 +75,7 @@ const flavorGroups: {
       },
       {
         name: "ドラゴンフルーツ",
-        note: "器が華やぐパイン＆ピタヤ味",
+        note: "パインとココナッツを合わせた果実味",
         image: "/images/flavors/dragon_fruit.png",
       },
     ],

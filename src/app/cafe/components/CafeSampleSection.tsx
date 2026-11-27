@@ -62,7 +62,7 @@ export default function CafeSampleSection() {
           contactNameLabel="ご担当者名"
           companyPlaceholder="例：カフェ〇〇 ／ 米粉ドーナツ〇〇 ／ 焼菓子店〇〇"
           emailPlaceholder="example@cafe.jp"
-          addressPlaceholder="福岡市中央区薬院2-2-24 〇〇ビル1F"
+          addressPlaceholder="都道府県・市区町村・番地・建物名"
           deliveryDescription="受取可能な曜日・時間をお知らせください。"
           deliveryNotePlaceholder="例：火曜定休・15時以降は不在など"
           notesLabel="業態・試したい使い方・ご質問"

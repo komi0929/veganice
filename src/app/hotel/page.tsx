@@ -62,7 +62,7 @@ const navItems: WholesaleNavItem[] = [
   { label: "3つの理由", href: "#no-extra-prep" },
   { label: "宿での出し方", href: "#portion" },
   { label: "11種の味・条件", href: "#flavors" },
-  { label: "薬院店と想い", href: "#story" },
+  { label: "直営店と想い", href: "#story" },
   { label: "無料サンプル", href: "#contact-form" },
 ];
 
@@ -79,7 +79,7 @@ export default function HotelPage() {
         <WholesaleReviewsSlider
           eyebrow="HappyCow 5.0・Google ★4.7"
           heading="直営店に寄せられたお客様の声"
-          lead={`福岡・薬院の直営店（Google ${WHOLESALE_FACTS.googleRating}・${WHOLESALE_FACTS.googleReviewCount}）には海外の旅行者やヴィーガンではないお客様も多く来店され、「普通のアイスより美味しい」と選ばれています。`}
+          lead={`福岡の直営店（Google ${WHOLESALE_FACTS.googleRating}・${WHOLESALE_FACTS.googleReviewCount}）には海外の旅行者やヴィーガンではないお客様も多く来店され、「普通のアイスより美味しい」と選ばれています。`}
           variant="dark"
         />
         <HotelSampleSection />

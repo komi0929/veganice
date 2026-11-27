@@ -399,7 +399,7 @@ export default function ContactForm() {
                       autoComplete="street-address"
                       disabled={isPending}
                       className={`${inputClasses} ${state.errors?.address ? errorClass : ""}`}
-                      placeholder="福岡県福岡市中央区薬院 1-2-3 ○○ビル 1F"
+                      placeholder="都道府県・市区町村・番地・建物名"
                     />
                     {state.errors?.address && (
                       <p className="mt-1 text-xs text-red-500">{state.errors.address[0]}</p>

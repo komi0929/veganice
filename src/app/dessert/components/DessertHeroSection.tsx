@@ -32,7 +32,7 @@ export default function DessertHeroSection() {
           </h1>
 
           <p className="text-ink-light mt-3 text-[13.5px] leading-[1.7] sm:text-[15px]">
-            国産米粉を炊き上げて甘酒・白みそでコクを出した、乳脂肪ゼロで後味すっきりの植物性クラフトアイス。定食・コースの食後から、カフェ・焼き菓子添えまで幅広くお使いいただけます。
+            乳・卵・小麦・白砂糖を使わない植物性クラフトアイスです。国産米粉でなめらかな口どけに仕上げ、甘酒・白みそでコクを出しつつ、乳脂肪ゼロなので食後も重くなりません。定食・コースの食後から、カフェ・焼き菓子添えまでお使いいただけます。
           </p>
 
           <ul className="mt-3.5 space-y-1.5 sm:mt-4">
@@ -68,7 +68,7 @@ export default function DessertHeroSection() {
               />
             </div>
             <p className="text-ink-muted mt-2 px-2 py-1 text-center text-xs">
-              福岡・薬院の直営店：
+              福岡の直営店：
               <strong className="text-ink ml-1">
                 Google {WHOLESALE_FACTS.googleRating}（{WHOLESALE_FACTS.googleReviewCount}）・
                 HappyCow {WHOLESALE_FACTS.happyCowRating}

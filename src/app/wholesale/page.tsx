@@ -13,7 +13,7 @@ import { PRICING_CONSTANTS } from "@/app/oem/data/oemSpecs";
 
 const PAGE_TITLE = "定番11フレーバー 業務用卸（バルク・個食カップ）のご案内";
 const PAGE_DESC =
-  "飲食店・カフェ・ベーカリー・ショップ様向け。国産米粉×甘酒・白みそ製法の業務用バルク（最小4L〜）とSoyStoriesラベル付き100ml個食カップ（最小60個〜・翌月末請求書払い）のご案内。";
+  "飲食店・カフェ・ベーカリー・ショップ様向け。乳・卵・小麦・白砂糖不使用の業務用バルク（最小4L〜）とSoyStoriesラベル付き100ml個食カップ（最小60個〜・翌月末請求書払い）のご案内。";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -64,7 +64,7 @@ const standardFlavorGroups: WholesaleFlavorGroup[] = [
       {
         displayName: "抹茶",
         image: "/images/flavors/matcha.png",
-        note: "宇治抹茶に甘酒を合わせた濃厚味",
+        note: "抹茶のほろ苦さに甘酒のコク",
       },
       {
         displayName: "バニラココナッツ",
@@ -115,7 +115,7 @@ const standardFlavorGroups: WholesaleFlavorGroup[] = [
       {
         displayName: "ドラゴンフルーツ",
         image: "/images/flavors/dragon_fruit.png",
-        note: "器が華やぐパイン＆ピタヤ味",
+        note: "パインとココナッツを合わせた果実味",
       },
     ],
   },
@@ -197,7 +197,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
               店内用の1L・2Lバルク（4L〜）と、販売用の100mlカップ（60個〜）
             </h1>
             <p className="text-ink-light mt-3 max-w-3xl font-sans text-sm leading-relaxed sm:text-[15px]">
-              国産米粉の炊き上げと甘酒・白みそでコクを出した、乳脂肪ゼロでも滑らかで後味の軽い植物性クラフトアイスです。乳・卵・小麦を持ち込まない専用工房の定番全11フレーバーを、用途に合わせて
+              乳・卵・小麦・白砂糖を使わず、国産米粉でなめらかな口どけに仕上げた植物性クラフトアイスです。乳・卵・小麦を持ち込まない専用工房の定番全11フレーバーを、用途に合わせて
               <strong>「店内盛り付け用の業務用バルク（4L〜・味ミックス自由）」</strong>または
               <strong>「そのまま販売できるSoyStoriesラベル付き100mlカップ（60個〜）」</strong>
               からお選びいただけます。お支払いは
@@ -352,7 +352,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
                 無料試食サンプル（6個）・お取引のご相談
               </h2>
               <p className="text-ink-light mt-2 font-sans text-sm leading-relaxed">
-                まずは6個の無料サンプルで、米粉×発酵製法のなめらかな口どけと食後のさっぱり感をお確かめください。
+                まずは6個の無料サンプルで、なめらかな口どけと食後の軽い後味をお確かめください。
               </p>
             </div>
 
@@ -361,7 +361,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
               companyLabel="お店・会社のお名前"
               companyPlaceholder="例：レストラン〇〇 ／ カフェ〇〇"
               emailPlaceholder="info@example.jp"
-              addressPlaceholder="福岡県福岡市中央区薬院..."
+              addressPlaceholder="都道府県・市区町村・番地・建物名"
               deliveryDescription="お店でお受け取りになりやすい曜日・時間帯をお選びください（任意）。"
               deliveryNotePlaceholder="例：火曜定休、14〜16時が受け取りやすいです"
               notesLabel="検討中の仕入れ形態・メモ"

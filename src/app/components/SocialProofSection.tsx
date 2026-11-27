@@ -40,7 +40,7 @@ export default function SocialProofSection() {
   return (
     <section id="story" className="bg-bg scroll-mt-20 border-t border-gray-100 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        {/* ── 1. Our Story：福岡・薬院の小さなお店から専用アイス工房設立へ ── */}
+        {/* ── 1. Our Story：福岡の小さなお店から専用アイス工房設立へ ── */}
         <motion.div
           variants={fadeUp}
           custom={0}
@@ -51,7 +51,7 @@ export default function SocialProofSection() {
         >
           <div className="md:text-center">
             <p className="text-brand mb-3 font-sans text-xs font-bold tracking-[0.22em] uppercase">
-              Our Story — 福岡・薬院の実店舗から
+              Our Story — 福岡の実店舗から
             </p>
             <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
               「こっちのほうが美味しい！」
@@ -65,20 +65,20 @@ export default function SocialProofSection() {
               <div className="bg-bg relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-stone-200/80 shadow-xs">
                 <Image
                   src="/images/store_actual.png"
-                  alt="SoyStoriesの実店舗（福岡・薬院）"
+                  alt="SoyStoriesの実店舗（福岡）"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 460px"
                 />
                 <span className="absolute bottom-3 left-3 rounded-lg bg-black/65 px-3 py-1 font-sans text-xs font-bold text-white backdrop-blur-xs">
-                  福岡・薬院の実店舗「SoyStories」
+                  福岡の実店舗「SoyStories」
                 </span>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-stone-200/80 bg-stone-100">
                   <Image
                     src="/images/craft_moment.jpg"
-                    alt="福岡・薬院店 SoyStories の店内"
+                    alt="福岡の直営店 SoyStories の店内"
                     fill
                     className="object-cover object-[center_35%]"
                     sizes="(max-width: 768px) 48vw, 220px"
@@ -104,7 +104,7 @@ export default function SocialProofSection() {
               </h3>
               <div className="text-ink-light space-y-4 font-sans text-[15px] leading-[1.9] sm:text-base">
                 <p>
-                  私たちSoyStoriesは、アレルギーやヴィーガンなど食に制限がある方も気兼ねなく選べる場所をつくりたいという想いから、福岡・薬院の小さなお店でスタートしました。
+                  私たちSoyStoriesは、アレルギーやヴィーガンなど食に制限がある方も気兼ねなく選べる場所をつくりたいという想いから、福岡の小さなお店でスタートしました。
                 </p>
                 <p>
                   乳・卵・小麦・白砂糖を使わずに作るクラフトアイスは、制限のある方だけでなくヴィーガンではないお客様からも
@@ -175,7 +175,7 @@ export default function SocialProofSection() {
               {WHOLESALE_FACTS.happyCowRating}
             </span>
             <span className="text-ink-muted mt-2 block font-sans text-xs tracking-wider sm:text-sm">
-              薬院のお店 HappyCow 満点評価
+              福岡の直営店 HappyCow 満点評価
             </span>
           </div>
           <div>
@@ -217,7 +217,7 @@ export default function SocialProofSection() {
               「世界中で食べた乳製品より美味しい」国内外から届く声
             </h3>
             <p className="text-ink-light mx-auto mt-2.5 max-w-2xl text-sm">
-              福岡・薬院の実店舗に寄せられた、海外からの観光客やアレルギー・一般のお客様による実際の口コミ画面です。
+              福岡の実店舗に寄せられた、海外からの観光客やアレルギー・一般のお客様による実際の口コミ画面です。
             </p>
           </div>
 
@@ -292,7 +292,7 @@ export default function SocialProofSection() {
 
           <div className="mt-4 flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
             <p className="text-ink-muted text-xs">
-              ※すべて直営店（福岡・薬院 SoyStories）に投稿された実物のGoogleマップ口コミ画面です
+              ※すべて福岡の直営店「SoyStories」に投稿された実物のGoogleマップ口コミ画面です
             </p>
             <a
               href={WHOLESALE_FACTS.googleMapsReviewsUrl}
@@ -326,7 +326,7 @@ export default function SocialProofSection() {
             </div>
             <blockquote className="text-center sm:text-left">
               <p className="text-ink mb-2.5 font-serif text-base leading-relaxed font-bold sm:text-lg">
-                「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める。薬院の小さなお店で見てきたその光景を、今度は全国の飲食店様と一緒に広げていきたいと思っています。あなたのお店のお客様へ、ぜひこの美味しさを届けてください。」
+                「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める。福岡の小さなお店で見てきたその光景を、今度は全国の飲食店様と一緒に広げていきたいと思っています。あなたのお店のお客様へ、ぜひこの美味しさを届けてください。」
               </p>
               <footer className="text-ink-light font-sans text-xs font-medium sm:text-sm">
                 株式会社ヒトコト（店舗 SoyStories） 代表　小南 優作

@@ -62,7 +62,7 @@ export default function HotelSampleSection() {
           contactNameLabel="お名前"
           companyPlaceholder="例：ホテル〇〇 ／ 〇〇温泉 旅館〇〇 ／ レストラン〇〇"
           emailPlaceholder="example@hotel.jp"
-          addressPlaceholder="福岡市中央区薬院2-2-24"
+          addressPlaceholder="都道府県・市区町村・番地"
           deliveryDescription="フロントか厨房で受け取れる曜日と時間"
           deliveryNotePlaceholder="例：厨房勝手口へ納品希望／11〜14時は仕込み中など"
           notesLabel="ご施設・お店の業態・試したい場面・確認したい点"

@@ -27,7 +27,7 @@ export default function CafeHeroSection() {
           </h1>
 
           <p className="text-ink-light mt-3 font-sans text-[13.5px] leading-[1.7] sm:text-[15px]">
-            国産米粉の炊き上げと甘酒・白みそでコクを出した乳脂肪ゼロの植物性アイス。タルトやワッフルの添え、フロート、アフォガートまで素材にこだわるお店の一皿にそのまま合わせられます。
+            国産米粉でなめらかな口どけに仕上げ、甘酒・白みそでコクを出した乳脂肪ゼロの植物性アイスです。タルトやワッフルの添え、フロート、アフォガートまで、お店のお菓子やドリンクにそのまま合わせられます。
           </p>
 
           <ul className="mt-3.5 space-y-1.5 sm:mt-4">
@@ -73,7 +73,7 @@ export default function CafeHeroSection() {
               />
             </div>
             <p className="text-ink-muted mt-2 px-2 py-1 text-center font-sans text-xs">
-              福岡・薬院の直営店：
+              福岡の直営店：
               <strong className="text-ink ml-1">
                 Google {WHOLESALE_FACTS.googleRating}（{WHOLESALE_FACTS.googleReviewCount}）・
                 HappyCow {WHOLESALE_FACTS.happyCowRating}
