@@ -164,12 +164,20 @@ export default function OemFullPage() {
                   定番11フレーバーの業務用卸（最小4L〜／個食カップ60個〜）もございます
                 </h2>
               </div>
-              <Link
-                href="/wholesale"
-                className="bg-brand hover:bg-brand-dark shrink-0 rounded-full px-6 py-3 text-sm font-bold text-white transition-colors"
-              >
-                定番フレーバー卸を見る →
-              </Link>
+              <div className="flex shrink-0 flex-wrap gap-3 sm:flex-col">
+                <Link
+                  href="/oem/guide"
+                  className="text-brand border-brand rounded-full border px-6 py-3 text-center text-sm font-bold hover:bg-[#f7f3ec]"
+                >
+                  小ロットOEM完全ガイド →
+                </Link>
+                <Link
+                  href="/wholesale"
+                  className="bg-brand hover:bg-brand-dark rounded-full px-6 py-3 text-center text-sm font-bold text-white transition-colors"
+                >
+                  定番フレーバー卸を見る →
+                </Link>
+              </div>
             </div>
           </div>
         </section>

@@ -28,6 +28,7 @@
 ## ページ構成（`https://www.soystories.cafe`）
 - 総合トップ（業務用クラフトアイス卸）：https://www.soystories.cafe/
 - 小ロットOEM・オリジナルアイス製造：https://www.soystories.cafe/oem
+- 小ロットOEM完全ガイド（60個・6Lからの費用、比較、アレルゲン管理、原料量、シール仕様）：https://www.soystories.cafe/oem/guide
 - ホテル・旅館・婚礼向け（インバウンド・水菓子・部屋出し）：https://www.soystories.cafe/hotel
 - カフェ・ベーカリー・焼き菓子店向け：https://www.soystories.cafe/cafe
 - レストラン・定食・専門料理店向け：https://www.soystories.cafe/dessert
@@ -38,4 +39,4 @@
 
 ## 関連公式ドメイン
 - 法人・6次産業化OEM・FCP商談規格書母艦：https://www.soystories.jp/b2b.html （`/oem.html`・`/oem-farm.html`・`/fcp-spec.html`）
-- 福岡・薬院実店舗 多言語サイト（EN/KO/繁中/JA）：https://en.soystories.cafe/
+- 福岡の直営店 多言語サイト（EN/KO/繁中/JA）：https://en.soystories.cafe/

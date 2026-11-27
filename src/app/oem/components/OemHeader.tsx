@@ -7,9 +7,10 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 interface OemHeaderProps {
   isPlanPage?: boolean;
+  isGuidePage?: boolean;
 }
 
-function OemHeaderContent({ isPlanPage: propIsPlanPage }: OemHeaderProps) {
+function OemHeaderContent({ isPlanPage: propIsPlanPage, isGuidePage = false }: OemHeaderProps) {
   const pathname = usePathname() ?? "/oem";
   const searchParams = useSearchParams();
   const isPlanPage = propIsPlanPage ?? pathname.startsWith("/oem/plan");
@@ -34,17 +35,29 @@ function OemHeaderContent({ isPlanPage: propIsPlanPage }: OemHeaderProps) {
       <div className="hidden items-center gap-6 md:flex">
         <nav className="flex items-center gap-5 text-sm text-gray-600" aria-label="OEMページ内ナビ">
           {!isPlanPage && (
-            <a href="#premise" className="hover:text-brand transition-colors">
+            <a
+              href={isGuidePage ? "/oem#premise" : "#premise"}
+              className="hover:text-brand transition-colors"
+            >
               アイスの特徴
             </a>
           )}
-          <a href="#courses" className="hover:text-brand transition-colors">
+          <a
+            href={isGuidePage ? "/oem#courses" : "#courses"}
+            className="hover:text-brand transition-colors"
+          >
             2つのプラン・料金
           </a>
-          <a href="#simulator" className="hover:text-brand transition-colors">
+          <a
+            href={isGuidePage ? "/oem#simulator" : "#simulator"}
+            className="hover:text-brand transition-colors"
+          >
             利益試算
           </a>
-          <a href="#timeline" className="hover:text-brand transition-colors">
+          <a
+            href={isGuidePage ? "/oem#timeline" : "#timeline"}
+            className="hover:text-brand transition-colors"
+          >
             お届けの流れ
           </a>
           <a href="#faq" className="hover:text-brand transition-colors">
@@ -52,7 +65,7 @@ function OemHeaderContent({ isPlanPage: propIsPlanPage }: OemHeaderProps) {
           </a>
         </nav>
         <a
-          href="#contact-form"
+          href={isGuidePage ? "/oem#contact-form" : "#contact-form"}
           className="bg-cta hover:bg-cta-hover rounded-full px-5 py-2 text-sm font-bold text-white shadow-2xs transition-colors"
         >
           無料で相談する
@@ -60,7 +73,7 @@ function OemHeaderContent({ isPlanPage: propIsPlanPage }: OemHeaderProps) {
       </div>
 
       <a
-        href="#contact-form"
+        href={isGuidePage ? "/oem#contact-form" : "#contact-form"}
         className="bg-cta hover:bg-cta-hover rounded-full px-4 py-2 text-xs font-bold text-white md:hidden"
       >
         無料相談する
@@ -69,7 +82,7 @@ function OemHeaderContent({ isPlanPage: propIsPlanPage }: OemHeaderProps) {
   );
 }
 
-function OemHeaderFallback({ isPlanPage = false }: OemHeaderProps) {
+function OemHeaderFallback({ isPlanPage = false, isGuidePage = false }: OemHeaderProps) {
   return (
     <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
       <Link href={isPlanPage ? "/oem/plan" : "/oem"} className="relative flex h-8 items-center">
@@ -86,17 +99,29 @@ function OemHeaderFallback({ isPlanPage = false }: OemHeaderProps) {
       <div className="hidden items-center gap-6 md:flex">
         <nav className="flex items-center gap-5 text-sm text-gray-600" aria-label="OEMページ内ナビ">
           {!isPlanPage && (
-            <a href="#premise" className="hover:text-brand transition-colors">
+            <a
+              href={isGuidePage ? "/oem#premise" : "#premise"}
+              className="hover:text-brand transition-colors"
+            >
               アイスの特徴
             </a>
           )}
-          <a href="#courses" className="hover:text-brand transition-colors">
+          <a
+            href={isGuidePage ? "/oem#courses" : "#courses"}
+            className="hover:text-brand transition-colors"
+          >
             2つのプラン・料金
           </a>
-          <a href="#simulator" className="hover:text-brand transition-colors">
+          <a
+            href={isGuidePage ? "/oem#simulator" : "#simulator"}
+            className="hover:text-brand transition-colors"
+          >
             利益試算
           </a>
-          <a href="#timeline" className="hover:text-brand transition-colors">
+          <a
+            href={isGuidePage ? "/oem#timeline" : "#timeline"}
+            className="hover:text-brand transition-colors"
+          >
             お届けの流れ
           </a>
           <a href="#faq" className="hover:text-brand transition-colors">
@@ -104,7 +129,7 @@ function OemHeaderFallback({ isPlanPage = false }: OemHeaderProps) {
           </a>
         </nav>
         <a
-          href="#contact-form"
+          href={isGuidePage ? "/oem#contact-form" : "#contact-form"}
           className="bg-cta hover:bg-cta-hover rounded-full px-5 py-2 text-sm font-bold text-white shadow-2xs transition-colors"
         >
           無料で相談する
@@ -112,7 +137,7 @@ function OemHeaderFallback({ isPlanPage = false }: OemHeaderProps) {
       </div>
 
       <a
-        href="#contact-form"
+        href={isGuidePage ? "/oem#contact-form" : "#contact-form"}
         className="bg-cta hover:bg-cta-hover rounded-full px-4 py-2 text-xs font-bold text-white md:hidden"
       >
         無料相談する
@@ -125,11 +150,11 @@ function OemHeaderFallback({ isPlanPage = false }: OemHeaderProps) {
  * OEM LP（/oem・/oem/plan）専用のヘッダー
  * クエリパラメータ（c, store 等）を保持し、/oem と /oem/plan で一貫したナビを表示する
  */
-export default function OemHeader({ isPlanPage = false }: OemHeaderProps) {
+export default function OemHeader({ isPlanPage = false, isGuidePage = false }: OemHeaderProps) {
   return (
     <header className="fixed top-0 right-0 left-0 z-50 bg-white py-3.5 shadow-xs">
-      <Suspense fallback={<OemHeaderFallback isPlanPage={isPlanPage} />}>
-        <OemHeaderContent isPlanPage={isPlanPage} />
+      <Suspense fallback={<OemHeaderFallback isPlanPage={isPlanPage} isGuidePage={isGuidePage} />}>
+        <OemHeaderContent isPlanPage={isPlanPage} isGuidePage={isGuidePage} />
       </Suspense>
     </header>
   );

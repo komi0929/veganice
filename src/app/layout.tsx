@@ -52,6 +52,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.soystories.cafe",
   },
+  verification: {
+    google: "-ubkjleHHXsoPsPxZLF_mNjjDHzlaJldcstg3VbPy5U",
+  },
   robots: {
     index: true,
     follow: true,
