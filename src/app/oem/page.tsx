@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import OemDetailLinks from "./components/OemDetailLinks";
 import Footer from "../components/Footer";
 import StructuredData, { breadcrumbs, service } from "../components/StructuredData";
 import OemHeader from "./components/OemHeader";
@@ -154,7 +155,8 @@ export default function OemFullPage() {
 
         {/* 定番フレーバー通常卸へのご案内 */}
         <section className="border-t border-gray-200 bg-[#f7f3ec] py-12">
-          <div className="mx-auto max-w-4xl px-6">
+          <div className="mx-auto max-w-4xl space-y-4 px-6">
+            <OemDetailLinks />
             <div className="flex flex-col items-start justify-between gap-5 rounded-3xl bg-white p-6 shadow-2xs sm:flex-row sm:items-center sm:p-7">
               <div>
                 <p className="text-brand text-xs font-bold">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "../../components/Footer";
 import StructuredData from "../../components/StructuredData";
+import OemDetailLinks from "../components/OemDetailLinks";
 import OemHeader from "../components/OemHeader";
 import { PRICING_CONSTANTS } from "../data/oemSpecs";
 
@@ -216,6 +217,8 @@ export default function OemGuidePage() {
               </ul>
             </nav>
           </header>
+
+          <OemDetailLinks />
 
           <section id="comparison" className={card}>
             <h2 className={heading}>アイスOEM工場の比較とアレルゲン管理</h2>

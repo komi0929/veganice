@@ -29,6 +29,9 @@
 - 総合トップ（業務用クラフトアイス卸）：https://www.soystories.cafe/
 - 小ロットOEM・オリジナルアイス製造：https://www.soystories.cafe/oem
 - 小ロットOEM完全ガイド（60個・6Lからの費用、比較、アレルゲン管理、原料量、シール仕様）：https://www.soystories.cafe/oem/guide
+- 乳・卵・小麦不使用のアイスOEM（専用工房・原材料・交差接触）：https://www.soystories.cafe/oem/allergen-free
+- ご当地食材・農産物の植物性アイスOEM（原料の受け入れ・試作・ロット）：https://www.soystories.cafe/oem/regional
+- ヴィーガンアイスOEMの費用（開発費・最小ロット・原価目安）：https://www.soystories.cafe/oem/cost
 - ホテル・旅館・婚礼向け（インバウンド・水菓子・部屋出し）：https://www.soystories.cafe/hotel
 - カフェ・ベーカリー・焼き菓子店向け：https://www.soystories.cafe/cafe
 - レストラン・定食・専門料理店向け：https://www.soystories.cafe/dessert

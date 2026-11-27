@@ -45,6 +45,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://www.soystories.cafe/oem/allergen-free",
+      lastModified: "2026-11-27",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: "https://www.soystories.cafe/oem/regional",
+      lastModified: "2026-11-27",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: "https://www.soystories.cafe/oem/cost",
+      lastModified: "2026-11-27",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: "https://www.soystories.cafe/flavors",
       lastModified: "2026-11-27",
       changeFrequency: "monthly",

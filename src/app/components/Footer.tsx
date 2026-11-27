@@ -4,15 +4,21 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Footer() {
+export default function Footer({ isOemGuide = false }: { isOemGuide?: boolean }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isDessert = pathname.startsWith("/dessert");
   const isOem = pathname.startsWith("/oem");
   const prefix = isDessert ? "/dessert#" : isHome ? "#" : "/#";
-  const contactHref = isOem ? `${pathname}#contact-form` : `${prefix}contact-form`;
+  const contactHref = isOem
+    ? `${isOemGuide ? "/oem" : pathname}#contact-form`
+    : `${prefix}contact-form`;
   const faqHref = isOem ? `${pathname}#faq` : `${prefix}faq`;
-  const flowHref = isOem ? `${pathname}#timeline` : isDessert ? "/dessert#about" : `${prefix}value`;
+  const flowHref = isOem
+    ? `${isOemGuide ? "/oem" : pathname}#timeline`
+    : isDessert
+      ? "/dessert#about"
+      : `${prefix}value`;
 
   const oemFooterSrc = isDessert ? "dessert_footer" : isHome ? "home_footer" : "lp_footer";
 

@@ -3,6 +3,9 @@
 Last updated: 2026-11-27
 Canonical Hub: https://www.soystories.cafe/ ｜ OEM Page: https://www.soystories.cafe/oem
 小ロットOEM完全ガイド（60個・6Lからの費用、比較、アレルゲン管理、原料量、シール仕様）：https://www.soystories.cafe/oem/guide
+- 乳・卵・小麦不使用のアイスOEM（専用工房・原材料・交差接触）：https://www.soystories.cafe/oem/allergen-free
+- ご当地食材・農産物の植物性アイスOEM（原料の受け入れ・試作・ロット）：https://www.soystories.cafe/oem/regional
+- ヴィーガンアイスOEMの費用（開発費・最小ロット・原価目安）：https://www.soystories.cafe/oem/cost
 
 ## 1. 製造元・専用工房仕様
 - 会社名：株式会社ヒトコト（代表取締役 小南 優作）
