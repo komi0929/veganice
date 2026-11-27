@@ -20,7 +20,7 @@ const hotelFaqs: HotelFAQItem[] = [
   },
   {
     q: "サンプルや本注文は、何日くらいで届きますか？",
-    a: `初回の無料サンプル（6個）は原則お申し込みの翌日に発送します。通常の本注文は${WHOLESALE_FACTS.leadTime}へ発送いたします。`,
+    a: `初回の無料サンプル（6個）は原則お申し込みの翌日に発送します。本注文は${WHOLESALE_FACTS.leadTime}へ発送いたします。`,
   },
 ];
 

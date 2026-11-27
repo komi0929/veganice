@@ -27,7 +27,7 @@ export default function CafeHeroSection() {
           </h1>
 
           <p className="text-ink-light mt-3 font-sans text-[13.5px] leading-[1.7] sm:text-[15px]">
-            国産米粉でなめらかな口どけに仕上げ、甘酒・白みそでコクを出した乳脂肪ゼロの植物性アイスです。タルトやワッフルの添え、フロート、アフォガートまで、お店のお菓子やドリンクにそのまま合わせられます。
+            乳・卵・小麦・白砂糖を使わない植物性クラフトアイスです。お菓子や珈琲の風味を邪魔しないすっきりしたコクで、タルトやワッフルの添え、フロート、アフォガートにそのまま合わせられます。
           </p>
 
           <ul className="mt-3.5 space-y-1.5 sm:mt-4">

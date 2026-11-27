@@ -10,7 +10,7 @@ import OemFAQSection from "../components/OemFAQSection";
 import OemContactSection from "../components/OemContactSection";
 import OemFloatingCTA from "../components/OemFloatingCTA";
 
-const PLAN_TITLE = "OEM・ロゴ入りカップ製造プランのご案内｜SoyStories";
+const PLAN_TITLE = "OEM・ロゴ入りカップ製造プランのご案内";
 const PLAN_DESC =
   "飲食店・カフェ・菓子店・生産者様向け。開発費0円のフタ丸シール変更プラン（60個〜）と、お店の素材で作るオリジナル開発プラン（6L/60個〜・翌月末請求書払い）のご案内。";
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
   alternates: { canonical: "https://www.soystories.cafe/oem/plan" },
   openGraph: {
-    title: PLAN_TITLE,
+    title: `${PLAN_TITLE} | SoyStories`,
     description: PLAN_DESC,
     type: "website",
     locale: "ja_JP",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: PLAN_TITLE,
+    title: `${PLAN_TITLE} | SoyStories`,
     description: PLAN_DESC,
     images: ["/images/gelato_circle_lineup.jpg"],
   },

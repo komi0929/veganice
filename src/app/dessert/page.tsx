@@ -13,7 +13,7 @@ import DessertSampleSection from "./components/DessertSampleSection";
 import DessertFAQSection from "./components/DessertFAQSection";
 import OemCrossLinkBanner from "../components/OemCrossLinkBanner";
 
-const TITLE = "飲食店・カフェ・菓子店の業務用クラフトアイス｜乳・卵・小麦・白砂糖不使用 SoyStories";
+const TITLE = "飲食店・カフェ・菓子店の業務用クラフトアイス｜乳・卵・小麦・白砂糖不使用";
 const DESCRIPTION =
   "福岡の専門店SoyStoriesのクラフトアイスを業務用1L・2Lバルク（4L〜）および100mlカップ（60個〜）でお届け。定食・レストランの食後デザートや、カフェのフロート、焼き菓子の添えアイスに。全11種から選べる無料サンプル（6個・原則翌日発送）受付中。";
 
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "ソイストーリーズ",
   ],
   openGraph: {
-    title: TITLE,
+    title: `${TITLE} | SoyStories`,
     description: DESCRIPTION,
     type: "website",
     locale: "ja_JP",

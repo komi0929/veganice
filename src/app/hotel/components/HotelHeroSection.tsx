@@ -27,7 +27,7 @@ export default function HotelHeroSection() {
           </h1>
 
           <p className="text-ink-light mt-3 font-sans text-[13.5px] leading-[1.7] sm:text-[15px]">
-            夕食の最後が果物だけになりがちな日に。国産米粉のなめらかな口どけと甘酒・白みそのコクがありながら、乳脂肪ゼロで会席やコースの後でもさっぱり召し上がれる植物性クラフトアイスです。
+            夕食の最後が果物だけになりがちな日に。乳・卵・小麦・白砂糖を使わず、品数の多い会席やコースの後でもさっぱり召し上がれる植物性クラフトアイスです。
           </p>
 
           <ul className="mt-3.5 space-y-1.5 sm:mt-4">

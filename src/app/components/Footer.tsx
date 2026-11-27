@@ -12,7 +12,7 @@ export default function Footer() {
   const prefix = isDessert ? "/dessert#" : isHome ? "#" : "/#";
   const contactHref = isOem ? `${pathname}#contact-form` : `${prefix}contact-form`;
   const faqHref = isOem ? `${pathname}#faq` : `${prefix}faq`;
-  const flowHref = isOem ? `${pathname}#timeline` : isDessert ? "/dessert#about" : `${prefix}flow`;
+  const flowHref = isOem ? `${pathname}#timeline` : isDessert ? "/dessert#about" : `${prefix}value`;
 
   const oemFooterSrc = isDessert ? "dessert_footer" : isHome ? "home_footer" : "lp_footer";
 
@@ -56,7 +56,7 @@ export default function Footer() {
                 href={flowHref}
                 className="hover:text-cta text-base text-white transition-colors"
               >
-                {isOem ? "お届けまでの流れ" : isDessert ? "お店での出し方" : "導入・サンプルの流れ"}
+                {isOem ? "お届けまでの流れ" : "お店での出し方"}
               </Link>
               <Link
                 href={faqHref}
@@ -83,9 +83,14 @@ export default function Footer() {
 
           {/* Column 3: Contact & Social */}
           <div className="flex flex-col items-start text-left md:items-end md:text-right">
-            <h3 className="mb-6 text-sm font-bold tracking-wider text-white/50">お問い合わせ</h3>
-            <p className="mb-2 font-sans text-sm text-white/80">〒810-0022</p>
-            <p className="mb-6 font-sans text-sm text-white/80">福岡県福岡市中央区薬院</p>
+            <h3 className="mb-4 text-sm font-bold tracking-wider text-white/50">お問い合わせ</h3>
+            <p className="mb-1 font-sans text-sm text-white/80">株式会社ヒトコト（SoyStories）</p>
+            <p className="mb-1 font-sans text-xs leading-relaxed text-white/75">
+              〒810-0022 福岡県福岡市中央区薬院2丁目2-24
+              <br />
+              チサンマンション第3博多 1F
+            </p>
+            <p className="mb-5 font-sans text-xs text-white/75">TEL: 092-231-0677</p>
             <a
               href="https://instagram.com/soystories_yakuin"
               target="_blank"
@@ -118,7 +123,7 @@ export default function Footer() {
         {/* Divider & Copyright */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
           <p className="font-sans text-xs text-white/40">
-            &copy; {new Date().getFullYear()} SoyStories. All rights reserved.
+            &copy; {new Date().getFullYear()} SoyStories / 株式会社ヒトコト. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-6 text-xs text-white/40">
             <a

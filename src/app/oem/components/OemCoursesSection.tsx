@@ -190,7 +190,7 @@ export default function OemCoursesSection() {
               </div>
 
               <p className="text-ink-light mt-3 text-xs leading-relaxed sm:text-[13.5px]">
-                お店の素材（卵・乳・小麦不含）から専用レシピを開発。完成後はどちらの形態でもご注文いただけます。
+                お店の素材（卵・乳・小麦を含まないもの）から専用レシピを開発。完成後はどちらの形態でもご注文いただけます。
               </p>
 
               <div className="border-brand/25 bg-brand/4 mt-3.5 rounded-2xl border p-3.5">

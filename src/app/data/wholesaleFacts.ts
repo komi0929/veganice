@@ -13,9 +13,9 @@ export const WHOLESALE_FACTS = {
   leadTime: "通常5営業日前後、ヤマトのクール冷凍便で全国",
   payment: "納品月の月末締め・翌月末払いのご請求書（銀行振込）",
   allergen:
-    "卵・乳・小麦を持ち込まない専用の工房で製造。工房への持ち込みがあるのはナッツ類（アーモンド・くるみ・カシューナッツ・落花生等）のみ。味によって大豆・アーモンド（ナッツ使用）・もも・りんごを含む",
-  allergenAssurance: "乳・卵・小麦アレルギーの方にも安心して出せる",
-  freeFromAdditivesAndWhiteSugar: "乳・卵・小麦・白砂糖は使っていない",
+    "卵・乳・小麦を持ち込まない専用工房製（工房への持ち込みはナッツ類のみ。味により大豆・アーモンド［ナッツ使用］・もも・りんごを含みます）",
+  allergenAssurance: "乳・卵・小麦アレルギーの方にも安心してお出しいただけます",
+  freeFromAdditivesAndWhiteSugar: "乳・卵・小麦・白砂糖 不使用（全11種共通・氷菓）",
   storage: "冷凍（−18℃以下）で保存",
   googleRating: "★4.7",
   googleReviewCount: "270件以上",

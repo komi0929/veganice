@@ -107,7 +107,9 @@ export default function CafeFlavorsSection() {
               全11種同価格。4L（1L×4本など）から自由に組み合わせ。
             </h2>
           </div>
-          <p className="text-ink-muted font-sans text-xs">※タップで原材料・栄養を表示</p>
+          <p className="text-ink-muted font-sans text-xs">
+            ※カードをタップで全原材料・栄養成分を表示
+          </p>
         </div>
 
         <div className="mt-6">

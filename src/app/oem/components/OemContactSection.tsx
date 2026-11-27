@@ -44,7 +44,7 @@ const COURSE_CHOICES: {
 }[] = [
   { id: "seal_only", title: "① フタだけお店ロゴ", badge: "開発費 ¥0・60個〜" },
   { id: "custom_recipe", title: "② オリジナル味開発", badge: "試作費 税別¥3万" },
-  { id: "undecided", title: "未定・相談したい", badge: "ご提案希望" },
+  { id: "undecided", title: "まだ迷っている・相談したい", badge: "ご提案希望" },
 ];
 
 const FORMAT_CHOICES: {
@@ -409,7 +409,9 @@ export default function OemContactSection() {
                   <>
                     {/* タップで直感選択できるプランカード */}
                     <div>
-                      <span className="text-ink mb-2 block text-sm font-bold">ご希望プラン</span>
+                      <span className="text-ink mb-2 block text-sm font-bold">
+                        気になるプラン（後から変更OK）
+                      </span>
                       <input type="hidden" name="oemCourse" value={selectedCourse} />
                       <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                         {COURSE_CHOICES.map((c) => {
@@ -557,7 +559,7 @@ export default function OemContactSection() {
                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <Field
                           id="ingredientName"
-                          label="使いたい素材"
+                          label="使いたい素材（ざっくりでOK）"
                           error={state.errors?.ingredientName}
                         >
                           <input
@@ -574,7 +576,7 @@ export default function OemContactSection() {
 
                         <Field
                           id="allergenStatus"
-                          label="素材の卵・乳・小麦"
+                          label="素材の「卵・乳・小麦」混入有無"
                           error={state.errors?.allergenStatus}
                         >
                           <select
@@ -585,12 +587,16 @@ export default function OemContactSection() {
                             disabled={isPending}
                             className={inputClasses}
                           >
-                            <option value="checking">確認中（後ほど規格書で確認）</option>
-                            <option value="free_confirmed">卵・乳・小麦を含まない（確認済）</option>
-                            <option value="contains_or_unknown">
-                              含む可能性あり／不明（要相談）
+                            <option value="checking">後ほど原材料表・規格書で確認したい</option>
+                            <option value="free_confirmed">
+                              素材・加工場所ともに卵・乳・小麦を含まない
                             </option>
-                            <option value="none_seal_only">持ち込みなし（シールのみ）</option>
+                            <option value="contains_or_unknown">
+                              卵・乳・小麦を含む可能性がある／不明（要相談）
+                            </option>
+                            <option value="none_seal_only">
+                              素材の持ち込みなし（シール変更のみ）
+                            </option>
                           </select>
                         </Field>
                       </div>
@@ -600,6 +606,7 @@ export default function OemContactSection() {
                     <Field
                       id="tasteImage"
                       label="ご相談メモ・作りたいイメージ"
+                      hint="下のボタンをタップすると記入例が入ります。1行だけでも大丈夫です。"
                       error={state.errors?.tasteImage}
                     >
                       <div className="mb-2.5 flex flex-wrap gap-1.5">
@@ -743,8 +750,8 @@ export default function OemContactSection() {
                     ? "送信しています..."
                     : activeTab === "oem"
                       ? selectedCourse === "seal_only"
-                        ? "無料相談・型紙を受け取る →"
-                        : "無料相談・3案提案を受け取る →"
+                        ? "無料で事前相談・型紙を受け取る →"
+                        : "無料で事前相談・3案提案を受け取る →"
                       : "無料サンプル（6個）を申し込む →"}
                 </button>
 

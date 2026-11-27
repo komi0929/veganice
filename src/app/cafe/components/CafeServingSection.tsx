@@ -22,7 +22,7 @@ const servingScenes = [
   },
   {
     title: "テイクアウト・店頭販売に",
-    caption: "100mlカップ（税別300円・60個〜）やロゴOEMも対応。",
+    caption: "盛り付け不要の100mlカップ（税別300円・60個〜）や店名ロゴOEMにも対応。",
     image: "/images/gelato_cup_tower.jpg",
     objectPosition: "object-cover",
   },

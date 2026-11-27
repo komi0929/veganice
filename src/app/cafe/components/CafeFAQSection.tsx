@@ -24,7 +24,7 @@ const cafeFaqs: CafeFAQItem[] = [
   },
   {
     q: "アレルゲン管理はどうなっていますか？",
-    a: `${WHOLESALE_FACTS.allergen}。「ショコラ」はアーモンドを含みます。乳・卵・小麦を持ち込まない専用工房のため、${WHOLESALE_FACTS.allergenAssurance}です。`,
+    a: `${WHOLESALE_FACTS.allergen}。「ショコラ」はアーモンドを含みます。乳・卵・小麦を持ち込まない専用工房のため、${WHOLESALE_FACTS.allergenAssurance}。`,
   },
   {
     q: "注文後何日で届きますか？",

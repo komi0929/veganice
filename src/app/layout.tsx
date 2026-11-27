@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.soystories.cafe"),
   title: {
-    default: "SoyStories | 業務用プラントベース クラフトアイスクリーム — 福岡から全国へ",
+    default: "SoyStories｜業務用プラントベース クラフトアイスクリーム（福岡から全国へ）",
     template: "%s | SoyStories",
   },
   description:
@@ -85,7 +85,7 @@ const jsonLd = {
       logo: "https://soystories.cafe/images/logo_square.png",
       sameAs: [
         "https://www.instagram.com/soystories_yakuin",
-        "https://www.happycow.net/reviews/soystories-fukuoka-289915",
+        "https://www.happycow.net/reviews/soy-stories-fukuoka-298687",
       ],
       description:
         "福岡発のヴィーガン＆グルテンフリー スイーツ専門店。乳・卵・小麦・白砂糖不使用のクラフトアイスを専用工房で製造し、福岡の実店舗販売と全国の飲食店向け業務用卸・小ロットOEMを展開。",

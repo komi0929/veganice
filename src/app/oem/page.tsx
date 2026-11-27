@@ -13,7 +13,7 @@ import OemFAQSection from "./components/OemFAQSection";
 import OemContactSection from "./components/OemContactSection";
 import OemFloatingCTA from "./components/OemFloatingCTA";
 
-const TITLE = "飲食店・カフェ・宿のオリジナルアイスOEM｜60個・6Lの小ロットから｜SoyStories";
+const TITLE = "飲食店・カフェ・宿のオリジナルアイスOEM｜60個・6Lの小ロットから";
 const DESCRIPTION =
   "福岡のヴィーガン＆GFスイーツ専門店SoyStories（Google★4.7・HappyCow★5.0）の専用工房で、お店のロゴ入りカップ（開発費0円・60個〜）や自家焙煎珈琲・お茶・果物を使ったオリジナルアイス（60個／6L〜）を製造。乳・卵・小麦・白砂糖不使用。";
 
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     canonical: "https://www.soystories.cafe/oem",
   },
   openGraph: {
-    title: TITLE,
+    title: `${TITLE} | SoyStories`,
     description: DESCRIPTION,
     type: "website",
     locale: "ja_JP",

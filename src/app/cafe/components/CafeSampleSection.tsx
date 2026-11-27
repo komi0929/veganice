@@ -14,7 +14,7 @@ const CAFE_PRESET_FLAVORS: readonly SampleFlavorName[] = [
 const badges = [
   "6個無料（クール便送料のみ着払い）",
   "原則お申し込みの翌日に発送",
-  "初期費・月間ノルマ0円",
+  "初期登録費・月間ノルマ0円",
 ] as const;
 
 export default function CafeSampleSection() {
@@ -69,7 +69,7 @@ export default function CafeSampleSection() {
           notesPlaceholder="例：焼き菓子の添えアイスや100mlカップ販売を検討中です。"
           inquiryPlaceholder="取引条件や100mlカップ・ロゴOEMなどお気軽にご記入ください。"
           presetTitle="おすすめ6種"
-          presetDescription="人気の6種（UMAMIバニラ・抹茶・バニラココナッツ・アールグレイ・マンゴー・ミックスベリー）"
+          presetDescription="焼き菓子添え・フロートで人気の6種（UMAMIバニラ・抹茶・バニラココナッツ・アールグレイ・マンゴー・ミックスベリー）"
           presetFlavors={CAFE_PRESET_FLAVORS}
         />
       </div>

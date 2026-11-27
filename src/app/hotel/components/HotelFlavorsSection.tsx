@@ -135,7 +135,9 @@ export default function HotelFlavorsSection() {
               和食にも洋食にも合う全11種（同価格・4L〜）。
             </h2>
           </div>
-          <p className="text-ink-muted font-sans text-xs">※タップで栄養成分を表示</p>
+          <p className="text-ink-muted font-sans text-xs">
+            ※カードをタップで全原材料・栄養成分を表示
+          </p>
         </div>
 
         <div className="mt-6">
