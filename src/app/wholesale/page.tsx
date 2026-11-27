@@ -53,69 +53,69 @@ const navItems: WholesaleNavItem[] = [
 
 const standardFlavorGroups: WholesaleFlavorGroup[] = [
   {
-    title: "濃厚ミルク・カカオ・茶葉系（6種）",
-    subtitle: "クーベルチュールやココナッツ、濃縮甘酒・白みその濃密仕立て",
+    title: "ミルク・カカオ・茶葉系（6種）",
+    subtitle: "食後のデザートや焼き菓子添えに人気の定番6種",
     items: [
       {
         displayName: "UMAMIバニラ",
         image: "/images/flavors/umami_vanilla.png",
-        note: "【人気No.1】甘酒と白みそが引き出す奥深いコクの王道バニラ",
+        note: "人気No.1。甘酒と白みそのコク",
       },
       {
         displayName: "抹茶",
         image: "/images/flavors/matcha.png",
-        note: "濃縮甘酒と白みそが支えるお濃茶仕立て",
+        note: "宇治抹茶に甘酒を合わせた濃厚味",
       },
       {
         displayName: "バニラココナッツ",
         image: "/images/flavors/vanilla_coconut.png",
-        note: "ココナッツの風味と白みそを合わせた、さっぱりとした味わい",
+        note: "ココナッツが香るさっぱりした甘さ",
       },
       {
         displayName: "ほうじ茶",
         image: "/images/flavors/houjicha.png",
-        note: "焙煎茶葉の立ち上る薫香と甘酒のコク",
+        note: "香ばしい茶葉の香りと軽い後味",
       },
       {
         displayName: "アールグレイ",
         image: "/images/flavors/earl_gray.png",
-        note: "ベルガモットと紅茶葉が華やかに立つ一玉",
+        note: "ベルガモットと紅茶の華やかな香り",
       },
       {
         displayName: "ショコラ",
         image: "/images/flavors/chocolate.png",
-        note: "冷たい生チョコのような濃密カカオ",
+        note: "カカオが濃い生チョコのような食感",
       },
     ],
   },
   {
-    title: "完熟ピューレ・国産ストレート果汁系（5種・豆乳不使用）",
-    subtitle: "ココナッツや米粉で果肉のようなとろみに仕立てた果実系",
+    title: "フルーツ系（5種・豆乳不使用）",
+    subtitle: "お食事の後やフロートに合う爽やかな果実系5種",
     items: [
       {
         displayName: "マンゴー",
         image: "/images/flavors/mango.png",
-        note: "完熟果肉を裏ごししたような濃密な甘み",
+        note: "完熟マンゴーの濃厚でなめらかな甘み",
       },
       {
         displayName: "ミックスベリー",
         image: "/images/flavors/berry_mix.png",
-        note: "苺と木苺ピューレの鮮やかな果実味",
+        note: "苺と木苺の甘酸っぱい果実味",
       },
       {
         displayName: "もも",
         image: "/images/flavors/peach.png",
-        note: "国産白桃をかじったような瑞々しい香り",
+        note: "国産白桃のやさしい香りと果汁感",
       },
       {
         displayName: "りんご",
         image: "/images/flavors/apple.png",
-        note: "国産りんご果汁の蜜感と爽やかな酸味",
+        note: "国産りんご果汁のみずみずしい甘み",
       },
       {
         displayName: "ドラゴンフルーツ",
         image: "/images/flavors/dragon_fruit.png",
-        note: "ルビー色にパインが香る華やかな南国味",
+        note: "器が華やぐパイン＆ピタヤ味",
       },
     ],
   },

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "SoyStories",
     images: [
       {
-        url: "/images/hero_matcha.jpg",
+        url: "/images/hero_craft_gelato.jpg",
         width: 1200,
         height: 630,
         alt: "SoyStories ホテル・旅館向け 業務用植物性クラフトアイス",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: OG_TITLE,
     description: DESCRIPTION,
-    images: ["/images/hero_matcha.jpg"],
+    images: ["/images/hero_craft_gelato.jpg"],
   },
 };
 

@@ -62,14 +62,14 @@ export default function HotelHeroSection() {
 
         <div className="md:col-span-5">
           <div className="overflow-hidden rounded-3xl border border-stone-200/80 bg-[#f7f3ec] p-2.5 sm:p-3">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-stone-100 md:aspect-square">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-stone-100">
               <Image
-                src="/images/hero_matcha.jpg"
-                alt="器に盛り付けたSoyStoriesの抹茶クラフトアイス"
+                src="/images/serving/serving_monaka.jpg"
+                alt="和の黒皿に盛り付けた抹茶とほうじ茶のクラフトアイス最中"
                 fill
                 priority
                 sizes="(max-width: 768px) 92vw, 420px"
-                className="object-cover object-center"
+                className="object-cover object-[center_72%]"
               />
             </div>
             <p className="text-ink-muted mt-2 px-2 py-1 text-center font-sans text-xs">

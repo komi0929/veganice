@@ -2,70 +2,61 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 const servingScenes = [
   {
     badge: "カフェ・菓子店に",
-    title: "温かいタルトや焼き菓子の添えに",
-    caption: "焼きたてのお菓子にとろりと絡む濃厚バニラやアールグレイ。",
+    title: "タルトや焼き菓子の添えに",
+    caption: "温かいお菓子やドーナツの添え・サンドに。",
     image: "/images/serving/serving_waffle_cup.jpg",
     objectPosition: "object-[center_45%]",
-    href: "/cafe",
   },
   {
-    badge: "レストラン・コースに",
+    badge: "レストラン・定食に",
     title: "食後の小皿・アフォガートに",
-    caption: "スパイス料理やコースのあとにも軽やかに締まる一皿。",
+    caption: "しっかりしたお食事の後でも重くならない一皿。",
     image: "/images/serving/serving_affogato.jpg",
     objectPosition: "object-center",
-    href: "/dessert",
   },
   {
     badge: "ドリンク・パフェに",
-    title: "自家製ソーダや珈琲のフロートに",
-    caption: "完熟マンゴーやミックスベリーでグラスが華やぐ一杯。",
+    title: "ソーダや珈琲のフロートに",
+    caption: "マンゴーやベリー、バニラで季節のドリンクに。",
     image: "/images/serving/serving_float.jpg",
     objectPosition: "object-[center_35%]",
-    href: "/cafe",
   },
   {
-    badge: "和食・宿泊施設に",
-    title: "会席の水菓子・インバウンド対応に",
-    caption: "お濃茶仕立ての抹茶や白桃。海外客にも同じ一皿で。",
+    badge: "ホテル・旅館に",
+    title: "会席のデザート・海外客対応に",
+    caption: "抹茶・ほうじ茶・白桃など、皆様と同じ器で。",
     image: "/images/serving/serving_monaka.jpg",
     objectPosition: "object-[center_70%]",
-    href: "/hotel",
   },
 ] as const;
 
 export default function EconomicsSection() {
   return (
-    <section id="value" className="bg-bg scroll-mt-20 py-14 md:py-20">
+    <section id="value" className="bg-bg scroll-mt-20 py-14 md:py-18">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
-            <span className="text-brand mb-2 block font-sans text-xs font-semibold tracking-widest uppercase">
-              Serving Ideas
-            </span>
+            <p className="text-brand mb-1.5 font-sans text-xs font-bold tracking-wider">
+              お店での出し方
+            </p>
             <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
-              焼き菓子の横から、会席やコースの締めくくりまで。
+              焼き菓子の添えから、食後のデザートまで。
             </h2>
           </div>
           <p className="text-ink-muted font-sans text-xs font-medium">
-            1皿 50ml（#18）約100円〜 ／ 賞味期限表示義務なし・長期冷凍で廃棄が出にくい
+            1皿 50ml 約100円〜 ／ 賞味期限表示義務なし・廃棄が出にくい
           </p>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {servingScenes.map((scene, index) => (
-            <motion.div
+        <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {servingScenes.map((scene) => (
+            <div
               key={scene.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-3 shadow-2xs"
+              className="flex flex-col overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-3"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-stone-100">
                 <Image
@@ -87,14 +78,12 @@ export default function EconomicsSection() {
                   {scene.caption}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         <div className="mt-5 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-stone-200/70 bg-white px-4 py-3 font-sans text-xs sm:px-5">
-          <span className="text-ink-light font-medium">
-            業態別の詳しいご案内ページもご用意しています：
-          </span>
+          <span className="text-ink-light font-medium">業態別のご案内ページ：</span>
           <div className="flex flex-wrap gap-x-4 gap-y-1 font-bold">
             <Link href="/cafe" className="text-brand hover:underline">
               カフェ・菓子店向け →

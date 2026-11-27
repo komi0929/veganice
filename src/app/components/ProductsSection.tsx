@@ -15,57 +15,57 @@ const flavors: {
 }[] = [
   {
     name: "UMAMIバニラ",
-    story: "【人気No.1】甘酒と白みそが香る王道バニラ",
+    story: "人気No.1。甘酒と白みそのコク",
     image: "/images/flavors/umami_vanilla.png",
   },
   {
     name: "抹茶",
-    story: "濃縮甘酒と白みそが支えるお濃茶仕立て",
+    story: "宇治抹茶に甘酒を合わせた濃厚味",
     image: "/images/flavors/matcha.png",
   },
   {
     name: "バニラココナッツ",
-    story: "ココナッツが香るさっぱりとした味わい",
+    story: "ココナッツが香るさっぱりした甘さ",
     image: "/images/flavors/vanilla_coconut.png",
   },
   {
     name: "ほうじ茶",
-    story: "焙煎茶葉の立ち上る薫香と甘酒のコク",
+    story: "香ばしい茶葉の香りと軽い後味",
     image: "/images/flavors/houjicha.png",
   },
   {
     name: "アールグレイ",
-    story: "ベルガモットと紅茶葉が気品高く香る一玉",
+    story: "ベルガモットと紅茶の華やかな香り",
     image: "/images/flavors/earl_gray.png",
   },
   {
     name: "ショコラ",
-    story: "冷たい生チョコのような濃密カカオ",
+    story: "カカオが濃い生チョコのような食感",
     image: "/images/flavors/chocolate.png",
   },
   {
     name: "マンゴー",
-    story: "完熟果肉を裏ごししたような濃密な甘み",
+    story: "完熟マンゴーの濃厚でなめらかな甘み",
     image: "/images/flavors/mango.png",
   },
   {
     name: "ミックスベリー",
-    story: "苺と木苺ピューレの鮮やかな酸味と果実味",
+    story: "苺と木苺の甘酸っぱい果実味",
     image: "/images/flavors/berry_mix.png",
   },
   {
     name: "もも",
-    story: "国産白桃をかじったような瑞々しい香り",
+    story: "国産白桃のやさしい香りと果汁感",
     image: "/images/flavors/peach.png",
   },
   {
     name: "りんご",
-    story: "国産りんご果汁の蜜感と爽やかな酸味",
+    story: "国産りんご果汁のみずみずしい甘み",
     image: "/images/flavors/apple.png",
   },
   {
     name: "ドラゴンフルーツ",
-    story: "ルビー色にパインが香る華やかな南国味",
+    story: "器が華やぐパイン＆ピタヤ味",
     image: "/images/flavors/dragon_fruit.png",
   },
 ];

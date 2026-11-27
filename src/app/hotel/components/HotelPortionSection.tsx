@@ -7,8 +7,8 @@ const usageCards = [
     price: "小鉢 約50ml＝約100円（税別・1Lで約20人分）",
     caption:
       "果物だけに差し替えず、皆様と同じ器でお出しいただけます。抹茶・ほうじ茶・白桃など和の味も選べます。",
-    image: "/images/serving/serving_monaka.jpg",
-    objectPosition: "object-[center_70%]",
+    image: "/images/serving/serving_affogato.jpg",
+    objectPosition: "object-center",
     linkLabel: null,
     linkHref: null,
   },

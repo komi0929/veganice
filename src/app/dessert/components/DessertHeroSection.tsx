@@ -93,9 +93,9 @@ export default function DessertHeroSection() {
             ))}
           </div>
 
-          <p className="text-ink-light mt-3.5 text-[14px] leading-[1.78] sm:text-[15px]">
-            スパイス料理や定食のあとに軽やかに締まる抹茶や白桃、温かい焼き菓子にとろりと絡む濃厚バニラ。
-            <strong className="text-ink">ノンヴィーガンのお客様からも選ばれる専門店の味</strong>
+          <p className="text-ink-light mt-3.5 text-[14px] leading-[1.75] sm:text-[15px]">
+            定食やコースの食後デザート、カフェのフロート、焼き菓子の添えアイスに。
+            <strong className="text-ink">ヴィーガンではないお客様からも選ばれる専門店の味</strong>
             をお届けします。
           </p>
 

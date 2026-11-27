@@ -10,8 +10,8 @@ const hotelReasons = [
   {
     title: "濃厚なのに、食後はすっきり",
     body: "甘酒と白みそでコクを出しつつ、乳脂肪はゼロ。品数の多いお食事の後でも重くなりません。",
-    image: "/images/ingredient_miso_amazake.jpg",
-    alt: "甘酒と白みそなど日本の発酵素材",
+    image: "/images/hero_craft_gelato.jpg",
+    alt: "抹茶やほうじ茶、ベリーなど素材を活かしたSoyStoriesのクラフトアイス実物",
   },
   {
     title: "乳・卵・小麦を持ち込まない工房",

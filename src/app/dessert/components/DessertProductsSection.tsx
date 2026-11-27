@@ -20,50 +20,62 @@ const flavorGroups: {
   items: Flavor[];
 }[] = [
   {
-    title: "濃厚ミルク・カカオ・茶葉系（6種）",
-    note: "温かいお菓子添えにも合う、甘酒・白みそ・カカオの濃密仕立て",
+    title: "ミルク・カカオ・茶葉系（6種）",
+    note: "食後のデザートや焼き菓子添えに人気の定番6種",
     gridColsClass: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6",
     items: [
       {
         name: "UMAMIバニラ",
-        note: "【人気No.1】白みそと甘酒の王道バニラ",
+        note: "人気No.1。甘酒と白みそのコク",
         image: "/images/flavors/umami_vanilla.png",
       },
-      { name: "抹茶", note: "甘酒が支えるお濃茶仕立て", image: "/images/flavors/matcha.png" },
+      { name: "抹茶", note: "宇治抹茶に甘酒を合わせた濃厚味", image: "/images/flavors/matcha.png" },
       {
         name: "バニラココナッツ",
-        note: "ココナッツが香るさっぱりとした味わい",
+        note: "ココナッツが香るさっぱりした甘さ",
         image: "/images/flavors/vanilla_coconut.png",
       },
-      { name: "ほうじ茶", note: "焙煎茶葉の香ばしい薫香", image: "/images/flavors/houjicha.png" },
+      {
+        name: "ほうじ茶",
+        note: "香ばしい茶葉の香りと軽い後味",
+        image: "/images/flavors/houjicha.png",
+      },
       {
         name: "アールグレイ",
-        note: "ベルガモット華やぐ紅茶味",
+        note: "ベルガモットと紅茶の華やかな香り",
         image: "/images/flavors/earl_gray.png",
       },
       {
         name: "ショコラ",
-        note: "生チョコのような濃密カカオ",
+        note: "カカオが濃い生チョコのような食感",
         image: "/images/flavors/chocolate.png",
       },
     ],
   },
   {
-    title: "完熟ピューレ・国産果汁系（5種・豆乳不使用）",
-    note: "ココナッツや米粉で果肉のようなとろみに仕立てた果実系",
+    title: "フルーツ系（5種・豆乳不使用）",
+    note: "お食事の後やフロートに合う爽やかな果実系5種",
     gridColsClass: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5",
     items: [
-      { name: "マンゴー", note: "完熟果肉の濃密な甘み", image: "/images/flavors/mango.png" },
+      {
+        name: "マンゴー",
+        note: "完熟マンゴーの濃厚でなめらかな甘み",
+        image: "/images/flavors/mango.png",
+      },
       {
         name: "ミックスベリー",
-        note: "苺と木苺の鮮やかな酸味",
+        note: "苺と木苺の甘酸っぱい果実味",
         image: "/images/flavors/berry_mix.png",
       },
-      { name: "もも", note: "国産白桃のみずみずしい香り", image: "/images/flavors/peach.png" },
-      { name: "りんご", note: "国産りんごの蜜感と酸味", image: "/images/flavors/apple.png" },
+      { name: "もも", note: "国産白桃のやさしい香りと果汁感", image: "/images/flavors/peach.png" },
+      {
+        name: "りんご",
+        note: "国産りんご果汁のみずみずしい甘み",
+        image: "/images/flavors/apple.png",
+      },
       {
         name: "ドラゴンフルーツ",
-        note: "ルビー色にパイン香る南国味",
+        note: "器が華やぐパイン＆ピタヤ味",
         image: "/images/flavors/dragon_fruit.png",
       },
     ],

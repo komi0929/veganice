@@ -134,8 +134,8 @@ export default function OemCoursesSection() {
             <div className="relative grid h-44 w-full grid-cols-2 border-b border-gray-100 bg-white">
               <div className="relative h-full w-full border-r border-gray-100">
                 <Image
-                  src="/images/gelato_strawberry.jpg"
-                  alt="旬の果物や地域の食材からつくったオリジナルアイスの実物"
+                  src="/images/hero_craft_gelato.jpg"
+                  alt="果物やお茶などの素材からつくったクラフトアイス実物"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 50vw, 30vw"
@@ -143,10 +143,10 @@ export default function OemCoursesSection() {
               </div>
               <div className="relative h-full w-full">
                 <Image
-                  src="/images/gelato_kinako.jpg"
-                  alt="お茶や焙煎素材からつくったオリジナルアイスの実物"
+                  src="/images/gelato_spoon_moment.jpg"
+                  alt="カップとスプーンで楽しむクラフトアイス実物"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_62%]"
                   sizes="(max-width: 1024px) 50vw, 30vw"
                 />
               </div>
