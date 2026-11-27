@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import StructuredData, { breadcrumbs, service } from "../components/StructuredData";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FloatingCTA from "../components/FloatingCTA";
@@ -65,6 +66,12 @@ export default function DessertPage() {
   return (
     <>
       <Header />
+      <StructuredData
+        graph={[
+          service("/dessert", "飲食店・菓子店向け業務用クラフトアイス卸売", DESCRIPTION),
+          breadcrumbs("/dessert", "業務用デザート"),
+        ]}
+      />
       <main className="lp-friendly flex-1">
         <DessertHeroSection />
         <DessertReasonsSection />

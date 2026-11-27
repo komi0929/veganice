@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "運営会社・特定商取引法に基づく表記",
+  description:
+    "SoyStoriesを運営する株式会社ヒトコトの会社情報と特定商取引法に基づく表記。所在地、連絡先、お取引条件をご案内します。",
+  alternates: { canonical: "https://www.soystories.cafe/company" },
 };
 
 export default function CompanyPage() {

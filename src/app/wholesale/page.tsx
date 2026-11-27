@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import StructuredData, { breadcrumbs, service } from "../components/StructuredData";
 import Image from "next/image";
 import Link from "next/link";
 import WholesaleHeader, { type WholesaleNavItem } from "@/app/components/wholesale/WholesaleHeader";
@@ -176,6 +177,12 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
   return (
     <>
       <WholesaleHeader pageHref="/wholesale" navItems={navItems} />
+      <StructuredData
+        graph={[
+          service("/wholesale", "業務用クラフトアイスのバルク・個食カップ卸売", PAGE_DESC),
+          breadcrumbs("/wholesale", "業務用卸"),
+        ]}
+      />
       <main className="flex-1 pt-14 sm:pt-16">
         {/* 1. 要点ヘッダー ＆ 選べる2つの仕入れ形態 */}
         <section

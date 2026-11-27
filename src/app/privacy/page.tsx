@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "プライバシーポリシー",
+  description:
+    "SoyStoriesを運営する株式会社ヒトコトのプライバシーポリシー。お問い合わせやサンプルのお申し込みに伴う個人情報の取り扱いと利用目的をご案内します。",
+  alternates: { canonical: "https://www.soystories.cafe/privacy" },
 };
 
 export default function PrivacyPage() {

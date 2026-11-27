@@ -78,15 +78,20 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://soystories.cafe/#organization",
+      "@id": "https://www.soystories.cafe/#organization",
       name: "SoyStories",
       alternateName: "ソイストーリーズ",
-      url: "https://soystories.cafe",
-      logo: "https://soystories.cafe/images/logo_square.png",
+      url: "https://www.soystories.cafe",
+      logo: "https://www.soystories.cafe/images/logo_square.png",
       sameAs: [
         "https://www.instagram.com/soystories_yakuin",
         "https://www.happycow.net/reviews/soy-stories-fukuoka-298687",
+        "https://www.soystories.jp/b2b.html",
+        "https://www.soystories.jp/oem.html",
+        "https://en.soystories.cafe/",
+        "https://www.instagram.com/hitokoto.sogu/",
       ],
+      areaServed: { "@type": "Country", name: "Japan" },
       description:
         "福岡発のヴィーガン＆グルテンフリー スイーツ専門店。乳・卵・小麦・白砂糖不使用のクラフトアイスを専用工房で製造し、福岡の実店舗販売と全国の飲食店向け業務用卸・小ロットOEMを展開。",
       contactPoint: {
@@ -99,9 +104,9 @@ const jsonLd = {
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://soystories.cafe/#store",
+      "@id": "https://www.soystories.cafe/#store",
       name: "SoyStories",
-      image: "https://soystories.cafe/images/store_actual.png",
+      image: "https://www.soystories.cafe/images/store_actual.png",
       url: "https://www.soystories.jp/",
       telephone: "+81-92-231-0677",
       address: {
@@ -118,16 +123,16 @@ const jsonLd = {
         longitude: 130.3967,
       },
       parentOrganization: {
-        "@id": "https://soystories.cafe/#organization",
+        "@id": "https://www.soystories.cafe/#organization",
       },
     },
     {
       "@type": "Product",
-      "@id": "https://soystories.cafe/#product",
+      "@id": "https://www.soystories.cafe/#product",
       name: "SoyStories プラントベース クラフトアイスクリーム（業務用卸売）",
       description:
         "乳・卵・小麦・白砂糖不使用の植物性クラフトアイス（氷菓）。乳脂肪ゼロで後味が軽く、卵・乳・小麦を持ち込まない専用工房で製造。全11フレーバー、冷凍1L・2Lバルク容器（最小4L〜）および100ml個食カップ（最小60個〜）で卸売対応。",
-      brand: { "@id": "https://soystories.cafe/#organization" },
+      brand: { "@id": "https://www.soystories.cafe/#organization" },
       category: "業務用氷菓・クラフトアイス",
       offers: {
         "@type": "Offer",
@@ -142,7 +147,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "@id": "https://soystories.cafe/#faq",
+      "@id": "https://www.soystories.cafe/#faq",
       mainEntity: [
         {
           "@type": "Question",

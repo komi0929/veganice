@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import StructuredData, { breadcrumbs, service } from "../components/StructuredData";
 import WholesaleHeader, { type WholesaleNavItem } from "@/app/components/wholesale/WholesaleHeader";
 import WholesaleFooter from "@/app/components/wholesale/WholesaleFooter";
 import WholesaleFloatingCTA from "@/app/components/wholesale/WholesaleFloatingCTA";
@@ -70,6 +71,12 @@ export default function CafePage() {
   return (
     <>
       <WholesaleHeader pageHref="/cafe" navItems={navItems} />
+      <StructuredData
+        graph={[
+          service("/cafe", "カフェ向け業務用クラフトアイス卸売", DESCRIPTION),
+          breadcrumbs("/cafe", "カフェ向け業務用アイス"),
+        ]}
+      />
       <main className="flex-1">
         <CafeHeroSection />
         <CafePolicySection />

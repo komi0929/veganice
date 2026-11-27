@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import StructuredData, { breadcrumbs } from "../components/StructuredData";
 
 const PAGE_TITLE = "Flavor Lineup | Plant-Based Craft Ice Cream (All 11 Flavors)";
 const PAGE_DESC =
@@ -289,6 +290,19 @@ const KEY_FACTS = [
   "No Emulsifiers, Stabilizers or Artificial Colors",
 ] as const;
 
+const flavors = FLAVOR_GROUPS.flatMap((group) => group.items);
+const flavorList = {
+  "@type": "ItemList",
+  name: PAGE_TITLE,
+  numberOfItems: flavors.length,
+  itemListElement: flavors.map((flavor, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: flavor.name,
+    url: `https://www.soystories.cafe/flavors#${flavor.id}`,
+  })),
+};
+
 export default function EnglishFlavorsPage() {
   return (
     <div
@@ -335,6 +349,7 @@ export default function EnglishFlavorsPage() {
         </div>
       </header>
 
+      <StructuredData graph={[flavorList, breadcrumbs("/flavors", "Flavor Lineup", "Home")]} />
       <main className="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-14">
         {/* Intro */}
         <section className="border-b border-stone-200/80 pb-9 sm:pb-11">

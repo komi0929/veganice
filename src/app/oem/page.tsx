@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import StructuredData, { breadcrumbs, service } from "../components/StructuredData";
 import OemHeader from "./components/OemHeader";
 import OemHeroSection from "./components/OemHeroSection";
 import OemPremiseSection from "./components/OemPremiseSection";
@@ -12,6 +13,7 @@ import OemTimelineSection from "./components/OemTimelineSection";
 import OemFAQSection from "./components/OemFAQSection";
 import OemContactSection from "./components/OemContactSection";
 import OemFloatingCTA from "./components/OemFloatingCTA";
+import { OEM_COURSES, PRICING_CONSTANTS } from "./data/oemSpecs";
 
 const TITLE = "飲食店・カフェ・宿のオリジナルアイスOEM｜60個・6Lの小ロットから";
 const DESCRIPTION =
@@ -41,40 +43,90 @@ export const metadata: Metadata = {
   },
 };
 
-const oemJsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      "@id": "https://www.soystories.cafe/oem#service",
-      name: "飲食店・カフェ・宿泊施設向け クラフトアイス小ロットOEM（60個・6L〜）",
-      provider: {
-        "@type": "Organization",
-        name: "株式会社ヒトコト",
-        url: "https://www.soystories.jp/company.html",
+const offerCatalog = {
+  "@type": "OfferCatalog",
+  "@id": "https://www.soystories.cafe/oem#plans",
+  name: "クラフトアイスOEM製造プラン",
+  itemListElement: OEM_COURSES.map((course) => {
+    const isLabelOnly = course.id === "seal_only";
+    const minCups = PRICING_CONSTANTS.cupMinLot;
+    const minBulkLiters = PRICING_CONSTANTS.bulkOemMinTubs * 2;
+
+    return {
+      "@type": "Offer",
+      name: course.title,
+      description: isLabelOnly
+        ? `お客様がフタの丸シールを支給する場合、100mlカップは1個税別${PRICING_CONSTANTS.cupOemPriceExTax}円。1フレーバー${minCups}個から。`
+        : `お店の素材で専用レシピを開発。試作開発費に加えて試作実費がかかります。100mlカップ${minCups}個またはバルク${minBulkLiters}Lから。`,
+      priceSpecification: {
+        "@type": "CompoundPriceSpecification",
+        priceComponent: [
+          {
+            "@type": "UnitPriceSpecification",
+            name: "開発費",
+            price: course.devFeeExTax,
+            priceCurrency: "JPY",
+            valueAddedTaxIncluded: false,
+          },
+          ...(isLabelOnly
+            ? [
+                {
+                  "@type": "UnitPriceSpecification",
+                  name: "100mlカップ単価（フタの丸シール支給時）",
+                  price: PRICING_CONSTANTS.cupOemPriceExTax,
+                  priceCurrency: "JPY",
+                  valueAddedTaxIncluded: false,
+                  unitCode: "C62",
+                  eligibleQuantity: {
+                    "@type": "QuantitativeValue",
+                    minValue: minCups,
+                    unitCode: "C62",
+                  },
+                },
+              ]
+            : []),
+        ],
       },
-      areaServed: "JP",
-      description: DESCRIPTION,
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "業務用卸トップ",
-          item: "https://www.soystories.cafe/",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "小ロットOEM",
-          item: "https://www.soystories.cafe/oem",
-        },
-      ],
-    },
-  ],
+    };
+  }),
 };
+
+const oemJsonLd = [
+  {
+    ...service(
+      "/oem",
+      "ヴィーガン・植物性クラフトアイス小ロットOEM受託製造",
+      "お店のロゴ入りカップや、お店の素材を使ったオリジナルの植物性クラフトアイスを小ロットで製造します。"
+    ),
+    hasOfferCatalog: { "@id": offerCatalog["@id"] },
+  },
+  offerCatalog,
+  {
+    "@type": "HowTo",
+    name: "オリジナルクラフトアイスのお届けまでの流れ",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "無料相談",
+        text: "ご希望の素材や用途を伺い、味の方向性をご提案します。",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "試作2案×各3個",
+        text: "配合の異なる2案を各3個、計6個お届けします。",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "最短約1か月全国納品",
+        text: "味と表示を確定後、専用工房で製造し、全国へ冷凍便で納品します。",
+      },
+    ],
+  },
+  breadcrumbs("/oem", "小ロットOEM"),
+];
 
 /**
  * 完全版 OEM LP（シンプル2プラン・一気通貫構成）
@@ -84,10 +136,7 @@ const oemJsonLd = {
 export default function OemFullPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(oemJsonLd) }}
-      />
+      <StructuredData graph={oemJsonLd} />
       <OemHeader isPlanPage={false} />
       <main className="lp-friendly flex-1 pt-14 sm:pt-16">
         <OemHeroSection />
