@@ -10,9 +10,9 @@ import OemFAQSection from "../components/OemFAQSection";
 import OemContactSection from "../components/OemContactSection";
 import OemFloatingCTA from "../components/OemFloatingCTA";
 
-const PLAN_TITLE = "OEM・ロゴ入りカップ製造プランのご案内（要点版）｜SoyStories";
+const PLAN_TITLE = "OEM・ロゴ入りカップ製造プランのご案内｜SoyStories";
 const PLAN_DESC =
-  "飲食店・カフェ・菓子店・生産者様向け。開発費0円のフタ丸シール変更プラン（60個〜）と、お店の素材で作るオリジナル開発プラン（6L/60個〜・翌月末請求書払い）の要点案内。";
+  "飲食店・カフェ・菓子店・生産者様向け。開発費0円のフタ丸シール変更プラン（60個〜）と、お店の素材で作るオリジナル開発プラン（6L/60個〜・翌月末請求書払い）のご案内。";
 
 export const metadata: Metadata = {
   title: PLAN_TITLE,
@@ -56,8 +56,8 @@ interface OemPlanPageProps {
 }
 
 /**
- * 【LP-C】要点版 OEM案内ページ（営業・顧客カルテからの専用URL着地用）
- * 前提説明を省き、2つのプラン・料金・利益試算・お支払い条件（翌月末請求書払い）・申込フォームへ直結する。
+ * OEM案内ページ（営業・顧客カルテからの専用URL着地用）
+ * 2つのプラン・料金・利益試算・お支払い条件（翌月末請求書払い）・申込フォームへ直結する。
  */
 export default async function OemPlanPage({ searchParams }: OemPlanPageProps) {
   const params = await searchParams;
@@ -79,7 +79,7 @@ export default async function OemPlanPage({ searchParams }: OemPlanPageProps) {
 
   return (
     <>
-      <OemHeader />
+      <OemHeader isPlanPage />
       <main className="lp-friendly flex-1 pt-14 sm:pt-16">
         <section
           id="about-oem"
@@ -88,19 +88,18 @@ export default async function OemPlanPage({ searchParams }: OemPlanPageProps) {
           <div className="mx-auto max-w-4xl px-6">
             {storeName && (
               <p className="bg-brand/10 text-brand mb-3 inline-block rounded-full px-4 py-1 text-xs font-bold">
-                {storeName} 様 向け 要点ご案内ページ
+                {storeName} 様 向け オリジナルアイスOEMのご案内
               </p>
             )}
             <h1 className="text-ink text-2xl leading-snug font-bold sm:text-3xl">
-              お店仕様のカップ製造・オリジナル味開発（OEM）のご案内
+              植物性・米粉クラフトアイスの小ロットOEMのご案内
             </h1>
             <p className="text-ink-light mt-3 text-sm leading-relaxed sm:text-[15px]">
-              乳・卵・小麦を持ち込まない専用工房の米粉クラフトアイスを、
-              <strong>①「フタだけお店ロゴ（開発費¥0・60個〜）」</strong>
-              または
-              <strong>②「お店の素材でオリジナル開発（60個／2L×3本〜）」</strong>
-              の2プランでお作りします。お支払いは通常の卸と同じ
-              <strong>「納品月の月末締め・翌月末ご請求書払い」</strong>
+              乳・卵・小麦・白砂糖不使用（専用工房製）。
+              <strong>①「フタだけお店ロゴ（開発費¥0・60個〜）」</strong>と
+              <strong>②「お店の素材でオリジナル開発（税別¥30,000・60個／6L〜）」</strong>
+              の2プランをご用意しています。お支払いは
+              <strong>「納品月の月末締め・翌月末請求書払い」</strong>
               です。
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-xs">
@@ -123,13 +122,12 @@ export default async function OemPlanPage({ searchParams }: OemPlanPageProps) {
         <OemCoursesSection />
         <OemSimulatorSection />
         <OemTimelineSection />
-        <OemFAQSection />
-
         <Suspense
           fallback={<div className="py-16 text-center text-sm text-gray-500">読み込み中...</div>}
         >
           <OemContactSection />
         </Suspense>
+        <OemFAQSection />
       </main>
       <Footer />
       <OemFloatingCTA />

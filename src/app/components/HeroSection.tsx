@@ -33,8 +33,8 @@ export default function HeroSection() {
       {/* 背景写真 */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero_flagship.jpg"
-          alt="SoyStoriesの看板商品 — ワッフルカップにクラフトアイスを盛り付けた一皿"
+          src="/images/hero_craft_gelato.jpg"
+          alt="素材の色と香りを活かしたSoyStoriesの植物性クラフトアイス"
           fill
           priority
           className="object-cover object-center"
@@ -78,15 +78,15 @@ export default function HeroSection() {
             variants={itemVariants}
             className="max-w-xl font-sans text-[0.88rem] leading-[1.8] text-gray-100 sm:text-base md:text-lg"
           >
-            食後のデザートや焼き菓子の添え、カフェのフロートに。
+            国産米粉を炊き上げて甘酒・白みそでコクを出した、乳脂肪ゼロで後味すっきりの植物性クラフトアイス。
             <br />
-            福岡・薬院の専用工房から届ける、乳・卵・小麦・白砂糖不使用のクラフトアイスです。
+            乳・卵・小麦・白砂糖不使用。食後のデザートや焼き菓子の添え、フロートにそのままお使いいただけます。
           </motion.p>
 
           {/* CTA */}
           <motion.div variants={itemVariants} className="mt-2 flex flex-wrap items-center gap-3">
             <motion.a
-              href="#sample-form-card"
+              href="#contact-form"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="bg-cta hover:bg-cta-hover inline-block cursor-pointer rounded-full px-10 py-4 text-center text-base font-bold text-white shadow-lg transition-colors sm:text-lg"

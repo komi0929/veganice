@@ -6,7 +6,7 @@ import { MessageSquareText, FlaskConical, FileCheck2, Truck, ArrowRight } from "
 const TIMELINE_STEPS = [
   {
     week: "第1週",
-    duration: "3〜5日",
+    duration: "2〜3営業日",
     icon: MessageSquareText,
     title: "ヒアリング・3方向提案",
     shortDesc: "素材を伺い、試作前に3つの味の方向性をご提案します。",
@@ -105,7 +105,9 @@ export default function OemTimelineSection() {
                 「2種類×3個の食べ比べ」＋ 2回戦目まで追加開発費0円で調整OK
               </p>
               <p className="text-ink-light mt-1 text-xs leading-relaxed">
-                都度の試作実費は材料費税別1,500円＋資材費税別200円＋60サイズ送料のみ（3回戦目以降は調整費税別5,000円＋実費。当社責の製造不良時は無償再試作）。
+                都度の試作実費は「材料費 税別1,500円＋梱包資材費
+                税別200円＋60サイズクール冷凍便送料」のみ（2回戦目まで追加開発費0円、3回戦目以降は調整費
+                税別5,000円＋実費。当社責の製造不良時は無償再試作）。
               </p>
             </div>
           </div>

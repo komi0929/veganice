@@ -11,9 +11,9 @@ import WholesaleContactCard from "@/app/components/wholesale/WholesaleContactCar
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import { PRICING_CONSTANTS } from "@/app/oem/data/oemSpecs";
 
-const PAGE_TITLE = "定番11フレーバー 業務用卸（バルク・個食カップ）のご案内（要点版）";
+const PAGE_TITLE = "定番11フレーバー 業務用卸（バルク・個食カップ）のご案内";
 const PAGE_DESC =
-  "飲食店・カフェ・ベーカリー・ショップ様向け。定番11フレーバーを仕入れられる業務用バルク（最小4L〜）とSoyStoriesラベル付き100ml個食カップ（最小60個〜・翌月末請求書払い）の要点案内。";
+  "飲食店・カフェ・ベーカリー・ショップ様向け。国産米粉×甘酒・白みそ製法の業務用バルク（最小4L〜）とSoyStoriesラベル付き100ml個食カップ（最小60個〜・翌月末請求書払い）のご案内。";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -154,9 +154,9 @@ interface WholesaleBriefPageProps {
 }
 
 /**
- * 【LP-D】要点版 定番卸LP（/oem からの遷移・既存商談先への要点共有用）
- * 重複するブランド・製法説明を省き、「①業務用バルク（4L〜）」「②定番100mlカップ（60個〜）」の
- * 仕様・全11フレーバー・取引条件・無料サンプル申込フォームだけを端的にまとめる。
+ * 【LP-D】定番卸LP（/oem からの遷移・既存商談先への共有用）
+ * 「①業務用バルク（4L〜）」「②定番100mlカップ（60個〜）」の
+ * 仕様・全11フレーバー・取引条件・無料サンプル申込フォームを端的にまとめる。
  */
 export default async function WholesaleBriefPage({ searchParams }: WholesaleBriefPageProps) {
   const params = await searchParams;
@@ -189,7 +189,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
               </p>
             ) : (
               <p className="bg-brand/10 text-brand mb-3 inline-block rounded-full px-3.5 py-1 font-sans text-xs font-bold">
-                定番11フレーバー 通常卸のご案内（要点版）
+                定番11フレーバー 業務用卸のご案内
               </p>
             )}
 
@@ -197,7 +197,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
               店内用の1L・2Lバルク（4L〜）と、販売用の100mlカップ（60個〜）
             </h1>
             <p className="text-ink-light mt-3 max-w-3xl font-sans text-sm leading-relaxed sm:text-[15px]">
-              乳・卵・小麦を持ち込まない専用工房の定番全11フレーバーを、用途に合わせて
+              国産米粉の炊き上げと甘酒・白みそでコクを出した、乳脂肪ゼロでも滑らかで後味の軽い植物性クラフトアイスです。乳・卵・小麦を持ち込まない専用工房の定番全11フレーバーを、用途に合わせて
               <strong>「店内盛り付け用の業務用バルク（4L〜・味ミックス自由）」</strong>または
               <strong>「そのまま販売できるSoyStoriesラベル付き100mlカップ（60個〜）」</strong>
               からお選びいただけます。お支払いは

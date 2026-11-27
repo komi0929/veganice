@@ -17,14 +17,14 @@ const usageCards = [
     price: "100mlカップ 300円（税別・60個〜）",
     caption:
       "盛り付けがいらない個食カップ。客室冷凍庫への常備やルームサービス、湯上がり処にもそのまま使えます。",
-    image: "/images/gelato_spoon_moment.jpg",
-    objectPosition: "object-[center_62%]",
+    image: "/images/cup_seal_houjicha_real.jpg",
+    objectPosition: "object-center",
     linkLabel: "100mlカップの詳細 →",
     linkHref: "/wholesale",
   },
   {
     title: "売店の屋号カップ・地元の味づくりに",
-    price: "屋号シール変更 開発費0円（286円／個・60個〜）",
+    price: "屋号シール変更 開発費0円（税別286円／個・60個〜）",
     caption:
       "お宿のロゴ入りカップや、地元の果物・お茶を使った専用開発（仕入先廃業の代替等）も60個・6Lから承ります。",
     image: "/images/gelato_cup_tower.jpg",

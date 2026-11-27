@@ -2,11 +2,10 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "../components/Footer";
-import WholesaleOriginStorySection from "../components/wholesale/WholesaleOriginStorySection";
-import DessertReviewsSection from "../dessert/components/DessertReviewsSection";
 import OemHeader from "./components/OemHeader";
 import OemHeroSection from "./components/OemHeroSection";
 import OemPremiseSection from "./components/OemPremiseSection";
+import OemYakuinProofSection from "./components/OemYakuinProofSection";
 import OemCoursesSection from "./components/OemCoursesSection";
 import OemSimulatorSection from "./components/OemSimulatorSection";
 import OemTimelineSection from "./components/OemTimelineSection";
@@ -78,9 +77,9 @@ const oemJsonLd = {
 };
 
 /**
- * 完全版 OEM LP（シンプル2プラン・コンパクト構成）
- * 1. FV → 2. 3つの品質土台 → 3. 選べる2プラン（¥0 vs ¥30,000） → 4. 利益シミュレーター＆1か月工程
- * → 5. 無料相談・試食申込フォーム → 6. 実店舗の評価＋折りたたみFAQ＋定番卸案内
+ * 完全版 OEM LP（シンプル2プラン・一気通貫構成）
+ * 1. FV → 2. アイスの特徴 → 3. 薬院直営店の実績と原点 → 4. 選べる2プラン（¥0 vs 税別¥30,000）
+ * → 5. 利益シミュレーター → 6. 1か月工程 → 7. 無料相談・試食申込フォーム → 8. 折りたたみFAQ＋定番卸案内
  */
 export default function OemFullPage() {
   return (
@@ -89,13 +88,12 @@ export default function OemFullPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(oemJsonLd) }}
       />
-      <OemHeader />
+      <OemHeader isPlanPage={false} />
       <main className="lp-friendly flex-1 pt-14 sm:pt-16">
         <OemHeroSection />
         <OemPremiseSection />
+        <OemYakuinProofSection />
         <OemCoursesSection />
-        <WholesaleOriginStorySection variant="oem" />
-        <DessertReviewsSection />
         <OemSimulatorSection />
         <OemTimelineSection />
         <Suspense

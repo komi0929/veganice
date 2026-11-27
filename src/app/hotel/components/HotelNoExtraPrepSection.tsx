@@ -10,14 +10,14 @@ const hotelReasons = [
   {
     title: "濃厚なのに、食後はすっきり",
     body: "甘酒と白みそでコクを出しつつ、乳脂肪はゼロ。品数の多いお食事の後でも重くなりません。",
-    image: "/images/hero_craft_gelato.jpg",
-    alt: "抹茶やほうじ茶、ベリーなど素材を活かしたSoyStoriesのクラフトアイス実物",
+    image: "/images/koji_amazake_ac.jpg",
+    alt: "国産米と米麹甘酒の発酵素材",
   },
   {
     title: "乳・卵・小麦を持ち込まない工房",
     body: "福岡・薬院の専用工房で手づくり。北海道産てんさい糖・奄美産きび砂糖を使い、白砂糖も不使用です。",
-    image: "/images/store_actual.png",
-    alt: "福岡・薬院の実店舗 SoyStories",
+    image: "/images/hero_craft_gelato.jpg",
+    alt: "乳・卵・小麦を持ち込まない専用工房で作るクラフトアイス全種",
   },
 ] as const;
 

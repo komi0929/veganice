@@ -12,9 +12,9 @@ const CAFE_PRESET_FLAVORS: readonly SampleFlavorName[] = [
 ];
 
 const badges = [
-  "全11種から6個無料（クール便送料のみ着払い）",
-  "原則お申し込みの翌日に専用工房から発送",
-  "初期登録費・月間ノルマすべて0円",
+  "6個無料（クール便送料のみ着払い）",
+  "原則お申し込みの翌日に発送",
+  "初期費・月間ノルマ0円",
 ] as const;
 
 export default function CafeSampleSection() {
@@ -28,7 +28,7 @@ export default function CafeSampleSection() {
               無料試食サンプル（6個）
             </p>
             <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
-              まずはお店のお菓子・ドリンクと合わせてご試食ください。
+              まずはお菓子や珈琲と合わせてご試食ください。
             </h2>
             <ul className="mt-3 flex flex-wrap gap-2">
               {badges.map((b) => (
@@ -47,8 +47,8 @@ export default function CafeSampleSection() {
 
           <div className="relative hidden h-24 w-36 shrink-0 overflow-hidden rounded-2xl border border-stone-200/80 bg-white md:block">
             <Image
-              src="/images/gelato_cup_tower.jpg"
-              alt="無料試食サンプル6個イメージ"
+              src="/images/cup_seal_choco_real.jpg"
+              alt="無料試食サンプル100mlカップ"
               fill
               sizes="144px"
               className="object-cover"
@@ -63,13 +63,13 @@ export default function CafeSampleSection() {
           companyPlaceholder="例：カフェ〇〇 ／ 米粉ドーナツ〇〇 ／ 焼菓子店〇〇"
           emailPlaceholder="example@cafe.jp"
           addressPlaceholder="福岡市中央区薬院2-2-24 〇〇ビル1F"
-          deliveryDescription="お店にどなたかいらっしゃる曜日と時間を教えてください。"
+          deliveryDescription="受取可能な曜日・時間をお知らせください。"
           deliveryNotePlaceholder="例：火曜定休・15時以降は不在など"
-          notesLabel="お店の業態・試したい使い方・確認したい点"
-          notesPlaceholder="例：焼きドーナツや米粉ケーキの添えアイス、100mlカップ販売を検討しています。"
-          inquiryPlaceholder="お取引条件やロット、100mlカップ物販・ロゴシールOEMなどお気軽にご記入ください。"
+          notesLabel="業態・試したい使い方・ご質問"
+          notesPlaceholder="例：焼き菓子の添えアイスや100mlカップ販売を検討中です。"
+          inquiryPlaceholder="取引条件や100mlカップ・ロゴOEMなどお気軽にご記入ください。"
           presetTitle="おすすめ6種"
-          presetDescription="焼き菓子添えとフロートで人気の6種（バニラココナッツ・UMAMIバニラ・アールグレイ・抹茶・マンゴー・ミックスベリー）"
+          presetDescription="人気の6種（UMAMIバニラ・抹茶・バニラココナッツ・アールグレイ・マンゴー・ミックスベリー）"
           presetFlavors={CAFE_PRESET_FLAVORS}
         />
       </div>

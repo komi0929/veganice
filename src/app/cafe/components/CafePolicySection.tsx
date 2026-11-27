@@ -3,21 +3,21 @@ import Image from "next/image";
 const policyPillars = [
   {
     title: "氷っぽくない、なめらかな口どけ",
-    body: "国産米粉を豆乳や果汁とじっくり炊く独自製法。営業中の出し入れでもシャリシャリになりません。",
-    image: "/images/bulk_scoop.jpg",
+    body: "国産米粉を炊き上げる独自製法。出し入れでもシャリシャリになりません。",
+    image: "/images/gelato_spoon_moment.jpg",
     alt: "米粉製法によるなめらかなクラフトアイス",
   },
   {
     title: "お菓子や珈琲に合う、コクと軽い後味",
-    body: "甘酒と白みそでコクを出しつつ、乳脂肪はゼロ。焼き菓子やドリンクの味を邪魔せず引き立てます。",
-    image: "/images/hero_craft_gelato.jpg",
-    alt: "素材を活かしたSoyStoriesのクラフトアイス実物",
+    body: "甘酒・白みそでコクを出しつつ乳脂肪ゼロ。お菓子や珈琲の味を邪魔しません。",
+    image: "/images/koji_amazake_ac.jpg",
+    alt: "米麹甘酒と国産米の発酵素材",
   },
   {
     title: "乳・卵・小麦を持ち込まない専用工房",
-    body: "福岡・薬院の専用工房で手づくり。グルテンフリーや植物性のお菓子と同じ基準で添えられます。",
-    image: "/images/factory_kitchen_craft.webp",
-    alt: "乳・卵・小麦を持ち込まない専用工房",
+    body: "福岡・薬院の専用工房製造。グルテンフリーや植物性のお菓子と揃えて出せます。",
+    image: "/images/cup_seal_houjicha_real.jpg",
+    alt: "専用工房で作るクラフトアイス",
   },
 ] as const;
 
@@ -29,7 +29,7 @@ export default function CafePolicySection() {
           選ばれる3つの理由
         </p>
         <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
-          素材にこだわるお店のメニューに、そのままなじむ味です。
+          素材にこだわるお店の味に、自然になじみます。
         </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">

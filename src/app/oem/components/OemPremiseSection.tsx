@@ -4,9 +4,9 @@ const QUALITY_POINTS = [
   {
     tag: "専用工房",
     title: "乳・卵・小麦「持ち込みゼロ」",
-    body: "乳・卵・小麦を持ち込まない専用工房製（※ナッツ類使用製品はあり）。アレルギーをお持ちの方や海外のお客様にも安心です。",
-    image: "/images/workshop_real.png",
-    alt: "SoyStories自社専用工房での手作り風景",
+    body: "乳・卵・小麦を持ち込まない専用工房製（工房への持ち込みはナッツ類のみ／ナッツ使用製品あり）。アレルギーをお持ちの方や海外のお客様にも安心です。",
+    image: "/images/hero_craft_gelato.jpg",
+    alt: "卵・乳・小麦を持ち込まない専用工房のクラフトアイスと素材",
   },
   {
     tag: "なめらかな食感",
@@ -19,8 +19,8 @@ const QUALITY_POINTS = [
     tag: "素材が引き立つ",
     title: "果物やお茶・珈琲の香りがまっすぐ立つ",
     body: "甘酒・白みそでコクを支えつつ乳脂肪はゼロ。お預かりした果物や茶葉・珈琲そのものの風味がきれいに広がります。",
-    image: "/images/soystories_icecream.1.jpg",
-    alt: "素材の色と香りを活かしたSoyStoriesのクラフトアイス実物",
+    image: "/images/koji_amazake_ac.jpg",
+    alt: "米麹甘酒と国産米の発酵素材",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function OemPremiseSection() {
           アイスの特徴
         </p>
         <h2 className="text-ink text-2xl leading-snug font-bold tracking-tight sm:text-3xl">
-          大切な一皿をお任せいただく、専門店の3つの土台。
+          専門店の味をそのままお届けできる、3つの理由
         </h2>
 
         <ol className="mt-7 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">

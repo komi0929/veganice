@@ -2,10 +2,18 @@ import Image from "next/image";
 import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 
 interface WholesaleOriginStorySectionProps {
-  variant?: "cafe" | "hotel" | "oem";
+  variant?: "dessert" | "cafe" | "hotel" | "oem";
+  fontTone?: "serif" | "sans";
 }
 
 const VARIANT_COPY = {
+  dessert: {
+    eyebrow: "私たちの原点（福岡・薬院 SoyStories）",
+    headingLines: ["「全部食べれるなんて夢みたい！」", "その一言が、私たちの原点です。"],
+    subHeading: "お料理やお菓子に心を込めるお店へ。アイスの一品は、専門店の私たちが担います。",
+    closingLine:
+      "食の制限がある方も、一緒にテーブルを囲むご家族やご友人も、全員が同じ一皿を楽しめるデザートとしてお役立てください。",
+  },
   cafe: {
     eyebrow: "私たちの原点（福岡・薬院 SoyStories）",
     headingLines: [
@@ -38,8 +46,10 @@ const VARIANT_COPY = {
 
 export default function WholesaleOriginStorySection({
   variant = "cafe",
+  fontTone = "serif",
 }: WholesaleOriginStorySectionProps) {
   const copy = VARIANT_COPY[variant];
+  const headingFont = fontTone === "sans" ? "font-sans" : "font-serif";
 
   return (
     <section
@@ -53,7 +63,9 @@ export default function WholesaleOriginStorySection({
             <span className="bg-brand inline-block h-px w-5" aria-hidden="true" />
             {copy.eyebrow}
           </p>
-          <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
+          <h2
+            className={`text-ink ${headingFont} text-2xl leading-snug font-bold sm:text-3xl md:text-4xl`}
+          >
             {copy.headingLines.map((line) => (
               <span key={line} className="block">
                 {line}
@@ -79,14 +91,14 @@ export default function WholesaleOriginStorySection({
                 <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-stone-200/80 bg-stone-100">
                   <Image
                     src="/images/craft_moment.jpg"
-                    alt="専用工房でのクラフトアイス仕込み風景"
+                    alt="福岡・薬院店 SoyStories の店内"
                     fill
                     sizes="(max-width: 768px) 48vw, 200px"
                     className="object-cover object-[center_35%]"
                   />
                 </div>
                 <div className="flex flex-col justify-center rounded-xl border border-stone-200/80 bg-white px-3.5 py-2.5">
-                  <p className="text-brand font-serif text-lg leading-tight font-bold">
+                  <p className={`text-brand ${headingFont} text-lg leading-tight font-bold`}>
                     Google {WHOLESALE_FACTS.googleRating}
                   </p>
                   <p className="text-ink-muted mt-0.5 font-sans text-[11px] leading-snug">
@@ -98,22 +110,21 @@ export default function WholesaleOriginStorySection({
             </div>
 
             <div className="space-y-4 md:col-span-7">
-              <h3 className="text-ink font-serif text-lg leading-relaxed font-bold sm:text-2xl">
+              <h3
+                className={`text-ink ${headingFont} text-lg leading-relaxed font-bold sm:text-2xl`}
+              >
                 {copy.subHeading}
               </h3>
-              <div className="text-ink-light space-y-3.5 font-sans text-sm leading-[1.95] sm:text-[15px]">
+              <div className="text-ink-light space-y-3.5 font-sans text-sm leading-[1.9] sm:text-[15px]">
                 <p>
-                  私たちSoyStories（ソイストーリーズ）の原点は、アレルギーやヴィーガンなど食に制限がある方にとって「ユメミタイ」と思える場所をつくりたいという想いから始まりました。
+                  私たちSoyStories（ソイストーリーズ）は、アレルギーやヴィーガンなど食に制限がある方も気兼ねなく選べる場所をつくりたいという想いから、福岡・薬院の小さなお店でスタートしました。
                 </p>
                 <p>
-                  「みんなで一緒に食べられる幸せ」を届けるために開いた福岡・薬院の小さなお店では、乳・卵・小麦・白砂糖を使わない手作りのクラフトアイスに、制限のあるお客様だけでなく、一緒に来店されたヴィーガンではないお客様からも
+                  乳・卵・小麦・白砂糖を使わずに作るクラフトアイスは、制限のある方だけでなくヴィーガンではないお客様からも
                   <strong className="text-ink">
                     「こっちのほうが美味しい！」「普通のアイスより好き！」
                   </strong>
-                  とたくさんの笑顔をいただくようになりました。
-                </p>
-                <p>
-                  この体験を福岡の1店舗だけでなく、もっと多くのお店のお客様へ届けていただくために、私たちは小さなお店のキッチンを飛び出し、乳・卵・小麦を一切持ち込まない専用アイス工房を立ち上げました。
+                  と選ばれるようになり、全国のお店へ届けるため専用工房を立ち上げました。
                 </p>
               </div>
             </div>
@@ -128,7 +139,7 @@ export default function WholesaleOriginStorySection({
             <p className="text-brand font-sans text-xs font-bold tracking-widest uppercase">
               Episode
             </p>
-            <h3 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
+            <h3 className={`text-ink ${headingFont} text-2xl leading-snug font-bold sm:text-3xl`}>
               「はじめて子どもにアイスを
               <br />
               食べさせることができた」
@@ -136,9 +147,9 @@ export default function WholesaleOriginStorySection({
             <p className="text-brand font-sans text-base font-bold sm:text-lg">
               そう言って涙されたお母さんがいました。
             </p>
-            <div className="text-ink-light space-y-3.5 font-sans text-sm leading-[1.95] sm:text-[15px]">
+            <div className="text-ink-light space-y-3.5 font-sans text-sm leading-[1.9] sm:text-[15px]">
               <p>
-                乳や卵・小麦のアレルギーがあるお子さんを持つご家族にとって、「みんなと同じものを気兼ねなく食べられる」ことは、私たちが思う以上に大きな意味があります。
+                乳・卵・小麦のアレルギーがあるお子さんを持つご家族にとって、「みんなと同じものを気兼ねなく食べられる」ことは大きな意味があります。
               </p>
               <p>{copy.closingLine}</p>
             </div>
@@ -167,8 +178,8 @@ export default function WholesaleOriginStorySection({
             />
           </div>
           <blockquote className="text-center sm:text-left">
-            <p className="text-ink font-serif text-sm leading-relaxed font-bold sm:text-base">
-              「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める——薬院の小さなお店で日々見てきたその光景を、全国のお店と一緒に広げていきたいと思っています。まずはご試食サンプルで、貴店のお料理やお菓子との相性をお確かめください。」
+            <p className={`text-ink ${headingFont} text-sm leading-relaxed font-bold sm:text-base`}>
+              「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める。薬院の小さなお店で日々見てきたその光景を、全国のお店と一緒に広げていきたいと思っています。まずはご試食サンプルで、貴店のお料理やお菓子との相性をお確かめください。」
             </p>
             <footer className="text-ink-muted mt-2 font-sans text-xs font-medium">
               株式会社ヒトコト（店舗 SoyStories） 代表　小南 優作

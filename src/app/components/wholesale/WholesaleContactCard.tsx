@@ -150,8 +150,8 @@ export default function WholesaleContactCard({
       : source === "hotel"
         ? [
             {
-              label: "＋ 会席の水菓子・締めの甘味に",
-              text: "夕食の会席やコース料理の締めくくりの水菓子・甘味として検討しています。",
+              label: "＋ 会席・コースの食後デザートに",
+              text: "夕食の会席やコース料理の食後デザートとして検討しています。",
             },
             {
               label: "＋ 海外宿泊客・食制限対応に",
@@ -244,7 +244,7 @@ export default function WholesaleContactCard({
               href="/wholesale"
               className="text-ink hover:text-brand rounded-full border border-gray-200 bg-[#fafaf8] px-4 py-2 transition-colors"
             >
-              業務用バルク・100mlカップの要点一覧を見る →
+              業務用バルク・100mlカップの条件一覧を見る →
             </Link>
           )}
           <Link

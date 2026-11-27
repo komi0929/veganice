@@ -47,8 +47,8 @@ export default function HotelSampleSection() {
 
           <div className="relative hidden h-24 w-36 shrink-0 overflow-hidden rounded-2xl border border-stone-200/80 bg-white md:block">
             <Image
-              src="/images/gelato_cup_tower.jpg"
-              alt="無料試食サンプル6個イメージ"
+              src="/images/cup_seal_choco_real.jpg"
+              alt="無料試食サンプル100mlカップ"
               fill
               sizes="144px"
               className="object-cover"
@@ -66,10 +66,10 @@ export default function HotelSampleSection() {
           deliveryDescription="フロントか厨房で受け取れる曜日と時間"
           deliveryNotePlaceholder="例：厨房勝手口へ納品希望／11〜14時は仕込み中など"
           notesLabel="ご施設・お店の業態・試したい場面・確認したい点"
-          notesPlaceholder="例：海外宿泊客のヴィーガン・グルテンフリー対応／会席やコースの甘味として試したいです。"
+          notesPlaceholder="例：海外宿泊客のヴィーガン・グルテンフリー対応／会席やコースの食後デザートとして試したいです。"
           inquiryPlaceholder="お取引条件や納期、売店用100mlカップ・屋号ロゴOEMなどお気軽にご記入ください。"
           presetTitle="おすすめ6種"
-          presetDescription="海外ゲストにも人気の和素材と定番6種（抹茶・ほうじ茶・UMAMIバニラ・バニラココナッツ・りんご・もも）"
+          presetDescription="海外ゲストにも人気の和素材と定番6種（UMAMIバニラ・抹茶・ほうじ茶・バニラココナッツ・りんご・もも）"
           presetFlavors={HOTEL_PRESET_FLAVORS}
         />
       </div>

@@ -4,20 +4,20 @@ const VALUE_ITEMS = [
   {
     title: "氷っぽくない、なめらかな口どけ",
     body: "国産米粉を豆乳や果汁とじっくり炊き上げる独自製法。営業中の出し入れでもシャリシャリになりません。",
-    imageSrc: "/images/craft_scoop_cup.webp",
-    imageAlt: "米粉独自製法によるなめらかなクラフトアイス",
+    imageSrc: "/images/gelato_spoon_moment.jpg",
+    imageAlt: "米粉独自製法によるなめらかなSoyStoriesのクラフトアイス実物",
   },
   {
     title: "濃厚なのに、食後はすっきり",
     body: "甘酒と白みそでコクを出しつつ、乳脂肪はゼロ。お食事やお菓子の後でも重くならず、普段乳製品を食べる方にも好評です。",
-    imageSrc: "/images/hero_craft_gelato.jpg",
-    imageAlt: "素材の色と香りを活かしたSoyStoriesのクラフトアイス実物",
+    imageSrc: "/images/koji_amazake_ac.jpg",
+    imageAlt: "国産米と米麹甘酒の発酵素材",
   },
   {
     title: "乳・卵・小麦を持ち込まない専用工房",
     body: "福岡・薬院の専用工房で手づくり（※ナッツ類使用製品はあり）。アレルギーをお持ちの方や海外のお客様にも安心です。",
-    imageSrc: "/images/factory_kitchen_craft.webp",
-    imageAlt: "乳・卵・小麦を持ち込まない専用工房での製造風景",
+    imageSrc: "/images/gelato_cup_tower.jpg",
+    imageAlt: "専用工房で作るSoyStoriesの100mlクラフトアイス実物",
   },
 ] as const;
 

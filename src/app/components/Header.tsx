@@ -31,18 +31,18 @@ export default function Header() {
   const logoHref = isDessert ? "/dessert" : "/";
   const navLinks = isDessert
     ? [
-        { label: "一皿のイメージ", href: `${prefix}about` },
         { label: "3つの理由", href: `${prefix}reasons` },
+        { label: "お店での出し方", href: `${prefix}about` },
+        { label: "11種の味・条件", href: `${prefix}products` },
         { label: "薬院店と想い", href: `${prefix}story` },
         { label: "お客様の声", href: `${prefix}reviews` },
-        { label: "11種の味・条件", href: `${prefix}products` },
       ]
     : [
-        { label: "一皿のイメージ", href: `${prefix}value` },
         { label: "3つの理由", href: `${prefix}benefits` },
+        { label: "お店での出し方", href: `${prefix}value` },
+        { label: "11種の味・条件", href: `${prefix}products` },
         { label: "薬院店と想い", href: `${prefix}story` },
         { label: "お客様の声", href: `${prefix}reviews` },
-        { label: "11種の味・条件", href: `${prefix}products` },
       ];
 
   return (

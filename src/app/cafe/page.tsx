@@ -11,6 +11,7 @@ import CafeServingSection from "./components/CafeServingSection";
 import CafeFlavorsSection from "./components/CafeFlavorsSection";
 import CafeSampleSection from "./components/CafeSampleSection";
 import CafeFAQSection from "./components/CafeFAQSection";
+import OemCrossLinkBanner from "@/app/components/OemCrossLinkBanner";
 
 const PAGE_TITLE = "カフェ・ベーカリー・焼き菓子店の業務用アイス｜乳・卵・小麦・白砂糖不使用";
 const OG_TITLE = `${PAGE_TITLE} | SoyStories`;
@@ -83,6 +84,7 @@ export default function CafePage() {
         />
         <CafeSampleSection />
         <CafeFAQSection />
+        <OemCrossLinkBanner context="cafe" />
       </main>
       <WholesaleFooter
         taglineLines={[

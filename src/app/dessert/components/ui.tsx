@@ -67,8 +67,8 @@ interface CtaButtonProps {
 /** サンプル申込への主CTA。ボタン内の文言は短く、補足は下のキャプションへ逃がす */
 export function CtaButton({
   label = "無料でサンプルを試す",
-  caption = "6個のおためしセット・味は選べる・商品代0円（送料のみ着払い）",
-  href = "#sample-form-card",
+  caption = "6個無料・送料のみ着払い・原則お申し込みの翌日に発送",
+  href = "#contact-form",
   fullWidthOnMobile = true,
 }: CtaButtonProps) {
   return (

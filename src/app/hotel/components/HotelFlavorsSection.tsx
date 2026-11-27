@@ -167,7 +167,7 @@ export default function HotelFlavorsSection() {
 
             <div className="border-t border-stone-200/70 px-4 pt-4 pb-5 sm:px-6">
               <p className="text-ink-light mb-3 font-sans text-xs leading-relaxed">
-                アルコール由来の原料などは、味ごとに個別にお答えします。ご宿泊客の基準に合わせた確認は、下部のフォーム備考欄よりお知らせください。
+                ご宿泊客の基準（アルコール由来原料や五葷等）に合わせた詳細確認は、下部のフォーム備考欄より味名とあわせてお知らせください。
               </p>
 
               <div className="overflow-hidden rounded-xl border border-stone-200/80 bg-white">

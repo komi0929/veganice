@@ -6,10 +6,12 @@ import DessertHeroSection from "./components/DessertHeroSection";
 import DessertReasonsSection from "./components/DessertReasonsSection";
 import DessertAboutSection from "./components/DessertAboutSection";
 import DessertProductsSection from "./components/DessertProductsSection";
-import DessertStorySection from "./components/DessertStorySection";
-import DessertReviewsSection from "./components/DessertReviewsSection";
+import WholesaleOriginStorySection from "@/app/components/wholesale/WholesaleOriginStorySection";
+import WholesaleReviewsSlider from "@/app/components/wholesale/WholesaleReviewsSlider";
+import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 import DessertSampleSection from "./components/DessertSampleSection";
 import DessertFAQSection from "./components/DessertFAQSection";
+import OemCrossLinkBanner from "../components/OemCrossLinkBanner";
 
 const TITLE = "飲食店・カフェ・菓子店の業務用クラフトアイス｜乳・卵・小麦・白砂糖不使用 SoyStories";
 const DESCRIPTION =
@@ -68,10 +70,16 @@ export default function DessertPage() {
         <DessertReasonsSection />
         <DessertAboutSection />
         <DessertProductsSection />
-        <DessertStorySection />
-        <DessertReviewsSection />
+        <WholesaleOriginStorySection variant="dessert" fontTone="sans" />
+        <WholesaleReviewsSlider
+          eyebrow="実店舗での評判"
+          heading="「今まで食べたアイスで一番美味しい」世界中から届く本物の声。"
+          lead={`Google ${WHOLESALE_FACTS.googleRating}（${WHOLESALE_FACTS.googleReviewCount}）・HappyCow満点 ${WHOLESALE_FACTS.happyCowRating}。ヴィーガンではないお客様からも「世界中で食べたどんな乳製品よりも美味しい」と評価されています。`}
+          variant="dark"
+        />
         <DessertSampleSection />
         <DessertFAQSection />
+        <OemCrossLinkBanner context="dessert" />
       </main>
       <Footer />
       <FloatingCTA />

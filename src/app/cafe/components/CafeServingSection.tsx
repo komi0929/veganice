@@ -4,25 +4,25 @@ import Link from "next/link";
 const servingScenes = [
   {
     title: "タルト・ワッフル・ドーナツ添えに",
-    caption: "温かい焼き菓子やドーナツの添え・アイスサンドに。",
+    caption: "焼き菓子やドーナツの添え・サンドに。",
     image: "/images/serving/serving_waffle_cup.jpg",
     objectPosition: "object-[center_45%]",
   },
   {
-    title: "ソーダ・水出し珈琲のフロートに",
-    caption: "マンゴーやベリー、バニラで季節のドリンクメニューに。",
+    title: "ソーダ・珈琲フロートに",
+    caption: "マンゴーやベリーで季節のドリンクに。",
     image: "/images/serving/serving_float.jpg",
     objectPosition: "object-[center_35%]",
   },
   {
     title: "アフォガート・パフェに",
-    caption: "深煎りエスプレッソや自家製グラノーラと重ねるグラスデザートに。",
+    caption: "エスプレッソやグラノーラと合わせる一皿に。",
     image: "/images/serving/serving_affogato.jpg",
     objectPosition: "object-center",
   },
   {
     title: "テイクアウト・店頭販売に",
-    caption: "盛り付け不要の100mlカップ（300円・60個〜）や店名ロゴOEMにも対応。",
+    caption: "100mlカップ（税別300円・60個〜）やロゴOEMも対応。",
     image: "/images/gelato_cup_tower.jpg",
     objectPosition: "object-cover",
   },
@@ -38,7 +38,7 @@ export default function CafeServingSection() {
               お店での出し方
             </p>
             <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl">
-              焼き菓子の添えから、フロート、店頭物販まで。
+              焼き菓子添えから、フロート、店頭物販まで。
             </h2>
           </div>
           <p className="text-ink-muted font-sans text-xs">
@@ -73,13 +73,13 @@ export default function CafeServingSection() {
 
         <div className="mt-4 flex flex-wrap gap-4 font-sans text-xs font-bold">
           <Link href="/wholesale" className="text-brand underline underline-offset-4">
-            100mlカップ卸の詳細を見る →
+            100mlカップ卸の詳細 →
           </Link>
           <Link
             href="/oem/plan?src=cafe_serving"
             className="text-brand underline underline-offset-4"
           >
-            店名ロゴシール・お店素材OEMを見る →
+            ロゴシール・お店素材OEM →
           </Link>
         </div>
       </div>

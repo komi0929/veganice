@@ -6,6 +6,7 @@ import ProductsSection from "./components/ProductsSection";
 import SocialProofSection from "./components/SocialProofSection";
 import ContactForm from "./components/ContactForm";
 import FAQSection from "./components/FAQSection";
+import OemCrossLinkBanner from "./components/OemCrossLinkBanner";
 import FloatingCTA from "./components/FloatingCTA";
 import Footer from "./components/Footer";
 
@@ -21,6 +22,7 @@ export default function Home() {
         <SocialProofSection />
         <ContactForm />
         <FAQSection />
+        <OemCrossLinkBanner context="general" />
       </main>
       <Footer />
       <FloatingCTA />

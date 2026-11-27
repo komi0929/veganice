@@ -54,8 +54,8 @@ export default function SocialProofSection() {
               Our Story — 福岡・薬院の実店舗から
             </p>
             <h2 className="text-ink font-serif text-2xl leading-snug font-bold sm:text-3xl md:text-4xl">
-              「こっちのほうが美味しい！」——
-              <br className="sm:hidden" />
+              「こっちのほうが美味しい！」
+              <br />
               その笑顔を全国のお店から届けたくて。
             </h2>
           </div>
@@ -78,7 +78,7 @@ export default function SocialProofSection() {
                 <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-stone-200/80 bg-stone-100">
                   <Image
                     src="/images/craft_moment.jpg"
-                    alt="SoyStoriesの専用工房・仕込み風景"
+                    alt="福岡・薬院店 SoyStories の店内"
                     fill
                     className="object-cover object-[center_35%]"
                     sizes="(max-width: 768px) 48vw, 220px"
@@ -102,19 +102,16 @@ export default function SocialProofSection() {
                 <br className="hidden lg:block" />
                 あなたのお店から届けてほしい。
               </h3>
-              <div className="text-ink-light space-y-4 font-sans text-[15px] leading-[2] sm:text-base">
+              <div className="text-ink-light space-y-4 font-sans text-[15px] leading-[1.9] sm:text-base">
                 <p>
-                  私たちSoyStoriesのミッションは、アレルギーやヴィーガンなど食に制限がある方、素材にこだわる方にとって「ユメミタイ」と思える場所をつくることです。
+                  私たちSoyStoriesは、アレルギーやヴィーガンなど食に制限がある方も気兼ねなく選べる場所をつくりたいという想いから、福岡・薬院の小さなお店でスタートしました。
                 </p>
                 <p>
-                  「みんなで一緒に食べられる幸せ」をカタチにするため、福岡・薬院の小さなお店でお客様をお迎えしてきました。そこで生まれた手作りのクラフトアイスは、アレルギーをお持ちの方だけでなく、ヴィーガンではないお客様からも
+                  乳・卵・小麦・白砂糖を使わずに作るクラフトアイスは、制限のある方だけでなくヴィーガンではないお客様からも
                   <strong className="text-ink">
-                    「こっちのほうが好き！」「普通のアイスより美味しい！」
+                    「こっちのほうが好き」「普通のアイスより美味しい」
                   </strong>
-                  とたくさんの笑顔をいただくようになりました。
-                </p>
-                <p>
-                  この「ユメミタイ」な体験を福岡のみならず、もっと多くのエリアで広げていくために、私たちは小さなお店のキッチンを飛び出し、乳・卵・小麦を一切持ち込まない専用アイス工房を立ち上げました。
+                  と選ばれるようになり、全国のお店へ届けるため専用工房を立ち上げました。
                 </p>
               </div>
             </div>
@@ -154,12 +151,9 @@ export default function SocialProofSection() {
               <p className="text-brand font-sans text-base font-bold sm:text-lg">
                 そう言って涙されたお母さんがいました。
               </p>
-              <div className="text-ink-light space-y-4 font-sans text-[15px] leading-[2] sm:text-base">
+              <div className="text-ink-light space-y-4 font-sans text-[15px] leading-[1.9] sm:text-base">
                 <p>
-                  乳や卵・小麦のアレルギーのあるお子さんを持つご家族にとって、「みんなと同じものを気兼ねなく食べられる」ことは、私たちが思う以上に大きな意味があります。
-                </p>
-                <p>
-                  あなたのお店にも、きっと同じような想いを抱えたお客様やご家族がいらっしゃるはずです。「同じテーブルの全員が笑顔で囲める一皿」として、お役立ていただければ幸いです。
+                  乳・卵・小麦のアレルギーがあるお子様にとって、「みんなと同じものを気兼ねなく食べられる」ことはご家族の大きな喜びにつながります。同じテーブルの全員が笑顔で囲める一皿としてお役立てください。
                 </p>
               </div>
             </div>
@@ -332,7 +326,7 @@ export default function SocialProofSection() {
             </div>
             <blockquote className="text-center sm:text-left">
               <p className="text-ink mb-2.5 font-serif text-base leading-relaxed font-bold sm:text-lg">
-                「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める——薬院の小さなお店で見てきたそんな『ユメミタイ』な体験を、今度は全国の飲食店様と一緒に広げていきたいと思っています。あなたのお店のお客様へ、ぜひこの美味しさを届けてください。」
+                「食に制限がある方もない方も、同じテーブルで同じデザートを笑顔で囲める。薬院の小さなお店で見てきたその光景を、今度は全国の飲食店様と一緒に広げていきたいと思っています。あなたのお店のお客様へ、ぜひこの美味しさを届けてください。」
               </p>
               <footer className="text-ink-light font-sans text-xs font-medium sm:text-sm">
                 株式会社ヒトコト（店舗 SoyStories） 代表　小南 優作

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { SectionHeader } from "@/app/dessert/components/ui";
 import {
   OEM_COURSES,
   PRICING_CONSTANTS,
@@ -66,11 +65,12 @@ export default function OemSimulatorSection() {
   return (
     <section id="simulator" className="scroll-mt-16 bg-[#f7f3ec] py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionHeader
-          eyebrow="販売イメージ試算"
-          lines={["スライダーを動かすだけで、", "お店に残る利益とご負担の目安がわかります。"]}
-          align="center"
-        />
+        <div className="text-center">
+          <p className="text-brand mb-1.5 text-xs font-bold tracking-wide">販売イメージ試算</p>
+          <h2 className="text-ink text-2xl leading-snug font-bold tracking-tight sm:text-3xl">
+            利益と初期費用の目安をその場で試算
+          </h2>
+        </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* 左側：タップで選ぶ条件パネル */}
@@ -119,7 +119,8 @@ export default function OemSimulatorSection() {
                 >
                   <p className="text-sm font-bold">100ml 個食カップ</p>
                   <p className="text-ink-muted mt-0.5 text-xs">
-                    店頭販売・ギフトに（税込¥{PRICING_CONSTANTS.cupOemPriceTaxIncl}/個）
+                    店頭販売・ギフトに（税別¥{PRICING_CONSTANTS.cupOemPriceExTax}／税込目安¥
+                    {PRICING_CONSTANTS.cupOemPriceTaxIncl}）
                   </p>
                 </button>
                 <button
@@ -203,9 +204,7 @@ export default function OemSimulatorSection() {
                       onChange={(e) => setBundleTrial(e.target.checked)}
                       className="h-4 w-4 shrink-0 rounded accent-[#3e6044]"
                     />
-                    <span className="text-ink-light">
-                      定番卸をご利用中の方：通常納品と試作を同梱する（試作送料 ¥0）
-                    </span>
+                    <span className="text-ink-light">定番卸と試作を同梱する（試作送料 ¥0）</span>
                   </label>
                 </div>
               )}
@@ -304,7 +303,7 @@ export default function OemSimulatorSection() {
                 ）で無料相談する →
               </button>
               <p className="text-ink-muted mt-2.5 text-[11px] leading-relaxed">
-                ※お店の利益・仕入単価は税抜、初回ご試作・初回最小ロットのご負担合計は税込の概算目安です。ご支給素材の原価・工房への素材送料・天面シールの印刷費は別途となります。
+                ※利益・仕入単価は税抜、初期総額は税込目安です。支給素材の原価・送料とシール印刷費は別途となります。
               </p>
             </div>
           </div>

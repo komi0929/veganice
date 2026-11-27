@@ -5,21 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
-function OemHeaderContent() {
+interface OemHeaderProps {
+  isPlanPage?: boolean;
+}
+
+function OemHeaderContent({ isPlanPage: propIsPlanPage }: OemHeaderProps) {
   const pathname = usePathname() ?? "/oem";
   const searchParams = useSearchParams();
-  const isPlanPage = pathname.startsWith("/oem/plan");
+  const isPlanPage = propIsPlanPage ?? pathname.startsWith("/oem/plan");
 
   const qs = searchParams.toString();
   const querySuffix = qs ? `?${qs}` : "";
   const logoHref = `${isPlanPage ? "/oem/plan" : "/oem"}${querySuffix}`;
-
-  const premiseQuery = new URLSearchParams(searchParams.toString());
-  if (isPlanPage && !premiseQuery.has("src")) {
-    premiseQuery.set("src", "oem_plan");
-  }
-  const premiseQs = premiseQuery.toString();
-  const fullPremiseHref = `/oem${premiseQs ? `?${premiseQs}` : ""}#premise`;
 
   return (
     <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
@@ -36,11 +33,7 @@ function OemHeaderContent() {
 
       <div className="hidden items-center gap-6 md:flex">
         <nav className="flex items-center gap-5 text-sm text-gray-600" aria-label="OEMページ内ナビ">
-          {isPlanPage ? (
-            <Link href={fullPremiseHref} className="hover:text-brand transition-colors">
-              アイスの特徴
-            </Link>
-          ) : (
+          {!isPlanPage && (
             <a href="#premise" className="hover:text-brand transition-colors">
               アイスの特徴
             </a>
@@ -48,11 +41,6 @@ function OemHeaderContent() {
           <a href="#courses" className="hover:text-brand transition-colors">
             2つのプラン・料金
           </a>
-          {!isPlanPage && (
-            <a href="#story" className="hover:text-brand transition-colors">
-              薬院店と想い
-            </a>
-          )}
           <a href="#simulator" className="hover:text-brand transition-colors">
             利益試算
           </a>
@@ -81,10 +69,10 @@ function OemHeaderContent() {
   );
 }
 
-function OemHeaderFallback() {
+function OemHeaderFallback({ isPlanPage = false }: OemHeaderProps) {
   return (
     <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
-      <Link href="/oem" className="relative flex h-8 items-center">
+      <Link href={isPlanPage ? "/oem/plan" : "/oem"} className="relative flex h-8 items-center">
         <Image
           src="/images/logo_horizontal.png"
           alt="SoyStories — plant base sweets"
@@ -97,6 +85,11 @@ function OemHeaderFallback() {
 
       <div className="hidden items-center gap-6 md:flex">
         <nav className="flex items-center gap-5 text-sm text-gray-600" aria-label="OEMページ内ナビ">
+          {!isPlanPage && (
+            <a href="#premise" className="hover:text-brand transition-colors">
+              アイスの特徴
+            </a>
+          )}
           <a href="#courses" className="hover:text-brand transition-colors">
             2つのプラン・料金
           </a>
@@ -130,13 +123,13 @@ function OemHeaderFallback() {
 
 /**
  * OEM LP（/oem・/oem/plan）専用のヘッダー
- * クエリパラメータ（c, store 等）を保持し、/oem/plan 上では /oem#premise へ案内する
+ * クエリパラメータ（c, store 等）を保持し、/oem と /oem/plan で一貫したナビを表示する
  */
-export default function OemHeader() {
+export default function OemHeader({ isPlanPage = false }: OemHeaderProps) {
   return (
     <header className="fixed top-0 right-0 left-0 z-50 bg-white py-3.5 shadow-xs">
-      <Suspense fallback={<OemHeaderFallback />}>
-        <OemHeaderContent />
+      <Suspense fallback={<OemHeaderFallback isPlanPage={isPlanPage} />}>
+        <OemHeaderContent isPlanPage={isPlanPage} />
       </Suspense>
     </header>
   );

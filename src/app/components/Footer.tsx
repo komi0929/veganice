@@ -12,11 +12,7 @@ export default function Footer() {
   const prefix = isDessert ? "/dessert#" : isHome ? "#" : "/#";
   const contactHref = isOem ? `${pathname}#contact-form` : `${prefix}contact-form`;
   const faqHref = isOem ? `${pathname}#faq` : `${prefix}faq`;
-  const flowHref = isOem
-    ? `${pathname}#timeline`
-    : isDessert
-      ? "/dessert#contact-form"
-      : `${prefix}flow`;
+  const flowHref = isOem ? `${pathname}#timeline` : isDessert ? "/dessert#about" : `${prefix}flow`;
 
   const oemFooterSrc = isDessert ? "dessert_footer" : isHome ? "home_footer" : "lp_footer";
 
@@ -60,7 +56,7 @@ export default function Footer() {
                 href={flowHref}
                 className="hover:text-cta text-base text-white transition-colors"
               >
-                {isOem ? "お届けまでの流れ" : "導入・サンプルの流れ"}
+                {isOem ? "お届けまでの流れ" : isDessert ? "お店での出し方" : "導入・サンプルの流れ"}
               </Link>
               <Link
                 href={faqHref}

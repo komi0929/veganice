@@ -11,7 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { Check, Sparkles, ShieldCheck, ChevronDown } from "lucide-react";
+import { ShieldCheck, ChevronDown } from "lucide-react";
 import { submitContact, type ContactState } from "@/app/actions/contact";
 import {
   lookupAddressByZipDigits,
@@ -44,14 +44,14 @@ const COURSE_CHOICES: {
 }[] = [
   { id: "seal_only", title: "① フタだけお店ロゴ", badge: "開発費 ¥0・60個〜" },
   { id: "custom_recipe", title: "② オリジナル味開発", badge: "試作費 税別¥3万" },
-  { id: "undecided", title: "まだ迷っている・相談したい", badge: "ご提案希望" },
+  { id: "undecided", title: "未定・相談したい", badge: "ご提案希望" },
 ];
 
 const FORMAT_CHOICES: {
   id: OemSelectableFormat;
   label: string;
 }[] = [
-  { id: "both", label: "まだ未定・両方検討" },
+  { id: "both", label: "未定・両方検討" },
   { id: "bulk", label: "2L業務用バルク" },
   { id: "cup", label: "100ml個食カップ" },
 ];
@@ -305,60 +305,23 @@ export default function OemContactSection() {
   const originSource = rawSrcParam || defaultOrigin;
   const resolvedSource = `${originSource}:${activeTab}`.slice(0, 100);
 
-  const benefitBoxContent =
+  const summaryBanner =
     activeTab === "sample"
-      ? {
-          lead: "試食サンプルをお申し込みの方へ、原則お申し込みの翌日にクール冷凍便で発送します",
-          items: [
-            "定番11種から選べる6カップ",
-            "商品代無料（送料のみ着払い）",
-            "卸価格表・OEMご案内も確認可",
-          ],
-        }
+      ? "商品代無料（送料のみ着払い）・原則翌日に冷凍便で発送します。"
       : selectedCourse === "seal_only"
-        ? {
-            lead: "無料相談をお送りいただいた方へ、通常2〜3営業日以内にメールでお届けします",
-            items: [
-              "シール用 .aiテンプレート",
-              "概算お見積り・納期目安",
-              "定番フレーバー試食のご案内",
-            ],
-          }
-        : {
-            lead: "無料相談をお送りいただいた方へ、通常2〜3営業日以内にメールでお届けします",
-            items: ["3つの味の方向性シート", "概算お見積り・納期目安", "シール用 .aiテンプレート"],
-          };
+        ? "通常2〜3営業日以内に、概算お見積りとシール用.ai型紙をメールでお届けします。"
+        : "通常2〜3営業日以内に、3つの方向性案・概算お見積り・.ai型紙をメールでお届けします。";
 
   return (
     <section id="contact-form" className="bg-bg-white scroll-mt-16 py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-6">
         <div className="text-center">
-          <span className="bg-brand/10 text-brand inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-xs font-bold">
-            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-            最短60秒・ご相談無料
-          </span>
-          <h2 className="text-ink mt-2.5 text-2xl font-bold sm:text-3xl">
+          <h2 className="text-ink text-2xl font-bold sm:text-3xl">
             無料事前相談・試食サンプルお申し込み
           </h2>
-          <p className="text-ink-light mt-2.5 text-[15px] leading-relaxed">
-            まだ素材や数量が固まっていなくても大丈夫です。まずはお気軽にお聞かせください。
+          <p className="text-ink-light mt-2 text-[15px] leading-relaxed">
+            素材や数量が未定でもお気軽にご相談ください。
           </p>
-        </div>
-
-        {/* 選択中タブ・コースに応じた特典案内ボックス */}
-        <div className="mt-7 rounded-2xl border border-[#3e6044]/20 bg-[#f7f3ec] p-4 sm:p-5">
-          <p className="text-brand text-center text-xs font-bold">{benefitBoxContent.lead}</p>
-          <div className="mt-3 grid grid-cols-1 gap-2 text-xs sm:grid-cols-3">
-            {benefitBoxContent.items.map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-2 rounded-xl bg-white px-3 py-2.5 shadow-2xs"
-              >
-                <Check className="text-brand h-4 w-4 shrink-0" aria-hidden="true" />
-                <span className="text-ink font-bold">{item}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="mt-6 rounded-3xl border border-gray-200/80 bg-[#fafaf8] p-5 shadow-xs sm:p-9">
@@ -374,6 +337,9 @@ export default function OemContactSection() {
             </div>
           ) : (
             <>
+              <p className="text-brand mb-4 rounded-xl border border-[#3e6044]/15 bg-[#f7f3ec] px-4 py-2.5 text-center text-xs font-bold">
+                {summaryBanner}
+              </p>
               {/* モード切替タブ（OEM事前相談 ／ まずは既存味の試食サンプル） */}
               <div className="flex rounded-full bg-gray-200/70 p-1" role="tablist">
                 <button
@@ -443,9 +409,7 @@ export default function OemContactSection() {
                   <>
                     {/* タップで直感選択できるプランカード */}
                     <div>
-                      <span className="text-ink mb-2 block text-sm font-bold">
-                        気になるプラン（後から変更OK）
-                      </span>
+                      <span className="text-ink mb-2 block text-sm font-bold">ご希望プラン</span>
                       <input type="hidden" name="oemCourse" value={selectedCourse} />
                       <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
                         {COURSE_CHOICES.map((c) => {
@@ -508,7 +472,7 @@ export default function OemContactSection() {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Field
                     id="companyName"
-                    label="お店・会社のお名前"
+                    label="店名・会社名"
                     required
                     error={state.errors?.companyName}
                   >
@@ -593,7 +557,7 @@ export default function OemContactSection() {
                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <Field
                           id="ingredientName"
-                          label="使いたい素材（ざっくりでOK）"
+                          label="使いたい素材"
                           error={state.errors?.ingredientName}
                         >
                           <input
@@ -610,7 +574,7 @@ export default function OemContactSection() {
 
                         <Field
                           id="allergenStatus"
-                          label="素材の「卵・乳・小麦」混入有無"
+                          label="素材の卵・乳・小麦"
                           error={state.errors?.allergenStatus}
                         >
                           <select
@@ -621,16 +585,12 @@ export default function OemContactSection() {
                             disabled={isPending}
                             className={inputClasses}
                           >
-                            <option value="checking">後ほど原材料表・規格書で確認したい</option>
-                            <option value="free_confirmed">
-                              素材・加工場所ともに卵・乳・小麦を含まない
-                            </option>
+                            <option value="checking">確認中（後ほど規格書で確認）</option>
+                            <option value="free_confirmed">卵・乳・小麦を含まない（確認済）</option>
                             <option value="contains_or_unknown">
-                              卵・乳・小麦を含む可能性がある／不明（要相談）
+                              含む可能性あり／不明（要相談）
                             </option>
-                            <option value="none_seal_only">
-                              素材の持ち込みなし（シール変更のみ）
-                            </option>
+                            <option value="none_seal_only">持ち込みなし（シールのみ）</option>
                           </select>
                         </Field>
                       </div>
@@ -640,7 +600,6 @@ export default function OemContactSection() {
                     <Field
                       id="tasteImage"
                       label="ご相談メモ・作りたいイメージ"
-                      hint="下のボタンをタップすると記入例が入ります。1行だけでも大丈夫です。"
                       error={state.errors?.tasteImage}
                     >
                       <div className="mb-2.5 flex flex-wrap gap-1.5">
@@ -670,7 +629,7 @@ export default function OemContactSection() {
                     {/* 詳細項目（保管温度・ご希望時期）は任意アコーディオンに収納 */}
                     <details className="group rounded-2xl border border-gray-200/80 bg-white px-4 py-3.5">
                       <summary className="text-ink-light flex cursor-pointer list-none items-center justify-between text-xs font-bold [&::-webkit-details-marker]:hidden">
-                        <span>＋ お決まりの詳細情報もあわせて伝える（任意・あとからでもOK）</span>
+                        <span>＋ 素材の状態・希望時期を伝える（任意）</span>
                         <ChevronDown
                           className="text-brand h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180"
                           aria-hidden="true"
@@ -721,9 +680,9 @@ export default function OemContactSection() {
                 ) : (
                   <>
                     <div className="rounded-2xl bg-white p-4 text-xs leading-relaxed text-gray-600">
-                      OEMをご検討中の方にも、まずは既存の11フレーバー（6個おためしセット・
-                      <strong>商品代無料／クール便送料のみ着払い</strong>
-                      ）で米粉×発酵製法のなめらかさをお確かめいただけます。
+                      まずは既存11種（6個・
+                      <strong>商品代無料／送料のみ着払い</strong>
+                      ）で米粉製法の口どけをお確かめいただけます。
                     </div>
 
                     <SampleFlavorPicker disabled={isPending} error={state.errors?.sampleFlavors} />
@@ -784,20 +743,18 @@ export default function OemContactSection() {
                     ? "送信しています..."
                     : activeTab === "oem"
                       ? selectedCourse === "seal_only"
-                        ? "無料で事前相談・テンプレートを受け取る →"
-                        : "無料で事前相談・方向性シートを受け取る →"
-                      : "試食サンプル（6個・商品代無料）を申し込む →"}
+                        ? "無料相談・型紙を受け取る →"
+                        : "無料相談・3案提案を受け取る →"
+                      : "無料サンプル（6個）を申し込む →"}
                 </button>
 
                 <div className="text-ink-muted flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center text-xs">
                   <span className="inline-flex items-center gap-1">
                     <ShieldCheck className="text-brand h-3.5 w-3.5" aria-hidden="true" />
                     {activeTab === "oem"
-                      ? "相談に費用は一切発生しません"
-                      : "商品代無料（クール便送料のみ着払い）"}
+                      ? "相談無料・営業電話なし"
+                      : "商品代無料（送料のみ着払い）・営業電話なし"}
                   </span>
-                  <span>・</span>
-                  <span>しつこい営業電話はいたしません</span>
                 </div>
               </form>
             </>
@@ -805,16 +762,14 @@ export default function OemContactSection() {
 
           {/* LINEでの気軽な相談導線 */}
           <div className="mt-7 border-t border-gray-200 pt-6 text-center">
-            <p className="text-ink-muted text-xs">
-              「フォームよりチャットで気軽に聞きたい」という方はLINEからもご相談いただけます
-            </p>
+            <p className="text-ink-muted text-xs">LINEでのご相談も可能です</p>
             <a
               href={LINE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2.5 inline-flex min-h-10 items-center gap-2 rounded-full border border-[#06C755] bg-white px-5 py-2 text-xs font-bold text-[#06C755] transition-colors hover:bg-[#06C755]/5"
             >
-              LINE公式アカウントで気軽に質問する
+              LINEで質問する
             </a>
           </div>
         </div>

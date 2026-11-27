@@ -7,7 +7,7 @@ import { WHOLESALE_FACTS } from "@/app/data/wholesaleFacts";
 const cafeFlavorGroups: WholesaleFlavorGroup[] = [
   {
     title: "ミルク・カカオ・茶葉系（6種）",
-    subtitle: "焼き菓子やエスプレッソと相性の良い定番6種",
+    subtitle: "焼き菓子や珈琲に合う定番6種",
     items: [
       {
         displayName: "UMAMIバニラ",
@@ -43,7 +43,7 @@ const cafeFlavorGroups: WholesaleFlavorGroup[] = [
   },
   {
     title: "フルーツ系（5種・豆乳不使用）",
-    subtitle: "ソーダフロートや食後のデザートに映える果実系5種",
+    subtitle: "フロートや食後に合う果実系5種",
     items: [
       {
         displayName: "マンゴー",
@@ -77,16 +77,15 @@ const cafeFlavorGroups: WholesaleFlavorGroup[] = [
 const compactTerms = [
   {
     label: "卸価格・ロット",
-    value:
-      "バルク：1L ¥2,000・2L ¥4,000（税別・最小4L〜味自由）／ 100ml個食カップ：¥300（税別・60個〜）",
+    value: "1L ¥2,000・2L ¥4,000（税別・4L〜味自由）／ 100mlカップ ¥300（税別・60個〜）",
   },
   {
     label: "1Lあたり杯数",
-    value: "約20杯（#18・50ml＝1杯 約100円）／ 約12杯（#12・80ml＝1杯 約167円）",
+    value: "#18（50ml）約20杯＝約100円 ／ #12（80ml）約12杯＝約167円",
   },
   {
     label: "配送・お支払い",
-    value: "通常5営業日前後でクール冷凍便発送 ／ 納品月の月末締め・翌月末請求書払い（銀行振込）",
+    value: "通常5営業日前後で冷凍便発送 ／ 月末締め・翌月末請求書払い（銀行振込）",
   },
   {
     label: "アレルゲン管理",
@@ -108,9 +107,7 @@ export default function CafeFlavorsSection() {
               全11種同価格。4L（1L×4本など）から自由に組み合わせ。
             </h2>
           </div>
-          <p className="text-ink-muted font-sans text-xs">
-            ※カードをタップで全原材料・栄養成分を表示
-          </p>
+          <p className="text-ink-muted font-sans text-xs">※タップで原材料・栄養を表示</p>
         </div>
 
         <div className="mt-6">

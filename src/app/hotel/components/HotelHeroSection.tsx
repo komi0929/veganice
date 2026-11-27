@@ -27,7 +27,7 @@ export default function HotelHeroSection() {
           </h1>
 
           <p className="text-ink-light mt-3 font-sans text-[13.5px] leading-[1.7] sm:text-[15px]">
-            夕食の最後が果物だけになりがちな日に。コースや会席のデザートとしてそのままお出しいただけます。
+            国産米粉の炊き上げと甘酒・白みそでコクを出し、乳脂肪ゼロで食後もすっきりとした後味の植物性クラフトアイス。コースや会席のデザートとしてそのままお出しいただけます。
           </p>
 
           <ul className="mt-3.5 space-y-1.5 sm:mt-4">
