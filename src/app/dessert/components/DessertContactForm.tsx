@@ -392,7 +392,7 @@ export default function DessertContactForm() {
           </button>
           <p className="text-ink-muted mt-2.5 text-center text-xs leading-relaxed">
             {activeTab === "sample"
-              ? "商品代は無料・クール便送料のみ着払い（通常2営業日以内に発送）／営業電話は一切いたしません"
+              ? "商品代は無料・クール便送料のみ着払い（原則お申し込みの翌日に発送）／営業電話は一切いたしません"
               : "通常2営業日以内にメールにてご返信いたします"}
           </p>
         </div>

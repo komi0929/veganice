@@ -584,7 +584,7 @@ export async function submitContact(
   const caseLabel = caseNumber ? `（受付番号：${caseNumber}）` : "";
   const successMessage =
     data.formType === "sample"
-      ? `サンプルのお申し込みを受け付けました。通常2営業日以内に発送いたします。送料は着払いとなります。\nサンプルの味：${buildSampleSummary(data.sampleMode, data.sampleFlavors)}`
+      ? `サンプルのお申し込みを受け付けました。原則お申し込みの翌日に発送いたします。送料は着払いとなります。\nサンプルの味：${buildSampleSummary(data.sampleMode, data.sampleFlavors)}`
       : data.formType === "oem"
         ? data.oemCourse === "seal_only"
           ? `OEM（プラン①：フタだけお店ロゴ）のご相談を受け付けました${caseLabel}。通常2〜3営業日以内に、シール用 .aiテンプレートと概算お見積り・納期目安のご案内をお送りいたします。`

@@ -75,7 +75,7 @@ export default function CompanyPage() {
               <tr className="border-b border-gray-100">
                 <th className="text-ink w-1/3 bg-gray-50 px-6 py-4 font-bold">商品の引渡時期</th>
                 <td className="text-ink-light px-6 py-4">
-                  通常の業務用卸はご注文確定後5営業日前後、無料試食サンプルは通常2営業日以内に発送いたします。OEM製造はご合意・資材受領後、約2週間〜1か月が目安となります。
+                  通常の業務用卸はご注文確定後5営業日前後、無料試食サンプルは原則お申し込みの翌日に発送いたします。OEM製造はご合意・資材受領後、約2週間〜1か月が目安となります。
                 </td>
               </tr>
               <tr className="border-b border-gray-100">

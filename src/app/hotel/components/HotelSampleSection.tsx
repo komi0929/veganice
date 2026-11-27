@@ -14,7 +14,7 @@ const HOTEL_PRESET_FLAVORS: readonly SampleFlavorName[] = [
 const badges = [
   "全11種から6個無料（クール便送料のみ着払い）",
   "原則お申し込みの翌日に専用工房から発送",
-  "初期登録費・月間ノルマすべて0円",
+  "定期発注なし・初期登録費0円",
 ] as const;
 
 export default function HotelSampleSection() {

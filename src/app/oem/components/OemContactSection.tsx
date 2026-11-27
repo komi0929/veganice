@@ -308,7 +308,7 @@ export default function OemContactSection() {
   const benefitBoxContent =
     activeTab === "sample"
       ? {
-          lead: "試食サンプルをお申し込みの方へ、通常2営業日以内にクール冷凍便で発送します",
+          lead: "試食サンプルをお申し込みの方へ、原則お申し込みの翌日にクール冷凍便で発送します",
           items: [
             "定番11種から選べる6カップ",
             "商品代無料（送料のみ着払い）",

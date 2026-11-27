@@ -491,7 +491,7 @@ export default function ContactForm() {
               </button>
               <p className="text-ink-muted mt-3 font-sans text-xs leading-relaxed">
                 {activeTab === "sample"
-                  ? "商品代は無料・ヤマト運輸クール冷凍便の送料のみ着払い（通常2営業日以内に発送）／営業電話はいたしません"
+                  ? "商品代は無料・ヤマト運輸クール冷凍便の送料のみ着払い（原則お申し込みの翌日に発送）／営業電話はいたしません"
                   : "通常2営業日以内にメールにてご返信いたします"}
               </p>
             </div>
