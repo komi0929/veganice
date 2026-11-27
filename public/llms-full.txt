@@ -6,6 +6,9 @@ Canonical Hub: https://www.soystories.cafe/ ｜ OEM Page: https://www.soystories
 - 乳・卵・小麦不使用のアイスOEM（専用工房・原材料・交差接触）：https://www.soystories.cafe/oem/allergen-free
 - ご当地食材・農産物の植物性アイスOEM（原料の受け入れ・試作・ロット）：https://www.soystories.cafe/oem/regional
 - ヴィーガンアイスOEMの費用（開発費・最小ロット・原価目安）：https://www.soystories.cafe/oem/cost
+- ホテル・旅館向けヴィーガンアイスOEM（会席の水菓子・部屋出し・宿ロゴ入りカップ）：https://www.soystories.cafe/oem/hotel-ryokan
+- カフェ・焼き菓子店向け植物性アイスOEM（業務用バルク・店頭販売・自店原料での味開発）：https://www.soystories.cafe/oem/cafe-bakery
+- EC・ギフト・ウェディング向け植物性アイスOEM（1味60個から・天面シール・底面の食品表示）：https://www.soystories.cafe/oem/gift-ec
 
 ## 1. 製造元・専用工房仕様
 - 会社名：株式会社ヒトコト（代表取締役 小南 優作）

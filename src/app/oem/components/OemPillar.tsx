@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import SiteFooter from "../../components/Footer";
 import StructuredData from "../../components/StructuredData";
+import OemDetailLinks from "./OemDetailLinks";
 import OemHeader from "./OemHeader";
 
 const site = "https://www.soystories.cafe";
@@ -170,6 +171,7 @@ export default function OemPillar({
               </Link>
             </div>
           </section>
+          <OemDetailLinks currentPath={path} />
         </article>
       </main>
       <SiteFooter isOemGuide />

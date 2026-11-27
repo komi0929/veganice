@@ -4,9 +4,12 @@ const links = [
   ["/oem/allergen-free", "乳・卵・小麦不使用のアイスOEM"],
   ["/oem/regional", "ご当地食材・農産物のアイスOEM"],
   ["/oem/cost", "アイスOEMの費用と最小ロット"],
+  ["/oem/hotel-ryokan", "ホテル・旅館向けヴィーガンアイスOEM"],
+  ["/oem/cafe-bakery", "カフェ・焼き菓子店向け植物性アイスOEM"],
+  ["/oem/gift-ec", "EC・ギフト・ウェディング向け植物性アイスOEM"],
 ];
 
-export default function OemDetailLinks() {
+export default function OemDetailLinks({ currentPath }: { currentPath?: string }) {
   return (
     <nav
       aria-label="OEM詳細ガイド"
@@ -14,13 +17,15 @@ export default function OemDetailLinks() {
     >
       <p className="text-ink font-bold">OEM詳細ガイド</p>
       <ul className="flex flex-wrap gap-x-5 gap-y-2">
-        {links.map(([href, label]) => (
-          <li key={href}>
-            <Link href={href} className="text-brand font-bold underline underline-offset-4">
-              {label}
-            </Link>
-          </li>
-        ))}
+        {links
+          .filter(([href]) => href !== currentPath)
+          .map(([href, label]) => (
+            <li key={href}>
+              <Link href={href} className="text-brand font-bold underline underline-offset-4">
+                {label}
+              </Link>
+            </li>
+          ))}
       </ul>
     </nav>
   );

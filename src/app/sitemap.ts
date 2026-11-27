@@ -63,6 +63,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://www.soystories.cafe/oem/hotel-ryokan",
+      lastModified: "2026-11-27",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: "https://www.soystories.cafe/oem/cafe-bakery",
+      lastModified: "2026-11-27",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: "https://www.soystories.cafe/oem/gift-ec",
+      lastModified: "2026-11-27",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: "https://www.soystories.cafe/flavors",
       lastModified: "2026-11-27",
       changeFrequency: "monthly",
