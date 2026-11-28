@@ -268,7 +268,7 @@ export default async function WholesaleBriefPage({ searchParams }: WholesaleBrie
                     </span>
                   </p>
                   <p className="text-ink-light mt-2 font-sans text-xs leading-relaxed sm:text-[13px]">
-                    SoyStoriesのカラーデザイン丸シール＆底面法定表示ラベル貼付済みでお届け。シールの手配なしで届いたその日から店頭販売いただけます。
+                    SoyStoriesのカラーデザイン丸シール＆側面法定表示ラベル貼付済みでお届け。シールの手配なしで届いたその日から店頭販売いただけます。
                   </p>
                   <p className="text-ink mt-3 rounded-xl bg-[#faf8f4] px-3.5 py-2 font-sans text-xs font-bold">
                     最小ロット：60個〜（120個で1箱ぴったり）

@@ -81,6 +81,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://www.soystories.cafe/oem/quality",
+      lastModified: "2026-11-27",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: "https://www.soystories.cafe/oem/compare",
+      lastModified: "2026-11-27",
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: "https://www.soystories.cafe/flavors",
       lastModified: "2026-11-27",
       changeFrequency: "monthly",

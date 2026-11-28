@@ -4,11 +4,11 @@ import { LID_STICKER_SPEC } from "../data/oemSpecs";
 
 const FAQ_ITEMS: { q: string; a: ReactNode }[] = [
   {
-    q: "天面丸シールと底面の法定表示ラベルはどう分担しますか？",
+    q: "天面丸シールと側面の法定表示ラベルはどう分担しますか？",
     a: (
       <div className="space-y-2">
         <p>
-          底面の法定一括表示ラベル（原材料・栄養成分等）は当社で作成・貼付します。お客様には天面丸シール（
+          側面の法定一括表示ラベル（原材料・栄養成分等）は当社で作成・貼付します。お客様には天面丸シール（
           <strong>{LID_STICKER_SPEC.fullSize}</strong>／推奨：{LID_STICKER_SPEC.material}
           ／発注数＋予備5〜10%・最低＋10枚）のみ店ロゴ等で印刷・ご支給いただきます（ご請求基準
           税別286円／税込目安309円・基準税込324円からシール支給分税込15円引）。

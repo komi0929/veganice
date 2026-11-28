@@ -8,7 +8,9 @@ Canonical Hub: https://www.soystories.cafe/ ｜ OEM Page: https://www.soystories
 - ヴィーガンアイスOEMの費用（開発費・最小ロット・原価目安）：https://www.soystories.cafe/oem/cost
 - ホテル・旅館向けヴィーガンアイスOEM（会席の水菓子・部屋出し・宿ロゴ入りカップ）：https://www.soystories.cafe/oem/hotel-ryokan
 - カフェ・焼き菓子店向け植物性アイスOEM（業務用バルク・店頭販売・自店原料での味開発）：https://www.soystories.cafe/oem/cafe-bakery
-- EC・ギフト・ウェディング向け植物性アイスOEM（1味60個から・天面シール・底面の食品表示）：https://www.soystories.cafe/oem/gift-ec
+- EC・ギフト・ウェディング向け植物性アイスOEM（1味60個から・天面シール・側面の食品表示）：https://www.soystories.cafe/oem/gift-ec
+- アイスOEMの品質管理・食品表示・冷凍配送（専用工房・カップ側面表示・冷凍保管・地域別送料・納期）：https://www.soystories.cafe/oem/quality
+- 植物性アイスと乳製品アイスの違い・業務用選定（乳脂肪ゼロ・国産米粉・業態別の選び方）：https://www.soystories.cafe/oem/compare
 
 ## 1. 製造元・専用工房仕様
 - 会社名：株式会社ヒトコト（代表取締役 小南 優作）
@@ -34,7 +36,7 @@ Canonical Hub: https://www.soystories.cafe/ ｜ OEM Page: https://www.soystories
 ## 3. OEM・卸の比較と価格・送料正本
 - **定番A（業務用バルク）**：1L 税別2,000円 / 2L 税別4,000円、最小4L〜（ミックス自由）、50ml約20杯（約100円/杯）・80ml約12杯（約167円/杯）。
 - **定番B（100ml個食カップ）**：税別300円（税込324円）、最小60個〜（120個推奨）。
-- **OEM①（フタだけお店ロゴ）**：開発費0円、1個 税別286円（税込目安309円）、1味60個単位。天面正円φ72mm丸シール（塗り足し78mm・安全圏φ66mm）をご支給、底面法定一括表示は当社貼付。無料型紙：https://www.soystories.cafe/downloads/soystories-oem-lid-sticker-72mm.ai
+- **OEM①（フタだけお店ロゴ）**：開発費0円、1個 税別286円（税込目安309円）、1味60個単位。天面正円φ72mm丸シール（塗り足し78mm・安全圏φ66mm）をご支給、側面法定一括表示は当社貼付。無料型紙：https://www.soystories.cafe/downloads/soystories-oem-lid-sticker-72mm.ai
 - **OEM②（オリジナル開発）**：初期試作開発費 税別30,000円＋試作実費（材料税別1,500円＋資材税別200円＋60サイズ送料）。初回1.5L仕込み（A/B 2案×各3個送付）、2回戦目まで追加開発費0円。量産は100mlカップ（税別286円・60個〜）または2Lバルク（税別4,000円・6L〜）。農産物原料目安：初回試作 果実ピューレ・果汁約400〜800g（茶葉粉末約40〜90g）／量産60個 約1.8〜3.2kg（茶葉粉末約180〜360g）。預かり素材は卵・乳・小麦を含まないことを規格書等で事前確認必須。
 - **全国クール冷凍便 税込送料（60 / 100 / 120サイズ）**：
   - 九州・中国：¥1,215 / ¥1,710 / ¥2,040

@@ -7,6 +7,8 @@ const links = [
   ["/oem/hotel-ryokan", "ホテル・旅館向けヴィーガンアイスOEM"],
   ["/oem/cafe-bakery", "カフェ・焼き菓子店向け植物性アイスOEM"],
   ["/oem/gift-ec", "EC・ギフト・ウェディング向け植物性アイスOEM"],
+  ["/oem/quality", "アイスOEMの品質管理・食品表示・冷凍配送"],
+  ["/oem/compare", "植物性アイスと乳製品アイスの違い・業務用選定"],
 ];
 
 export default function OemDetailLinks({ currentPath }: { currentPath?: string }) {

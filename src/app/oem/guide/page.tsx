@@ -66,7 +66,7 @@ const faq = [
   {
     question: "カップの丸シールと食品表示は誰が用意しますか？",
     answer:
-      "天面の正円φ72mm丸シールはお客様にご支給いただきます。塗り足しは直径78mm、文字とロゴの安全圏はφ66mmです。底面の法定一括表示ラベルはSoyStoriesが作成して貼付します。",
+      "天面の正円φ72mm丸シールはお客様にご支給いただきます。塗り足しは直径78mm、文字とロゴの安全圏はφ66mmです。側面の法定一括表示ラベルはSoyStoriesが作成して貼付します。",
   },
   {
     question: "全国に配送できますか？初回納品まで何日かかりますか？",
@@ -319,7 +319,7 @@ export default function OemGuidePage() {
           </section>
 
           <section id="labels" className={card}>
-            <h2 className={heading}>100mlカップの天面丸シールと底面表示</h2>
+            <h2 className={heading}>100mlカップの天面丸シールと側面表示</h2>
             <dl className="mt-4 grid gap-3 sm:grid-cols-3">
               {[
                 ["仕上がり", "正円φ72mm"],
@@ -336,7 +336,7 @@ export default function OemGuidePage() {
               天面シールは耐水フィルム系素材、ラミネート加工、冷凍用強粘着を推奨します。発注数に予備5〜10％（最低10枚）を加えてご支給ください。
             </p>
             <p className="mt-3 leading-relaxed">
-              原材料名・内容量・アレルゲン・栄養成分などを記載した法定一括表示は、SoyStoriesが作成しカップ底面に貼付します。天面シールはロゴや商品名などのデザインに使えます。
+              原材料名・内容量・アレルゲン・栄養成分などを記載した法定一括表示は、SoyStoriesが作成しカップ側面に貼付します。天面シールはロゴや商品名などのデザインに使えます。
             </p>
             <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
               <li>
